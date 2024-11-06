@@ -5,27 +5,31 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
-<header>
-    <div class="logo">
-        <a href=""><img th:src="@{/shop/image/Logo.png}" alt="Logo"></a>
+<div class="container-fluid">
+    <div class="row">
+        <header>
+            <div class="logo">
+                <a href=""><img src="image/logo.png" alt="Logo"></a>
+            </div>
+            <div class="search">
+                <input type="search" placeholder="Tìm kiếm...">
+            </div>
+            <div class="icon-container">
+                    <a href="" class="function"><i class="fa-regular fa-circle-user" alt="Tài khoản"></i></a>
+                    <a href="" class="function"><i class="fa-solid fa-cart-shopping" alt="Giỏ hàng"></i></a>
+                    <a href="" class="function"><i class="fa-solid fa-phone-volume" alt="Liên hệ"></i></a>
+            </div>
+        </header>
+        <nav>
+            <div class="navbar">
+                <a href="#" th:href="@{/}"><b>Trang chủ</b></a>
+                <a href="#" th:href="@{/}"><b>Sản phẩm</b></a>
+                <a href="#" th:href="@{/}"><b>Giỏ hàng</b></a>
+                <a href="#" th:href="@{/}"><b>Giới thiệu</b></a>
+                <a href="#" th:href="@{/}"><b>Hỗ trợ</b></a>
+            </div>
+        </nav>
+        </div>
     </div>
-    <div class="search">
-        <input type="search" placeholder="Tìm kiếm...">
-    </div>
-    <div class="icon-container">
-            <a href="" class="function"><i class="fa-regular fa-circle-user" alt="Tài khoản"></i></a>
-            <a href="" class="function"><i class="fa-solid fa-cart-shopping" alt="Giỏ hàng"></i></a>
-            <a href="" class="function"><i class="fa-solid fa-phone-volume" alt="Liên hệ"></i></a>
-    </div>
-</header>
-<nav>
-    <div class="navbar">
-        <a href="#" th:href="@{/}">Trang chủ</a>
-        <a href="#" th:href="@{/}">Sản phẩm</a>
-        <a href="#" th:href="@{/}">Giỏ hàng</a>
-        <a href="#" th:href="@{/about}">Giới thiệu</a>
-        <a href="#" th:href="@{/support}">Hỗ trợ</a>
-    </div> 
-</nav>
-
+</div>
 </html>

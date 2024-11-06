@@ -7,7 +7,7 @@ body {
 header {
     height: 130px;
     width: 100%;
-    background-color: #d3d0d0;
+    background-color: #c6c5c5;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -15,8 +15,8 @@ header {
 }
 
 .logo img {
-    height: 100px;
-    width: 200px;
+    height: 270px;
+    width: 300px;
 }
 
 .search input {
@@ -37,6 +37,7 @@ header {
     display: flex;
     align-items: center;
     gap: 50px;
+    margin-right: 40px;
 }
 
 .icon-container img {
@@ -82,6 +83,7 @@ nav {
 }
 
 .navbar a:hover {
+    text-decoration: none;
     background-color: #000000;
     color: #fff;
 }
