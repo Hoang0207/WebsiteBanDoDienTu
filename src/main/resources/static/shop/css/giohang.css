@@ -1,0 +1,88 @@
+body {
+    background-color: white; 
+}
+.custom-form-container {
+    width: 1000px;
+    margin: auto;
+    border: 2px solid black;
+    border-radius: 20px;
+    background-color: white; 
+    color: rgb(0, 0, 0);
+    padding: 20px;
+}
+.custom-form-container input,
+.custom-form-container label,
+.custom-form-container button,
+.custom-form-container a {
+    color: white;
+}
+.custom-form-container input::placeholder {
+    color: lightgray;
+}
+.custom-form-container .form-group {
+    margin-bottom: 15px;
+}
+.custom-form-container button,
+.custom-form-container a {
+    margin-top: 10px;
+}
+.tr.th {
+    color: wnite;
+}
+
+h2{
+    color: black;
+    text-align: center;
+}
+
+.table th {
+    color: white;
+    text-align: center;
+}
+.table td {
+    color: white;
+    text-align: center;
+}
+.custom-form-container input {
+    color: black; /* Set input text color to black */
+}
+h4.money-summary{
+    text-align: center;
+}
+
+hr.horizontal{
+    max-width: 400px;
+    margin: auto;
+    padding-bottom: 40px;
+}
+
+label.radiobutton{
+    color: #000000;
+}
+
+.custom-img {
+    margin-left: 0%;
+    border-radius: 10%;
+    max-width: 70px; /* Set the desired maximum width */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.btn-primary {
+    color:  #ff2e51;
+    border-color: #ff2e51;
+    background-color: white;
+}
+.btn-danger {
+    width: 90px;
+    color:  white;
+    border-color: #ff2e51;
+    background-color: #ff2e51;
+}
+
+.buy{
+    height: 30px;
+}
+
+.btn-success{
+    padding-bottom: 30px;
+}

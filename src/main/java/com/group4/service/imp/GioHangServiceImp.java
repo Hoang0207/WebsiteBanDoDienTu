@@ -1,71 +1,41 @@
 package com.group4.service.imp;
 
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-//import com.Nhom4.Entity.Product;
-//import com.Nhom4.Service.productService;
+import com.group4.dao.GioHangDAO;
+import com.group4.entity.GioHang;
 import com.group4.service.GioHangService;
 
 @Service
 public class GioHangServiceImp implements GioHangService{
-	/*private final Map<Integer, Product> cart = new HashMap<>();
-
-    @Autowired
-    private productService productService;
+	@Autowired
+    private GioHangDAO gioHangRepository;
 
     @Override
-    public Product add(Integer id) {
-        Product product = cart.get(id);
-        if (product == null) {
-            product = productService.getProductById(id);
-            if (product != null) {
-                product.setQty(1);
-                cart.put(id, product);
-            }
-        } else {
-            product.setQty(product.getQty() + 1);
-        }
-        return product;
+    public List<GioHang> getAllGioHangs() {
+        return gioHangRepository.findAll();
     }
 
     @Override
-    public void remove(Integer id) {
-        cart.remove(id);
+    public GioHang getGioHangById(Long id) {
+    	Optional<GioHang> gioHang = gioHangRepository.findById(id);
+        return gioHang.orElse(null);
     }
 
     @Override
-    public Product update(Integer id, String qty) {
-        Product product = cart.get(id);
-        if (product != null) {
-            if ("minus".equals(qty) && product.getQty() > 0) {
-                product.setQty(product.getQty() - 1);
-                if (product.getQty() == 0) {
-                    remove(id);
-                }
-            } else if ("plus".equals(qty) && product.getQty() < 100) {
-                product.setQty(product.getQty() + 1);
-            }
-        }
-        return product;
+    public GioHang saveGioHang(GioHang gioHang) {
+        return gioHangRepository.save(gioHang);
     }
 
     @Override
-    public void clear() {
-        cart.clear();
+    public void deleteGioHang(Long id) {
+        gioHangRepository.deleteById(id);
     }
 
-    @Override
-    public Collection<Product> getItems() {
-        return cart.values();
-    }
-
-    @Override
-    public int getCount() {
-        return cart.values().stream().mapToInt(Product::getQty).sum();
-    }
-
-    @Override
-    public double getAmount() {
-        return cart.values().stream().mapToDouble(product -> product.getDiscountprice() * product.getQty()).sum();
-    }*/
+	
 }
+
