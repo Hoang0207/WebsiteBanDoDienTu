@@ -52,6 +52,19 @@ header {
     color: #000000;
 }
 
+.dropdown .user{
+    transform: scale(2.1);
+    color: #000000;
+    background-color: #c6c5c5;
+    border: none;
+    margin-right: -10px;
+}
+
+.dropdown-item {
+    text-decoration: none;
+}
+
+
 .btn-success{
     height: 10px;
     padding-bottom: 60px;
