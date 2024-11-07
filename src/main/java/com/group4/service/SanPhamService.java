@@ -3,6 +3,7 @@ package com.group4.service;
 import java.util.List;
 import java.util.Optional;
 
+import com.group4.controller.Product;
 import com.group4.entity.SanPham;
 
 public interface SanPhamService {
@@ -19,4 +20,7 @@ public interface SanPhamService {
 	public void deleteById(String id);
 	
 	public List<SanPham> filterSanPham(String tenSanPham, String maCl);
+
+	public SanPham getProductById(String id);
+
 }

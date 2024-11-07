@@ -20,6 +20,7 @@ public class GioHangController {
     public String getGioHang(Model model) {
         List<GioHang> gioHangs = gioHangService.getAllGioHangs(); 
         model.addAttribute("gioHangs", gioHangs);
+        model.addAttribute("content","/layout/giohang");
         return "index";
     }
 }
