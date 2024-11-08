@@ -62,4 +62,9 @@ public class SanPhamServiceImp implements SanPhamService{
 		return (int)spDao.count();
 	}
 
+	@Override
+	public List<SanPham> findByName(String name) {
+		return spDao.findAllByTenSanPhamLike("%"+name+"%");
+	}
+
 }

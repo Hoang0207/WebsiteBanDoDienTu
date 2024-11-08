@@ -16,11 +16,11 @@ public class ChiTietSanPhamController {
     @Autowired
     private SanPhamService productService;
 
-    @GetMapping("/{maSanPham}")
+    @GetMapping("/{id}")
     public String getProductDetail(@PathVariable("id") String id, Model model) {
-        SanPham product = productService.getProductById(id);
+        SanPham product = productService.findById(id).get();
         model.addAttribute("product", product);
         model.addAttribute("content","/layout/chitietsanpham");
-        return "chitietsanpham";
+        return "index";
     }
 }

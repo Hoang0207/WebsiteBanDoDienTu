@@ -11,6 +11,8 @@ public interface SanPhamService {
 	
 	public Optional<SanPham> findById(String id);
 	
+	public List<SanPham> findByName(String name);
+	
 	public SanPham save(SanPham sp);
 	
 	public boolean existsById(String id);

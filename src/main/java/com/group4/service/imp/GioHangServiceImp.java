@@ -13,18 +13,7 @@ import com.group4.service.GioHangService;
 @Service
 public class GioHangServiceImp implements GioHangService{
 	@Autowired
-    private GioHangDAO gioHangRepository;
-
-    @Override
-    public List<GioHang> getAllGioHangs() {
-        return gioHangRepository.findAll();
-    }
-
-    @Override
-    public GioHang getGioHangById(Long id) {
-    	Optional<GioHang> gioHang = gioHangRepository.findById(id);
-        return gioHang.orElse(null);
-    }
+    GioHangDAO gioHangRepository;
 
     @Override
     public GioHang saveGioHang(GioHang gioHang) {
@@ -32,9 +21,14 @@ public class GioHangServiceImp implements GioHangService{
     }
 
     @Override
-    public void deleteGioHang(Long id) {
+    public void deleteGioHang(int id) {
         gioHangRepository.deleteById(id);
     }
+
+	@Override
+	public List<GioHang> getGioHangByMaNguoiDung(String id) {
+		return gioHangRepository.findAllByNguoiDung_MaNguoiDung(id);
+	}
 
 	
 }

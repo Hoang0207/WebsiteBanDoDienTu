@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <meta charset="ISO-8859-1">
@@ -8,85 +7,105 @@
 </head>
 <body>
 	<div class="container">
-        <table class="table">
-            <br>
-            <thead>
-                <h2><strong>GIỎ HÀNG</strong></h2>
-            </thead>
-            <hr>
-            <tbody>
-                <div th:each="gioHang : ${gioHangs}" class="cart-card">
-                    <tr>
-                        <td>${chiTiet.tenSanPham}</td>
-                        <td>${chiTiet.soLuong}</td>
-                        <td>${chiTiet.gia}</td>
-                        <td>
-                            <a href="${}" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this user?');">
-                                Hủy
-                            </a>
-                        </td>
-                    </tr>
-            </tbody>
-        </table>
+		<br>
+		<h2>
+			<strong>GIỎ HÀNG</strong>
+		</h2>
+		<br>
+		<hr>
+		<table class="table table-bodered">
+			<tbody>
+				<tr th:each="gioHang : ${gioHangs}">
+					<td th:text="${gioHang.sanPham.tenSanPham}"></td>
+					<td th:text="${gioHang.soLuong}"></td>
+					<td th:text="${gioHang.sanPham.giaTien}"></td>
+					<td><a href="${}" class="btn btn-sm btn-danger"
+						onclick="return confirm('Are you sure you want to delete this user?');">
+							Hủy </a></td>
+				</tr>
+			</tbody>
+		</table>
 
-        <div class="custom-form-container mb-5">
-            <form action="" method="post">
-                <h5><Strong>Thông tin:</Strong></h5>
+		<div class="custom-form-container mb-5">
+			<form action="" method="post">
+				<h5>
+					<Strong>Thông tin:</Strong>
+				</h5>
 
-                <div class="container">
-                    <div class="row">
-                      <div class="col">
-                        <div class="form-group">
-                            <input type="text" name="name" placeholder="Nhập họ và tên" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <input type="number" name="number" placeholder="Nhập số điện thoại" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <input type="email" name="email" placeholder="Nhập email" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" name="address" placeholder="Nhập địa chỉ" class="form-control">
-                        </div>
-                      </div>
-                      <div class="col-1">
-                        <hr style="width: 1px; height: 200px; background-color: black; border: none; margin: auto;">
-                      </div>
-                      <div class="col">
-                        <h5><strong>Hình thức thanh toán:</strong></h5>
-                        <div>
-                            <label class="radiobutton">
-                              <input type="radio" name="payment" value="option1" checked>
-                              Thanh toán bằng tiền mặt
-                            </label>
-                            <br> <!-- Line break to move the next checkbox to a new line -->
-                            <label class="radiobutton">
-                              <input type="radio" name="payment" value="option2">
-                              Thanh toán bằng thẻ 
-                            </label>
-                            <br>  
-                      </div>
-                            <div class="container">
-                                <div class="row text-center g-0">
-                                    <div class="col"><img src="image/visa.png" alt="Visa" class="img-fluid custom-img"></div>
-                                    <div class="col"><img src="image/agri.png" alt="Agribank" class="img-fluid custom-img"></div>
-                                    <div class="col"><img src="image/sacom.png" alt="Sacombank" class="img-fluid custom-img"></div>
-                                    <div class="col"><img src="image/bidv.png" alt="BIDV" class="img-fluid custom-img"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                  </div>
+				<div class="container">
+					<div class="row">
+						<div class="col">
+							<div class="form-group">
+								<input type="text" name="name" placeholder="Nhập họ và tên"
+									class="form-control">
+							</div>
+							<div class="form-group">
+								<input type="number" name="number"
+									placeholder="Nhập số điện thoại" class="form-control">
+							</div>
+							<div class="form-group">
+								<input type="email" name="email" placeholder="Nhập email"
+									class="form-control">
+							</div>
+							<div class="form-group">
+								<input type="text" name="address" placeholder="Nhập địa chỉ"
+									class="form-control">
+							</div>
+						</div>
+						<div class="col-1">
+							<hr
+								style="width: 1px; height: 200px; background-color: black; border: none; margin: auto;">
+						</div>
+						<div class="col">
+							<h5>
+								<strong>Hình thức thanh toán:</strong>
+							</h5>
+							<div>
+								<label class="radiobutton"> <input type="radio"
+									name="payment" value="option1" checked> Thanh toán bằng
+									tiền mặt
+								</label> <br>
+								<!-- Line break to move the next checkbox to a new line -->
+								<label class="radiobutton"> <input type="radio"
+									name="payment" value="option2"> Thanh toán bằng thẻ
+								</label> <br>
+							</div>
+							<div class="container">
+								<div class="row text-center g-0">
+									<div class="col">
+										<img src="image/visa.png" alt="Visa"
+											class="img-fluid custom-img">
+									</div>
+									<div class="col">
+										<img src="image/agri.png" alt="Agribank"
+											class="img-fluid custom-img">
+									</div>
+									<div class="col">
+										<img src="image/sacom.png" alt="Sacombank"
+											class="img-fluid custom-img">
+									</div>
+									<div class="col">
+										<img src="image/bidv.png" alt="BIDV"
+											class="img-fluid custom-img">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 
-                <h4 class="money-summary"><strong>Tổng số tiền cần thanh toán</strong></h4>
-                <hr class="horizontal">
-                <data value=""></data>
-                <div class="d-flex justify-content-center"> 
-                    <a href=""><button type="" class="btn btn-warning me-2">Quay lại</button></a>
-                    <a href="" class="buy"><button type="submit" class="btn btn-success me-2">Đặt hàng</button>  </a> 
-                </div>
-            </form>
-        </div>
-    </div>
+				<h4 class="money-summary">
+					<strong>Tổng số tiền cần thanh toán</strong>
+				</h4>
+				<hr class="horizontal">
+				<data value=""></data>
+				<div class="d-flex justify-content-center">
+					<a href=""><button type="" class="btn btn-warning me-2">Quay
+							lại</button></a> <a href="" class="buy"><button type="submit"
+							class="btn btn-success me-2">Đặt hàng</button> </a>
+				</div>
+			</form>
+		</div>
+	</div>
 </body>
 </html>

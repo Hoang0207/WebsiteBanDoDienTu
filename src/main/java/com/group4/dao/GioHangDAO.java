@@ -1,18 +1,15 @@
 package com.group4.dao;
 
-
-
-import java.util.Optional;
+import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import com.group4.entity.GioHang;
 
 public interface GioHangDAO extends JpaRepository<GioHang, Integer>{
-
-	Optional<GioHang> findById(Long id);
-
-	void deleteById(Long id);
-
-
+	
+	@Query
+	List<GioHang> findAllByNguoiDung_MaNguoiDung(String id);
+	
 }
