@@ -42,10 +42,13 @@ public class SanPhamServiceImp implements SanPhamService{
 	}
 
 	@Override
-	public List<SanPham> filterSanPham(String tenSanPham, String maCl) {
+	public List<SanPham> filterSanPham(String tenSanPham, String maCl, String maNcc, String maTtdb, float minPrice, float maxPrice) {
 		Specification<SanPham> spec = Specification.where(null);  //Bắt đầu với điều kiện null 
 		spec = spec.and(spSpec.hasTenSanPham(tenSanPham));
 		spec = spec.and(spSpec.hasChungLoai(maCl));
+		spec = spec.and(spSpec.hasNhaCungCap(maNcc));
+		spec = spec.and(spSpec.hasThuocTinhDacBiet(maTtdb));
+		spec = spec.and(spSpec.hasGiaTienRange(minPrice, maxPrice));
 		return spDao.findAll(spec);
 	}
 

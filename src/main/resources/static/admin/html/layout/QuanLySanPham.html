@@ -169,6 +169,25 @@
 	                        <option ng-repeat="cl in list_cl" ng-value="cl.maChungLoai">{{cl.tenChungLoai}}</option>
 	                     </select>
 	                 </div>	
+	                 <div class="input-group mb-3">
+                           <label class="input-group-text text-bg-secondary" for="inputGroupSelect01">Nhà cung cấp</label>
+                           <select class="form-select" id="inputGroupSelect01" ng-model="form_filter.maNcc">
+                           		<option value="" selected="selected">Tất cả</option>
+                                <option ng-repeat="ncc in list_ncc" ng-value="ncc.maNhaCungCap">{{ncc.tenNhaCungCap}}</option>
+                           </select>
+                     </div>
+                     <div class="input-group mb-3">
+                           <label class="input-group-text text-bg-secondary" for="inputGroupSelect01">Thuộc tính đặc biệt</label>
+                           <select class="form-select" id="inputGroupSelect01" ng-model="form_filter.maTtdb">
+                               <option value="" selected="selected">Tất cả</option>
+                               <option ng-repeat="ttdb in list_ttdb" ng-value="ttdb.maThuocTinhDacBiet">{{ttdb.tenThuocTinhDacBiet}}</option>          
+                           </select>
+                     </div>
+                     <div class="input-group mb-3">
+                        <span class="input-group-text text-bg-secondary">Giá tiền</span>
+                        <input type="text" placeholder="Tối thiểu" aria-label="Last name" ng-model="form_filter.minPrice" class="form-control">
+                        <input type="text" placeholder="Tối đa" aria-label="Last name" ng-model="form_filter.maxPrice" class="form-control">
+                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn p-0 m-0 me-3"><img src="/admin/image/locBtn.png" class="img-fluid" ng-click="filter()"
