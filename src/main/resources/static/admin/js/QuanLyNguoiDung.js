@@ -13,7 +13,7 @@ app.controller('QuanLyNguoiDungCtrl', function($http, $scope) {
 		$scope.temp_image_data = null
 		$scope.file = null
 		$scope.update = false
-		$scope.form = {ngayDangKy: new Date()}
+		$scope.form = { ngayDangKy: new Date() }
 	}
 
 	//load tat ca nguoi dung
@@ -64,7 +64,7 @@ app.controller('QuanLyNguoiDungCtrl', function($http, $scope) {
 		}
 	})
 
-	//Lưu ảnh về
+	//Hàm lưu ảnh về
 	$scope.save_image = function() {
 		// Nếu thành công, gọi resolve() hoặc reject() nếu có lỗi
 		return new Promise((resolve, reject) => {
@@ -91,7 +91,16 @@ app.controller('QuanLyNguoiDungCtrl', function($http, $scope) {
 			}
 		})
 	}
-
+	
+	//Hàm xóa ảnh
+	$scope.delete_image = function(image_name){
+		var url = `${host}/file/NguoiDung/${image_name}`
+		$http.delete(url).then(resp => {
+			console.log("Success delete NguoiDung Image",image_name)
+		}).catch(error => {
+			console.log("Error delete NguoiDung Image",error)
+		})
+	}	
 
 	//Thêm người dùng mới
 	$scope.create = function() {
@@ -99,18 +108,32 @@ app.controller('QuanLyNguoiDungCtrl', function($http, $scope) {
 			var url = `${host}/NguoiDung`
 			$http.post(url, $scope.form).then(resp => {
 				$scope.load_all()
-				$scope.update=true
-				swal("Thành công !","Thêm người dùng thành công","success")
+				$scope.update = true
+				swal("Thành công !", "Thêm người dùng thành công", "success")
 			}).catch(error => {
 				console.log("Error create NguoiDung", error)
 			})
-		}).catch(error => {
-			console.log("Error save image NguoiDung",error)
 		})
 	}
-	
+
+	//Cập nhật người dùng
+	$scope.update_nd = function(maNd, old_image) {
+		var url = `${host}/NguoiDung/${maNd}`
+		$scope.save_image().then(() => {
+			$http.put(url, $scope.form).then(resp => {
+				if(old_image && old_image != resp.data.hinhAnh){
+					$scope.delete_image(old_image)
+				}
+				$scope.load_all()
+				swal("Thành công !", "Cập nhật người dùng thành công", "success")
+			}).catch(error => {
+				console.log("Error update NguoiDung",error)
+			})
+		})
+	}
+
 	//Xóa người dùng
-	$scope.delete = function(maNd){
+	$scope.delete = function(maNd,image_name) {
 		swal({
 			title: "Bạn có chắc chắn không ?",
 			text: "Khi đã xóa thì bạn không thể khôi phục lại được",
@@ -121,8 +144,11 @@ app.controller('QuanLyNguoiDungCtrl', function($http, $scope) {
 			if (willDelete) {
 				var url = `${host}/NguoiDung/${maNd}`
 				$http.delete(url).then(resp => {
+					if(image_name){
+						$scope.delete_image(image_name)
+					}
 					$scope.load_all()
-					swal("Xóa thành công", {icon: "success",});
+					swal("Xóa thành công", { icon: "success", });
 				}).catch(error => {
 					console.log("Error delete NguoiDung", error)
 				})

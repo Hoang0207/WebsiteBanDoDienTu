@@ -36,7 +36,7 @@
 					<td class="pt-4">{{nd.soDienThoai}}</td>
 					<td class="ps-3 pt-3">
 						<img alt="" class="img-fluid imgAction me-2" src="/admin/image/editIcon.png" data-bs-toggle="modal" data-bs-target="#modalNguoiDung" ng-click="load_by_id(nd.maNguoiDung)">
-						<img alt="" class="img-fluid imgAction" src="/admin/image/deleteIcon.png" ng-click="delete(nd.maNguoiDung)">
+						<img alt="" class="img-fluid imgAction" src="/admin/image/deleteIcon.png" ng-click="delete(nd.maNguoiDung, nd.hinhAnh)">
 					</td>
 				</tr>
 			</tbody>
@@ -162,7 +162,7 @@
                             style="height: 40px;"></button>
                     <button type="button" class="btn p-0 m-0"><img src="/admin/image/themBtn.png" class="img-fluid" ng-hide="update" ng-click="create()"
                             style="height: 44px;"></button>
-                     <button type="button" class="btn p-0 m-0"><img src="/admin/image/capNhatBtn.png" class="img-fluid" ng-show="update"
+                     <button type="button" class="btn p-0 m-0"><img src="/admin/image/capNhatBtn.png" class="img-fluid" ng-show="update" ng-click="update_nd(form.maNguoiDung, form.hinhAnh)"
                             style="height: 48px;"></button>
                 </div>
             </div>
