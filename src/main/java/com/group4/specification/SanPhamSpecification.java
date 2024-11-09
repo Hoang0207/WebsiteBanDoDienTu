@@ -17,6 +17,15 @@ public class SanPhamSpecification {
 				:cb.like(root.get("tenSanPham"),"%"+tenSanPham+"%"); //cb.like để tìm kiếm có chứa từ khóa
 	}
 	
+	public Specification<SanPham> hasMaSanPham(String maSanPham){
+		return (root, query, cb) -> {
+			if(maSanPham==null || maSanPham.trim().isEmpty()) {
+				return cb.conjunction();
+			}
+			return cb.like(root.get("maSanPham"), "%"+maSanPham+"%");
+		};
+	}
+	
 	public Specification<SanPham> hasChungLoai(String maCl){
 		return (root, query, cb) ->{ 
 			if(maCl==null || maCl.trim().isEmpty()) {
@@ -51,6 +60,15 @@ public class SanPhamSpecification {
 	public Specification<SanPham> hasGiaTienRange(Float minPrice, Float maxPrice){
 		return (root, query, cb) -> {
 			return cb.between(root.get("giaTien"), minPrice, maxPrice);
+		};
+	}
+	
+	public Specification<SanPham> hasTrangThai(Boolean trangThai){
+		return (root, query, cb) -> {
+			if(trangThai == null) {
+				return cb.conjunction();
+			}
+			return cb.equal(root.get("trangThai"), trangThai);
 		};
 	}
 	

@@ -15,6 +15,8 @@ app.controller('QuanLySanPhamCtrl', function($http, $scope) {
 	$scope.temp_image_data = null
 
 	$scope.file = null
+	
+	$scope.filter_status = false
 
 	//Reset lại form
 	$scope.reset = function() {
@@ -209,11 +211,20 @@ app.controller('QuanLySanPhamCtrl', function($http, $scope) {
 		url = `${host}/SanPham/filter`
 		$http.get(url,params).then(resp => {
 			$scope.items = resp.data
+			$scope.filter_status = true
 			document.getElementById("btnCloseFilter").click()
 			swal("Thành công !","Lọc sản phẩm thành công !","success")
 		}).catch(error => {
 			console.log("Error fillter SanPham",error)
 		})
+	}
+	
+	//Hàm xóa lọc
+	$scope.remove_filter = function(){
+		$scope.form_filter = {}
+		$scope.filter_status = false
+		$scope.load_all()
+		swal("Đã xóa bộ lọc", {icon: "success",});
 	}
 	
 	//Tự động chạy khi mở tab

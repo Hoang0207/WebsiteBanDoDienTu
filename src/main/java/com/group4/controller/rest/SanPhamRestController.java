@@ -55,13 +55,15 @@ public class SanPhamRestController {
 	
 	@GetMapping("filter")
 	public ResponseEntity<Collection<SanPham>> restFilterSp(
+			@RequestParam(required = false) String maSanPham,
 			@RequestParam(required = false) String tenSanPham, 
 			@RequestParam(required = false) String maCl,
 			@RequestParam(required = false) String maNcc,
 			@RequestParam(required = false) String maTtdb,
 			@RequestParam Optional<Float> minPrice,
-			@RequestParam Optional<Float> maxPrice){
-		List<SanPham> listSp = spService.filterSanPham(tenSanPham,maCl,maNcc,maTtdb,minPrice.orElse(Float.MIN_VALUE),maxPrice.orElse(Float.MAX_VALUE));
+			@RequestParam Optional<Float> maxPrice,
+			@RequestParam(required = false) Boolean trangThai){
+		List<SanPham> listSp = spService.filterSanPham(maSanPham,tenSanPham,maCl,maNcc,maTtdb,minPrice.orElse(Float.MIN_VALUE),maxPrice.orElse(Float.MAX_VALUE),trangThai);
 		return ResponseEntity.ok(listSp);
 	}
 	
