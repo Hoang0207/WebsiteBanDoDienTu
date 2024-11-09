@@ -69,4 +69,9 @@ public class SanPhamServiceImp implements SanPhamService{
 		return spDao.findAllByTenSanPhamLike("%"+name+"%");
 	}
 
+	@Override
+	public List<String> findSuggestionByKeyword(String keyword) {
+		return spDao.findSuggestionsByKeyword(keyword);
+	}
+
 }

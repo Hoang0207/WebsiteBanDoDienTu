@@ -53,3 +53,18 @@
 .imgAction{
 	cursor: pointer;
 }
+
+.suggestions-popup {
+    top: 100%; /* Hiển thị ngay dưới ô input */
+    max-height: 200px; /* Đặt chiều cao tối đa cho danh sách gợi ý */
+    overflow-y: auto; /* Tạo thanh cuộn nếu danh sách quá dài */
+    z-index: 1000; /* Đảm bảo danh sách gợi ý nằm trên các thành phần khác */
+}
+
+.suggestions-popup li{
+	cursor: pointer;
+}
+
+.suggestions-popup li:hover{
+	background-color: rgb(204, 255, 255);
+}

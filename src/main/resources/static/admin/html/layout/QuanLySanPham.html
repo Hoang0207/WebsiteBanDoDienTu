@@ -163,10 +163,17 @@
                         <input type="text" class="form-control" aria-label="Username" ng-model="form_filter.maSanPham"
       						aria-describedby="basic-addon1">
                     </div>
-                	<div class="input-group mb-3">
-                        <span class="input-group-text text-bg-secondary" id="basic-addon1">Tên sản phẩm</span>
-                        <input type="text" class="form-control" aria-label="Username" ng-model="form_filter.tenSanPham"
-                             aria-describedby="basic-addon1" >
+                    <div class="mb-3 position-relative">
+                    	<div class="input-group">
+                        	<span class="input-group-text text-bg-secondary" id="basic-addon1">Tên sản phẩm</span>
+                        	<input type="text" class="form-control" aria-label="Username" ng-model="form_filter.tenSanPham"
+                             	aria-describedby="basic-addon1" ng-change="search_suggestions()">
+                    	</div>
+                    	<ul class="list-group position-absolute w-100 suggestions-popup" ng-show="suggestions.length > 0">
+    						<li class="list-group-item" ng-repeat="suggestion in suggestions" ng-click="select_suggestion(suggestion)">
+        						{{ suggestion }}
+    						</li>
+						</ul>
                     </div>
 	                <div class="input-group mb-3">
 	                     <label class="input-group-text text-bg-secondary" for="inputGroupSelect01">Chủng loại</label>

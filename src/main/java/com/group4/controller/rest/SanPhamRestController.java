@@ -53,6 +53,12 @@ public class SanPhamRestController {
 		return ResponseEntity.ok(soLuong);
 	}
 	
+	@GetMapping("Suggestion")
+	public ResponseEntity<Collection<String>> restGetSuggestionSp(String keyword){
+		List<String> suggestion = spService.findSuggestionByKeyword(keyword);
+		return ResponseEntity.ok(suggestion);
+	}
+	
 	@GetMapping("filter")
 	public ResponseEntity<Collection<SanPham>> restFilterSp(
 			@RequestParam(required = false) String maSanPham,

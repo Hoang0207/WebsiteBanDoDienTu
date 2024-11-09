@@ -18,6 +18,8 @@ app.controller('QuanLySanPhamCtrl', function($http, $scope) {
 	
 	$scope.filter_status = false
 
+	$scope.suggestions = []
+
 	//Reset lại form
 	$scope.reset = function() {
 		$scope.form = {}
@@ -138,7 +140,7 @@ app.controller('QuanLySanPhamCtrl', function($http, $scope) {
 			var url = `${host}/SanPham`
 			$http.post(url, $scope.form).then(resp => {
 				$scope.update = true
-				$scope.load_all()
+				$scope.filter()
 				swal("Thành công !", "Bạn đã thêm sản phẩm thành công", "success")
 			}).catch(error => {
 				console.log("Error create SanPham", error)
@@ -173,7 +175,7 @@ app.controller('QuanLySanPhamCtrl', function($http, $scope) {
 					if(img_name){
 						$scope.delete_img(img_name)
 					}
-					$scope.load_all()
+					$scope.filter()
 					swal("Xóa thành công", {
 						icon: "success",
 					});
@@ -195,7 +197,7 @@ app.controller('QuanLySanPhamCtrl', function($http, $scope) {
 				if(old_image && old_image!=resp.data.hinhAnh){
 					$scope.delete_img(old_image)
 				}
-				$scope.load_all()
+				$scope.filter()
 				swal("Thành công !","Cập nhật sản phẩm thành công","success")
 			}).catch(error => {
 				console.log("Error update SanPham", error)
@@ -225,6 +227,27 @@ app.controller('QuanLySanPhamCtrl', function($http, $scope) {
 		$scope.filter_status = false
 		$scope.load_all()
 		swal("Đã xóa bộ lọc", {icon: "success",});
+	}
+	
+	//Gợi ý từ khóa tìm kiếm tên sản phẩm
+	$scope.search_suggestions = function(){
+		var keyword = $scope.form_filter.tenSanPham
+		var url = `${host}/SanPham/Suggestion?keyword=${keyword}`
+		if(keyword.length > 0){ //Bắt đầu tìm kiếm khi nhập nhiều hơn 0 ký tự vào ô nhập
+			$http.get(url).then(resp => {
+				$scope.suggestions = resp.data
+			}).catch(error => {
+				console.log("Error get suggestions",error)
+			})
+		}else{
+			$scope.suggestions = []
+		}
+	}
+	
+	//Khi chọn vào gợi ý tìm kiếm tên sản phẩm
+	$scope.select_suggestion = function(suggestion){
+		$scope.form_filter.tenSanPham = suggestion
+		$scope.suggestions = [] //Ẩn gợi ý sau khi chọn
 	}
 	
 	//Tự động chạy khi mở tab

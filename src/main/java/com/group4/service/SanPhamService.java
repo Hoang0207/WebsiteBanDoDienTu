@@ -23,6 +23,6 @@ public interface SanPhamService {
 	
 	public List<SanPham> filterSanPham(String maSanPham,String tenSanPham, String maCl, String maNcc, String maTtdb, float minPrice, float maxPrice, Boolean trangThai);
 
-	//public SanPham getProductById(String id);
+	public List<String> findSuggestionByKeyword(String keyword);
 
 }
