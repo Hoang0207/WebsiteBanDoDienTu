@@ -50,9 +50,6 @@ public class NguoiDung {
     @Column(name = "ngay_dang_ky", nullable = false)
     private Date ngayDangKy;
 
-    @Column(name = "vai_tro", nullable = false, length = 20)
-    private String vaiTro;
-
     @Column(name = "trang_thai", nullable = false)
     private Boolean trangThai;
 
@@ -65,4 +62,8 @@ public class NguoiDung {
     @JsonIgnore
     @OneToMany(mappedBy = "nguoiDung", cascade = CascadeType.ALL)
     private Set<DonHang> donHangs;
+    
+    @JsonIgnore
+    @OneToMany(mappedBy = "nguoiDung", cascade = CascadeType.ALL)
+    private Set<PhanQuyen> phanQuyens;
 }

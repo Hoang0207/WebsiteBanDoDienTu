@@ -45,13 +45,13 @@ public class NguoiDungServiceImp implements NguoiDungService {
 	//Thống kê số lượng khách hàng
 	@Override
 	public int getSoLuongKhachHang() {
-		return ndDao.findAllByVaiTroLike("Khách hàng").size();
+		return ndDao.findAll().size();
 	}
 
 	// Thống kê số lượng khách đăng ký theo tháng
 	@Override
 	public List<SoLuongKhachDangKyTheoThangDTO> getTkSoLuongKhachDangKyTheoThang() {
-		return ndDao.getThongKeKhachDangKyTheoThang();
+		return null;
 	}
 
 }
