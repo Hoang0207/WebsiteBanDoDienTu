@@ -5,20 +5,33 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
-<body>
-	<div>
-        <!-- Hiển thị hình ảnh sản phẩm -->
-        <img th:src="@{/api/file/SanPham/{filename}(filename=${product.hinhAnh})}" alt="Hình ảnh sản phẩm" 
-        	style="height: 100px" class="img-fluid">
+<body>   
+       <div class="container">
+		  <div class="row">
+		  <!-- Hiển thị hình ảnh sản phẩm --> 
+		    <div class="col">
+		      <img th:src="@{/api/file/SanPham/{filename}(filename=${product.hinhAnh})}" alt="Hình ảnh sản phẩm" 
+        	   class="img-fluid">
+		    </div>
+		    <!-- Hiển thị tên sản phẩm -->
+		    <div class="col-6">
+		     <h2 th:text="${product.tenSanPham}" class="name">Tên sản phẩm</h2>
         
-        <!-- Hiển thị tên sản phẩm -->
-        <h2 th:text="${product.tenSanPham}">Tên sản phẩm</h2>
-        
-        <!-- Hiển thị giá sản phẩm -->
-        <p>Giá: <span th:text="${product.giaTien}">0</span> VNĐ</p>
-        
-        <!-- Hiển thị số lượng sản phẩm -->
-        <p>Số lượng: <span th:text="${product.soLuong}">0</span></p>
+	        <!-- Hiển thị giá sản phẩm -->
+	        <p class="price">Giá: <span th:text="${product.giaTien}" class="price-num">0</span> VNĐ</p>
+	        
+	        <!-- Hiển thị số lượng sản phẩm -->
+	        <p class="quantity">Số lượng: <span th:text="${product.soLuong}" class="quantity-num">0</span></p>
+	        
+	        <!-- Hiển thị số lượng sản phẩm -->
+	        <p class="status">Trạng thái: <span th:text="${product.trangThai}" class="quantity-info"></span></p> 
+		    </div> 
+		    <!-- Hiển thị giá sản phẩm -->
+		    <br>
+		    <div class="description">
+	        <p class="descript">Mô tả: <span th:text="${product.moTa}" class="descript-info"></span></p>
+	        </div>
+		</div>
     </div>
 </body>
 </html>
