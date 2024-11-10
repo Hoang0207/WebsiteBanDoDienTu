@@ -15,7 +15,7 @@ public class TrangChuController {
 	
 	@GetMapping()
 	public String index(Model model) {
-		model.addAttribute("content","/layout/lichsudathang");
+		model.addAttribute("content","/layout/TrangChu");
 		return "index";
 	}
 }
