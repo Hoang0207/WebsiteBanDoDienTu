@@ -19,9 +19,11 @@
 					<td th:text="${gioHang.sanPham.tenSanPham}"></td>
 					<td th:text="${gioHang.soLuong}"></td>
 					<td th:text="${gioHang.sanPham.giaTien}"></td>
-					<td><a href="${}" class="btn btn-sm btn-danger"
+					<td>
+						<a href="${}" class="btn btn-sm btn-danger"
 						onclick="return confirm('Are you sure you want to delete this user?');">
-							Hủy </a></td>
+							Hủy </a>
+					</td>
 				</tr>
 			</tbody>
 		</table>

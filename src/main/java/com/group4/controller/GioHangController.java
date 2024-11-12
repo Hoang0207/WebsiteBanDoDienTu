@@ -28,4 +28,8 @@ public class GioHangController {
         return "index";
     }
     
+    public String deleteGioHangItem(@PathVariable("maNd") int maNd) {
+        gioHangService.deleteGioHang(maNd); // Implement this method in GioHangService
+        return "redirect:/GioHang/{maNd}"; // Redirect to cart page after deletion
+    }
 }
