@@ -18,4 +18,10 @@ public class TrangChuController {
 		model.addAttribute("content","/layout/TrangChu");
 		return "index";
 	}
+	
+	//************************
+	@GetMapping("/shop")
+	public String shop() {
+		return "indexLayout";
+	}
 }
