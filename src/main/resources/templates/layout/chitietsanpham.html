@@ -24,9 +24,18 @@
 	        <p class="quantity">Số lượng: <span th:text="${product.soLuong}" class="quantity-num">0</span></p>
 	        
 	        <!-- Hiển thị số lượng sản phẩm -->
-	        <p class="status">Trạng thái: <span th:text="${product.trangThai}" class="quantity-info"></span></p> 
+	        <p class="status">Trạng thái: <span th:text="${product.trangThai}" class="status-info"></span></p> 
+			
+			<!-- Hiển thị số lượng sản phẩm -->
+	        <p class="category">Chủng loại: <span th:text="${product.maCl}" class="category-info"></span></p> 
+			
+			<!-- Hiển thị số lượng sản phẩm -->
+	        <p class="provider">Nhà cung cấp: <span th:text="${product.maNcc}" class="povider-info"></span></p> 
+			
+			<!-- Hiển thị số lượng sản phẩm -->
+	        <p class="unique">Thuộc tính đặc biệt: <span th:text="${product.maTtdb}" class="unique-info"></span></p> 
 		    </div> 
-		    <!-- Hiển thị giá sản phẩm -->
+		    <!-- Hiển thị mô tả sản phẩm -->
 		    <br>
 		    <div class="description">
 	        <p class="descript">Mô tả: <span th:text="${product.moTa}" class="descript-info"></span></p>
