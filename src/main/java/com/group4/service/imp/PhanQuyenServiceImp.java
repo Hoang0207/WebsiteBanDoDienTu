@@ -19,5 +19,15 @@ public class PhanQuyenServiceImp implements PhanQuyenService{
 	public List<PhanQuyen> findAllByMaNguoiDung(String maNd) {
 		return pqDao.findAllByNguoiDung_MaNguoiDung(maNd);
 	}
+
+	@Override
+	public PhanQuyen save(PhanQuyen pq) {
+		return pqDao.save(pq);
+	}
+
+	@Override
+	public void deleteById(Integer id) {
+		pqDao.deleteById(id);
+	}
 	
 }

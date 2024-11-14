@@ -1,7 +1,5 @@
 package com.group4.entity;
 
-import com.fasterxml.jackson.core.sym.Name;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -26,12 +24,18 @@ public class PhanQuyen {
 	@Column(name = "ma_phan_quyen", nullable = false)
 	private int maPhanQuyen;
 	
+	@Column(name="ma_nd", nullable = false)
+	private String maNd;
+	
+	@Column(name="ma_vt", nullable = false)
+	private String maVt;
+	
 	@ManyToOne
-	@JoinColumn(name = "ma_nd",insertable = false, updatable = false)
+	@JoinColumn(name = "ma_nd", insertable = false, updatable = false)
 	private NguoiDung nguoiDung;
 	
 	@ManyToOne
-	@JoinColumn(name = "ma_vt",insertable = false, updatable = false)
+	@JoinColumn(name = "ma_vt", insertable = false, updatable = false)
 	private VaiTro vaiTro;
 	
 }

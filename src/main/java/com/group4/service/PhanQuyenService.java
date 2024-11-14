@@ -8,4 +8,8 @@ public interface PhanQuyenService {
 	
 	public List<PhanQuyen> findAllByMaNguoiDung(String maNd);
 	
+	public PhanQuyen save(PhanQuyen pq);
+	
+	public void deleteById(Integer id);
+	
 }

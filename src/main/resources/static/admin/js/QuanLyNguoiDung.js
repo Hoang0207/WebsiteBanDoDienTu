@@ -7,9 +7,9 @@ app.controller('QuanLyNguoiDungCtrl', function($http, $scope) {
 	$scope.file = null
 
 	$scope.temp_image_data = null
-	
+
 	$scope.roles = []
-	
+
 	$scope.authority = []
 
 	//Ham reset
@@ -21,38 +21,52 @@ app.controller('QuanLyNguoiDungCtrl', function($http, $scope) {
 		$scope.form = { ngayDangKy: new Date() }
 		$scope.load_all_role()
 	}
-	
+
 	//Gán dữ liệu cho roles
-	$scope.load_all_role = function(){
+	$scope.load_all_role = function() {
 		var url = `${host}/VaiTro`
 		$http.get(url).then(resp => {
 			$scope.roles = resp.data
 			console.log("Success get all roles")
 		}).catch(error => {
-			console.log("Error get all roles",error)
+			console.log("Error get all roles", error)
 		})
 	}
-	
+
 	//Bắt sự kiện khi nhấp vào check box vai trò
-	$scope.role_edit = function(){
-		swal("Chưa code chức năng cập nhật quyền sử dụng")
+	$scope.role_edit = function(maNd, role) {
+		var author = $scope.authority_of(maNd, role)
+		if (author) { // Có sẵn quyền => xóa quyền
+			var url = `${host}/PhanQuyen/${author.maPhanQuyen}`
+			$http.delete(url).then(() => {
+				swal("Xóa quyền thành công", { icon: "success", })
+			}).catch(error => {
+				console.log("Error delete author", error)
+			})
+		} else { //Chưa có quyền => cấp quyền
+			$http.post(`${host}/PhanQuyen`, { maNd: maNd, maVt: role.maVaiTro }).then(resp => {
+				swal("Cấp quyền thành công", { icon: "success", })
+			}).catch(error => {
+				console.log("Error create authority", error)
+			})
+		}
 	}
-	
+
 	//Tìm kiếm phân quyền theo mã người dùng
-	$scope.get_authority_by_maNd = function(maNd){
+	$scope.get_authority_by_maNd = function(maNd) {
 		var url = `${host}/PhanQuyen/${maNd}`
 		$http.get(url).then(resp => {
 			$scope.authority = resp.data
 			console.log("Succes get PhanQuyen by MaNd")
 		}).catch(error => {
-			cosole.log("Error get PhanQuyen by MaNd",error)
+			cosole.log("Error get PhanQuyen by MaNd", error)
 		})
 	}
-	
+
 	//Kiểm tra người dùng có vai trò này ko để check vào checkbox
-	$scope.authority_of = function (maNd, role){
-		if($scope.authority){
-			return $scope.authority.find(ur => ur.nguoiDung.maNguoiDung==maNd && ur.vaiTro.maVaiTro==role.maVaiTro)
+	$scope.authority_of = function(maNd, role) {
+		if ($scope.authority) {
+			return $scope.authority.find(ur => ur.nguoiDung.maNguoiDung == maNd && ur.vaiTro.maVaiTro == role.maVaiTro)
 		}
 	}
 
@@ -132,16 +146,16 @@ app.controller('QuanLyNguoiDungCtrl', function($http, $scope) {
 			}
 		})
 	}
-	
+
 	//Hàm xóa ảnh
-	$scope.delete_image = function(image_name){
+	$scope.delete_image = function(image_name) {
 		var url = `${host}/file/NguoiDung/${image_name}`
 		$http.delete(url).then(resp => {
-			console.log("Success delete NguoiDung Image",image_name)
+			console.log("Success delete NguoiDung Image", image_name)
 		}).catch(error => {
-			console.log("Error delete NguoiDung Image",error)
+			console.log("Error delete NguoiDung Image", error)
 		})
-	}	
+	}
 
 	//Thêm người dùng mới
 	$scope.create = function() {
@@ -162,19 +176,19 @@ app.controller('QuanLyNguoiDungCtrl', function($http, $scope) {
 		var url = `${host}/NguoiDung/${maNd}`
 		$scope.save_image().then(() => {
 			$http.put(url, $scope.form).then(resp => {
-				if(old_image && old_image != resp.data.hinhAnh){
+				if (old_image && old_image != resp.data.hinhAnh) {
 					$scope.delete_image(old_image)
 				}
 				$scope.load_all()
 				swal("Thành công !", "Cập nhật người dùng thành công", "success")
 			}).catch(error => {
-				console.log("Error update NguoiDung",error)
+				console.log("Error update NguoiDung", error)
 			})
 		})
 	}
 
 	//Xóa người dùng
-	$scope.delete = function(maNd,image_name) {
+	$scope.delete = function(maNd, image_name) {
 		swal({
 			title: "Bạn có chắc chắn không ?",
 			text: "Khi đã xóa thì bạn không thể khôi phục lại được",
@@ -185,7 +199,7 @@ app.controller('QuanLyNguoiDungCtrl', function($http, $scope) {
 			if (willDelete) {
 				var url = `${host}/NguoiDung/${maNd}`
 				$http.delete(url).then(resp => {
-					if(image_name){
+					if (image_name) {
 						$scope.delete_image(image_name)
 					}
 					$scope.load_all()
