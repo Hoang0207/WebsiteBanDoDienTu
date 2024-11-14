@@ -95,21 +95,12 @@
 							<div
                                 class="d-flex justify-content-between align-items-center mb-3 border border-secondary-subtle rounded pe-2">
                                 <div class="text-bg-secondary p-2 rounded">Vai trò</div>
-                                <div class="form-check pe-2">
-                                    <input class="form-check-input" type="radio" name="vaiTro" ng-model="form.vaiTro"
-                                        ng-value="'Khách hàng'" id="flexRadioDefault1"> <label class="form-check-label"
-                                        for="flexRadioDefault1">Khách hàng</label>
+                                <div class="form-check pe-2" ng-repeat="role in roles">
+                                    <input class="form-check-input" type="checkbox" name="vaiTro" ng-click="role_edit()" ng-disabled="!update"
+                                        ng-value="role.maVaiTro" id="flexRadioDefault1" ng-checked="authority_of(form.maNguoiDung,role)"> 
+                                        <label class="form-check-label" for="flexRadioDefault1">{{role.tenVaiTro}}</label>
                                 </div>
-                                <div class="form-check pe-2">
-                                    <input class="form-check-input" type="radio" name="vaiTro" ng-model="form.vaiTro"
-                                        ng-value="'Nhân viên'" id="flexRadioDefault1"> <label class="form-check-label"
-                                        for="flexRadioDefault1">Nhân viên</label>
-                                </div>
-                                <div class="form-check pe-2">
-                                    <input class="form-check-input" type="radio" name="vaiTro" ng-value="'Quản lý'" ng-model="form.vaiTro"
-                                        id="flexRadioDefault2"> <label class="form-check-label"
-                                        for="flexRadioDefault2">Quản trị</label>
-                                </div>
+                  				<!-- ng-checked="authority_of(form.maNguoiDung,role)" -->
                             </div>
                             <div
                                 class="d-flex justify-content-between align-items-center mb-3 border border-secondary-subtle rounded pe-2">

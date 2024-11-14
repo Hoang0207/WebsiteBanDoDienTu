@@ -7,13 +7,53 @@ app.controller('QuanLyNguoiDungCtrl', function($http, $scope) {
 	$scope.file = null
 
 	$scope.temp_image_data = null
+	
+	$scope.roles = []
+	
+	$scope.authority = []
 
 	//Ham reset
 	$scope.reset = function() {
 		$scope.temp_image_data = null
 		$scope.file = null
 		$scope.update = false
+		$scope.authority = []
 		$scope.form = { ngayDangKy: new Date() }
+		$scope.load_all_role()
+	}
+	
+	//Gán dữ liệu cho roles
+	$scope.load_all_role = function(){
+		var url = `${host}/VaiTro`
+		$http.get(url).then(resp => {
+			$scope.roles = resp.data
+			console.log("Success get all roles")
+		}).catch(error => {
+			console.log("Error get all roles",error)
+		})
+	}
+	
+	//Bắt sự kiện khi nhấp vào check box vai trò
+	$scope.role_edit = function(){
+		swal("Chưa code chức năng cập nhật quyền sử dụng")
+	}
+	
+	//Tìm kiếm phân quyền theo mã người dùng
+	$scope.get_authority_by_maNd = function(maNd){
+		var url = `${host}/PhanQuyen/${maNd}`
+		$http.get(url).then(resp => {
+			$scope.authority = resp.data
+			console.log("Succes get PhanQuyen by MaNd")
+		}).catch(error => {
+			cosole.log("Error get PhanQuyen by MaNd",error)
+		})
+	}
+	
+	//Kiểm tra người dùng có vai trò này ko để check vào checkbox
+	$scope.authority_of = function (maNd, role){
+		if($scope.authority){
+			return $scope.authority.find(ur => ur.nguoiDung.maNguoiDung==maNd && ur.vaiTro.maVaiTro==role.maVaiTro)
+		}
 	}
 
 	//load tat ca nguoi dung
@@ -33,6 +73,7 @@ app.controller('QuanLyNguoiDungCtrl', function($http, $scope) {
 		$http.get(url).then(resp => {
 			$scope.reset()
 			$scope.form = resp.data
+			$scope.get_authority_by_maNd(maNd)
 			$scope.form.ngayDangKy = new Date(resp.data.ngayDangKy) //Vì input có type là date nên phải truyền vào 1 Date
 			$scope.form.ngaySinh = new Date(resp.data.ngaySinh)
 			$scope.update = true
@@ -160,5 +201,6 @@ app.controller('QuanLyNguoiDungCtrl', function($http, $scope) {
 
 	//Tự động chạy khi chọn tab người dùng
 	$scope.load_all()
+	$scope.load_all_role()
 
 })
