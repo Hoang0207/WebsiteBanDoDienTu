@@ -26,7 +26,7 @@ public class GioHangController {
     @GetMapping("/GioHang/{maNd}")
     public String getGioHang(Model model, @PathVariable("maNd") String maNd) {
         List<GioHang> gioHangs = gioHangService.getGioHangByMaNguoiDung(maNd);
-        List<NguoiDung> nguoiDung = nguoiDungService.findAll(); 
+        NguoiDung nguoiDung = nguoiDungService.findById(maNd).get(); 
         System.out.println(gioHangs);
         System.out.println(nguoiDung);
         model.addAttribute("gioHangs", gioHangs);
