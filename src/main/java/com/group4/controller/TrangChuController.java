@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class TrangChuController {
 	
+	//test confilg file
+	
 	@GetMapping("/admin")
 	public String quanLyIndex() {
 		//Trả về trang quản lý chính thức từ static
