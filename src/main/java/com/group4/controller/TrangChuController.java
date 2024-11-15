@@ -32,6 +32,12 @@ public class TrangChuController {
 		return "indexLayout";
 	}
 	
+	@GetMapping("/contact")
+	public String contact(Model model) {
+		model.addAttribute("content","/pages/contact");
+		return "indexLayout";
+	}
+	
 	@GetMapping("/detail")
 	public String detail(Model model) {
 		model.addAttribute("content","/pages/detail");
