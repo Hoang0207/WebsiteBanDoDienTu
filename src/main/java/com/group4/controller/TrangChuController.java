@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class TrangChuController {
 	
 	//test confilg file 222
+	//Hoang
+	//đăng ký
 	
 	@GetMapping("/admin")
 	public String quanLyIndex() {
