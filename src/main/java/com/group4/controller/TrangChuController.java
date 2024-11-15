@@ -10,8 +10,11 @@ public class TrangChuController {
 	//test confilg file
 	//đăng ký
 	//Hoang
+<<<<<<< HEAD
 	//Thach
 	
+=======
+>>>>>>> branch 'main' of https://github.com/Hoang0207/WebsiteBanDoDienTu.git
 	
 	@GetMapping("/admin")
 	public String quanLyIndex() {
