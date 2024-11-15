@@ -9,7 +9,8 @@ public class TrangChuController {
 	
 	//test confilg file
 	//đăng ký
-	
+	//Hoang
+	//Thach
 	
 	
 	@GetMapping("/admin")
