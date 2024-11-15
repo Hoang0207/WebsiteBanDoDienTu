@@ -11,16 +11,22 @@ import com.group4.entity.SanPham;
 import com.group4.service.SanPhamService;
 
 @Controller
-@RequestMapping("/chitietsp")
 public class ChiTietSanPhamController {
     @Autowired
     private SanPhamService productService;
-
+    
+    @GetMapping("/detail")
+	public String detail(Model model) {
+		model.addAttribute("content","/pages/detail");
+		return "indexLayout";
+	}
+    
+    /*
     @GetMapping("/{id}")
     public String getProductDetail(@PathVariable("id") String id, Model model) {
         SanPham product = productService.findById(id).get();
         model.addAttribute("product", product);
         model.addAttribute("content","/layout/chitietsanpham");
         return "index";
-    }
+    }*/
 }

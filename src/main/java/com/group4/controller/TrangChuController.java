@@ -6,16 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class TrangChuController {
-	
-	//test confilg file
-	//đăng ký
-	//Hoang
-	//Thach
-	
-	//11111111
-	//2222222
 
-	
 	@GetMapping("/admin")
 	public String quanLyIndex() {
 		//Trả về trang quản lý chính thức từ static
@@ -23,13 +14,6 @@ public class TrangChuController {
 	}
 	
 	@GetMapping()
-	public String index(Model model) {
-		model.addAttribute("content","/layout/TrangChu");
-		return "index";
-	}
-	
-	//************************
-	@GetMapping("/home")
 	public String home(Model model) {
 		model.addAttribute("content","/pages/home");
 		return "indexLayout";
@@ -39,29 +23,6 @@ public class TrangChuController {
 	public String shop(Model model) {
 		model.addAttribute("content","/pages/shop");
 		return "indexLayout";
-	}
-	
-	@GetMapping("/contact")
-	public String contact(Model model) {
-		model.addAttribute("content","/pages/contact");
-		return "indexLayout";
-	}
-	
-	@GetMapping("/detail")
-	public String detail(Model model) {
-		model.addAttribute("content","/pages/detail");
-		return "indexLayout";
-	}
-	
-	@GetMapping("/cart")
-	public String cart(Model model) {
-		model.addAttribute("content","/pages/cart");
-		return "indexLayout";
-	}
-	
-	@GetMapping("/register")
-	public String showRegistrationForm() {
-		return "registration";
 	}
 	
 }

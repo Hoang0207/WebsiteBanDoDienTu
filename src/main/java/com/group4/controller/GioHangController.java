@@ -22,7 +22,15 @@ public class GioHangController {
 	
 	@Autowired
     GioHangService gioHangService;
-
+    
+    @GetMapping("/cart")
+	public String cart(Model model) {
+		model.addAttribute("content","/pages/cart");
+		return "indexLayout";
+	}
+    
+    
+    /*
     @GetMapping("/GioHang/{maNd}")
     public String getGioHang(Model model, @PathVariable("maNd") String maNd) {
         List<GioHang> gioHangs = gioHangService.getGioHangByMaNguoiDung(maNd);
@@ -40,5 +48,5 @@ public class GioHangController {
     public String deleteGioHangItem(@PathVariable("maNd") int maNd) {
         gioHangService.deleteGioHang(maNd); // Implement this method in GioHangService
         return "redirect:/GioHang/{maNd}"; // Redirect to cart page after deletion
-    }
+    }*/
 }

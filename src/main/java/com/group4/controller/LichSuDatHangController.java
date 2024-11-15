@@ -17,7 +17,7 @@ import com.group4.service.DonHangChiTietService;
 import com.group4.service.DonHangService;
 
 @Controller
-public class LichSuDatHang {
+public class LichSuDatHangController {
 
     @Autowired
     private DonHangService donHangService;
@@ -27,8 +27,8 @@ public class LichSuDatHang {
         // Lấy danh sách đơn hàng theo mã người dùng
         List<DonHang> donHangs = donHangService.findByMaNd(maNd); // Hoặc phương thức khác nếu cần
         model.addAttribute("donHangs", donHangs);
-        model.addAttribute("content","/layout/lichsudathang");
-        return "index"; // Trả về trang HTML
+        model.addAttribute("content","/pages/lichsudathang");
+        return "indexLayout"; // Trả về trang HTML
     }
     @Autowired
     private DonHangChiTietDAO donHangChiTietDAO;
@@ -36,8 +36,8 @@ public class LichSuDatHang {
     public String getChiTietDonHang(@RequestParam("id") int id, Model model) {
         List<DonHangChiTiet> chiTiet = donHangChiTietDAO.findAllByDonHang_MaDonHang(id); // Sử dụng repository phù hợp
         model.addAttribute("chiTietDonHang", chiTiet);
-        model.addAttribute("content","/layout/donhangchitiet");
-        return "index";
+        model.addAttribute("content","/pages/donhangchitiet");
+        return "indexLayout";
     }
 }
 
