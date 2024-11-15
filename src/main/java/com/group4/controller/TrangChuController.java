@@ -14,6 +14,7 @@ public class TrangChuController {
 	
 	//11111111
 	//2222222
+
 	
 	@GetMapping("/admin")
 	public String quanLyIndex() {
