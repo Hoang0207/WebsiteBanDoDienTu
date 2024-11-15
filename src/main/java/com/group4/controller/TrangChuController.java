@@ -10,6 +10,9 @@ public class TrangChuController {
 	//test confilg file
 	//đăng ký
 	//Hoang
+	//Thach
+	
+	//11111111
 	
 	@GetMapping("/admin")
 	public String quanLyIndex() {
