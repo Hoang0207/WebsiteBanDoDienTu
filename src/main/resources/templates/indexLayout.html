@@ -21,20 +21,20 @@
     <link th:href="@{/shopz/css/style.css}" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 </head>
-<body>
+<body ng-app="app" ng-controller="controller">
 	
 	<div th:replace="~{/fragments/header}"></div>
 	
 	<!-- Dynamic content -->
-	<!--  <div th:replace="~{${content}}"></div> -->
-	<div style="min-height: 500px"></div>
+	<div th:replace="~{${content}}"></div>
 	
 	<div th:replace="~{/fragments/footer}"></div>
 	
 	
-	
 	<!-- Back to Top -->
     <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+    
+    
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

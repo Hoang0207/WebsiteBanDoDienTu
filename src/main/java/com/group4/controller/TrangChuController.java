@@ -20,8 +20,28 @@ public class TrangChuController {
 	}
 	
 	//************************
-	@GetMapping("/shop")
-	public String shop() {
+	@GetMapping("/home")
+	public String home(Model model) {
+		model.addAttribute("content","/pages/home");
 		return "indexLayout";
 	}
+	
+	@GetMapping("/shop")
+	public String shop(Model model) {
+		model.addAttribute("content","/pages/shop");
+		return "indexLayout";
+	}
+	
+	@GetMapping("/detail")
+	public String detail(Model model) {
+		model.addAttribute("content","/pages/detail");
+		return "indexLayout";
+	}
+	
+	@GetMapping("/cart")
+	public String cart(Model model) {
+		model.addAttribute("content","/pages/cart");
+		return "indexLayout";
+	}
+	
 }
