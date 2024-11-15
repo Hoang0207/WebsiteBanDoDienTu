@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Đăng Ký</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(255, 255, 255, 0.8)); /* Nền khói đen trắng */
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9); /* Màu trắng sữa */
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+        
+        .btn-submit {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #000;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            font-size: 16px;
+            text-align: center;
+            cursor: pointer;
+        }
+        
+        .btn-submit:hover {
+            background-color: #333;
+        }
+        
+        .radio-group {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            font-weight: normal;
+        }
+
+        .radio-group label {
+            font-weight: normal;
+        }
+
+        .social-box {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .social-box a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background-color: #f1f1f1;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+        }
+
+        .social-box a:hover {
+            background-color: #ddd;
+        }
+
+        .social-box a img {
+            width: 30px;
+            height: 30px;
+        }
+
+        .login-link {
+            display: block;
+            margin-top: 20px;
+            text-align: left; /* Đặt căn trái cho phần đăng nhập */
+        }
+
+        .login-link a {
+            text-decoration: none; /* Bỏ gạch chân */
+        }
+    </style>
+    <script>
+        function checkPassword(event) {
+            var password = document.getElementById("password").value;
+            var confirmPassword = document.getElementById("confirm-password").value;
+            var errorElement = document.getElementById("passwordError");
+
+            if (password !== confirmPassword) {
+                errorElement.textContent = "Mật khẩu không khớp";
+                event.preventDefault(); // Ngăn chặn gửi biểu mẫu
+            } else {
+                errorElement.textContent = "";
+            } 
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>Đăng Ký</h2>
+        <form action="/register" method="post">
+            <div class="form-group">
+                <label for="name">Họ tên</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="dob">Ngày sinh</label>
+                <input type="date" id="dob" name="dob" required>
+            </div>
+            <div class="form-group">
+                <label>Giới tính</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="gender" value="male" required checked> Nam</label>
+                    <label><input type="radio" name="gender" value="female"> Nữ</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password">Mật khẩu</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <label for="confirm-password">Nhập lại mật khẩu</label>
+                <input type="password" id="confirm-password" name="confirm-password" required onblur="checkPassword(event)">
+                <span id="passwordError" style="color: red;"></span>
+            </div>
+            <button type="submit" class="btn-submit" onclick="checkPassword(event)">Đăng ký</button>
+            
+            <div class="login-link">
+                <span> Đã có tài khoản? <a href="/" th:href="@{/login}">Đăng nhập</a></span>
+            </div>
+
+            <div class="social-box">
+                <a href="#google"><img th:src="@{/shopz/img/gg.png}" alt="Google"></a>
+                <a href="#facebook"><img th:src="@{/shopz/img/fb.png}" alt="Facebook"></a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

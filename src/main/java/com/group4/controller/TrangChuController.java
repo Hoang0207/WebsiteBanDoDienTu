@@ -59,4 +59,9 @@ public class TrangChuController {
 		return "indexLayout";
 	}
 	
+	@GetMapping("/register")
+	public String showRegistrationForm() {
+		return "registration";
+	}
+	
 }
