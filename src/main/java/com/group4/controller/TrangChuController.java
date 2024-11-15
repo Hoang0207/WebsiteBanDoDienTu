@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class TrangChuController {
 	
-	//test confilg file
+	//test confilg file 222
 	
 	@GetMapping("/admin")
 	public String quanLyIndex() {
