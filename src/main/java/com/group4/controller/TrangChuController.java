@@ -12,6 +12,9 @@ public class TrangChuController {
 	//Hoang
 	//Thach
 	
+	//11111111
+	//2222222
+	
 	@GetMapping("/admin")
 	public String quanLyIndex() {
 		//Trả về trang quản lý chính thức từ static
