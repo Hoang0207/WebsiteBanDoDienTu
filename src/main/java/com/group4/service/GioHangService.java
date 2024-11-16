@@ -7,10 +7,12 @@ import com.group4.entity.GioHang;
 
 public interface GioHangService {
 	
-	GioHang saveGioHang(GioHang gioHang);
+	public GioHang saveGioHang(GioHang gioHang);
 	
-	void deleteGioHang(int id);
+	public void deleteGioHangById(int id);
 	
-	List<GioHang> getGioHangByMaNguoiDung(String id);
+	public Boolean existById(int id);
+	
+	public List<GioHang> getGioHangByMaNguoiDung(String id);
 
 }

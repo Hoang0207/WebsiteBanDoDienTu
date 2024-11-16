@@ -42,7 +42,8 @@
 							<td class="align-middle">
 								<div class="input-group quantity mx-auto" style="width: 100px;">
 									<div class="input-group-btn">
-										<button class="btn btn-sm btn-primary btn-minus" ng-click="item.soLuong-1">
+										<button class="btn btn-sm btn-primary btn-minus" 
+										ng-click="update_gh(item.maGioHang,item.maNd,item.maSp,item.soLuong-1,item.nguoiDung,item.sanPham)">
 											<i class="fa fa-minus"></i>
 										</button>
 									</div>
@@ -51,7 +52,8 @@
 										ng-model="item.soLuong" type="text" readonly="readonly"
 										class="form-control form-control-sm bg-secondary border-0 text-center">
 									<div class="input-group-btn">
-										<button class="btn btn-sm btn-primary btn-plus" ng-click="item.soLuong-1">
+										<button class="btn btn-sm btn-primary btn-plus" 
+											ng-click="update_gh(item.maGioHang,item.maNd,item.maSp,item.soLuong+1,item.nguoiDung,item.sanPham)">
 											<i class="fa fa-plus"></i>
 										</button>
 									</div>

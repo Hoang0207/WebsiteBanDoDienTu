@@ -16,6 +16,21 @@ app.controller("cartCtrl", function($http,$scope){
 		})
 	}
 	
+	//Cập nhật giỏ hàng
+	$scope.update_gh = function(maGh,maNd,maSp,soLuong,nguoiDung,sanPham){
+		var url = `${cart_host}`
+		var gh = {maGioHang: maGh, maNd: maNd, maSp: maSp, soLuong: soLuong, nguoiDung: nguoiDung, sanPham: sanPham}
+		$http.put(url,gh).then(resp => {
+			var index = $scope.items.findIndex(item => item.maGioHang == maGh)
+            $scope.items[index] = resp.data
+           	//$scope.load_all_by_maNd()
+			console.log("Success update GioHang",resp)
+		}).catch(error => {
+			console.log("Error update GioHang", error)
+		})
+		
+	}
+	
 	//Tự động chạy khi vào giỏ hàng
 	$scope.load_all_by_maNd()
 })

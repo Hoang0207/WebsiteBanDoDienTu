@@ -13,21 +13,26 @@ import com.group4.service.GioHangService;
 @Service
 public class GioHangServiceImp implements GioHangService{
 	@Autowired
-    GioHangDAO gioHangRepository;
+    GioHangDAO ghDao;
 
     @Override
     public GioHang saveGioHang(GioHang gioHang) {
-        return gioHangRepository.save(gioHang);
+        return ghDao.save(gioHang);
     }
 
     @Override
-    public void deleteGioHang(int id) {
-        gioHangRepository.deleteById(id);
+    public void deleteGioHangById(int id) {
+        ghDao.deleteById(id);
     }
 
 	@Override
 	public List<GioHang> getGioHangByMaNguoiDung(String id) {
-		return gioHangRepository.findAllByNguoiDung_MaNguoiDung(id);
+		return ghDao.findAllByNguoiDung_MaNguoiDung(id);
+	}
+
+	@Override
+	public Boolean existById(int id) {
+		return ghDao.existsById(id);
 	}
 
 	

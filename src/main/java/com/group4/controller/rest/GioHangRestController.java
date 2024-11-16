@@ -8,9 +8,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.group4.dao.GioHangDAO;
 import com.group4.entity.GioHang;
 import com.group4.service.GioHangService;
 import com.group4.service.NguoiDungService;
@@ -33,6 +37,15 @@ public class GioHangRestController {
 		}
 		List<GioHang> listGh = ghService.getGioHangByMaNguoiDung(maNd);
 		return ResponseEntity.ok(listGh);
+	}
+	
+	@PutMapping()
+	public ResponseEntity<GioHang> restPostGioHang(@RequestBody GioHang gh){
+		if(!ghService.existById(gh.getMaGioHang())) {
+			return ResponseEntity.notFound().build();
+		}
+		GioHang gioHang = ghService.saveGioHang(gh);
+		return ResponseEntity.ok(gioHang);
 	}
 	
 }
