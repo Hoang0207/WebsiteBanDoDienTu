@@ -12,6 +12,8 @@ public interface NguoiDungService {
 	
 	public Optional<NguoiDung> findById(String id);
 	
+	public NguoiDung getInSession();
+	
 	public boolean existsById(String id);
 	
 	public NguoiDung save(NguoiDung nd);

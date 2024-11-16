@@ -46,6 +46,12 @@ public class NguoiDungRestController {
 		return ResponseEntity.ok(nd.get());
 	}
 	
+	@GetMapping("Session")
+	public ResponseEntity<NguoiDung> restGetNdInSession(){
+		NguoiDung nd = ndService.getInSession();
+		return ResponseEntity.ok(nd);
+	}
+	
 	//Thống kê số lượng khách hàng
 	@GetMapping("SoLuongKhachHang")
 	public ResponseEntity<Integer> restGetSoLuongKhachHang(){	

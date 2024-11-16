@@ -10,12 +10,16 @@ import com.group4.dao.NguoiDungDAO;
 import com.group4.dto.SoLuongKhachDangKyTheoThangDTO;
 import com.group4.entity.NguoiDung;
 import com.group4.service.NguoiDungService;
+import com.group4.util.SessionUtil;
 
 @Service
 public class NguoiDungServiceImp implements NguoiDungService {
 
 	@Autowired
 	NguoiDungDAO ndDao;
+	
+	@Autowired
+	SessionUtil session;
 
 	@Override
 	public List<NguoiDung> findAll() {
@@ -52,6 +56,13 @@ public class NguoiDungServiceImp implements NguoiDungService {
 	@Override
 	public List<SoLuongKhachDangKyTheoThangDTO> getTkSoLuongKhachDangKyTheoThang() {
 		return null;
+	}
+
+	//Lấy người dùng từ trong session
+	@Override
+	public NguoiDung getInSession() {
+		NguoiDung nd = session.get("user");
+		return nd;
 	}
 
 }

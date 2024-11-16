@@ -38,7 +38,7 @@
 						<tr ng-repeat="item in items">
 							<td class="align-middle"><img ng-src="{{'/api/file/SanPham/'+item.sanPham.hinhAnh}}" alt=""
 								style="width: 50px;">{{item.sanPham.tenSanPham}}</td>
-							<td class="align-middle">{{item.sanPham.giaTien|number:2}} VND</td>
+							<td class="align-middle">{{item.sanPham.giaTien|number:0}} VND</td>
 							<td class="align-middle">
 								<div class="input-group quantity mx-auto" style="width: 100px;">
 									<div class="input-group-btn">
@@ -59,7 +59,7 @@
 									</div>
 								</div>
 							</td>
-							<td class="align-middle">{{item.soLuong*item.sanPham.giaTien|number:2}} VND</td>
+							<td class="align-middle">{{item.soLuong*item.sanPham.giaTien|number:0}} VND</td>
 							<td class="align-middle"><button
 									ng-click="cart.remove(item.id)">
 									<i class="fa fa-times"></i>
