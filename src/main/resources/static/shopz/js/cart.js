@@ -6,6 +6,8 @@ app.controller("cartCtrl", function($http, $scope) {
 	$scope.user = null
 
 	$scope.items = []
+	
+	$scope.sum_money = 0
 
 	//Lấy thông tin người dùng định nghĩa cho $scope.user
 	$scope.get_user = function() {
@@ -18,12 +20,21 @@ app.controller("cartCtrl", function($http, $scope) {
 			console.log("Error get user in session", error)
 		})
 	}
+	
+	//Hàm tính tổng tiền
+	$scope.do_sum_money = function(){
+		$scope.sum_money = 0
+		for(item of $scope.items){
+			$scope.sum_money += item.sanPham.giaTien * item.soLuong
+		}
+	}
 
 	//Load tất cả giỏ hàng của người dùng được chỉ định
 	$scope.load_all_by_maNd = function() {
 		var url = cart_host + "/" + $scope.user.maNguoiDung
 		$http.get(url).then(resp => {
 			$scope.items = resp.data
+			$scope.do_sum_money()
 			console.log("Success load GioHang by MaNd")
 		}).catch(error => {
 			console.log("Errro load GioHang by MaNd", error)
@@ -37,6 +48,7 @@ app.controller("cartCtrl", function($http, $scope) {
 		$http.put(url, gh).then(resp => {
 			var index = $scope.items.findIndex(item => item.maGioHang == maGh)
 			$scope.items[index] = resp.data
+			$scope.do_sum_money()
 			//$scope.load_all_by_maNd()
 			console.log("Success update GioHang")
 		}).catch(error => {
@@ -59,6 +71,7 @@ app.controller("cartCtrl", function($http, $scope) {
 				$http.delete(url).then(() => {
 					var index = $scope.items.findIndex(item => item.maGioHang == maGh)
 					$scope.items.splice(index, 1)
+					$scope.do_sum_money()
 					swal("Xóa thành công", { icon: "success", });
 				}).catch(error => {
 					console.log("Error delete GioHang", error)
