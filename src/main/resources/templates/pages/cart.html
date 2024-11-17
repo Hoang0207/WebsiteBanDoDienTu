@@ -60,10 +60,9 @@
 								</div>
 							</td>
 							<td class="align-middle">{{item.soLuong*item.sanPham.giaTien|number:0}} VND</td>
-							<td class="align-middle"><button
-									ng-click="cart.remove(item.id)">
-									<i class="fa fa-times"></i>
-								</button></td>
+							<td class="align-middle">
+								<button ng-click="delete(item.maGioHang)"><i class="fa fa-times"></i></button>
+							</td>
 						</tr>
 					</tbody>
 				</table>

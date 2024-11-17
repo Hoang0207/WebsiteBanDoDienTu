@@ -17,7 +17,8 @@ CREATE TABLE nguoi_dung(
 	email VARCHAR(50) NOT NULL UNIQUE,
 	hinh_anh NVARCHAR(100),
 	ngay_dang_ky DATE NOT NULL,
-	trang_thai BIT NOT NULL
+	trang_thai BIT NOT NULL,
+	reset_password_token VARCHAR(50)
 )
 
 CREATE TABLE vai_tro(
@@ -94,30 +95,30 @@ CREATE TABLE don_hang_chi_tiet(
 
 /*Thêm dữ liệu vào các bảng*/
 INSERT INTO nguoi_dung VALUES
-	('hoang0207', '02072003', N'Nguyễn Văn Kim Hoàng', 1, '2003-07-02', '0849314345', N'293 Nam Kỳ Khởi Nghĩa, TP.HCM', 'hoangnvkps24867@fpt.edu.vn', null, '2024-10-3', 1),
-	('hoa232', '1234567', N'Lưu Đức Hòa', 1, '2003-01-03', '0979324347', N'85 Phan Kế Bính, Đa Kao, Quận 1, Hồ Chí Minh', 'hoa2222@gmail.com', null, '2024-10-3', 1),
-	('thanh222', '222333', N'Nguyễn Văn Thanh', 1, '2003-11-30', '0849314345', N'142 Nguyễn Văn Công, Phường 3, Gò Vấp, Hồ Chí Minh', 'thanh23232@gmail.com', null, '2024-10-3', 1),
-	('long888', '19102004', N'Trần Chiến Long', 1, '2003-03-02', '0908730881', N'345 Tô Ký, Trung Mỹ Tây, Quận 12, Hồ Chí Minh', 'long888@gmail.com', null, '2024-10-3', 1),
-	('linh775', '232323', N'Nguyễn Kiều Thảo Linh', 0, '2003-05-06', '0909748663', N'194 Hoàng Văn Thụ, Phường 9, Phú Nhuận, Hồ Chí Minh', 'Linh775@gmail.com', null, '2024-10-3', 1),
-	('Thang443', '222333', N'Trần Ngọc Thắng', 1, '2003-04-23', '0907574883', N'141 Lê Thị Nho, Trung Mỹ Tây, Quận 12, Hồ Chí Minh', 'Thang443@gmail.com', null, '2024-10-3', 1),
-    ('user001', 'password001', N'Nguyễn Anh Dũng', 1, '2000-08-10', '0908000001', N'10 Lý Thái Tổ, Quận 10, TP.HCM', 'user001@gmail.com', null, '2024-07-01', 1),
-    ('user002', 'password002', N'Hoàng Thị Ngọc', 0, '2000-09-05', '0908000002', N'12 Phan Đình Phùng, Quận 1, TP.HCM', 'user002@gmail.com', null, '2024-07-01', 1),
-    ('user003', 'password003', N'Phạm Minh Hòa', 1, '1999-12-15', '0908000003', N'23 Võ Thị Sáu, Bình Thạnh, TP.HCM', 'user003@gmail.com', null, '2024-07-01', 1),
-    ('user004', 'password004', N'Lê Thị Hồng', 0, '2001-02-20', '0908000004', N'15 Trường Chinh, Tân Bình, TP.HCM', 'user004@gmail.com', null, '2024-07-01', 1),
-    ('user005', 'password005', N'Võ Đình Nam', 1, '2002-05-22', '0908000005', N'9 Tân Sơn Nhì, Tân Phú, TP.HCM', 'user005@gmail.com', null, '2024-07-01', 1),
-    ('user006', 'password006', N'Nguyễn Thanh Trúc', 0, '2001-03-10', '0908000006', N'18 Phan Văn Trị, Gò Vấp, TP.HCM', 'user006@gmail.com', null, '2024-08-01', 1),
-    ('user007', 'password007', N'Trần Hữu Phúc', 1, '2003-07-02', '0908000007', N'20 Nguyễn Trãi, Quận 5, TP.HCM', 'user007@gmail.com', null, '2024-08-01', 1),
-    ('user008', 'password008', N'Lê Mai Lan', 0, '1998-11-18', '0908000008', N'27 Nguyễn Thị Minh Khai, Quận 3, TP.HCM', 'user008@gmail.com', null, '2024-08-01', 1),
-    ('user009', 'password009', N'Phạm Văn Hiếu', 1, '2001-10-30', '0908000009', N'7 Lê Quang Định, Bình Thạnh, TP.HCM', 'user009@gmail.com', null, '2024-08-01', 1),
-    ('user010', 'password010', N'Trần Thị Mai', 0, '2000-06-25', '0908000010', N'5 Cách Mạng Tháng 8, Quận 3, TP.HCM', 'user010@gmail.com', null, '2024-08-01', 1),
-    ('user011', 'password011', N'Trịnh Văn Lâm', 1, '2002-04-12', '0908000011', N'1 Đinh Tiên Hoàng, Bình Thạnh, TP.HCM', 'user011@gmail.com', null, '2024-09-01', 1),
-    ('user012', 'password012', N'Vũ Thị Thanh', 0, '1997-07-17', '0908000012', N'3 Hai Bà Trưng, Quận 1, TP.HCM', 'user012@gmail.com', null, '2024-09-01', 1),
-    ('user013', 'password013', N'Nguyễn Tấn Phát', 1, '1999-10-08', '0908000013', N'4 Lê Văn Sỹ, Quận Phú Nhuận, TP.HCM', 'user013@gmail.com', null, '2024-09-01', 1),
-    ('user014', 'password014', N'Phạm Thanh Sơn', 1, '2001-01-15', '0908000014', N'17 Võ Văn Tần, Quận 3, TP.HCM', 'user014@gmail.com', null, '2024-09-01', 1),
-    ('user015', 'password015', N'Lê Quang Dũng', 1, '1998-08-18', '0908000015', N'8 Trần Hưng Đạo, Quận 5, TP.HCM', 'user015@gmail.com', null, '2024-09-01', 1),
-    ('user016', 'password016', N'Đặng Thị Hòa', 0, '1996-12-23', '0908000016', N'6 Nguyễn Văn Cừ, Quận 5, TP.HCM', 'user016@gmail.com', null, '2024-10-01', 1),
-    ('user017', 'password017', N'Thái Thanh Bình', 1, '1997-09-11', '0908000017', N'14 Nguyễn Huệ, Quận 1, TP.HCM', 'user017@gmail.com', null, '2024-10-01', 1),
-    ('user018', 'password018', N'Lê Phương Dung', 0, '2002-03-25', '0908000018', N'25 Trần Não, Quận 2, TP.HCM', 'user018@gmail.com', null, '2024-10-01', 1)
+	('hoang0207', '02072003', N'Nguyễn Văn Kim Hoàng', 1, '2003-07-02', '0849314345', N'293 Nam Kỳ Khởi Nghĩa, TP.HCM', 'hoangnvkps24867@fpt.edu.vn', null, '2024-10-3', 1,null),
+	('hoa232', '1234567', N'Lưu Đức Hòa', 1, '2003-01-03', '0979324347', N'85 Phan Kế Bính, Đa Kao, Quận 1, Hồ Chí Minh', 'hoa2222@gmail.com', null, '2024-10-3', 1,null),
+	('thanh222', '222333', N'Nguyễn Văn Thanh', 1, '2003-11-30', '0849314345', N'142 Nguyễn Văn Công, Phường 3, Gò Vấp, Hồ Chí Minh', 'thanh23232@gmail.com', null, '2024-10-3', 1,null),
+	('long888', '19102004', N'Trần Chiến Long', 1, '2003-03-02', '0908730881', N'345 Tô Ký, Trung Mỹ Tây, Quận 12, Hồ Chí Minh', 'long888@gmail.com', null, '2024-10-3', 1,null),
+	('linh775', '232323', N'Nguyễn Kiều Thảo Linh', 0, '2003-05-06', '0909748663', N'194 Hoàng Văn Thụ, Phường 9, Phú Nhuận, Hồ Chí Minh', 'Linh775@gmail.com', null, '2024-10-3', 1,null),
+	('Thang443', '222333', N'Trần Ngọc Thắng', 1, '2003-04-23', '0907574883', N'141 Lê Thị Nho, Trung Mỹ Tây, Quận 12, Hồ Chí Minh', 'Thang443@gmail.com', null, '2024-10-3', 1,null),
+    ('user001', 'password001', N'Nguyễn Anh Dũng', 1, '2000-08-10', '0908000001', N'10 Lý Thái Tổ, Quận 10, TP.HCM', 'user001@gmail.com', null, '2024-07-01', 1,null),
+    ('user002', 'password002', N'Hoàng Thị Ngọc', 0, '2000-09-05', '0908000002', N'12 Phan Đình Phùng, Quận 1, TP.HCM', 'user002@gmail.com', null, '2024-07-01', 1,null),
+    ('user003', 'password003', N'Phạm Minh Hòa', 1, '1999-12-15', '0908000003', N'23 Võ Thị Sáu, Bình Thạnh, TP.HCM', 'user003@gmail.com', null, '2024-07-01', 1,null),
+    ('user004', 'password004', N'Lê Thị Hồng', 0, '2001-02-20', '0908000004', N'15 Trường Chinh, Tân Bình, TP.HCM', 'user004@gmail.com', null, '2024-07-01', 1,null),
+    ('user005', 'password005', N'Võ Đình Nam', 1, '2002-05-22', '0908000005', N'9 Tân Sơn Nhì, Tân Phú, TP.HCM', 'user005@gmail.com', null, '2024-07-01', 1,null),
+    ('user006', 'password006', N'Nguyễn Thanh Trúc', 0, '2001-03-10', '0908000006', N'18 Phan Văn Trị, Gò Vấp, TP.HCM', 'user006@gmail.com', null, '2024-08-01', 1,null),
+    ('user007', 'password007', N'Trần Hữu Phúc', 1, '2003-07-02', '0908000007', N'20 Nguyễn Trãi, Quận 5, TP.HCM', 'user007@gmail.com', null, '2024-08-01', 1,null),
+    ('user008', 'password008', N'Lê Mai Lan', 0, '1998-11-18', '0908000008', N'27 Nguyễn Thị Minh Khai, Quận 3, TP.HCM', 'user008@gmail.com', null, '2024-08-01', 1,null),
+    ('user009', 'password009', N'Phạm Văn Hiếu', 1, '2001-10-30', '0908000009', N'7 Lê Quang Định, Bình Thạnh, TP.HCM', 'user009@gmail.com', null, '2024-08-01', 1,null),
+    ('user010', 'password010', N'Trần Thị Mai', 0, '2000-06-25', '0908000010', N'5 Cách Mạng Tháng 8, Quận 3, TP.HCM', 'user010@gmail.com', null, '2024-08-01', 1,null),
+    ('user011', 'password011', N'Trịnh Văn Lâm', 1, '2002-04-12', '0908000011', N'1 Đinh Tiên Hoàng, Bình Thạnh, TP.HCM', 'user011@gmail.com', null, '2024-09-01', 1,null),
+    ('user012', 'password012', N'Vũ Thị Thanh', 0, '1997-07-17', '0908000012', N'3 Hai Bà Trưng, Quận 1, TP.HCM', 'user012@gmail.com', null, '2024-09-01', 1,null),
+    ('user013', 'password013', N'Nguyễn Tấn Phát', 1, '1999-10-08', '0908000013', N'4 Lê Văn Sỹ, Quận Phú Nhuận, TP.HCM', 'user013@gmail.com', null, '2024-09-01', 1,null),
+    ('user014', 'password014', N'Phạm Thanh Sơn', 1, '2001-01-15', '0908000014', N'17 Võ Văn Tần, Quận 3, TP.HCM', 'user014@gmail.com', null, '2024-09-01', 1,null),
+    ('user015', 'password015', N'Lê Quang Dũng', 1, '1998-08-18', '0908000015', N'8 Trần Hưng Đạo, Quận 5, TP.HCM', 'user015@gmail.com', null, '2024-09-01', 1,null),
+    ('user016', 'password016', N'Đặng Thị Hòa', 0, '1996-12-23', '0908000016', N'6 Nguyễn Văn Cừ, Quận 5, TP.HCM', 'user016@gmail.com', null, '2024-10-01', 1,null),
+    ('user017', 'password017', N'Thái Thanh Bình', 1, '1997-09-11', '0908000017', N'14 Nguyễn Huệ, Quận 1, TP.HCM', 'user017@gmail.com', null, '2024-10-01', 1,null),
+    ('user018', 'password018', N'Lê Phương Dung', 0, '2002-03-25', '0908000018', N'25 Trần Não, Quận 2, TP.HCM', 'user018@gmail.com', null, '2024-10-01', 1,null)
 
 
 INSERT INTO vai_tro VALUES
@@ -220,7 +221,11 @@ INSERT INTO san_pham VALUES
 
 INSERT INTO gio_hang VALUES
 	('thanh222', 'SP001', 1),
+	('thanh222', 'SP006', 1),
+	('thanh222', 'SP009', 1),
 	('hoang0207', 'SP003', 1),
+	('hoang0207', 'SP002', 2),
+	('hoang0207', 'SP035', 3),
 	('long888', 'SP006', 1),
 	('Thang443', 'SP005', 1)
 

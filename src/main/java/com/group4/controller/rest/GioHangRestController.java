@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -40,7 +41,7 @@ public class GioHangRestController {
 	}
 	
 	@PutMapping()
-	public ResponseEntity<GioHang> restPostGioHang(@RequestBody GioHang gh){
+	public ResponseEntity<GioHang> restPutGioHang(@RequestBody GioHang gh){
 		if(!ghService.existById(gh.getMaGioHang())) {
 			return ResponseEntity.notFound().build();
 		}
@@ -48,4 +49,12 @@ public class GioHangRestController {
 		return ResponseEntity.ok(gioHang);
 	}
 	
+	@DeleteMapping("{id}")
+	public ResponseEntity<Void> restDeleteGioHang(@PathVariable("id") Integer id){
+		if(!ghService.existById(id)) {
+			return ResponseEntity.notFound().build();
+		}
+		ghService.deleteGioHangById(id);
+		return ResponseEntity.ok().build();
+	}
 }
