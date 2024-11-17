@@ -81,6 +81,16 @@ app.controller("cartCtrl", function($http, $scope) {
 			}
 		})
 	}
+	
+	//Tiến hành đặt hàng
+	$scope.order = function(){
+		var url = "http://localhost:8080/api/DonHang/Order"
+		$http.get(url).then(resp => {
+			swal("Thành công !", "Bạn đã đặt hàng thành công", "success")
+		}).catch(error => {
+			console.log("Error order",error)
+		})
+	}
 
 	//Tự động chạy khi vào giỏ hàng
 	$scope.get_user()

@@ -18,6 +18,8 @@ public interface DonHangService {
 	
 	public DonHang save(DonHang dh);
 	
+	public DonHang order();
+	
 	public void deleteById(int id);
 	
 	public List<DonHang> findAllByTrangThai(String trangThai);

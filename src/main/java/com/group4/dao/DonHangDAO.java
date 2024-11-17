@@ -29,13 +29,14 @@ public interface DonHangDAO extends JpaRepository<DonHang, Integer>{
 			+ "FROM DonHangChiTiet dhct "
 			+ "JOIN SanPham sp ON dhct.sanPham.maSanPham = sp.maSanPham "
 			//+ "JOIN ChungLoai cl ON cl.maChungLoai = sp.maCl"
-			+ "GROUP BY sp.chungLoai.tenChungLoai "
-			+ "ORDER BY SUM(dhct.soLuong*dhct.giaTien) DESC ")
+			//+ "WHERE dh.trangThai LIKE '%giao%' "
+			+ "GROUP BY sp.chungLoai.tenChungLoai ")
 	List<DoanhThuTheoChungLoaiDTO> getDoanhThuTheoChungLoai();
 	
 	//Thống kê doanh thu theo nhà cung cấp
 	@Query("SELECT new com.group4.dto.DoanhThuTheoNhaCungCap(sp.nhaCungCap.tenNhaCungCap, sum(dhct.giaTien*dhct.soLuong))"
 			+ " FROM DonHangChiTiet dhct JOIN dhct.sanPham sp"
+			//+ " WHERE dh.trangThai LIKE '%giao%'"
 			+ " GROUP BY sp.nhaCungCap.tenNhaCungCap")
 	List<DoanhThuTheoNhaCungCap> getDoanhThuTheoNhaCungCap();
 	

@@ -1,23 +1,40 @@
 package com.group4.service.imp;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.group4.dao.DonHangChiTietDAO;
 import com.group4.dao.DonHangDAO;
 import com.group4.dto.DoanhThuTheoChungLoaiDTO;
 import com.group4.dto.DoanhThuTheoNhaCungCap;
 import com.group4.dto.DoanhThuTheoThangDTO;
 import com.group4.entity.DonHang;
+import com.group4.entity.DonHangChiTiet;
+import com.group4.entity.GioHang;
+import com.group4.entity.NguoiDung;
 import com.group4.service.DonHangService;
+import com.group4.service.GioHangService;
+import com.group4.service.NguoiDungService;
 
 @Service
 public class DonHangServiceImp implements DonHangService{
 
 	@Autowired
 	DonHangDAO dhDao;
+	
+	@Autowired
+	DonHangChiTietDAO dhctDao;
+	
+	@Autowired
+	NguoiDungService ndService;
+	
+	@Autowired
+	GioHangService ghService;
 	
 	@Override
 	public List<DonHang> findAll() {
@@ -73,5 +90,40 @@ public class DonHangServiceImp implements DonHangService{
 	@Override
 	public List<DonHang> findByMaNd(String maNd) {
 		return dhDao.findByMaNd(maNd); 
+	}
+
+	@Override
+	public DonHang order() {
+		Date date = new Date();
+		NguoiDung nd = ndService.getInSession();
+		if(nd==null) {
+			return null;
+		}
+		
+		//Thiết lập đơn hàng
+		DonHang dh = new DonHang();
+		dh.setDiaChiGiao(nd.getDiaChi());
+		dh.setMaNd(nd.getMaNguoiDung());
+		dh.setNgayLapDon(date);
+		dh.setTrangThai("Chờ xác nhận");
+		dh.setNguoiDung(nd);
+		this.save(dh);
+		
+		//Thiết lập đơn hàng chi tiết
+		List<GioHang> listGh = ghService.getGioHangByMaNguoiDung(nd.getMaNguoiDung());
+		for(GioHang gh: listGh) {
+			DonHangChiTiet dhct = new DonHangChiTiet();
+			dhct.setDonHang(dh);
+			dhct.setGiaTien(gh.getSanPham().getGiaTien());
+			dhct.setMaDh(dh.getMaDonHang());
+			dhct.setMaSp(gh.getMaSp());
+			dhct.setSanPham(gh.getSanPham());
+			dhct.setSoLuong(gh.getSoLuong());
+			dhctDao.save(dhct);
+		}
+		
+		//Xóa giỏ hàng của người dùng vừa mới lập đơn hàng
+		
+		return dh;
 	}
 }

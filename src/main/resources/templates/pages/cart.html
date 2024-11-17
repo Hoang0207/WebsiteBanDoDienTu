@@ -96,49 +96,14 @@
 							<h5>Tổng Cộng</h5>
 							<h5>{{sum_money|number:0}} VND</h5>
 						</div>
-						<a data-bs-toggle="modal" data-bs-target="#modalDatHang"
+						<a ng-click="order()"
 							class="btn btn-block btn-primary font-weight-bold my-3 py-3">Tiến
-							Hành Mua Hàng</a>
+							Hành Đặt Hàng</a>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 	<!-- Cart End -->
-	
-	<!-- Modal DatHang start -->
-	<div class="modal fade" id="modalDatHang"
-		data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-		aria-labelledby="staticBackdropLabel" aria-hidden="true">
-		<div class="modal-dialog pt-3">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h1 class="modal-title fs-4 fw-bold" id="staticBackdropLabel">Thông Tin Đặt Hàng</h1>
-					<button type="button" class="btn-close" data-bs-dismiss="modal"
-						aria-label="Close"></button>
-				</div>
-				<div class="modal-body">
-					<div class="input-group mb-3">
-						<span class="input-group-text text-bg-secondary" id="basic-addon1">Mã
-							chủng loại</span> <input type="text" class="form-control" 
-							aria-label="Username" aria-describedby="basic-addon1">
-					</div>
-					<div class="input-group ">
-						<span class="input-group-text text-bg-secondary" id="basic-addon1">Tên
-							chủng loại</span> <input type="text" class="form-control" 
-							aria-label="Username" aria-describedby="basic-addon1">
-					</div>
-
-				</div>
-				<div class="modal-footer">
-					<!--<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
-					<button type="button" class="btn btn-success p-0 px-2 m-0 me-3" ng-click="order()">
-						Đặt hàng
-					</button>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- Modal DatHang end -->
 </body>
 </html>

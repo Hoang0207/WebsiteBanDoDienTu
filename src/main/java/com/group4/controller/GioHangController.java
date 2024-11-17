@@ -20,7 +20,7 @@ public class GioHangController {
     
     @GetMapping("/cart")
 	public String cart(Model model) {
-    	NguoiDung nd = ndService.findById("hoang0207").get();
+    	NguoiDung nd = ndService.findById("thanh222").get();
     	session.set("user", nd);
 		model.addAttribute("content","/pages/cart");
 		return "indexLayout";
