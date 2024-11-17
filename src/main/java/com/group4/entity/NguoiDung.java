@@ -52,6 +52,9 @@ public class NguoiDung {
 
     @Column(name = "trang_thai", nullable = false)
     private Boolean trangThai;
+    
+    @Column(name = "reset_password_token")
+    private String resetPasswordToken;
 
     // Mối quan hệ với GioHang
     @JsonIgnore
