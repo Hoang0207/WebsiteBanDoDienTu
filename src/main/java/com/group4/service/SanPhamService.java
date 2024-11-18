@@ -9,6 +9,8 @@ import com.group4.entity.SanPham;
 public interface SanPhamService {
 	public List<SanPham> findAll();
 	
+	public List<SanPham> findSanPhamById(String maSanPham);
+	
 	public Optional<SanPham> findById(String id);
 	
 	public List<SanPham> findByName(String name);

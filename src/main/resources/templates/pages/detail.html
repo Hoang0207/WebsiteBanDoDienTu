@@ -47,15 +47,17 @@
 						</div>
 						<small class="pt-1">(99 Đánh Giá)</small>
 					</div>
-					<h3 class="font-weight-semi-bold mb-4" th:text="${product.tenSanPham}"></h3>
-					<h3 class="font-weight-semi-bold mb-4" th:text="${product.soLuong}"></h3>
-					<h3 class="font-weight-semi-bold mb-4" th:text="${product.giaTien}"></h3>
-					<h3 class="font-weight-semi-bold mb-4" th:text="${product.trangThai ? 'Còn hàng' : 'Hết hàng'}"></h3> <!-- In trạng thái dưới dạng chuỗi -->
-					<h3 class="font-weight-semi-bold mb-4" th:text="${product.maCl}"></h3>
-					<h3 class="font-weight-semi-bold mb-4" th:text="${product.maNcc}"></h3>
-					<h3 class="font-weight-semi-bold mb-4" th:text="${product.maTtdb}"></h3>
+					
+					<div th:each="sanPham : ${SanPham}">
+					<h3 class="font-weight-semi-bold mb-4" th:text="${sanPham.tenSanPham}"></h3>
+					<h3 class="font-weight-semi-bold mb-4" th:text="${sanPham.soLuong}"></h3>
+					<h3 class="font-weight-semi-bold mb-4" th:text="${sanPham.giaTien}"></h3>
+					<h3 class="font-weight-semi-bold mb-4" th:text="${sanPham.trangThai}"></h3> <!-- In trạng thái dưới dạng chuỗi -->
+					<h3 class="font-weight-semi-bold mb-4" th:text="${sanPham.maCl}"></h3>
+					<h3 class="font-weight-semi-bold mb-4" th:text="${sanPham.maNcc}"></h3>
+					<h3 class="font-weight-semi-bold mb-4" th:text="${sanPham.maTtdb}"></h3>
 					<p class="mb-4" th:text="${product.moTa}"></p>
-
+					</div>
 
 					<div class="d-flex align-items-center mb-4 pt-2">
 						<div class="input-group quantity mr-3" style="width: 130px;">

@@ -11,6 +11,11 @@ import com.group4.entity.SanPham;
 
 public interface SanPhamDAO extends JpaRepository<SanPham, String>, JpaSpecificationExecutor<SanPham>{
 	
+	
+	
+	@Query
+	List<SanPham> findSanPhamById(String maSanPham);
+	
 	@Query
 	List<SanPham> findAllByTenSanPhamLike(String tenSp);
 	
