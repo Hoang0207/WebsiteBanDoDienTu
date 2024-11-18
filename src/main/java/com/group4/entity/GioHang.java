@@ -1,12 +1,13 @@
 package com.group4.entity;
 
 import lombok.Data;
+import lombok.Getter;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-
+import lombok.Setter;
 import jakarta.persistence.*;
 
-@Data
+@Getter @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity

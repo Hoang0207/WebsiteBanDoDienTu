@@ -82,11 +82,27 @@ app.controller("cartCtrl", function($http, $scope) {
 		})
 	}
 	
+	//Xóa toàn bộ giỏ hàng của người dùng
+	$scope.delete_byNd = function(){
+		var maNd = $scope.user.maNguoiDung
+		var url = `${cart_host}/DeleteByMaNd/${maNd}`
+		$http.delete(url).then(() => {
+			console.log("Success delete GioHang by MaNd")
+		}).catch(error => {
+			console.log("Error delete GioHang by MaNd",error)
+		})
+	}
+	
 	//Tiến hành đặt hàng
 	$scope.order = function(){
+		var maNd = $scope.user.maNguoiDung
 		var url = "http://localhost:8080/api/DonHang/Order"
 		$http.get(url).then(resp => {
-			swal("Thành công !", "Bạn đã đặt hàng thành công", "success")
+			swal("Thành công !", "Bạn đã đặt hàng thành công", "success").then(() => {
+				//Chỉ thực hiện sau khi nd đóng cửa sổ thông báo
+				$scope.delete_byNd()
+	        	window.location.href = `/lichsu/${maNd}`; // Điều hướng tới trang lịch sử sau khi xóa thành công
+			})
 		}).catch(error => {
 			console.log("Error order",error)
 		})

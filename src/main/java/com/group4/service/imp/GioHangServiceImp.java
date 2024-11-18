@@ -35,6 +35,11 @@ public class GioHangServiceImp implements GioHangService{
 		return ghDao.existsById(id);
 	}
 
+	@Override
+	public Integer deleteByMaNd(String maNd) {
+		return ghDao.deleteByNguoiDung_MaNguoiDung(maNd);
+	}
+
 	
 }
 

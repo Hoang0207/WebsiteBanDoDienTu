@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.group4.dao.GioHangDAO;
 import com.group4.entity.GioHang;
+import com.group4.entity.NguoiDung;
 import com.group4.service.GioHangService;
 import com.group4.service.NguoiDungService;
 
@@ -56,5 +57,15 @@ public class GioHangRestController {
 		}
 		ghService.deleteGioHangById(id);
 		return ResponseEntity.ok().build();
+	}
+	
+	@DeleteMapping("/DeleteByMaNd/{maNd}")
+	public ResponseEntity<Integer> restDeleteGioHangByMaNd(@PathVariable("maNd") String maNd){
+		//NguoiDung nd = ndService.getInSession();
+		if(ghService.getGioHangByMaNguoiDung(maNd).isEmpty()) {
+			return ResponseEntity.noContent().build();
+		}
+		Integer rowDelete = ghService.deleteByMaNd(maNd);
+		return ResponseEntity.ok(rowDelete);
 	}
 }

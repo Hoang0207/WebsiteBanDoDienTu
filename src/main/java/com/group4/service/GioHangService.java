@@ -11,6 +11,8 @@ public interface GioHangService {
 	
 	public void deleteGioHangById(int id);
 	
+	public Integer deleteByMaNd(String maNd);
+	
 	public Boolean existById(int id);
 	
 	public List<GioHang> getGioHangByMaNguoiDung(String id);

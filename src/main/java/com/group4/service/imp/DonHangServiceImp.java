@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.group4.dao.DonHangChiTietDAO;
 import com.group4.dao.DonHangDAO;
+import com.group4.dao.GioHangDAO;
 import com.group4.dto.DoanhThuTheoChungLoaiDTO;
 import com.group4.dto.DoanhThuTheoNhaCungCap;
 import com.group4.dto.DoanhThuTheoThangDTO;
@@ -121,8 +122,6 @@ public class DonHangServiceImp implements DonHangService{
 			dhct.setSoLuong(gh.getSoLuong());
 			dhctDao.save(dhct);
 		}
-		
-		//Xóa giỏ hàng của người dùng vừa mới lập đơn hàng
 		
 		return dh;
 	}

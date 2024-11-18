@@ -1,16 +1,16 @@
 package com.group4.entity;
 
-import lombok.Data;
+import lombok.Getter;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-
+import lombok.Setter;
 import jakarta.persistence.*;
 import java.util.Date;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-@Data
+@Getter @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
