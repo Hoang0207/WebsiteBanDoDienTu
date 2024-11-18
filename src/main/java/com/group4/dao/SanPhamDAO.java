@@ -14,7 +14,7 @@ public interface SanPhamDAO extends JpaRepository<SanPham, String>, JpaSpecifica
 	
 	
 	@Query
-	List<SanPham> findSanPhamById(String maSanPham);
+	List<SanPham> findSanPhamById(String maSp);
 	
 	@Query
 	List<SanPham> findAllByTenSanPhamLike(String tenSp);

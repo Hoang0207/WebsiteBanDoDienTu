@@ -38,24 +38,23 @@
 
 			<div class="col-lg-7 h-auto mb-30">
 				<div class="h-100 bg-light p-30">
-					<h3>MSI</h3>
+					<h3></h3>
 					<div class="d-flex mb-3">
 						<div class="text-primary mr-2">
 							<small class="fas fa-star"></small> <small class="fas fa-star"></small>
 							<small class="fas fa-star"></small> <small
 								class="fas fa-star-half-alt"></small> <small class="far fa-star"></small>
 						</div>
-						<small class="pt-1">(99 Đánh Giá)</small>
 					</div>
 					
-					<div th:each="sanPham : ${SanPham}">
-					<h3 class="font-weight-semi-bold mb-4" th:text="${sanPham.tenSanPham}"></h3>
-					<h3 class="font-weight-semi-bold mb-4" th:text="${sanPham.soLuong}"></h3>
-					<h3 class="font-weight-semi-bold mb-4" th:text="${sanPham.giaTien}"></h3>
-					<h3 class="font-weight-semi-bold mb-4" th:text="${sanPham.trangThai}"></h3> <!-- In trạng thái dưới dạng chuỗi -->
-					<h3 class="font-weight-semi-bold mb-4" th:text="${sanPham.maCl}"></h3>
-					<h3 class="font-weight-semi-bold mb-4" th:text="${sanPham.maNcc}"></h3>
-					<h3 class="font-weight-semi-bold mb-4" th:text="${sanPham.maTtdb}"></h3>
+					<div th:each="sanPham : ${detail}">
+					<h3 class="font-weight-semi-bold mb-4" th:text="${detail.tenSanPham}"></h3>
+					<h3 class="font-weight-semi-bold mb-4" th:text="${detail.soLuong}"></h3>
+					<h3 class="font-weight-semi-bold mb-4" th:text="${detail.giaTien}"></h3>
+					<h3 class="font-weight-semi-bold mb-4" th:text="${detail.trangThai}"></h3> <!-- In trạng thái dưới dạng chuỗi -->
+					<h3 class="font-weight-semi-bold mb-4" th:text="${detail.maCl}"></h3>
+					<h3 class="font-weight-semi-bold mb-4" th:text="${detail.maNcc}"></h3>
+					<h3 class="font-weight-semi-bold mb-4" th:text="${detail.maTtdb}"></h3>
 					<p class="mb-4" th:text="${product.moTa}"></p>
 					</div>
 

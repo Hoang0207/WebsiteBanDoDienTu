@@ -39,11 +39,11 @@ public class ChiTietSanPhamController {
     
     @Autowired
     private SanPhamService sanPhamService;
-    @GetMapping("/detail/{maSanPham}")
-    public String getSanPham(@PathVariable("maSanPham") String maSanPham, Model model) {
+    @GetMapping("/detail/{maSp}")
+    public String getSanPham(@PathVariable("maSp") String maSp, Model model) {
         // Lấy danh sách đơn hàng theo mã người dùng
-        List<SanPham> sanPham = sanPhamService.findSanPhamById(maSanPham); // Hoặc phương thức khác nếu cần
-        model.addAttribute("SanPham", sanPham);
+        List<SanPham> detail = sanPhamService.findSanPhamById(maSp); 
+        model.addAttribute("detail", detail);
         model.addAttribute("content","/pages/detail");
         return "indexLayout"; // Trả về trang HTML
     }
