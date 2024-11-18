@@ -22,12 +22,6 @@ public class SanPhamServiceImp implements SanPhamService{
 	SanPhamSpecification spSpec;
 	
 	@Override
-	public List<SanPham> findSanPhamById(String maSanPham) {
-		return spDao.findSanPhamById(maSanPham);
-	}
-
-	
-	@Override
 	public List<SanPham> findAll() {
 		return spDao.findAll();
 	}
