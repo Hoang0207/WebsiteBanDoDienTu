@@ -26,7 +26,7 @@
 				</tr>
 			</thead>
 			<tbody class="fw-light fs-5">
-				<tr ng-repeat = "nd in items">
+				<tr ng-repeat = "nd in items | limitTo:limit:start">
 					<td>
 						<img class="img-fluid" style="height: 70px" ng-src="{{nd.hinhAnh ? '/api/file/NguoiDung/'+nd.hinhAnh :'/api/file/NguoiDung/defaultUser.png'}}">
 					</td>
@@ -41,6 +41,19 @@
 				</tr>
 			</tbody>
 		</table>
+		<nav aria-label="Page navigation example" class="mt-4" ng-if="items.length>7">
+		 	<ul class="pagination justify-content-center">
+				<li class="page-item {{page==1?'disabled':''}}">
+			     	<a class="page-link imgAction" ng-click="change_page(page-1)">&laquo;</a>
+			    </li>
+			    <li class="page-item {{page==p+1?'active':''}}" ng-repeat="p in number_of_page" >
+			    	<a class="page-link imgAction" ng-click="change_page(p+1)">{{p+1}}</a>
+			    </li>
+			    <li class="page-item {{page==total_page?'disabled':''}}" >
+			      	<a class="page-link imgAction" ng-click="change_page(page+1)">&raquo;</a>
+			    </li>
+			</ul>
+		</nav>
 	</div>
 	
 	<!-- Modal nguoi dung -->

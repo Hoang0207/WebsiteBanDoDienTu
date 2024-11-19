@@ -146,7 +146,11 @@ app.controller('QuanLySanPhamCtrl', function($http, $scope) {
 			var url = `${host}/SanPham`
 			$http.post(url, $scope.form).then(resp => {
 				$scope.update = true
-				$scope.filter()
+				if($scope.filter_status == true){
+					$scope.filter()
+				}else{
+					$scope.load_all()
+				}
 				swal("Thành công !", "Bạn đã thêm sản phẩm thành công", "success")
 			}).catch(error => {
 				console.log("Error create SanPham", error)
@@ -181,7 +185,11 @@ app.controller('QuanLySanPhamCtrl', function($http, $scope) {
 					if(img_name){
 						$scope.delete_img(img_name)
 					}
-					$scope.filter()
+					if($scope.filter_status == true){
+						$scope.filter()
+					}else{
+						$scope.load_all()
+					}
 					swal("Xóa thành công", {
 						icon: "success",
 					});
@@ -203,7 +211,11 @@ app.controller('QuanLySanPhamCtrl', function($http, $scope) {
 				if(old_image && old_image!=resp.data.hinhAnh){
 					$scope.delete_img(old_image)
 				}
-				$scope.filter()
+				if($scope.filter_status == true){
+					$scope.filter()
+				}else{
+					$scope.load_all()
+				}
 				swal("Thành công !","Cập nhật sản phẩm thành công","success")
 			}).catch(error => {
 				console.log("Error update SanPham", error)

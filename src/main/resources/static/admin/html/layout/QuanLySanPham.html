@@ -39,7 +39,7 @@
 					<td><img class="img-fluid" style="height: 70px" ng-src="{{sp.hinhAnh?'/api/file/SanPham/'+sp.hinhAnh:default_image_src}}"></td>
 					<td class="pt-4">{{sp.maSanPham}}</td>
 					<td class="pt-4">{{sp.tenSanPham}}</td>
-					<td class="pt-4">{{sp.giaTien}}</td>
+					<td class="pt-4">{{sp.giaTien | currency:'':0}} <sup> ₫</sup> </td>
 					<td class="pt-4">{{sp.soLuong}}</td>
 					<td class="ps-3 pt-4">
 						<img alt="" data-bs-toggle="modal" data-bs-target="#modalSanPham" ng-click="load_by_id(sp.maSanPham)" class="img-fluid imgAction me-2" src="/admin/image/editIcon.png">
