@@ -110,18 +110,5 @@ app.controller("cartCtrl", function($http, $scope) {
 
 	//Tự động chạy khi vào giỏ hàng
 	$scope.get_user()
-	
-	
-	
-	/*//Format cho giá tiền sản phẩm
-        function formatCurrency(amount) {
-        return amount.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
-    }
-    // Format giá tiền khi trang được tải
-    window.onload = function() {
-        const giaTienElement = document.getElementById('giaTien');
-        const giaTienValue = parseFloat(giaTienElement.textContent.replace(' VNĐ', '').replace('.', '').replace(',', '.'));
-        giaTienElement.textContent = formatCurrency(giaTienValue);
-    };*/
     
 })
