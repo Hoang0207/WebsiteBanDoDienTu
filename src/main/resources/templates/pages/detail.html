@@ -3,7 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
+<script>
+    window.onload = function() {
+        // Lấy phần tử chứa giá tiền
+        var priceElement = document.getElementById('price');
+        
+        if (priceElement) {
+            // Lấy giá trị của giá tiền từ nội dung văn bản
+            var priceText = priceElement.innerText;
+            var price = parseFloat(priceText.replace("Giá tiền: ", "").replace(" VNĐ", "").trim());
+            
+            // Định dạng số với dấu phẩy
+            var formattedPrice = price.toLocaleString('vi-VN');
+            
+            // Cập nhật lại phần tử với giá đã định dạng
+            priceElement.innerText = 'Giá tiền: ' + formattedPrice + ' VNĐ';
+        }
+    };
+</script>
 </head>
 <body ng-controller="controller">
 
@@ -51,7 +68,7 @@
 					<div>
 						<h3 class="font-weight-semi-bold mb-4" th:text="'Sản phẩm: ' + ${detail.tenSanPham}"></h3>
 						<h3 class="font-weight-semi-bold mb-4" th:text="'Số lượng: ' + ${detail.soLuong}"></h3>
-						<h3 class="font-weight-semi-bold mb-4" th:text="'Giá tiền: ' + ${detail.giaTienFormated} + ' VNĐ'" id="giaTien"></h3>
+						<h3 class="font-weight-semi-bold mb-4" id="price" th:text="'Giá tiền: ' + ${detail.giaTien} + ' VNĐ'"></h3>
 						<h3 class="font-weight-semi-bold mb-4" th:text="'Chủng loại: ' + ${detail.chungLoai.tenChungLoai}"></h3>
 						<h3 class="font-weight-semi-bold mb-4" th:text="'Nhà cung cấp: ' + ${detail.nhaCungCap.tenNhaCungCap}"></h3>
 						<h3>Description:</h3>

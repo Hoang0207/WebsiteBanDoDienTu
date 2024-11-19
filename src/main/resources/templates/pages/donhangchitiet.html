@@ -3,16 +3,40 @@
 <meta charset="UTF-8">
 <head>
     <title>Chi Tiết Đơn Hàng</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        // Hàm để định dạng tiền tệ
+        function formatCurrency(amount) {
+            return amount.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
+        }
+
+        // Hàm tính tổng tiền và định dạng giá trị
+        function calculateTotal() {
+            let total = 0;
+            let rows = document.querySelectorAll("#orderDetailsTable tbody tr");
+
+            rows.forEach(row => {
+                let quantity = parseInt(row.querySelector(".quantity").textContent);
+                let price = parseFloat(row.querySelector(".price").getAttribute("data-price"));
+                
+                total += quantity * price;
+
+                let priceElement = row.querySelector(".price");
+                priceElement.textContent = formatCurrency(price);
+            });
+
+            document.getElementById("totalAmount").textContent = formatCurrency(total);
+        }
+    </script>
 </head>
 <body>
     <div class="container">
-        <a href="/lichsudathang" class="back-button">Quay lại</a>
         
         <h2>Chi Tiết Đơn Hàng</h2>
         
-        <div style="width: 100%; height: 1px; border: 4px solid black; margin-bottom: 20px;"></div>
+        <div class="divider"></div>
         
-        <table>
+        <table id="orderDetailsTable">
             <thead>
                 <tr>
                     <th>Sản phẩm</th>
@@ -25,11 +49,19 @@
                 <tr th:each="chiTiet : ${chiTietDonHang}">
                     <td th:text="${chiTiet.maSp}"></td> 
                     <td th:text="${chiTiet.sanPham.tenSanPham}"></td> 
-                    <td th:text="${chiTiet.soLuong}"></td>
-                    <td th:text="${chiTiet.giaTien}"><a style="color: black;">VNĐ</a></td>
+                    <td class="quantity" th:text="${chiTiet.soLuong}"></td>
+                    <td class="price" th:text="${chiTiet.giaTien}" th:attr="data-price=${chiTiet.giaTien}"></td>
                 </tr>
             </tbody>
         </table>
+        
+        <div class="total-price">
+            <strong>Tổng tiền: </strong><span id="totalAmount">0.00 VND</span> _
+        </div>
     </div>
+
+    <script>
+        window.onload = calculateTotal;
+    </script>
 </body>
 </html>
