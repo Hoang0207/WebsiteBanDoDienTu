@@ -66,11 +66,11 @@
 					</div> -->
 					
 					<div>
-						<h3 class="font-weight-semi-bold mb-4" th:text="'Sản phẩm: ' + ${detail.tenSanPham}"></h3>
+						<h3 class="font-weight-semi-bold mb-4" th:text="${detail.tenSanPham}"></h3>
 						<h3 class="font-weight-semi-bold mb-4" th:text="'Số lượng: ' + ${detail.soLuong}"></h3>
 						<h3 class="font-weight-semi-bold mb-4" id="price" th:text="'Giá tiền: ' + ${detail.giaTien} + ' VNĐ'"></h3>
-						<h3 class="font-weight-semi-bold mb-4" th:text="'Chủng loại: ' + ${detail.chungLoai.tenChungLoai}"></h3>
-						<h3 class="font-weight-semi-bold mb-4" th:text="'Nhà cung cấp: ' + ${detail.nhaCungCap.tenNhaCungCap}"></h3>
+						<h3 class="font-weight-semi-bold mb-4" th:text="'Loại sản phẩm: ' + ${detail.chungLoai.tenChungLoai}"></h3>
+						<h3 class="font-weight-semi-bold mb-4" th:text="'Thương hiệu: ' + ${detail.nhaCungCap.tenNhaCungCap}"></h3>
 						<h3>Description:</h3>
 						<p class="mb-4" th:text="${detail.moTa}"></p>
 					</div>
