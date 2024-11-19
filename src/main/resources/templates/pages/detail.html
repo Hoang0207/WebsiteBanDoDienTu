@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 </head>
 <body ng-controller="controller">
 
@@ -48,11 +49,12 @@
 					</div> -->
 					
 					<div>
-						<h3 class="font-weight-semi-bold mb-4" th:text="${detail.tenSanPham}"></h3>
-						<h3 class="font-weight-semi-bold mb-4" th:text="${detail.soLuong}"></h3>
-						<h3 class="font-weight-semi-bold mb-4" th:text="${detail.giaTien}"></h3>
-						<h3 class="font-weight-semi-bold mb-4" th:text="${detail.chungLoai.tenChungLoai}"></h3>
-						<h3 class="font-weight-semi-bold mb-4" th:text="${detail.nhaCungCap.tenNhaCungCap}"></h3>
+						<h3 class="font-weight-semi-bold mb-4" th:text="'Sản phẩm: ' + ${detail.tenSanPham}"></h3>
+						<h3 class="font-weight-semi-bold mb-4" th:text="'Số lượng: ' + ${detail.soLuong}"></h3>
+						<h3 class="font-weight-semi-bold mb-4" th:text="'Giá tiền: ' + ${detail.giaTienFormated} + ' VNĐ'" id="giaTien"></h3>
+						<h3 class="font-weight-semi-bold mb-4" th:text="'Chủng loại: ' + ${detail.chungLoai.tenChungLoai}"></h3>
+						<h3 class="font-weight-semi-bold mb-4" th:text="'Nhà cung cấp: ' + ${detail.nhaCungCap.tenNhaCungCap}"></h3>
+						<h3>Description:</h3>
 						<p class="mb-4" th:text="${detail.moTa}"></p>
 					</div>
 

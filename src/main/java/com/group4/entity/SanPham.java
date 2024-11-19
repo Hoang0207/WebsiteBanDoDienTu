@@ -71,4 +71,6 @@ public class SanPham {
     @JsonIgnore
     @OneToMany(mappedBy = "sanPham", cascade = CascadeType.ALL)
     private Set<DonHangChiTiet> donHangChiTiets;
+    
+    
 }
