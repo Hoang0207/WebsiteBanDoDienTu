@@ -124,7 +124,7 @@
 						class="col-lg-3 col-md-6 col-sm-6 pb-1">
 						<div class="product-item bg-light mb-4">
 							<div class="product-img position-relative overflow-hidden">
-								<img class="img-fluid w-100" ng-src="/images/{{pro.image}}"
+								<img class="img-fluid w-100" ng-src="{{'/api/file/SanPham/'+pro.hinhAnh}}"
 									alt="">
 								<div class="product-action">
 									<a class="btn btn-outline-dark btn-square">
@@ -140,12 +140,12 @@
 								</div>
 							</div>
 							<div class="text-center py-4">
-								<a class="h6 text-decoration-none text-truncate" href="">{{pro.name}}</a>
+								<a class="h6 text-decoration-none text-truncate" href="">{{pro.tenSanPham}}</a>
 								<hr>
-								<a class="h6 text-decoration-none text-truncate" href="">{{pro.category.name}}</a>
+								<a class="h6 text-decoration-none text-truncate" href="">{{pro.chungLoai.tenChungLoai}}</a>
 								<div
 									class="d-flex align-items-center justify-content-center mt-2">
-									<h5>{{pro.price}}</h5>
+									<h5>{{pro.giaTien}}</h5>
 									<h6 class="text-muted ml-2">
 										<del>$123.00</del>
 									</h6>

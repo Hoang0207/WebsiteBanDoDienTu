@@ -1,4 +1,4 @@
-let host = "http://localhost:8080/rest";
+let host = "http://localhost:8080/api";
 const app = angular.module("app", []);
 app.controller("controller", function($scope, $http){
     $scope.form = {}
@@ -7,7 +7,7 @@ app.controller("controller", function($scope, $http){
         // $scope.form = {gender: true, country:'VN'};
     }
     $scope.load_all = function(){
-        var url = `${host}/products`;
+        var url = `${host}/SanPham`;
         $http.get(url).then(resp => {
             $scope.items = resp.data;
             console.log("Success", resp)
@@ -142,7 +142,7 @@ app.controller("controller", function($scope, $http){
     //phan trang
 	$scope.pager = {
 		page:0,
-		size:10,
+		size:8,
 		get items(){
 			var start = this.page * this.size;
 			return $scope.items.slice(start, start + this.size);
