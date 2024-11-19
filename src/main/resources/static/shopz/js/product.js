@@ -3,6 +3,7 @@ const app = angular.module("app", []);
 app.controller("controller", function($scope, $http){
     $scope.form = {}
     $scope.items = []
+    
     $scope.reset = function(){
         // $scope.form = {gender: true, country:'VN'};
     }
@@ -57,7 +58,6 @@ app.controller("controller", function($scope, $http){
             console.log("Error", error)
         });
     }
-    // Thực hiện tải toàn bộ students
     $scope.load_all();
     $scope.reset();
 
