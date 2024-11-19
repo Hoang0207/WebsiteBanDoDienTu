@@ -19,6 +19,10 @@ app.controller('QuanLySanPhamCtrl', function($http, $scope) {
 	$scope.filter_status = false
 
 	$scope.suggestions = []
+	
+	$scope.total_page = 0
+			
+	$scope.number_of_page = []
 
 	//Reset lại form
 	$scope.reset = function() {
@@ -33,6 +37,8 @@ app.controller('QuanLySanPhamCtrl', function($http, $scope) {
 		var url = `${host}/SanPham`
 		$http.get(url).then(resp => {
 			$scope.items = resp.data
+			$scope.total_page = Math.ceil($scope.items.length / $scope.limit)
+			$scope.init_page()
 			console.log("Success load all SanPham")
 		}).catch(error => {
 			console.log("Error load all SanPham", error)
@@ -214,6 +220,7 @@ app.controller('QuanLySanPhamCtrl', function($http, $scope) {
 		$http.get(url,params).then(resp => {
 			$scope.items = resp.data
 			$scope.filter_status = true
+			$scope.init_page()
 			document.getElementById("btnCloseFilter").click()
 			swal("Thành công !","Lọc sản phẩm thành công !","success")
 		}).catch(error => {
@@ -255,4 +262,22 @@ app.controller('QuanLySanPhamCtrl', function($http, $scope) {
 	$scope.load_list_cl()
 	$scope.load_list_ncc()
 	$scope.load_list_ttdb()
+	
+	//Phân trang start
+	$scope.page = 1
+	$scope.limit = 7
+	$scope.start = ($scope.page-1) * $scope.limit
+	//$scope.total_page = Math.ceil($scope.items.length / $scope.limit)
+	//$scope.number_of_page = Array.from(Array($scope.total_page).keys())
+	$scope.init_page = function(){
+		$scope.total_page = Math.ceil($scope.items.length / $scope.limit)
+		$scope.number_of_page = Array.from(Array($scope.total_page).keys())
+		$scope.page = 1
+		$scope.start = ($scope.page-1) * $scope.limit
+	}
+	$scope.change_page = function(i){
+		$scope.page = i
+		$scope.start = ($scope.page-1)*$scope.limit
+	}
+	//Phân trang end
 })
