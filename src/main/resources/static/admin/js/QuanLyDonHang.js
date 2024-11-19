@@ -5,6 +5,8 @@ app.controller('QuanLyDonHangCtrl', function($http, $scope) {
 	$scope.time_instruction = 0;
 
 	$scope.items = []
+	
+	$scope.status = "all"
 
 	$scope.list_dhct = []
 
@@ -17,6 +19,7 @@ app.controller('QuanLyDonHangCtrl', function($http, $scope) {
 		var url = `${host}/DonHang`
 		$http.get(url).then(resp => {
 			$scope.items = resp.data
+			$scope.status = "all"
 			$scope.title = "tất cả đơn hàng"
 			console.log("Success load all DonHang")
 		}).catch(error => {
@@ -29,6 +32,7 @@ app.controller('QuanLyDonHangCtrl', function($http, $scope) {
 		var url = `${host}/DonHang/TrangThai/${status}`
 		$http.get(url).then(resp => {
 			$scope.items = resp.data
+			$scope.status = "option"
 			$scope.title = `đơn hàng ${status.toLowerCase()}`
 			console.log("Success load DonHang by status")
 		}).catch(error => {
@@ -71,7 +75,12 @@ app.controller('QuanLyDonHangCtrl', function($http, $scope) {
 	$scope.update = function(maDh) {
 		var url = `${host}/DonHang/${maDh}`
 		$http.put(url, $scope.form).then(resp => {
-			console.log("Success update DonHang")
+			var index = $scope.items.findIndex(item => item.maDonHang == maDh)
+			if(resp.data.trangThai != $scope.items[index].trangThai && $scope.status != "all"){
+				$scope.items.splice(index,1)
+			}else{
+				$scope.items[index] = resp.data
+			}
 			swal("Thành công !", "Bạn đã cập nhật đơn hàng thành công", "success")
 		}).catch(error => {
 			console.log("Error update DonHang", error)
@@ -90,6 +99,8 @@ app.controller('QuanLyDonHangCtrl', function($http, $scope) {
 			if (willDelete) {
 				var url = `${host}/DonHang/${maDh}`
 				$http.delete(url).then(resp => {
+					var index = $scope.items.findIndex(item => item.maDonHang == maDh)
+					$scope.items.splice(index,1)
 					swal("Đã xóa đơn hàng thành công !", {
 						icon: "success",
 					});
