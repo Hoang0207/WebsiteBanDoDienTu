@@ -21,6 +21,23 @@
         }
     };
 </script>
+<style>
+	.tensp{
+		font-size: 3rem; /* Tăng kích thước chữ */
+		font-weight: bold; /* Giữ chữ đậm */
+	};
+	
+	.chi-tiet {
+	    font-size: 0.85rem; /* Cỡ chữ nhỏ */
+	    font-weight: normal; /* Không đậm */
+	    margin-bottom: 1rem; /* Khoảng cách dưới */
+	};
+
+	
+	.mota{
+		font-size: 1rem; /* Giữ kích thước chữ mô tả */	
+	};
+</style>
 </head>
 <body ng-controller="controller">
 
@@ -66,12 +83,12 @@
 					</div> -->
 					
 					<div>
-						<h3 class="font-weight-semi-bold mb-4" th:text="${detail.tenSanPham}"></h3>
-						<h3 class="font-weight-semi-bold mb-4" th:text="'Số lượng: ' + ${detail.soLuong}"></h3>
-						<h3 class="font-weight-semi-bold mb-4" id="price" th:text="'Giá tiền: ' + ${detail.giaTien} + ' VNĐ'"></h3>
-						<h3 class="font-weight-semi-bold mb-4" th:text="'Loại sản phẩm: ' + ${detail.chungLoai.tenChungLoai}"></h3>
-						<h3 class="font-weight-semi-bold mb-4" th:text="'Thương hiệu: ' + ${detail.nhaCungCap.tenNhaCungCap}"></h3>
-						<h3>Description:</h3>
+						<h3 class="tensp mb-4" th:text="${detail.tenSanPham}"></h3>
+						<h5 class="chi-tiet mb-4" th:text="'Số lượng: ' + ${detail.soLuong}"></h5>
+						<h5 class="chi-tiet mb-4" id="price" th:text="'Giá tiền: ' + ${detail.giaTien} + ' VNĐ'"></h5>
+						<h5 class="chi-tiet mb-4" th:text="'Loại sản phẩm: ' + ${detail.chungLoai.tenChungLoai}"></h5>
+						<h5 class="chi-tiet mb-4" th:text="'Thương hiệu: ' + ${detail.nhaCungCap.tenNhaCungCap}"></h5>
+						<h3 class="mota mb-4" >Description:</h3>
 						<p class="mb-4" th:text="${detail.moTa}"></p>
 					</div>
 
