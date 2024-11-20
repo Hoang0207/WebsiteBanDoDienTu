@@ -88,7 +88,7 @@
 						<h5 class="chi-tiet mb-4" id="price" th:text="'Giá tiền: ' + ${detail.giaTien} + ' VNĐ'"></h5>
 						<h5 class="chi-tiet mb-4" th:text="'Loại sản phẩm: ' + ${detail.chungLoai.tenChungLoai}"></h5>
 						<h5 class="chi-tiet mb-4" th:text="'Thương hiệu: ' + ${detail.nhaCungCap.tenNhaCungCap}"></h5>
-						<h3 class="mota mb-4" >Description:</h3>
+						<h3 class="mota mb-4" >Mô tả:</h3>
 						<p class="mb-4" th:text="${detail.moTa}"></p>
 					</div>
 
@@ -99,7 +99,7 @@
 									<i class="fa fa-minus"></i>
 								</button>
 							</div>
-							<input type="text"
+							<input type="text" min="1" readonly="readonly"
 								class="form-control bg-secondary border-0 text-center" value="1">
 							<div class="input-group-btn">
 								<button class="btn btn-primary btn-plus">

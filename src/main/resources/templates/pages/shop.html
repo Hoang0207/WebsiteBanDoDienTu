@@ -178,8 +178,9 @@
 									ng-src="{{'/api/file/SanPham/'+pro.hinhAnh}}" alt=""
 									style="object-fit: cover; height: 200px;">
 								<div class="product-action">
-									<a class="btn btn-outline-dark btn-square">
-										<button ng-click="cart.add(pro.maSanPham)">
+									<a class="btn btn-outline-dark btn-square" ng-href="{{'/detail/'+pro.maSanPham}}">
+										<!--  <button ng-click="cart.add(pro.maSanPham)">-->
+										<button>
 											<i class="fa fa-shopping-cart"></i>
 										</button>
 									</a> 
