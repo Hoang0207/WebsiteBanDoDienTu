@@ -21,6 +21,7 @@ app.controller('QuanLyDonHangCtrl', function($http, $scope) {
 			$scope.items = resp.data
 			$scope.status = "all"
 			$scope.title = "tất cả đơn hàng"
+			$scope.init_page()
 			console.log("Success load all DonHang")
 		}).catch(error => {
 			console.log("Error load all DonHang", error)
@@ -34,6 +35,7 @@ app.controller('QuanLyDonHangCtrl', function($http, $scope) {
 			$scope.items = resp.data
 			$scope.status = "option"
 			$scope.title = `đơn hàng ${status.toLowerCase()}`
+			$scope.init_page()
 			console.log("Success load DonHang by status")
 		}).catch(error => {
 			console.log("Error load DonHang by status")
@@ -112,6 +114,24 @@ app.controller('QuanLyDonHangCtrl', function($http, $scope) {
 			}
 		});
 	}
+	
+	//Phân trang start
+	$scope.page = 1
+	$scope.limit = 10
+	$scope.start = ($scope.page-1) * $scope.limit
+	//$scope.total_page = Math.ceil($scope.items.length / $scope.limit)
+	//$scope.number_of_page = Array.from(Array($scope.total_page).keys())
+	$scope.init_page = function(){
+		$scope.total_page = Math.ceil($scope.items.length / $scope.limit)
+		$scope.number_of_page = Array.from(Array($scope.total_page).keys())
+		$scope.page = 1
+		$scope.start = ($scope.page-1) * $scope.limit
+	}
+	$scope.change_page = function(i){
+		$scope.page = i
+		$scope.start = ($scope.page-1)*$scope.limit
+	}
+	//Phân trang end
 
 	//Tự chạy đầu tiên khi chọn tab đơn hàng
 	$scope.load_all()

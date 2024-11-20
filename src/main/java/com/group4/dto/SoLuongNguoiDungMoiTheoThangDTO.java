@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class SoLuongKhachDangKyTheoThangDTO {
+public class SoLuongNguoiDungMoiTheoThangDTO {
 	
 	private int thang;
 	
