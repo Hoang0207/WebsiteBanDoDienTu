@@ -1,14 +1,14 @@
 app.controller('thongKeCtrl', function($http, $scope) {
-	$scope.quantity_customer = null
+	$scope.quantity_user = null
 	$scope.quantity_product = null
 	$scope.quantity_bill = null
 	$scope.present_chart = null
 
-	//Đếm số lượng khách hàng
-	$scope.count_customer = function() {
-		var url = `${host}/NguoiDung/SoLuongKhachHang`
+	//Đếm số lượng người dùng
+	$scope.count_user = function() {
+		var url = `${host}/NguoiDung/SoLuong`
 		$http.get(url).then(resp => {
-			$scope.quantity_customer = resp.data
+			$scope.quantity_user = resp.data
 			console.log("Success count quantity customer", resp)
 		}).catch(error => {
 			console.log("Error count quantity customer", error)
@@ -144,7 +144,7 @@ app.controller('thongKeCtrl', function($http, $scope) {
 	
 	//Thống kê số lượng khách đăng ký theo tháng 
 	$scope.amount_customer_register_by_month_statistics = function(){
-		var url = `${host}/ThongKe/KhachHang/SoLuongDangKyTheoThang`
+		var url = `${host}/ThongKe/NguoiDung/SoLuongMoiTheoThang`
 		$http.get(url).then(resp => {
 			$scope.present_chart.destroy()
 			var labels = resp.data.map(item => item.thang+"/"+item.nam )
@@ -156,7 +156,7 @@ app.controller('thongKeCtrl', function($http, $scope) {
 				data:{
 					labels: labels,
 					datasets:[{
-						label: "Số lượng khách đăng ký theo tháng",
+						label: "Số lượng người dùng mới theo tháng",
 						data:data,
 						backgroundColor: 'rgba(75, 192, 192, 0.6)',
 						borderColor: 'rgba(75, 192, 192, 1)',
@@ -173,7 +173,7 @@ app.controller('thongKeCtrl', function($http, $scope) {
 	}
 
 	//Tự động chạy khi mở tab
-	$scope.count_customer()
+	$scope.count_user()
 	$scope.count_product()
 	$scope.count_bill()
 	$scope.revenue_statistics()

@@ -11,9 +11,9 @@
 				<div class="bodyPart rounded-4 text-center d-block py-3">
 					<img src="/admin/image/thongKeUser.png" class="img-fluid"
 						style="height: 215px;">
-					<div class="text-center fw-bolder fs-1 mt-1">{{quantity_customer}}</div>
+					<div class="text-center fw-bolder fs-1 mt-1">{{quantity_user}}</div>
 					<div class="text-center fs-5 fst-italic" style="font-weight: 330;">
-						Số lượng khách hàng</div>
+						Số lượng người dùng</div>
 				</div>
 			</div>
 			<div class="px-3 col-md-4">
@@ -61,7 +61,7 @@
 	    <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true" ng-click="revenue_statistics()">Doanh thu theo tháng</button>
 	    <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false" ng-click="revenue_category_statistics()">Doanh thu theo chủng loại</button>
 	    <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false" ng-click="provider_statistics()">Doanh thu theo nhà cung cấp</button>
-	    <button class="nav-link" id="nav-disabled-tab" data-bs-toggle="tab" data-bs-target="#nav-disabled" type="button" role="tab" aria-controls="nav-disabled" aria-selected="false" ng-click="amount_customer_register_by_month_statistics()">Khách hàng đăng ký theo tháng</button>
+	    <button class="nav-link" id="nav-disabled-tab" data-bs-toggle="tab" data-bs-target="#nav-disabled" type="button" role="tab" aria-controls="nav-disabled" aria-selected="false" ng-click="amount_customer_register_by_month_statistics()">Người dùng mới theo tháng</button>
 	  </div>
 	</nav>
 	<div class="tab-content" id="nav-tabContent">
@@ -86,7 +86,7 @@
 	  	</div>
 	  </div>
 	  <div class="tab-pane fade fs-4 bodyPart px-4 py-3 rounded-3" id="nav-disabled" role="tabpanel" aria-labelledby="nav-disabled-tab" tabindex="0">
-	  	<span class="titleText fw-bold">Thống kê số lượng khách đăng ký theo tháng</span>
+	  	<span class="titleText fw-bold">Thống kê số lượng người dùng mới theo tháng</span>
 		<canvas id="bieuDoDoanhThuSoLuongKhachDangKyTheoThang" style="height: 100" class="my-3"></canvas>
 	  </div>
 	</div>

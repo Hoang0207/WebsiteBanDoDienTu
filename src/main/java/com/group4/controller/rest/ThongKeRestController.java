@@ -16,7 +16,7 @@ import com.group4.dao.NguoiDungDAO;
 import com.group4.dto.DoanhThuTheoChungLoaiDTO;
 import com.group4.dto.DoanhThuTheoNhaCungCap;
 import com.group4.dto.DoanhThuTheoThangDTO;
-import com.group4.dto.SoLuongKhachDangKyTheoThangDTO;
+import com.group4.dto.SoLuongNguoiDungMoiTheoThangDTO;
 import com.group4.service.DonHangService;
 import com.group4.service.NguoiDungService;
 
@@ -58,9 +58,9 @@ public class ThongKeRestController {
 		return ResponseEntity.ok(listDttncc);
 	}
 	
-	@GetMapping("/KhachHang/SoLuongDangKyTheoThang")
-	public ResponseEntity<Collection<SoLuongKhachDangKyTheoThangDTO>> restGetSoLuongKhachDangKyTheoThang(){
-		List<SoLuongKhachDangKyTheoThangDTO> listTknd = ndService.getTkSoLuongKhachDangKyTheoThang();
+	@GetMapping("/NguoiDung/SoLuongMoiTheoThang")
+	public ResponseEntity<Collection<SoLuongNguoiDungMoiTheoThangDTO>> restGetSoLuongNdMoiTheoThang(){
+		List<SoLuongNguoiDungMoiTheoThangDTO> listTknd = ndService.getTkSoLuongNguoiDungMoiTheoThang();
 		if(listTknd.isEmpty()) {
 			return ResponseEntity.noContent().build();
 		}

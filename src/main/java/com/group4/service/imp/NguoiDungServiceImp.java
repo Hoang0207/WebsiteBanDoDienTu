@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.group4.dao.NguoiDungDAO;
-import com.group4.dto.SoLuongKhachDangKyTheoThangDTO;
+import com.group4.dto.SoLuongNguoiDungMoiTheoThangDTO;
 import com.group4.entity.NguoiDung;
 import com.group4.service.NguoiDungService;
 import com.group4.util.SessionUtil;
@@ -48,14 +48,8 @@ public class NguoiDungServiceImp implements NguoiDungService {
 	
 	//Thống kê số lượng khách hàng
 	@Override
-	public int getSoLuongKhachHang() {
+	public int getSoLuongNguoiDung() {
 		return ndDao.findAll().size();
-	}
-
-	// Thống kê số lượng khách đăng ký theo tháng
-	@Override
-	public List<SoLuongKhachDangKyTheoThangDTO> getTkSoLuongKhachDangKyTheoThang() {
-		return null;
 	}
 
 	//Lấy người dùng từ trong session
@@ -63,6 +57,12 @@ public class NguoiDungServiceImp implements NguoiDungService {
 	public NguoiDung getInSession() {
 		NguoiDung nd = session.get("user");
 		return nd;
+	}
+
+	// Thống kê số lượng khách đăng ký theo tháng
+	@Override
+	public List<SoLuongNguoiDungMoiTheoThangDTO> getTkSoLuongNguoiDungMoiTheoThang() {
+		return ndDao.getThongKeNguoiDungMoiTheoThang();
 	}
 
 }
