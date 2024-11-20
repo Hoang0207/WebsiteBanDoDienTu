@@ -15,6 +15,7 @@ app.controller('QuanLyThuocTinhDacBietCtrl',function($http, $scope){
 		var url = `${host}/ThuocTinhDacBiet`
 		$http.get(url).then(resp => {
 			$scope.items = resp.data
+			$scope.init_page()
 			console.log("Success load all TTDB")
 		}).catch(error =>{
 			console.log("Erorr load all TTDB", error)
@@ -77,6 +78,24 @@ app.controller('QuanLyThuocTinhDacBietCtrl',function($http, $scope){
 			}
 		})
 	}
+	
+	//Phân trang start
+	$scope.page = 1
+	$scope.limit = 9
+	$scope.start = ($scope.page-1) * $scope.limit
+	//$scope.total_page = Math.ceil($scope.items.length / $scope.limit)
+	//$scope.number_of_page = Array.from(Array($scope.total_page).keys())
+	$scope.init_page = function(){
+		$scope.total_page = Math.ceil($scope.items.length / $scope.limit)
+		$scope.number_of_page = Array.from(Array($scope.total_page).keys())
+		$scope.page = 1
+		$scope.start = ($scope.page-1) * $scope.limit
+	}
+	$scope.change_page = function(i){
+		$scope.page = i
+		$scope.start = ($scope.page-1)*$scope.limit
+	}
+	//Phân trang end
 	
 	//Tự động chạy đầu tiên khi chọn tab
 	$scope.load_all()

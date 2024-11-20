@@ -26,17 +26,15 @@ public interface DonHangDAO extends JpaRepository<DonHang, Integer>{
 	
 	//Thống kê doanh thu theo chủng loại
 	@Query("SELECT new com.group4.dto.DoanhThuTheoChungLoaiDTO(sp.chungLoai.tenChungLoai, SUM(dhct.soLuong*dhct.giaTien)) "
-			+ "FROM DonHangChiTiet dhct "
-			+ "JOIN SanPham sp ON dhct.sanPham.maSanPham = sp.maSanPham "
-			//+ "JOIN ChungLoai cl ON cl.maChungLoai = sp.maCl"
-			//+ "WHERE dh.trangThai LIKE '%giao%' "
-			+ "GROUP BY sp.chungLoai.tenChungLoai ")
+			+ " FROM DonHangChiTiet dhct JOIN dhct.sanPham sp JOIN dhct.donHang dh"
+			+ " WHERE dh.trangThai LIKE '%giao%'"
+			+ " GROUP BY sp.chungLoai.tenChungLoai ")
 	List<DoanhThuTheoChungLoaiDTO> getDoanhThuTheoChungLoai();
 	
 	//Thống kê doanh thu theo nhà cung cấp
 	@Query("SELECT new com.group4.dto.DoanhThuTheoNhaCungCap(sp.nhaCungCap.tenNhaCungCap, sum(dhct.giaTien*dhct.soLuong))"
-			+ " FROM DonHangChiTiet dhct JOIN dhct.sanPham sp"
-			//+ " WHERE dh.trangThai LIKE '%giao%'"
+			+ " FROM DonHangChiTiet dhct JOIN dhct.sanPham sp JOIN dhct.donHang dh"
+			+ " WHERE dh.trangThai LIKE '%giao%'"
 			+ " GROUP BY sp.nhaCungCap.tenNhaCungCap")
 	List<DoanhThuTheoNhaCungCap> getDoanhThuTheoNhaCungCap();
 	

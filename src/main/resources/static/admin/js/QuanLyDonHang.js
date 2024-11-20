@@ -117,7 +117,7 @@ app.controller('QuanLyDonHangCtrl', function($http, $scope) {
 	
 	//Phân trang start
 	$scope.page = 1
-	$scope.limit = 10
+	$scope.limit = 9
 	$scope.start = ($scope.page-1) * $scope.limit
 	//$scope.total_page = Math.ceil($scope.items.length / $scope.limit)
 	//$scope.number_of_page = Array.from(Array($scope.total_page).keys())
