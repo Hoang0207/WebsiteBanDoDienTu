@@ -32,6 +32,7 @@
 		<java.version>21</java.version>
 	</properties>
 	<dependencies>
+	<!-- ... other dependency elements ... -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
@@ -85,6 +86,14 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-mail</artifactId>
 		</dependency>
+		
+		<!-- Thu vien security -->
+		<!-- 
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		-->
 	</dependencies>
 
 	<build>
