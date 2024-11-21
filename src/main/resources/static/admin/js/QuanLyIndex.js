@@ -8,35 +8,39 @@ app.controller('myCtrl', function($http, $scope) {
 app.config(function($routeProvider) {
 	$routeProvider
 		.when('/ThongKe', {
-			templateUrl: '/admin/html/layout/ThongKe.html',
+			templateUrl: '/admin/html/pages/ThongKe.html',
 			controller: 'thongKeCtrl'
 		})
 		.when('/QuanLyDonHang', {
-			templateUrl: '/admin/html/layout/QuanLyDonHang.html',
+			templateUrl: '/admin/html/pages/QuanLyDonHang.html',
 			controller: 'QuanLyDonHangCtrl'
 		})
 		.when('/QuanLyNguoiDung', {
-			templateUrl: '/admin/html/layout/QuanLyNguoiDung.html',
+			templateUrl: '/admin/html/pages/QuanLyNguoiDung.html',
 			controller: 'QuanLyNguoiDungCtrl'
 		})
 		.when('/QuanLySanPham', {
-			templateUrl: '/admin/html/layout/QuanLySanPham.html',
+			templateUrl: '/admin/html/pages/QuanLySanPham.html',
 			controller: 'QuanLySanPhamCtrl'
 		})
 		.when('/QuanLyChungloai', {
-			templateUrl: '/admin/html/layout/QuanLyChungloai.html',
+			templateUrl: '/admin/html/pages/QuanLyChungloai.html',
 			controller: 'QuanLyChungloaiCtrl'
 		})
 		.when('/QuanLyNhaCungCap', {
-			templateUrl: '/admin/html/layout/QuanLyNhaCungCap.html',
+			templateUrl: '/admin/html/pages/QuanLyNhaCungCap.html',
 			controller: 'QuanLyNhaCungCapCtrl'
 		})
 		.when('/QuanLyThuocTinhDacBiet', {
-			templateUrl: '/admin/html/layout/QuanLyThuocTinhDacBiet.html',
+			templateUrl: '/admin/html/pages/QuanLyThuocTinhDacBiet.html',
 			controller: 'QuanLyThuocTinhDacBietCtrl'
 		})
+		.when('/ThungRac', {
+			templateUrl: '/admin/html/pages/ThungRac.html',
+			controller: 'ThungRacCtrl'
+		})
 		.otherwise({
-			templateUrl: '/admin/html/layout/ThongKe.html',
+			templateUrl: '/admin/html/pages/ThongKe.html',
 			controller: 'thongKeCtrl'
 		})
 })

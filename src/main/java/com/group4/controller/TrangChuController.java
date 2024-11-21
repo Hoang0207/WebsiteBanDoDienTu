@@ -10,7 +10,7 @@ public class TrangChuController {
 	@GetMapping("/admin")
 	public String quanLyIndex() {
 		//Trả về trang quản lý chính thức từ static
-		return "redirect:/admin/html/QuanLyIndex.html";
+		return "redirect:/admin/html/QuanLyLayout.html";
 	}
 	
 	@GetMapping()
