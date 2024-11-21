@@ -2,11 +2,12 @@ let host = "http://localhost:8080/api";
 const app = angular.module("app", []);
 app.controller("controller", function($scope, $http){
     $scope.form = {}
+    
     $scope.items = []
     
-    $scope.reset = function(){
-        // $scope.form = {gender: true, country:'VN'};
-    }
+    $scope.list_ttdb = []
+    
+    //Load tất cả sản phẩm
     $scope.load_all = function(){
         var url = `${host}/SanPham`;
         $http.get(url).then(resp => {
@@ -16,7 +17,49 @@ app.controller("controller", function($scope, $http){
             console.log("Error", error)
         });
     }
-    $scope.edit = function(id){
+    
+    //Load tất cả thuoc tinh dac biet
+    $scope.load_all_ttdb = function(){
+		var url = `${host}/ThuocTinhDacBiet`
+		$http.get(url).then(resp => {
+			$scope.list_ttdb = resp.data
+			console.log("Success load all TTDB",resp)
+		}).catch(error => {
+			console.log("Error load all TTDB",error)
+		})
+	}
+      
+    //phan trang
+	$scope.pager = {
+		page:0,
+		size:8,
+		get items(){
+			var start = this.page * this.size;
+			return $scope.items.slice(start, start + this.size);
+		},
+		get count(){
+			return Math.ceil(1.0*$scope.items.length/ this.size)
+		},
+		first(){
+			this.page=0;
+		},
+		prev(){
+			this.page--;
+		},
+		next(){
+			this.page++;
+		},
+		last(){
+			this.page = this.count-1;
+		}
+	}
+		
+	//No use, may delete in future
+	$scope.reset = function(){
+        // $scope.form = {gender: true, country:'VN'};
+    }
+	
+	$scope.edit = function(id){
         var url = `${host}/products/${id}`;
         $http.get(url).then(resp => {
             $scope.form = resp.data;
@@ -137,30 +180,11 @@ app.controller("controller", function($scope, $http){
 				console.log(error);
 			})
 		}
-	}
-      
-    //phan trang
-	$scope.pager = {
-		page:0,
-		size:8,
-		get items(){
-			var start = this.page * this.size;
-			return $scope.items.slice(start, start + this.size);
-		},
-		get count(){
-			return Math.ceil(1.0*$scope.items.length/ this.size)
-		},
-		first(){
-			this.page=0;
-		},
-		prev(){
-			this.page--;
-		},
-		next(){
-			this.page++;
-		},
-		last(){
-			this.page = this.count-1;
-		}
-	}
+	}	
+	//
+	
+	//Tự động chạy khi mở web
+	$scope.load_all_ttdb()
+	
+
 });
