@@ -36,7 +36,7 @@ public class SanPham {
     private String hinhAnh;
 
     @Column(name = "trang_thai")
-    private Boolean trangThai;
+    private Boolean trangThai=true;
 
     @Column(name = "ma_cl", nullable = false, length = 20)
     private String maCl;

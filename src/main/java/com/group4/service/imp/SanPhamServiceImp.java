@@ -74,4 +74,9 @@ public class SanPhamServiceImp implements SanPhamService{
 		return spDao.findSuggestionsByKeyword(keyword);
 	}
 
+	@Override
+	public List<SanPham> findAllByTrangThai(Boolean trangThai) {
+		return spDao.findAllByTrangThaiIs(trangThai);
+	}
+
 }

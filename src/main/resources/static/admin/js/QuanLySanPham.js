@@ -34,7 +34,7 @@ app.controller('QuanLySanPhamCtrl', function($http, $scope) {
 
 	//Load tất cả sản phẩm
 	$scope.load_all = function() {
-		var url = `${host}/SanPham`
+		var url = `${host}/SanPham/TrangThai/true`
 		$http.get(url).then(resp => {
 			$scope.items = resp.data
 			$scope.total_page = Math.ceil($scope.items.length / $scope.limit)
@@ -173,8 +173,7 @@ app.controller('QuanLySanPhamCtrl', function($http, $scope) {
 	//Xóa sản phẩm theo id
 	$scope.delete = function(maSp, img_name) {
 		swal({
-			title: "Bạn có chắc chắn không ?",
-			text: "Khi đã xóa thì bạn không thể khôi phục lại được",
+			text: "Bạn có chắc muốn xóa không ?",
 			icon: "warning",
 			buttons: true,
 			dangerMode: true,
@@ -182,17 +181,12 @@ app.controller('QuanLySanPhamCtrl', function($http, $scope) {
 			if (willDelete) {
 				var url = `${host}/SanPham/${maSp}`
 				$http.delete(url).then(resp => {
-					if(img_name){
-						$scope.delete_img(img_name)
-					}
 					if($scope.filter_status == true){
 						$scope.filter()
 					}else{
 						$scope.load_all()
 					}
-					swal("Xóa thành công", {
-						icon: "success",
-					});
+					swal("Xóa thành công !","Bạn vẫn có thể khôi phục lại từ thùng rác nếu muốn","success")
 				}).catch(error => {
 					console.log("Error delete SanPham", error)
 				})

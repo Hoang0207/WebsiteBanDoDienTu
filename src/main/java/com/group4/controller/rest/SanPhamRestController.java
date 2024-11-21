@@ -38,6 +38,12 @@ public class SanPhamRestController {
 		return ResponseEntity.ok(listSp);
 	}
 	
+	@GetMapping("/TrangThai/{status}")
+	public ResponseEntity<Collection<SanPham>> restGetAllSpByStatus(@PathVariable("status") Boolean status){
+		List<SanPham> listSp = spService.findAllByTrangThai(status);
+		return ResponseEntity.ok(listSp);
+	}
+	
 	@GetMapping("{id}")
 	public ResponseEntity<SanPham> restGetSpById(@PathVariable("id") String id){
 		Optional<SanPham> sp = spService.findById(id);
@@ -98,7 +104,9 @@ public class SanPhamRestController {
 		if(sp.isEmpty()) {
 			return ResponseEntity.notFound().build();
 		}
-		spService.deleteById(id);
+		SanPham sanPham = sp.get();
+		sanPham.setTrangThai(false);
+		spService.save(sanPham);
 		return ResponseEntity.ok().build();
 	}
 	

@@ -17,4 +17,6 @@ public interface SanPhamDAO extends JpaRepository<SanPham, String>, JpaSpecifica
 	@Query("SELECT sp.tenSanPham FROM SanPham sp WHERE sp.tenSanPham LIKE %:keyword%")
 	List<String> findSuggestionsByKeyword(@Param("keyword") String keyword);
 	
+	@Query
+	List<SanPham> findAllByTrangThaiIs(Boolean trangThai);
 }
