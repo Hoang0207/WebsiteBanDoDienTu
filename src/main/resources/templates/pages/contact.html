@@ -29,36 +29,37 @@
 			<div class="col-lg-7 mb-5">
 				<div class="contact-form bg-light p-30">
 					<div id="success"></div>
-					<form name="sentMessage" id="contactForm" novalidate="novalidate">
-						<div class="control-group">
-							<input type="text" class="form-control" id="name"
-								placeholder="Họ và Tên" required="required"
-								data-validation-required-message="Vui lòng nhập họ và tên" />
-							<p class="help-block text-danger"></p>
-						</div>
-						<div class="control-group">
-							<input type="email" class="form-control" id="email"
-								placeholder="Email" required="required"
-								data-validation-required-message="Vui lòng nhập email" />
-							<p class="help-block text-danger"></p>
-						</div>
-						<div class="control-group">
-							<input type="text" class="form-control" id="subject"
-								placeholder="Số Điện Thoại" required="required"
-								data-validation-required-message="Vui lòng nhập Số Điện Thoại" />
-							<p class="help-block text-danger"></p>
-						</div>
-						<div class="control-group">
-							<textarea class="form-control" rows="8" id="message"
-								placeholder="Lời Nhắn" required="required"
-								data-validation-required-message="Vui lòng nhập lời nhắn"></textarea>
-							<p class="help-block text-danger"></p>
-						</div>
-						<div>
-							<button class="btn btn-primary py-2 px-4" type="submit"
-								id="sendMessageButton">Gửi tin nhắn</button>
-						</div>
-					</form>
+					<style>
+    .control-group {
+        margin-bottom: 15px; /* Khoảng cách giữa các ô */
+    }
+    .form-control {
+        width: 100%; /* Đảm bảo input và textarea chiếm toàn bộ chiều rộng */
+    }
+</style>
+
+<form action="/sendMail" method="POST">
+    <div class="control-group">
+        <input type="text" class="form-control" name="Hoten" placeholder="Họ và Tên" required>
+    </div>
+   <!-- <div class="control-group">
+        <input type="email" class="form-control" name="Email" placeholder="Email" required>
+    </div>   -->
+    <div class="control-group">
+        <input type="email" class="form-control" name="recipientEmail" placeholder="Email" required>
+    </div>
+    <div class="control-group">
+        <input type="text" class="form-control" name="Didong" placeholder="Di động" required>
+    </div>
+    <div class="control-group">
+        <textarea class="form-control" rows="8" name="Ghichu" placeholder="Ghi chú" required></textarea>
+    </div>
+    <div>
+        <button class="btn btn-primary py-2 px-4" type="submit">Gửi tin nhắn</button>
+    </div>
+</form>
+
+
 				</div>
 			</div>
 			<div class="col-lg-5 mb-5">
