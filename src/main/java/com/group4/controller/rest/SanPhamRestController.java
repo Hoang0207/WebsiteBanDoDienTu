@@ -98,6 +98,18 @@ public class SanPhamRestController {
 		return ResponseEntity.ok(sp);
 	}
 	
+	@PutMapping("/Restore/{id}")
+	public ResponseEntity<SanPham> restRestoreSp(@PathVariable("id") String id){
+		Optional<SanPham> sp = spService.findById(id);
+		if(sp.isEmpty()) {
+			return ResponseEntity.notFound().build();
+		}
+		SanPham sanPham = sp.get();
+		sanPham.setTrangThai(true);
+		spService.save(sanPham);
+		return ResponseEntity.ok(sanPham);
+	}
+	
 	@DeleteMapping("{id}")
 	public ResponseEntity<Void> restDeleteSanPham(@PathVariable("id") String id){
 		Optional<SanPham> sp = spService.findById(id);
