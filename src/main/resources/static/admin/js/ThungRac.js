@@ -6,15 +6,43 @@ app.controller('ThungRacCtrl', function($http, $scope) {
 	
 	$scope.default_image_src = "/api/file/SanPham/defaultProductPhoto.png"
 	
+	//Mở tab thùng rác của sản phẩm
+	$scope.open_tab_sanPham = function(){
+		$scope.title="sản phẩm"
+		$scope.load_all_sp_deleted()
+	}
+	
+	//Mở tab thùng rác của người dùng
+	$scope.open_tab_nguoiDung = function(){
+		$scope.title="người dùng"
+		$scope.load_all_nd_deleted()
+	}
+	
+	//Mở tab thùng rác của đơn hàng
+	$scope.open_tab_donHang = function(){
+		$scope.title="đơn hàng"
+		$scope.items = []
+	}
+	
 	//Load tất cả những sản phẩm đã bị vô hiệu hóa
 	$scope.load_all_sp_deleted = function(){
 		var url = `${host}/SanPham/TrangThai/false`
 		$http.get(url).then(resp => {
-			$scope.title="sản phẩm"
 			$scope.items = resp.data
 			console.log("Success load all deleted SanPham")
 		}).catch(error => {
 			console.log("Error load all deleted SanPham", error)
+		})
+	}
+	
+	//Load tất cả những người dùng đã bị vô hiệu hóa
+	$scope.load_all_nd_deleted = function(){
+		var url = `${host}/NguoiDung/TrangThai/false`
+		$http.get(url).then(resp => {
+			$scope.items = resp.data
+			console.log("Success load all Nd deleted")
+		}).catch(error => {
+			console.log("Error laod all Nd deleted",error)
 		})
 	}
 	
@@ -28,6 +56,18 @@ app.controller('ThungRacCtrl', function($http, $scope) {
 			swal("Thành công !","Khôi phục sản phẩm thành công","success")
 		}).catch(error => {
 			console.log("Error restore SanPham",error)
+		})
+	}
+	
+	//Khôi phục lại trạng thái của người dùng thành đã kích hoạt
+	$scope.restore_nd = function(maNd){
+		var url = `${host}/NguoiDung/Restore/${maNd}`
+		$http.put(url).then(resp => {
+			index = $scope.items.findIndex(item => item.maNguoiDung = resp.data.maNguoiDung)
+			$scope.items.splice(index,1)
+			swal("Thành công !","Khôi phục người dùng thành công","success")
+		}).catch(error => {
+			console.log("Error restore NguoiDung",error)
 		})
 	}
 	
@@ -69,6 +109,6 @@ app.controller('ThungRacCtrl', function($http, $scope) {
 	}
 	
 	//Tự động chạy khi mở tab ThungRac
-	$scope.load_all_sp_deleted()
+	$scope.open_tab_sanPham()
 	attachOrderButtonEvents()
 })

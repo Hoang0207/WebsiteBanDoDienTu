@@ -17,4 +17,7 @@ public interface NguoiDungDAO extends JpaRepository<NguoiDung, String>{
 			+ " GROUP BY YEAR(nd.ngayDangKy), MONTH(nd.ngayDangKy)")
 	List<SoLuongNguoiDungMoiTheoThangDTO> getThongKeNguoiDungMoiTheoThang();
 	
+	//Lấy danh sách người dùng theo trạng thái
+	@Query
+	List<NguoiDung> findAllByTrangThaiIs(Boolean trangThai);
 }

@@ -37,6 +37,12 @@ public class NguoiDungRestController {
 		return ResponseEntity.ok(listNd);
 	}
 	
+	@GetMapping("/TrangThai/{status}")
+	public ResponseEntity<Collection<NguoiDung>> restGetAllNdByTrangThai(@PathVariable("status") Boolean trangThai){
+		List<NguoiDung> listNd = ndService.findAllByTrangThai(trangThai);
+		return ResponseEntity.ok(listNd);
+	}
+	
 	@GetMapping("{id}")
 	public ResponseEntity<NguoiDung> restGetNdById(@PathVariable("id") String id){
 		Optional<NguoiDung> nd = ndService.findById(id);
@@ -78,12 +84,27 @@ public class NguoiDungRestController {
 		return ResponseEntity.ok(nd);
 	}
 	
-	@DeleteMapping("{id}")
-	public ResponseEntity<Void> restDeleteNguoiDung(@PathVariable("id") String id){
-		if(!ndService.existsById(id)) {
+	@PutMapping("/Restore/{id}")
+	public ResponseEntity<NguoiDung> restRestoreNguoiDung(@PathVariable("id") String maNd){
+		Optional<NguoiDung> nd = ndService.findById(maNd);
+		if(nd.isEmpty()) {
 			return ResponseEntity.notFound().build();
 		}
-		ndService.deleteById(id);
+		NguoiDung nguoiDung = nd.get();
+		nguoiDung.setTrangThai(true);
+		ndService.save(nguoiDung);
+		return ResponseEntity.ok(nguoiDung);
+	}
+	
+	@DeleteMapping("{id}")
+	public ResponseEntity<Void> restDeleteNguoiDung(@PathVariable("id") String id){
+		Optional<NguoiDung> nd = ndService.findById(id);
+		if(nd.isEmpty()) {
+			return ResponseEntity.notFound().build();
+		}
+		NguoiDung nguoiDung = nd.get();
+		nguoiDung.setTrangThai(false);
+		ndService.save(nguoiDung);
 		return ResponseEntity.ok().build();
 	}
 	

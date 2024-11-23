@@ -10,6 +10,8 @@ public interface NguoiDungService {
 	
 	public List<NguoiDung> findAll();
 	
+	public List<NguoiDung> findAllByTrangThai(Boolean trangThai);
+	
 	public Optional<NguoiDung> findById(String id);
 	
 	public NguoiDung getInSession();

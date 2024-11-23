@@ -65,4 +65,9 @@ public class NguoiDungServiceImp implements NguoiDungService {
 		return ndDao.getThongKeNguoiDungMoiTheoThang();
 	}
 
+	@Override
+	public List<NguoiDung> findAllByTrangThai(Boolean trangThai) {
+		return ndDao.findAllByTrangThaiIs(trangThai);
+	}
+
 }
