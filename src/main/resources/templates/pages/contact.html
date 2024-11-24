@@ -1,88 +1,157 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liên hệ</title>
+    <style>
+        /* Các kiểu chung cho form */
+        .control-group {
+            margin-bottom: 15px;
+        }
+
+        .form-control {
+            width: 100%;
+        }
+
+        /* Kiểu cho thông báo */
+        .alert {
+            padding: 15px 20px;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            z-index: 1000;
+            display: none;
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0.8);
+            transition: all 0.5s ease-in-out;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Màu sắc cho các trạng thái */
+        .alert-success {
+            background-color: #28a745;
+            color: #fff;
+            border: 1px solid #218838;
+        }
+
+        .alert-error {
+            background-color: #dc3545;
+            color: #fff;
+            border: 1px solid #c82333;
+        }
+
+        /* Hiển thị thông báo */
+        .alert.show {
+            display: block;
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
+    </style>
 </head>
-<body ng-controller="controller">
-	<!-- Breadcrumb Start -->
-	<div class="container-fluid">
-		<div class="row px-xl-5">
-			<div class="col-12">
-				<nav class="breadcrumb bg-light mb-30">
-					<a class="breadcrumb-item text-dark" href="#">Trang Chủ</a> <span
-						class="breadcrumb-item active">Liên hệ</span>
-				</nav>
-			</div>
-		</div>
-	</div>
-	<!-- Breadcrumb End -->
+<body>
 
+    <!-- Breadcrumb Start -->
+    <div class="container-fluid">
+        <div class="row px-xl-5">
+            <div class="col-12">
+                <nav class="breadcrumb bg-light mb-30">
+                    <a class="breadcrumb-item text-dark" href="#">Trang Chủ</a>
+                    <span class="breadcrumb-item active">Liên hệ</span>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb End -->
 
-	<!-- Contact Start -->
-	<div class="container-fluid">
-		<h2
-			class="section-title position-relative text-uppercase mx-xl-5 mb-4">
-			<span class="bg-secondary pr-3"></span>
-		</h2>
-		<div class="row px-xl-5">
-			<div class="col-lg-7 mb-5">
-				<div class="contact-form bg-light p-30">
-					<div id="success"></div>
-					<style>
-    .control-group {
-        margin-bottom: 15px; /* Khoảng cách giữa các ô */
-    }
-    .form-control {
-        width: 100%; /* Đảm bảo input và textarea chiếm toàn bộ chiều rộng */
-    }
-</style>
+    <!-- Contact Start -->
+    <div class="container-fluid">
+        <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4">
+            <span class="bg-secondary pr-3"></span>
+        </h2>
+        <div class="row px-xl-5">
+            <div class="col-lg-7 mb-5">
+                <div class="contact-form bg-light p-30">
+                    <!-- Thông báo sẽ được hiển thị ở đây -->
+                    <div id="alertMessage" class="alert"></div>
 
-<form action="/sendMail" method="POST">
-    <div class="control-group">
-        <input type="text" class="form-control" name="Hoten" placeholder="Họ và Tên" required>
-    </div>
-   <!-- <div class="control-group">
-        <input type="email" class="form-control" name="Email" placeholder="Email" required>
-    </div>   -->
-    <div class="control-group">
-        <input type="email" class="form-control" name="recipientEmail" placeholder="Email" required>
-    </div>
-    <div class="control-group">
-        <input type="text" class="form-control" name="Didong" placeholder="Di động" required>
-    </div>
-    <div class="control-group">
-        <textarea class="form-control" rows="8" name="Ghichu" placeholder="Ghi chú" required></textarea>
-    </div>
-    <div>
-        <button class="btn btn-primary py-2 px-4" type="submit">Gửi tin nhắn</button>
-    </div>
-</form>
+                    <form id="contactForm" action="/sendMail" method="POST" onsubmit="return sendMail(event)">
+                        <div class="control-group">
+                            <input type="text" class="form-control" name="Hoten" placeholder="Họ và Tên" required>
+                        </div>
+                        <div class="control-group">
+                            <input type="email" class="form-control" name="recipientEmail" placeholder="Email" required>
+                        </div>
+                        <div class="control-group">
+                            <input type="text" class="form-control" name="Didong" placeholder="Di động" required>
+                        </div>
+                        <div class="control-group">
+                            <textarea class="form-control" rows="8" name="Ghichu" placeholder="Ghi chú" required></textarea>
+                        </div>
+                        <div>
+                            <button class="btn btn-primary py-2 px-4" type="submit">Gửi tin nhắn</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
 
+            <div class="col-lg-5 mb-5">
+                <div class="bg-light p-30 mb-30">
+                    <iframe style="width: 100%; height: 250px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.892748597403!2d106.62943881473616!3d10.776936792323118!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317529f5f1d16d89%3A0x7d032af17f0d472b!2sDistrict%201%2C%20Ho%20Chi%20Minh%20City%2C%20Vietnam!5e0!3m2!1sen!2sbd!4v1603794290143!5m2!1sen!2sbd" frameborder="0" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                </div>
+                <div class="bg-light p-30 mb-3">
+                    <p class="mb-2">
+                        <i class="fa fa-map-marker-alt text-primary mr-3"></i>Hcm
+                    </p>
+                    <p class="mb-2">
+                        <i class="fa fa-envelope text-primary mr-3"></i>info@example.com
+                    </p>
+                    <p class="mb-2">
+                        <i class="fa fa-phone-alt text-primary mr-3"></i>+012 345 67890
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Contact End -->
 
-				</div>
-			</div>
-			<div class="col-lg-5 mb-5">
-				<div class="bg-light p-30 mb-30">
-					<iframe style="width: 100%; height: 250px;"
-						src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.892748597403!2d106.62943881473616!3d10.776936792323118!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317529f5f1d16d89%3A0x7d032af17f0d472b!2sDistrict%201%2C%20Ho%20Chi%20Minh%20City%2C%20Vietnam!5e0!3m2!1sen!2sbd!4v1603794290143!5m2!1sen!2sbd"
-						frameborder="0" allowfullscreen="" aria-hidden="false"
-						tabindex="0"></iframe>
-				</div>
-				<div class="bg-light p-30 mb-3">
-					<p class="mb-2">
-						<i class="fa fa-map-marker-alt text-primary mr-3"></i>Hcm
-					</p>
-					<p class="mb-2">
-						<i class="fa fa-envelope text-primary mr-3"></i>info@example.com
-					</p>
-					<p class="mb-2">
-						<i class="fa fa-phone-alt text-primary mr-3"></i>+012 345 67890
-					</p>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- Contact End -->
+    <script>
+        // Xử lý gửi email
+        function sendMail(event) {
+            event.preventDefault(); // Ngăn form gửi đi để xử lý
+            const form = document.getElementById("contactForm");
+            const formData = new FormData(form);
+
+            fetch('/sendMail', {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => {
+                    if (!response.ok) throw new Error("Lỗi trong quá trình gửi");
+                    return response.json();
+                })
+                .catch(success => {
+                    showAlert("Đã gửi tin nhắn thành công!", "success");
+                })
+        }
+
+        // Hàm hiển thị thông báo
+        function showAlert(message, type) {
+            const alertMessage = document.getElementById("alertMessage");
+            alertMessage.textContent = message;
+
+            // Xác định loại thông báo
+            alertMessage.className = `alert alert-${type}`;
+            alertMessage.classList.add("show");
+
+            // Ẩn thông báo sau 3 giây
+            setTimeout(() => {
+                alertMessage.classList.remove("show");
+            }, 3000);
+        }
+    </script>
 </body>
 </html>

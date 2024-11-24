@@ -31,16 +31,26 @@ public class LienHeController {
     @PostMapping("/sendMail")
     public String sendMail(
             @RequestParam("Hoten") String Hoten,
-      //      @RequestParam("Email") String Email,
             @RequestParam("Didong") String Didong,
             @RequestParam("Ghichu") String Ghichu,
-            @RequestParam("recipientEmail") String recipientEmail, // Email người nhận từ form
+            @RequestParam("recipientEmail") String recipientEmail,
             Model model) {
-        
-        String body = " Họ tên: " + Hoten +"\n\sEmail: " + recipientEmail + "\n\sDi động:" +Didong+ "\n\nGhi chu:\n" + Ghichu;
-        mailService.push(recipientEmail,"Yêu cầu hỗ trợ từ người dùng", body);
-        model.addAttribute("successMessage", "Gửi email thành công!");
-        
+
+        try {
+            // Dùng định dạng HTML để hỗ trợ xuống dòng
+            String body = "Họ tên: " + Hoten 
+                        + "<br>Email: " + recipientEmail 
+                        + "<br>Di động: " + Didong 
+                        + "<br><br>Ghi chú:<br>" + Ghichu;
+
+            // Gửi email qua MailerService
+            mailService.push(recipientEmail, "Yêu cầu hỗ trợ từ người dùng", body);
+
+            model.addAttribute("successMessage", "Gửi email thành công!");
+        } catch (Exception e) {
+            model.addAttribute("errorMessage", "Đã xảy ra lỗi khi gửi email: " + e.getMessage());
+        }
+
         model.addAttribute("content", "/pages/contact");
         return "indexLayout";
     }
