@@ -34,6 +34,9 @@ public class DonHang {
 
     @Column(name = "ma_nd", nullable = false, length = 50)
     private String maNd;
+    
+    @Column(name = "is_active", nullable = false)
+    private Boolean isActive=true;
 
     // Mối quan hệ với NguoiDung
     @ManyToOne

@@ -3,6 +3,7 @@ package com.group4.controller.rest;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.group4.dao.DonHangDAO;
 import com.group4.entity.DonHang;
+import com.group4.entity.NguoiDung;
 import com.group4.service.DonHangService;
 import com.group4.service.MailerService;
 
@@ -38,6 +40,12 @@ public class DonHangRestController {
 		if(listDh.isEmpty()) {
 			return ResponseEntity.noContent().build();
 		}
+		return ResponseEntity.ok(listDh);
+	}
+	
+	@GetMapping("/IsActive/{status}")
+	public ResponseEntity<Collection<DonHang>> restGetAllDonHangByIsActive(@PathVariable("status") Boolean status){
+		List<DonHang> listDh = dhService.findAllByIsActive(status);
 		return ResponseEntity.ok(listDh);
 	}
 	
@@ -62,7 +70,9 @@ public class DonHangRestController {
 		if(listDh.isEmpty()) {
 			return ResponseEntity.noContent().build();
 		}
-		return ResponseEntity.ok(listDh);
+		//Lọc ra những đơn hàng không bị xóa
+		List<DonHang> activeListDh = listDh.stream().filter(dh -> dh.getIsActive()==true).collect(Collectors.toList());
+		return ResponseEntity.ok(activeListDh);
 	}
 	
 	@GetMapping("/Order")
@@ -91,12 +101,25 @@ public class DonHangRestController {
 		return ResponseEntity.ok(dh);
 	}
 	
+	@PutMapping("/Restore/{id}")
+	public ResponseEntity<DonHang> restRestoreDh(@PathVariable("id") Integer id){
+		if(!dhService.existsById(id)) {
+			return ResponseEntity.notFound().build();
+		}
+		DonHang dh = dhService.findById(id).get();
+		dh.setIsActive(true);
+		dhService.save(dh);
+		return ResponseEntity.ok(dh);
+	}
+	
 	@DeleteMapping("{id}")
 	public ResponseEntity<Void> restDeleteDh(@PathVariable("id") Integer id){
 		if(!dhService.existsById(id)) {
 			return ResponseEntity.notFound().build();
 		}
-		dhService.deleteById(id);
+		DonHang dh = dhService.findById(id).get();
+		dh.setIsActive(false);
+		dhService.save(dh);
 		return ResponseEntity.ok().build();
 	}
 	

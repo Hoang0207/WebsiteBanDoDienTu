@@ -143,7 +143,6 @@ public class NguoiDungServiceImp implements NguoiDungService, UserDetailsService
 	@Override
 	public List<NguoiDung> findAllByTrangThai(Boolean trangThai) {
 		return ndDao.findAllByTrangThaiIs(trangThai);
-	}
-     
-     */
+	}*/
+
 }

@@ -22,6 +22,8 @@ public interface DonHangService {
 	
 	public void deleteById(int id);
 	
+	public List<DonHang> findAllByIsActive(Boolean status);
+	
 	public List<DonHang> findAllByTrangThai(String trangThai);
 	
 	//Thống kê số lượng đơn hàng

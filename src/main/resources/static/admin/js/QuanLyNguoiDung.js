@@ -72,7 +72,7 @@ app.controller('QuanLyNguoiDungCtrl', function($http, $scope) {
 
 	//load tat ca nguoi dung
 	$scope.load_all = function() {
-		var url = `${host}/NguoiDung`
+		var url = `${host}/NguoiDung/TrangThai/true`
 		$http.get(url).then(resp => {
 			$scope.items = resp.data
 			$scope.init_page()
@@ -189,10 +189,9 @@ app.controller('QuanLyNguoiDungCtrl', function($http, $scope) {
 	}
 
 	//Xóa người dùng
-	$scope.delete = function(maNd, image_name) {
+	$scope.delete = function(maNd) {
 		swal({
-			title: "Bạn có chắc chắn không ?",
-			text: "Khi đã xóa thì bạn không thể khôi phục lại được",
+			text: "Bạn có muốn xóa người dùng này không ?",
 			icon: "warning",
 			buttons: true,
 			dangerMode: true,
@@ -200,11 +199,8 @@ app.controller('QuanLyNguoiDungCtrl', function($http, $scope) {
 			if (willDelete) {
 				var url = `${host}/NguoiDung/${maNd}`
 				$http.delete(url).then(resp => {
-					if (image_name) {
-						$scope.delete_image(image_name)
-					}
 					$scope.load_all()
-					swal("Xóa thành công", { icon: "success", });
+					swal("Xóa thành công !","Bạn vẫn có thể khôi phục lại trong thùng rác nếu muốn","success")
 				}).catch(error => {
 					console.log("Error delete NguoiDung", error)
 				})

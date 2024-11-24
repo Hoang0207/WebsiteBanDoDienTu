@@ -21,9 +21,9 @@ public interface NguoiDungDAO extends JpaRepository<NguoiDung, String>{
 	//Lấy danh sách người dùng theo trạng thái
 	@Query
 	List<NguoiDung> findAllByTrangThaiIs(Boolean trangThai);
-	
+  
 	//Tìm người dùng theo email
 	@Query
 	Optional<NguoiDung> findByEmail(String email);
-
+  
 }
