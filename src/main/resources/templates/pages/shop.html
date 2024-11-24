@@ -25,130 +25,80 @@
 		<div class="row px-xl-5">
 			<!-- Shop Sidebar Start -->
 			<div class="col-lg-3 col-md-4">
-				<!-- Price Start -->
+				<!-- Price Filter Start -->
 				<h5 class="section-title position-relative text-uppercase mb-3">
 					<span class="bg-secondary pr-3">Lọc Theo Giá</span>
 				</h5>
 				<div class="bg-light p-4 mb-30">
 					<form>
-						<div
-							class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-							<input type="checkbox" class="custom-control-input" checked
-								id="price-all"> <label class="custom-control-label"
-								for="price-all">Giá</label> <span
-								class="badge border font-weight-normal">1000</span>
+						<div class="form-group">
+							<label for="price-min">Giá thấp nhất:</label> <input
+								type="number" class="form-control" id="price-min"
+								placeholder="Nhập giá tối thiểu">
 						</div>
-						<div
-							class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-							<input type="checkbox" class="custom-control-input" id="price-1">
-							<label class="custom-control-label" for="price-1">5 triệu
-								- 10 triệu</label> <span class="badge border font-weight-normal">150</span>
+						<div class="form-group">
+							<label for="price-max">Giá cao nhất:</label> <input type="number"
+								class="form-control" id="price-max"
+								placeholder="Nhập giá tối đa">
 						</div>
-						<div
-							class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-							<input type="checkbox" class="custom-control-input" id="price-1">
-							<label class="custom-control-label" for="price-1">12
-								triệu - 20 triệu</label> <span class="badge border font-weight-normal">150</span>
-						</div>
-						<div
-							class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-							<input type="checkbox" class="custom-control-input" id="price-1">
-							<label class="custom-control-label" for="price-1">20
-								triệu - 30 triệu</label> <span class="badge border font-weight-normal">150</span>
-						</div>
-						<div
-							class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-							<input type="checkbox" class="custom-control-input" id="price-1">
-							<label class="custom-control-label" for="price-1">30
-								triệu ↑ </label> <span class="badge border font-weight-normal">150</span>
-						</div>
+
 					</form>
 				</div>
-				
-				<!-- Price Start -->
+				<!-- Price Filter End -->
+
+				<!-- Category Filter Start -->
 				<h5 class="section-title position-relative text-uppercase mb-3">
 					<span class="bg-secondary pr-3">Lọc Theo Chủng Loại</span>
 				</h5>
 				<div class="bg-light p-4 mb-30">
 					<form>
+						<div class="form-group">
+							<label for="category-select">Chọn Chủng Loại:</label> <select
+								class="form-control" id="category-select">
+								<option value="">Tất cả</option>
+								<option value="laptop">Laptop</option>
+								<option value="pc">PC</option>
+								<option value="parts">Linh Kiện</option>
+								<option value="printer">Máy In</option>
+							</select>
+						</div>
 
-						<div
-							class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-							<input type="checkbox" class="custom-control-input" id="price-1">
-							<label class="custom-control-label" for="price-1">Laptop</label>
-							<span class="badge border font-weight-normal">150</span>
-						</div>
-						<div
-							class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-							<input type="checkbox" class="custom-control-input" id="price-1">
-							<label class="custom-control-label" for="price-1">PC</label> <span
-								class="badge border font-weight-normal">150</span>
-						</div>
-						<div
-							class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-							<input type="checkbox" class="custom-control-input" id="price-1">
-							<label class="custom-control-label" for="price-1">Linh
-								Kiện</label> <span class="badge border font-weight-normal">150</span>
-						</div>
-						<div
-							class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-							<input type="checkbox" class="custom-control-input" id="price-1">
-							<label class="custom-control-label" for="price-1">Máy in
-							</label> <span class="badge border font-weight-normal">150</span>
-						</div>
 					</form>
 				</div>
+				<!-- Category Filter End -->
+
+				<!-- Supplier Filter Start -->
 				<h5 class="section-title position-relative text-uppercase mb-3">
 					<span class="bg-secondary pr-3">Lọc Theo Nhà Cung Cấp</span>
 				</h5>
 				<div class="bg-light p-4 mb-30">
 					<form>
+						<div class="form-group">
+							<label for="supplier-select">Chọn Nhà Cung Cấp:</label> <select
+								class="form-control" id="supplier-select">
+								<option value="">Tất cả</option>
+								<option value="msi">MSI</option>
+								<option value="acer">ACER</option>
+								<option value="asus">ASUS</option>
+								<option value="hp">HP</option>
+								<option value="sony">Sony</option>
+								<option value="corsair">Corsair</option>
+							</select>
+						</div>
 
-						<div
-							class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-							<input type="checkbox" class="custom-control-input" id="price-1">
-							<label class="custom-control-label" for="price-1">MSI</label>
-							<span class="badge border font-weight-normal">150</span>
-						</div>
-						<div
-							class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-							<input type="checkbox" class="custom-control-input" id="price-1">
-							<label class="custom-control-label" for="price-1">ACER</label> <span
-								class="badge border font-weight-normal">150</span>
-						</div>
-						<div
-							class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-							<input type="checkbox" class="custom-control-input" id="price-1">
-							<label class="custom-control-label" for="price-1">ASUS</label> <span class="badge border font-weight-normal">150</span>
-						</div>
-						<div
-							class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-							<input type="checkbox" class="custom-control-input" id="price-1">
-							<label class="custom-control-label" for="price-1">HP
-							</label> <span class="badge border font-weight-normal">150</span>
-						</div>
-						<div
-							class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-							<input type="checkbox" class="custom-control-input" id="price-1">
-							<label class="custom-control-label" for="price-1">Sony
-							</label> <span class="badge border font-weight-normal">150</span>
-						</div>
-							<div
-							class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-							<input type="checkbox" class="custom-control-input" id="price-1">
-							<label class="custom-control-label" for="price-1">Corsair
-							</label> <span class="badge border font-weight-normal">150</span>
-						</div>
 					</form>
+
 				</div>
-				<!-- Price End -->
+				<div class="form-actions text-center">
+					<button type="button" class="btn btn-dark"
+						onclick="resetSupplierFilter()">Xóa Lọc</button>
 
-
-
-				<!-- Size Start -->
-
-				<!-- Size End -->
+					<button type="submit" class="btn btn-primary">Lọc</button>
+				</div>
+				<!-- Supplier Filter End -->
 			</div>
+
+
 			<!-- Shop Sidebar End -->
 
 
@@ -167,7 +117,7 @@
 									<i class="fa fa-bars"></i>
 								</button>
 							</div>
-							
+
 						</div>
 					</div>
 					<div ng-repeat="pro in pager.items | filter: searchText"
@@ -178,12 +128,12 @@
 									ng-src="{{'/api/file/SanPham/'+pro.hinhAnh}}" alt=""
 									style="object-fit: cover; height: 200px;">
 								<div class="product-action">
-									<a class="btn btn-outline-dark btn-square" ng-href="{{'/detail/'+pro.maSanPham}}">
-										<!--  <button ng-click="cart.add(pro.maSanPham)">-->
+									<a class="btn btn-outline-dark btn-square"
+										ng-href="{{'/detail/'+pro.maSanPham}}"> <!--  <button ng-click="cart.add(pro.maSanPham)">-->
 										<button>
 											<i class="fa fa-shopping-cart"></i>
 										</button>
-									</a> 
+									</a>
 								</div>
 							</div>
 							<div class="text-center py-4 flex-grow-1"
@@ -198,8 +148,8 @@
 									{{pro.chungLoai.tenChungLoai}} </a> <a
 									class="h6 text-decoration-none text-truncate" href=""
 									style="max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-									{{pro.nhaCungCap.tenNhaCungCap}} </a>
-									<a class="h6 text-decoration-none text-truncate" href=""
+									{{pro.nhaCungCap.tenNhaCungCap}} </a> <a
+									class="h6 text-decoration-none text-truncate" href=""
 									style="max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
 									Số Lượng {{pro.soLuong}} </a>
 

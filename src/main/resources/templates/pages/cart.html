@@ -36,14 +36,16 @@
 					</thead>
 					<tbody class="align-middle">
 						<tr ng-repeat="item in items">
-							<td class="align-middle"><img ng-src="{{'/api/file/SanPham/'+item.sanPham.hinhAnh}}" alt=""
+							<td class="align-middle"><img
+								ng-src="{{'/api/file/SanPham/'+item.sanPham.hinhAnh}}" alt=""
 								style="width: 50px;">{{item.sanPham.tenSanPham}}</td>
-							<td class="align-middle">{{item.sanPham.giaTien|number:0}} VND</td>
+							<td class="align-middle">{{item.sanPham.giaTien|number:0}}
+								VND</td>
 							<td class="align-middle">
 								<div class="input-group quantity mx-auto" style="width: 100px;">
 									<div class="input-group-btn">
-										<button class="btn btn-sm btn-primary btn-minus" 
-										ng-click="update_gh(item.maGioHang,item.maNd,item.maSp,item.soLuong-1,item.nguoiDung,item.sanPham)">
+										<button class="btn btn-sm btn-primary btn-minus"
+											ng-click="update_gh(item.maGioHang,item.maNd,item.maSp,item.soLuong-1,item.nguoiDung,item.sanPham)">
 											<i class="fa fa-minus"></i>
 										</button>
 									</div>
@@ -52,16 +54,19 @@
 										ng-model="item.soLuong" type="text" readonly="readonly"
 										class="form-control form-control-sm bg-secondary border-0 text-center">
 									<div class="input-group-btn">
-										<button class="btn btn-sm btn-primary btn-plus" 
+										<button class="btn btn-sm btn-primary btn-plus"
 											ng-click="update_gh(item.maGioHang,item.maNd,item.maSp,item.soLuong+1,item.nguoiDung,item.sanPham)">
 											<i class="fa fa-plus"></i>
 										</button>
 									</div>
 								</div>
 							</td>
-							<td class="align-middle">{{item.soLuong*item.sanPham.giaTien|number:0}} VND</td>
+							<td class="align-middle">{{item.soLuong*item.sanPham.giaTien|number:0}}
+								VND</td>
 							<td class="align-middle">
-								<button ng-click="delete(item.maGioHang)"><i class="fa fa-times"></i></button>
+								<button ng-click="delete(item.maGioHang)">
+									<i class="fa fa-times"></i>
+								</button>
 							</td>
 						</tr>
 					</tbody>
@@ -96,13 +101,36 @@
 							<h5>Tổng Cộng</h5>
 							<h5>{{sum_money|number:0}} VND</h5>
 						</div>
-						<a ng-click="order()"
+						<!-- <a ng-click="order()"
 							class="btn btn-block btn-primary font-weight-bold my-3 py-3">Tiến
-							Hành Đặt Hàng</a>
+							Hành Đặt Hàng</a> -->
 					</div>
 				</div>
+				<h5 class="section-title position-relative text-uppercase mb-3">
+					<span class="bg-secondary pr-3">Thông Tin Đặt Hàng</span>
+				</h5>
+				<div class="bg-light p-30 mb-5">
+
+					<!-- Thêm ô nhập địa chỉ -->
+					<div class="form-group">
+						<label for="address">Địa chỉ:</label> 
+						<input type="text"
+							class="form-control" id="address"
+							placeholder="Nhập địa chỉ của bạn" required>
+					</div>
+
+					<!-- Thêm ô nhập số điện thoại -->
+
+
+					<!-- Nút đặt hàng -->
+					<a ng-click="order()"
+						class="btn btn-block btn-primary font-weight-bold my-3 py-3">Tiến
+						Hành Đặt Hàng</a>
+				</div>
+
 			</div>
 		</div>
+	</div>
 	</div>
 	<!-- Cart End -->
 </body>
