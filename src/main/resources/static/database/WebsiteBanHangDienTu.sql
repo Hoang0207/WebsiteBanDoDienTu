@@ -8,7 +8,7 @@ GO
 
 CREATE TABLE nguoi_dung(
 	ma_nguoi_dung VARCHAR(50) NOT NULL PRIMARY KEY,
-	mat_khau VARCHAR(100) NOT NULL,
+	mat_khau TEXT NOT NULL,
 	ho_ten NVARCHAR (200) NOT NULL,
 	gioi_tinh BIT NOT NULL,
 	ngay_sinh DATE,

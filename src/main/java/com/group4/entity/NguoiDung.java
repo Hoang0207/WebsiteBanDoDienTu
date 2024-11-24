@@ -21,7 +21,7 @@ public class NguoiDung {
     @Column(name = "ma_nguoi_dung", nullable = false, length = 50)
     private String maNguoiDung;
 
-    @Column(name = "mat_khau", nullable = false, length = 50)
+    @Column(name = "mat_khau", nullable = false, columnDefinition = "TEXT")
     private String matKhau;
 
     @Column(name = "ho_ten", nullable = false, length = 100)
