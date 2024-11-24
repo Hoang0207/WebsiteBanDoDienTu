@@ -64,7 +64,7 @@
 					<td class="pt-4">{{nd.email}}</td>
 					<td class="pt-4">{{nd.soDienThoai}}</td>
 					<td class="ps-3 pt-3">
-						<img alt="" data-bs-toggle="modal" data-bs-target="#modalSanPham" ng-click="watch_sp(sp.maSanPham)" class="img-fluid imgAction me-2" src="/admin/image/xemBtn.png">
+						<img alt="" class="img-fluid imgAction me-2" src="/admin/image/xemBtn.png">
 						<img alt="" class="img-fluid imgAction" ng-click="restore_nd(nd.maNguoiDung)" src="/admin/image/khoiPhucBtn.png">
 					</td>
 				</tr>
@@ -89,8 +89,8 @@
 					<td class="pt-3" >{{dh.ngayLapDon}}</td>
 					<td class="pt-3" >{{dh.trangThai}}</td>
 					<td class="ps-3">
-						<img alt="" class="img-fluid imgAction me-2" src="/admin/image/editIcon.png" ng-click="load_by_id(dh.maDonHang)" data-bs-toggle="modal" data-bs-target="#modalDonHang">
-						<img alt="" class="img-fluid imgAction" src="/admin/image/deleteIcon.png" ng-click="delete(dh.maDonHang)">
+						<img alt="" class="img-fluid imgAction me-2" src="/admin/image/xemBtn.png">
+						<img alt="" class="img-fluid imgAction" src="/admin/image/khoiPhucBtn.png" ng-click="restore_dh(dh.maDonHang)">
 					</td>
 				</tr>
 			</tbody>

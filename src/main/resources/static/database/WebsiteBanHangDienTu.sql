@@ -80,6 +80,7 @@ CREATE TABLE don_hang(
 	dia_chi_giao NVARCHAR(200) NOT NULL,
 	trang_thai NVARCHAR(50) NOT NULL,
 	ma_nd VARCHAR(50) NOT NULL,
+	is_active BIT NOT NULL,
 	FOREIGN KEY (ma_nd) REFERENCES nguoi_dung(ma_nguoi_dung)
 )
 
@@ -231,21 +232,21 @@ INSERT INTO gio_hang VALUES
 
 
 INSERT INTO don_hang VALUES
-	('2024-6-3', N'293 Nam Kỳ Khởi Nghĩa, TP.HCM', N'Chờ xác nhận', 'hoang0207'),
-	('2024-6-3', N'85 Phan Kế Bính, Đa Kao, Quận 1, Hồ Chí Minh', N'Đang xử lý', 'hoa232'),
-	('2024-6-3', N'85 Phan Kế Bính, Đa Kao, Quận 1, Hồ Chí Minh', N'Đang vận chuyển', 'hoa232'),
-	('2024-6-3', N'142 Nguyễn Văn Công, Phường 3, Gò Vấp, Hồ Chí Minh', N'Đã giao', 'thanh222'),
-	('2024-7-3', N'142 Nguyễn Văn Công, Phường 3, Gò Vấp, Hồ Chí Minh', N'Đã giao', 'thanh222'),
-	('2024-7-3', N'345 Tô Ký, Trung Mỹ Tây, Quận 12, Hồ Chí Minh', N'Đã giao', 'long888'),
-	('2024-7-3', N'345 Tô Ký, Trung Mỹ Tây, Quận 12, Hồ Chí Minh', N'Đã giao', 'long888'),
-	('2024-7-3', N'141 Lê Thị Nho, Trung Mỹ Tây, Quận 12, Hồ Chí Minh', N'Đã hủy', 'thang443'),
-	('2024-8-3', N'194 Hoàng Văn Thụ, Phường 9, Phú Nhuận, Hồ Chí Minh', N'Đã giao', 'linh775'),
-	('2024-8-5', N'345 Tô Ký, Trung Mỹ Tây, Quận 12, Hồ Chí Minh', N'Đã giao', 'long888'),
-	('2024-8-8', N'142 Nguyễn Văn Công, Phường 3, Gò Vấp, Hồ Chí Minh', N'Đã hủy', 'thanh222'),
-	('2024-9-3', N'85 Phan Kế Bính, Đa Kao, Quận 1, Hồ Chí Minh', N'Đang vận chuyển', 'hoa232'),
-	('2024-9-3', N'293 Nam Kỳ Khởi Nghĩa, TP.HCM', N'Chờ xác nhận', 'hoang0207'),
-	('2024-10-5', N'345 Tô Ký, Trung Mỹ Tây, Quận 12, Hồ Chí Minh', N'Đã giao', 'long888'),
-	('2024-10-3', N'85 Phan Kế Bính, Đa Kao, Quận 1, Hồ Chí Minh', N'Đang vận chuyển', 'hoa232')
+	('2024-6-3', N'293 Nam Kỳ Khởi Nghĩa, TP.HCM', N'Chờ xác nhận', 'hoang0207',1),
+	('2024-6-3', N'85 Phan Kế Bính, Đa Kao, Quận 1, Hồ Chí Minh', N'Đang xử lý', 'hoa232',1),
+	('2024-6-3', N'85 Phan Kế Bính, Đa Kao, Quận 1, Hồ Chí Minh', N'Đang vận chuyển', 'hoa232',1),
+	('2024-6-3', N'142 Nguyễn Văn Công, Phường 3, Gò Vấp, Hồ Chí Minh', N'Đã giao', 'thanh222',1),
+	('2024-7-3', N'142 Nguyễn Văn Công, Phường 3, Gò Vấp, Hồ Chí Minh', N'Đã giao', 'thanh222',1),
+	('2024-7-3', N'345 Tô Ký, Trung Mỹ Tây, Quận 12, Hồ Chí Minh', N'Đã giao', 'long888',1),
+	('2024-7-3', N'345 Tô Ký, Trung Mỹ Tây, Quận 12, Hồ Chí Minh', N'Đã giao', 'long888',1),
+	('2024-7-3', N'141 Lê Thị Nho, Trung Mỹ Tây, Quận 12, Hồ Chí Minh', N'Đã hủy', 'thang443',1),
+	('2024-8-3', N'194 Hoàng Văn Thụ, Phường 9, Phú Nhuận, Hồ Chí Minh', N'Đã giao', 'linh775',1),
+	('2024-8-5', N'345 Tô Ký, Trung Mỹ Tây, Quận 12, Hồ Chí Minh', N'Đã giao', 'long888',1),
+	('2024-8-8', N'142 Nguyễn Văn Công, Phường 3, Gò Vấp, Hồ Chí Minh', N'Đã hủy', 'thanh222',1),
+	('2024-9-3', N'85 Phan Kế Bính, Đa Kao, Quận 1, Hồ Chí Minh', N'Đang vận chuyển', 'hoa232',1),
+	('2024-9-3', N'293 Nam Kỳ Khởi Nghĩa, TP.HCM', N'Chờ xác nhận', 'hoang0207',1),
+	('2024-10-5', N'345 Tô Ký, Trung Mỹ Tây, Quận 12, Hồ Chí Minh', N'Đã giao', 'long888',1),
+	('2024-10-3', N'85 Phan Kế Bính, Đa Kao, Quận 1, Hồ Chí Minh', N'Đang vận chuyển', 'hoa232',1)
 
 INSERT INTO don_hang_chi_tiet VALUES
 	(1, 23490000, 'SP001', 1),

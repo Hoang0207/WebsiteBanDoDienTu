@@ -8,20 +8,23 @@ app.controller('ThungRacCtrl', function($http, $scope) {
 	
 	//Mở tab thùng rác của sản phẩm
 	$scope.open_tab_sanPham = function(){
+		$scope.items = []
 		$scope.title="sản phẩm"
 		$scope.load_all_sp_deleted()
 	}
 	
 	//Mở tab thùng rác của người dùng
 	$scope.open_tab_nguoiDung = function(){
+		$scope.items = []
 		$scope.title="người dùng"
 		$scope.load_all_nd_deleted()
 	}
 	
 	//Mở tab thùng rác của đơn hàng
 	$scope.open_tab_donHang = function(){
-		$scope.title="đơn hàng"
 		$scope.items = []
+		$scope.title="đơn hàng"
+		$scope.load_all_dh_deleted()
 	}
 	
 	//Load tất cả những sản phẩm đã bị vô hiệu hóa
@@ -43,6 +46,17 @@ app.controller('ThungRacCtrl', function($http, $scope) {
 			console.log("Success load all Nd deleted")
 		}).catch(error => {
 			console.log("Error laod all Nd deleted",error)
+		})
+	}
+	
+	//Load tất cả những đơn hàng đã bị vô hiệu hóa
+	$scope.load_all_dh_deleted = function(){
+		var url = `${host}/DonHang/IsActive/false`
+		$http.get(url).then(resp => {
+			$scope.items = resp.data
+			console.log("Success load all Dh deleted")
+		}).catch(error => {
+			console.log("Error load all Dh deleted",error)
 		})
 	}
 	
@@ -68,6 +82,18 @@ app.controller('ThungRacCtrl', function($http, $scope) {
 			swal("Thành công !","Khôi phục người dùng thành công","success")
 		}).catch(error => {
 			console.log("Error restore NguoiDung",error)
+		})
+	}
+	
+	//Khôi phục lại trạng thái của đơn hàng thành đã kích hoạt
+	$scope.restore_dh = function(maDh){
+		var url = `${host}/DonHang/Restore/${maDh}`
+		$http.put(url).then(resp => {
+			index = $scope.items.findIndex(item => item.maDonHang = resp.data.maDonHang)
+			$scope.items.splice(index,1);
+			swal("Thành công !","Khôi phục đơn hàng thành công","success")
+		}).catch(error => {
+			console.log("Error restore DonHang",error)
 		})
 	}
 	

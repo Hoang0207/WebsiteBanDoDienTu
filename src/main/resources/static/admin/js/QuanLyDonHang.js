@@ -16,7 +16,7 @@ app.controller('QuanLyDonHangCtrl', function($http, $scope) {
 
 	//Load tất cả đơn hàng có trong csdl
 	$scope.load_all = function() {
-		var url = `${host}/DonHang`
+		var url = `${host}/DonHang/IsActive/true`
 		$http.get(url).then(resp => {
 			$scope.items = resp.data
 			$scope.status = "all"
@@ -92,20 +92,17 @@ app.controller('QuanLyDonHangCtrl', function($http, $scope) {
 	//Xóa đơn hàng
 	$scope.delete = function(maDh) {
 		swal({
-			title: "Bạn đã chắc chưa ?",
-			text: "Khi đã xóa thì bạn không thể khôi phục lại được !",
+			text: "Bạn có muốn xóa đơn hàng này không ?",
 			icon: "warning",
 			buttons: true,
 			dangerMode: true,
 		}).then((willDelete) => {
 			if (willDelete) {
 				var url = `${host}/DonHang/${maDh}`
-				$http.delete(url).then(resp => {
+				$http.delete(url).then(() => {
 					var index = $scope.items.findIndex(item => item.maDonHang == maDh)
 					$scope.items.splice(index,1)
-					swal("Đã xóa đơn hàng thành công !", {
-						icon: "success",
-					});
+					swal("Xóa thành công !","Bạn vẫn có thể khôi phục lại đơn hàng từ thùng rác","success")
 				}).catch(error => {
 					console.log("Error delete DonHang", error)
 				})

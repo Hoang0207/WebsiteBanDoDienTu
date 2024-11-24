@@ -41,4 +41,8 @@ public interface DonHangDAO extends JpaRepository<DonHang, Integer>{
 	//Lấy danh sách đơn hàng theo mã người dùng
 	@Query
 	List<DonHang> findByMaNd(String maNd);
+	
+	//Lấy danh sách đơn hàng theo is active
+	@Query
+	List<DonHang> findAllByIsActiveIs(Boolean status);
 }

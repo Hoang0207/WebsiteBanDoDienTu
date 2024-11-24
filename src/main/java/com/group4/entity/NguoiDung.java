@@ -51,7 +51,7 @@ public class NguoiDung {
     private Date ngayDangKy;
 
     @Column(name = "trang_thai", nullable = false)
-    private Boolean trangThai;
+    private Boolean trangThai=true;
     
     @Column(name = "reset_password_token")
     private String resetPasswordToken;

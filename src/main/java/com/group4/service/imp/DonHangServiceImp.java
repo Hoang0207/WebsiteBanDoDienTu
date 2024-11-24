@@ -125,4 +125,9 @@ public class DonHangServiceImp implements DonHangService{
 		
 		return dh;
 	}
+
+	@Override
+	public List<DonHang> findAllByIsActive(Boolean status) {
+		return dhDao.findAllByIsActiveIs(status);
+	}
 }
