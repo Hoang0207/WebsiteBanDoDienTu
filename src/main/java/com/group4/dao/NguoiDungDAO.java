@@ -1,6 +1,7 @@
 package com.group4.dao;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -20,4 +21,9 @@ public interface NguoiDungDAO extends JpaRepository<NguoiDung, String>{
 	//Lấy danh sách người dùng theo trạng thái
 	@Query
 	List<NguoiDung> findAllByTrangThaiIs(Boolean trangThai);
+  
+	//Tìm người dùng theo email
+	@Query
+	Optional<NguoiDung> findByEmail(String email);
+  
 }

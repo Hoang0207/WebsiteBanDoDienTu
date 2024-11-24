@@ -96,7 +96,7 @@
 		    <artifactId>selenium-chrome-driver</artifactId>
 		    <version>4.26.0</version>
 		</dependency>
-
+    
 		<!-- Thu vien ket noi database-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -106,18 +106,40 @@
 		    <groupId>com.microsoft.sqlserver</groupId>
 		    <artifactId>mssql-jdbc</artifactId>
 		</dependency>
+    
+    <!-- Thu vien gui mail -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-mail</artifactId>
 		</dependency>
-
-		<!-- Thu vien security -->
-		<!-- 
+		
+		<!-- Thu Vien mySql-->
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+		<dependency>
+    		<groupId>mysql</groupId>
+    		<artifactId>mysql-connector-java</artifactId>
+    		<version>8.0.29</version> <!-- Use the appropriate version -->
 		</dependency>
-		-->
+		
+		<!-- Thu vien security -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+            <!-- Spring Security Password Encoder -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-crypto</artifactId>
+        </dependency>		
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-oauth2-client</artifactId>
+            <version>3.1.2</version>
+        </dependency>
+	
 	</dependencies>
 
 	<build>
