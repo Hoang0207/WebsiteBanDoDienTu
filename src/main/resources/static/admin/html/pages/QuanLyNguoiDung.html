@@ -115,24 +115,10 @@
                                 </div>
                   				<!-- ng-checked="authority_of(form.maNguoiDung,role)" -->
                             </div>
-                            <div
-                                class="d-flex justify-content-between align-items-center mb-3 border border-secondary-subtle rounded pe-2">
-                                <div class="text-bg-secondary p-2 rounded">Trạng thái</div>
-                                <div class="form-check pe-4">
-                                    <input class="form-check-input" type="radio" checked="checked" ng-model="form.trangThai"
-                                        ng-value="true" id="flexRadioDefault1"> <label class="form-check-label"
-                                        for="flexRadioDefault1">Đã kích hoạt</label>
-                                </div>
-                                <div class="form-check pe-4">
-                                    <input class="form-check-input" type="radio" ng-value="false" ng-model="form.trangThai"
-                                        id="flexRadioDefault2"> <label class="form-check-label"
-                                        for="flexRadioDefault2">Vô hiệu hóa</label>
-                                </div>
-                            </div>
-                                         
+                                        
                         </div>
-                        <div class="col-md-5 px-3 py-5 d-block text-center">
-                            <img ng-src="{{temp_image_data || (form.hinhAnh ? '/api/file/NguoiDung/'+form.hinhAnh : '/api/file/NguoiDung/defaultUser.png')}}" class="img-fluid" ng-click="image_click()" style="height: 287px;cursor: pointer;">
+                        <div class="col-md-5 px-3 py-4 d-block text-center">
+                            <img ng-src="{{temp_image_data || (form.hinhAnh ? '/api/file/NguoiDung/'+form.hinhAnh : '/api/file/NguoiDung/defaultUser.png')}}" class="img-fluid" ng-click="image_click()" style="height: 284px;cursor: pointer;">
                             <input type="file" id="fileHinh" accept="image/*" style="display: none">
                             <span class="fs-6 fw-light fst-italic">Mẹo: ấn vào hình để chỉnh sửa</span>
                             <div
@@ -153,7 +139,7 @@
                         </div>
                     </div>
 
-                    <div class="form-floating">
+                    <div class="form-floating mt-1">
                         <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" ng-model="form.diaChi"
                             style="height: 100px"></textarea>
                         <label for="floatingTextarea2">Địa chỉ</label>

@@ -63,13 +63,4 @@ public class SanPhamSpecification {
 		};
 	}
 	
-	public Specification<SanPham> hasTrangThai(Boolean trangThai){
-		return (root, query, cb) -> {
-			if(trangThai == null) {
-				return cb.conjunction();
-			}
-			return cb.equal(root.get("trangThai"), trangThai);
-		};
-	}
-	
 }
