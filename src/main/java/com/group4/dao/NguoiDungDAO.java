@@ -25,5 +25,6 @@ public interface NguoiDungDAO extends JpaRepository<NguoiDung, String>{
 	//Tìm người dùng theo email
 	@Query
 	Optional<NguoiDung> findByEmail(String email);
+	boolean existsByEmailAndMatKhau(String email, String mk);
   
 }

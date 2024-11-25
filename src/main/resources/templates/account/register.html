@@ -122,24 +122,36 @@
             </div>
             <input type="date" name="ngaySinh" required>
             <div class="login-link">
-                <p>Đã có tài khoản? <a href="/dangnhap">Đăng nhập</a></p>
+                <p>Đã có tài khoản? <a href="/login">Đăng nhập</a></p>
             </div>
             <button type="submit">Đăng ký</button>
         </form>
     </div>
 
     <script>
-        const matKhauInput = document.getElementById('matKhau');
-        const matKhauNhapLaiInput = document.getElementById('matKhauNhapLai');
-        const errorMessage = document.getElementById('error-message');
+    const registerForm = document.getElementById('registerForm');
+    const matKhauInput = document.getElementById('matKhau');
+    const matKhauNhapLaiInput = document.getElementById('matKhauNhapLai');
+    const errorMessage = document.getElementById('error-message');
 
-        matKhauNhapLaiInput.addEventListener('input', function() {
-            if (matKhauInput.value !== matKhauNhapLaiInput.value) {
-                errorMessage.style.display = 'block';
-            } else {
-                errorMessage.style.display = 'none';
-            }
-        });
-    </script>
+    matKhauNhapLaiInput.addEventListener('input', function () {
+        if (matKhauInput.value !== matKhauNhapLaiInput.value) {
+            errorMessage.style.display = 'block';
+        } else {
+            errorMessage.style.display = 'none';
+        }
+    });
+
+    // Xử lý khi nhấn nút "Đăng ký"
+    registerForm.addEventListener('submit', function (event) {
+        event.preventDefault(); // Ngăn chặn form gửi dữ liệu lên server
+        if (matKhauInput.value === matKhauNhapLaiInput.value) {
+            window.location.href = '/login'; // Chuyển hướng sang giao diện đăng nhập
+        } else {
+            errorMessage.style.display = 'block'; // Hiển thị lỗi nếu mật khẩu không khớp
+        }
+    });
+</script>
+
 </body>
 </html>

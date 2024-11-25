@@ -1,12 +1,17 @@
 package com.group4.service.imp;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
+import com.group4.config.SecurityUser;
+import com.group4.entity.PhanQuyen;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.User;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -16,23 +21,39 @@ import com.group4.dto.SoLuongNguoiDungMoiTheoThangDTO;
 import com.group4.entity.NguoiDung;
 import com.group4.service.NguoiDungService;
 import com.group4.util.SessionUtil;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class NguoiDungServiceImp implements NguoiDungService, UserDetailsService { // Implement cả NguoiDungService và UserDetailsService
+public class NguoiDungServiceImp implements NguoiDungService {
 
     @Autowired
     NguoiDungDAO ndDao;
     
     @Autowired
     SessionUtil session;
-   
+
+    @Autowired
+    NguoiDungDAO nguoiDungDAO;
+
+    @Autowired
+    @Lazy
+    PasswordEncoder passwordEncoder;
+
     // @Autowired
     // private PasswordEncoder passwordEncoder; // Inject PasswordEncoder
-    
+    @Override
+    public boolean validateCredentials(String email, String password) {
+        return nguoiDungDAO.existsByEmailAndMatKhau(email, passwordEncoder.encode(password));
+    }
 
     @Override
     public List<NguoiDung> findAll() {
         return ndDao.findAll();
+    }
+
+    @Override
+    public List<NguoiDung> findAllByTrangThai(Boolean trangThai) {
+        return null;
     }
 
     @Override
@@ -79,19 +100,28 @@ public class NguoiDungServiceImp implements NguoiDungService, UserDetailsService
 
     // Implement loadUserByUsername từ UserDetailsService
     @Override
+    @Transactional
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        Optional<NguoiDung> nguoiDung = ndDao.findByEmail(email);
-
-        if (nguoiDung.isEmpty()) {
-            throw new UsernameNotFoundException("Không tìm thấy người dùng với email: " + email);
+        Optional<NguoiDung> userByUsername = nguoiDungDAO.findByEmail(email);
+        if (userByUsername.isEmpty()) {
+            System.out.println("Không thể tìm thấy người dùng với email: {}");
+            throw new UsernameNotFoundException("Invalid credentials!");
         }
-
-        NguoiDung user = nguoiDung.get();
-        return User.builder()
-                .username(user.getEmail())   // Sử dụng email làm tên người dùng
-                .password(user.getMatKhau()) // Sử dụng mật khẩu người dùng từ cơ sở dữ liệu
-                .roles("STAF") // Thiết lập quyền cho người dùng (có thể thay đổi theo hệ thống của bạn)
-                .build();
+        NguoiDung user = userByUsername.get();
+        if (!user.getEmail().equals(email)) {
+            System.out.println("Could not find user with that email: {}");
+            throw new UsernameNotFoundException("Invalid credentials!");
+        }
+        Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
+        for (PhanQuyen role : user.getPhanQuyens()) {
+            grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_" + role.getVaiTro().getMaVaiTro()));
+        }
+        //Gan session cho nguoi dung
+        session.set("user", userByUsername.get());
+        //
+        System.out.println(grantedAuthorities);
+        return new SecurityUser(user.getEmail(), user.getMatKhau(), true, true, true, true, grantedAuthorities,
+                user.getEmail());
     }
     
     

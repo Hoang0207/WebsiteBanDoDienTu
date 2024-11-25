@@ -10,6 +10,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Data
@@ -31,10 +32,12 @@ public class PhanQuyen {
 	private String maVt;
 	
 	@ManyToOne
+	@EqualsAndHashCode.Exclude
 	@JoinColumn(name = "ma_nd", insertable = false, updatable = false)
 	private NguoiDung nguoiDung;
 	
 	@ManyToOne
+	@EqualsAndHashCode.Exclude
 	@JoinColumn(name = "ma_vt", insertable = false, updatable = false)
 	private VaiTro vaiTro;
 	

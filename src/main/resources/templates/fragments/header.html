@@ -23,19 +23,19 @@
 							data-toggle="dropdown">
 							<div ></div>
 						</button>
-						<div class="dropdown-menu dropdown-menu-right">
-							<div>
-								<a class="btn" th:href="@{/login}">Đăng xuất</a>
-							</div>
-							<div>
-								<a class="btn" th:href="@{/registration}">Đăng kí</a>
-							</div>
-							
-							<div >
-								<a class="btn" th:href="@{/login}">Đăng Nhập</a>
-							</div>
-						</div> 
-					</div>
+						 <div class="dropdown-menu dropdown-menu-right">
+							 <div th:if="${email != null}">
+								 <span>Xin chào, <span th:text="${email}">User</span>!</span>
+								 <a class="btn" th:href="@{/logout}">Đăng xuất</a>
+							 </div>
+
+							 <div th:unless="${email != null}">
+								 <a class="btn" th:href="@{/login}">Đăng Nhập</a>
+								 <a class="btn" th:href="@{/dangky}">Đăng Ký</a>
+							 </div>
+						 </div>
+
+					 </div>
 					<div class="btn-group mx-2"></div>
 					<div class="btn-group">
 						<button type="button" class="btn btn-sm btn-light dropdown-toggle"
