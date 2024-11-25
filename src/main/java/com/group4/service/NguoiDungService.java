@@ -5,13 +5,15 @@ import java.util.Optional;
 
 import com.group4.dto.SoLuongNguoiDungMoiTheoThangDTO;
 import com.group4.entity.NguoiDung;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
-public interface NguoiDungService {
+public interface NguoiDungService extends UserDetailsService  {
 	
 	public List<NguoiDung> findAll();
 	
 	public List<NguoiDung> findAllByTrangThai(Boolean trangThai);
-	
+	boolean validateCredentials(String email, String password);
+
 	public Optional<NguoiDung> findById(String id);
 	
 	public NguoiDung getInSession();

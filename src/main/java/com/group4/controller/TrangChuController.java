@@ -1,5 +1,7 @@
 package com.group4.controller;
-
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,10 +15,23 @@ public class TrangChuController {
 		return "redirect:/admin/html/QuanLyLayout.html";
 	}
 	
-	@GetMapping()
+	@GetMapping("")
 	public String home(Model model) {
-		model.addAttribute("content","/pages/home");
-		return "indexLayout";
+	
+	    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+	   
+	    String email = null;
+	    if (authentication != null && authentication.isAuthenticated() && !(authentication.getName().equals("anonymousUser"))) {
+	        email = authentication.getName();  // Get the authenticated username (email)
+	    }
+
+	   
+	    model.addAttribute("email", email);
+	    
+	   
+	    model.addAttribute("content", "/pages/home");
+	    
+	    return "indexLayout";  // Return the layout template
 	}
 	
 	@GetMapping("/shop")
@@ -24,5 +39,11 @@ public class TrangChuController {
 		model.addAttribute("content","/pages/shop");
 		return "indexLayout";
 	}
-	
+
+	@GetMapping("/logout")
+	public String logoutPage() {
+		SecurityContextHolder.getContext().setAuthentication(null);
+		return "redirect:/?logout";
+	}
+
 }

@@ -1,8 +1,6 @@
 package com.group4.entity;
 
-import lombok.Data;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import jakarta.persistence.*;
 import java.util.Date;
@@ -58,15 +56,21 @@ public class NguoiDung {
 
     // Mối quan hệ với GioHang
     @JsonIgnore
-    @OneToMany(mappedBy = "nguoiDung", cascade = CascadeType.ALL)
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
+    @OneToMany(mappedBy = "nguoiDung", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private Set<GioHang> gioHangs;
 
     // Mối quan hệ với DonHang
     @JsonIgnore
-    @OneToMany(mappedBy = "nguoiDung", cascade = CascadeType.ALL)
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
+    @OneToMany(mappedBy = "nguoiDung", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private Set<DonHang> donHangs;
     
     @JsonIgnore
-    @OneToMany(mappedBy = "nguoiDung", cascade = CascadeType.ALL)
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
+    @OneToMany(mappedBy = "nguoiDung", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private Set<PhanQuyen> phanQuyens;
 }
