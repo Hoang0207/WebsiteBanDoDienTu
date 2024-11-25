@@ -52,9 +52,9 @@ public class NguoiDungServiceImp implements NguoiDungService {
     }
 
     @Override
-    public List<NguoiDung> findAllByTrangThai(Boolean trangThai) {
-        return null;
-    }
+	public List<NguoiDung> findAllByTrangThai(Boolean trangThai) {
+		return ndDao.findAllByTrangThaiIs(trangThai);
+	}
 
     @Override
     public Optional<NguoiDung> findById(String id) {
@@ -117,6 +117,7 @@ public class NguoiDungServiceImp implements NguoiDungService {
             grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_" + role.getVaiTro().getMaVaiTro()));
         }
         //Gan session cho nguoi dung
+        session.remove("user");
         session.set("user", userByUsername.get());
         //
         System.out.println(grantedAuthorities);

@@ -21,8 +21,8 @@ public class GioHangController {
     @GetMapping("/cart")
 	public String cart(Model model) {
     	//Giả lập sau khi đăng nhập thành công
-    	NguoiDung nd = ndService.findById("long888").get();
-    	session.set("user", nd);
+    	//NguoiDung nd = ndService.findById("long888").get();
+    	//session.set("user", nd);
     	//
 		model.addAttribute("content","/pages/cart");
 		return "indexLayout";

@@ -12,15 +12,27 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.group4.dao.SanPhamDAO;
 import com.group4.entity.DonHang;
+import com.group4.entity.GioHang;
+import com.group4.entity.NguoiDung;
 import com.group4.entity.SanPham;
+import com.group4.service.GioHangService;
+import com.group4.service.NguoiDungService;
 import com.group4.service.SanPhamService;
 
 @Controller
 public class ChiTietSanPhamController {
+	
+	@Autowired
+	NguoiDungService ndService;
+	
+	@Autowired
+	GioHangService ghService;
+	
     /*@Autowired
     private SanPhamService productService;
     
@@ -50,5 +62,16 @@ public class ChiTietSanPhamController {
         model.addAttribute("detail", sp);
         model.addAttribute("content","/pages/detail");
         return "indexLayout"; // Trả về trang HTML
+    }
+    
+    @PostMapping("/detail/{maSp}/addToCart")
+    public String addToCart(Model model, @PathVariable("maSp") String maSp, @RequestParam("soLuong") int soLuong) {
+    	NguoiDung nd = ndService.getInSession();
+    	GioHang gh = new GioHang();
+    	gh.setMaNd(nd.getMaNguoiDung());
+    	gh.setMaSp(maSp);
+    	gh.setSoLuong(soLuong);
+    	ghService.saveGioHang(gh);
+        return "redirect:/cart";
     }
 }

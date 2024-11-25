@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -67,19 +68,23 @@ public class NguoiDungRestController {
 	
 	@PostMapping()
 	public ResponseEntity<NguoiDung> restPostNguoiDung(@RequestBody NguoiDung nd ){
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		if(ndService.existsById(nd.getMaNguoiDung())) {
 			return ResponseEntity.badRequest().build();
 		}
+		nd.setMatKhau(encoder.encode(nd.getMatKhau()));
 		ndService.save(nd);
 		return ResponseEntity.ok(nd);
 	}
 	
 	@PutMapping("{id}")
 	public ResponseEntity<NguoiDung> restPutNguoiDung(@RequestBody NguoiDung nd, @PathVariable("id") String id){
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		Optional<NguoiDung> nguoiDung = ndService.findById(id);
 		if(nguoiDung.isEmpty()) {
 			return ResponseEntity.notFound().build();
 		}
+		nd.setMatKhau(encoder.encode(nd.getMatKhau()));
 		ndService.save(nd);
 		return ResponseEntity.ok(nd);
 	}

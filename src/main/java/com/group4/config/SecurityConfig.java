@@ -65,14 +65,15 @@ public class SecurityConfig {
                 .csrf().disable()
                 .authorizeHttpRequests(authorizeRequests ->
                         authorizeRequests
+		                     	// Cho phép truy cập tài nguyên tĩnh ngoài admin
+		                        .requestMatchers("/static/shopz/**","/static/vendor/**").permitAll()
+		                        //
                                 .requestMatchers("/dangky","/shop","/contact",
                                         "/home", "/oauth/**", "/login/**", "/login-google", "/", "/register", "/save", "re-send", "/shopz/**",
-                                        "/api/**"
+                                        "/api/**", "/cart"
                                 ).permitAll()
                                 .requestMatchers("/cart").hasAuthority("ROLE_CUST")
-                                .requestMatchers("/admin/**", "/admin", "/static/**", "/cart").hasAnyAuthority("ROLE_DIRE")
-                                // Cho phép truy cập tài nguyên tĩnh ngoài admin
-                                .requestMatchers("/static/shopz/**","/static/vendor/**").permitAll()
+                                .requestMatchers("/admin/**", "/admin", "/static/**", "/cart","/cart/**").hasAnyAuthority("ROLE_DIRE")
                                 .anyRequest().authenticated()
                 )
                 .formLogin().permitAll()

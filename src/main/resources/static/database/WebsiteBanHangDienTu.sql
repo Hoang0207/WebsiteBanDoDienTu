@@ -96,7 +96,7 @@ CREATE TABLE don_hang_chi_tiet(
 
 /*Thêm dữ liệu vào các bảng*/
 INSERT INTO nguoi_dung VALUES
-	('hoang0207', '02072003', N'Nguyễn Văn Kim Hoàng', 1, '2003-07-02', '0849314345', N'293 Nam Kỳ Khởi Nghĩa, TP.HCM', 'hoangnvkps24867@fpt.edu.vn', null, '2024-10-3', 1,null),
+	('hoang0207', '$2a$08$Kn.YyLUJ27frbe14g64e9Oac.bM0PZPNgFPQn1jdpYSy.twLfUmJ2', N'Nguyễn Văn Kim Hoàng', 1, '2003-07-02', '0849314345', N'293 Nam Kỳ Khởi Nghĩa, TP.HCM', 'hoangnvkps24867@fpt.edu.vn', null, '2024-10-3', 1,null),
 	('hoa232', '1234567', N'Lưu Đức Hòa', 1, '2003-01-03', '0979324347', N'85 Phan Kế Bính, Đa Kao, Quận 1, Hồ Chí Minh', 'hoa2222@gmail.com', null, '2024-10-3', 1,null),
 	('thanh222', '222333', N'Nguyễn Văn Thanh', 1, '2003-11-30', '0849314345', N'142 Nguyễn Văn Công, Phường 3, Gò Vấp, Hồ Chí Minh', 'thanh23232@gmail.com', null, '2024-10-3', 1,null),
 	('long888', '19102004', N'Trần Chiến Long', 1, '2003-03-02', '0908730881', N'345 Tô Ký, Trung Mỹ Tây, Quận 12, Hồ Chí Minh', 'long888@gmail.com', null, '2024-10-3', 1,null),
