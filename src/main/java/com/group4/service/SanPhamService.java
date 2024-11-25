@@ -23,7 +23,7 @@ public interface SanPhamService {
 	
 	public void deleteById(String id);
 	
-	public List<SanPham> filterSanPham(String maSanPham,String tenSanPham, String maCl, String maNcc, String maTtdb, float minPrice, float maxPrice, Boolean trangThai);
+	public List<SanPham> filterSanPham(String maSanPham,String tenSanPham, String maCl, String maNcc, String maTtdb, float minPrice, float maxPrice);
 
 	public List<String> findSuggestionByKeyword(String keyword);
 	

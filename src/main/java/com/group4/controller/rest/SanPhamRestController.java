@@ -73,9 +73,8 @@ public class SanPhamRestController {
 			@RequestParam(required = false) String maNcc,
 			@RequestParam(required = false) String maTtdb,
 			@RequestParam Optional<Float> minPrice,
-			@RequestParam Optional<Float> maxPrice,
-			@RequestParam(required = false) Boolean trangThai){
-		List<SanPham> listSp = spService.filterSanPham(maSanPham,tenSanPham,maCl,maNcc,maTtdb,minPrice.orElse(Float.MIN_VALUE),maxPrice.orElse(Float.MAX_VALUE),trangThai);
+			@RequestParam Optional<Float> maxPrice){
+		List<SanPham> listSp = spService.filterSanPham(maSanPham,tenSanPham,maCl,maNcc,maTtdb,minPrice.orElse(Float.MIN_VALUE),maxPrice.orElse(Float.MAX_VALUE));
 		return ResponseEntity.ok(listSp);
 	}
 	
