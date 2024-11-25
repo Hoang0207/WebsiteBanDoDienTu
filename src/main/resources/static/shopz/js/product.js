@@ -28,6 +28,11 @@ app.controller("controller", function($scope, $http){
 			console.log("Error load all TTDB",error)
 		})
 	}
+	
+	//Chức năng thêm sản phẩm vào giỏ hàng
+	$scope.add_to_cart = function(maSp,soLuong){
+		swal("Chức năng thêm sản phẩm vào giỏ"+maSp+soLuong)
+	}
       
     //phan trang
 	$scope.pager = {
@@ -53,12 +58,12 @@ app.controller("controller", function($scope, $http){
 			this.page = this.count-1;
 		}
 	}
+	
 		
 	//No use, may delete in future
 	$scope.reset = function(){
         // $scope.form = {gender: true, country:'VN'};
     }
-	
 	$scope.edit = function(id){
         var url = `${host}/products/${id}`;
         $http.get(url).then(resp => {
