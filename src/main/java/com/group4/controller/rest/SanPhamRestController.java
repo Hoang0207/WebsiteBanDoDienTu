@@ -3,6 +3,7 @@ package com.group4.controller.rest;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -75,7 +76,8 @@ public class SanPhamRestController {
 			@RequestParam Optional<Float> minPrice,
 			@RequestParam Optional<Float> maxPrice){
 		List<SanPham> listSp = spService.filterSanPham(maSanPham,tenSanPham,maCl,maNcc,maTtdb,minPrice.orElse(Float.MIN_VALUE),maxPrice.orElse(Float.MAX_VALUE));
-		return ResponseEntity.ok(listSp);
+		List<SanPham> final_listSp = listSp.stream().filter(sp -> sp.getTrangThai()==true).collect(Collectors.toList());
+		return ResponseEntity.ok(final_listSp);
 	}
 	
 	@PostMapping()
