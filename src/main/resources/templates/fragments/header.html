@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="language.js" defer></script>
 </head>
 <body>
     <!-- topbar.html start -->
@@ -20,6 +19,24 @@
             </div>
             <div class="col-lg-6 text-center text-lg-right">
                 <div class="d-inline-flex align-items-center">
+					<div class="btn-group">
+						<button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">
+							<i class="fa-solid fa-circle-user"></i>
+						</button>
+						<div class="dropdown-menu dropdown-menu-right">
+							<div th:if="${email != null}">
+								<span>Xin chào, <span th:text="${email}">User</span>!</span>
+								<a class="btn" th:href="@{/logout}">Đăng xuất</a>
+							</div>
+						
+							<div th:unless="${email != null}">
+								<a class="btn" th:href="@{/login}">Đăng Nhập</a>
+								<a class="btn" th:href="@{/dangky}">Đăng Ký</a>
+							</div>
+						</div>
+						
+						</div>
+
                     <div class="btn-group">
                         <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">VN</button>
                         <div class="dropdown-menu dropdown-menu-right">
