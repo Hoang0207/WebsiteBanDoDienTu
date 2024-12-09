@@ -26,7 +26,11 @@ app.controller('QuanLySanPhamCtrl', function($http, $scope) {
 
 	//Reset lại form
 	$scope.reset = function() {
-		$scope.form = {}
+		$scope.form = {
+			maCl: "CL001",
+			maNcc: "NCC001",
+			maTtdb: "TTDB001"
+		}
 		$scope.update = false
 		$scope.temp_image_data = null
 		$scope.file = null

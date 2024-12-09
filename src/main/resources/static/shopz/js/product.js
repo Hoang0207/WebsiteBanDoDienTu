@@ -7,9 +7,13 @@ app.controller("controller", function($scope, $http){
     
     $scope.list_ttdb = []
     
+    $scope.list_cl = []
+    
+    $scope.list_ncc = []
+    
     //Load tất cả sản phẩm
     $scope.load_all = function(){
-        var url = `${host}/SanPham`;
+        var url = `${host}/SanPham/TrangThai/true`;
         $http.get(url).then(resp => {
             $scope.items = resp.data;
             console.log("Success", resp)
@@ -17,6 +21,28 @@ app.controller("controller", function($scope, $http){
             console.log("Error", error)
         });
     }
+    
+    //Load tất cả chủng loại
+    $scope.load_all_cl = function(){
+		var url = `${host}/ChungLoai`
+		$http.get(url).then(resp => {
+			$scope.list_cl = resp.data
+			console.log("Success load all list Cl")
+		}).catch(error => {
+			console.log("Error load all list Cl",error)
+		})
+	}
+    
+    //Load tất cả nhà cung cấp
+    $scope.load_all_ncc = function(){
+		var url = `${host}/NhaCungCap`
+		$http.get(url).then(resp => {
+			$scope.list_ncc = resp.data
+			console.log("Success load all NhaCungCap")
+		}).catch(error => {
+			console.log("Error load all NhaCungCap",error)
+		})
+	}
     
     //Load tất cả thuoc tinh dac biet
     $scope.load_all_ttdb = function(){
@@ -29,11 +55,38 @@ app.controller("controller", function($scope, $http){
 		})
 	}
 	
+	//Chức năng lọc sản phẩm
+	$scope.filter = function(){
+		var url = `${host}/SanPham/filter`
+		$http.get(url,{params: $scope.form_filter}).then(resp => {
+			$scope.items = resp.data
+			swal("Lọc sản phẩm thành công",{
+		      icon: "success",
+		    })
+		}).catch(error => {
+			console.log("Error filter SanPham",error)
+		})
+	}
+	
+	//Chức năng reset bộ lọc
+	$scope.reset_filter = function(){
+		$scope.form_filter = {
+			maCl: "",
+			maNcc: "",
+			minPrice: "",
+			maxPrice: ""
+		}
+		$scope.load_all()
+		swal("Xóa lọc sản phẩm thành công",{
+		    icon: "success",
+		})
+	}
+	
 	//Chức năng thêm sản phẩm vào giỏ hàng
 	$scope.add_to_cart = function(maSp,soLuong){
 		swal("Chức năng thêm sản phẩm vào giỏ"+maSp+soLuong)
 	}
-      
+    
     //phan trang
 	$scope.pager = {
 		page:0,
@@ -106,7 +159,6 @@ app.controller("controller", function($scope, $http){
             console.log("Error", error)
         });
     }
-    $scope.load_all();
     $scope.reset();
 
     $scope.cart = {
@@ -189,7 +241,9 @@ app.controller("controller", function($scope, $http){
 	//
 	
 	//Tự động chạy khi mở web
+	$scope.load_all()
 	$scope.load_all_ttdb()
-	
+	$scope.load_all_cl()
+	$scope.load_all_ncc()
 
 });

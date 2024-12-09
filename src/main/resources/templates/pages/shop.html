@@ -32,12 +32,12 @@
 				<div class="bg-light p-4 mb-30">
 					<form>
 						<div class="form-group">
-							<label for="price-min">Giá thấp nhất:</label> <input
+							<label for="price-min">Giá thấp nhất:</label> <input ng-model="form_filter.minPrice"
 								type="number" class="form-control" id="price-min"
 								placeholder="Nhập giá tối thiểu">
 						</div>
 						<div class="form-group">
-							<label for="price-max">Giá cao nhất:</label> <input type="number"
+							<label for="price-max">Giá cao nhất:</label> <input type="number" ng-model="form_filter.maxPrice"
 								class="form-control" id="price-max"
 								placeholder="Nhập giá tối đa">
 						</div>
@@ -53,13 +53,11 @@
 				<div class="bg-light p-4 mb-30">
 					<form>
 						<div class="form-group">
-							<label for="category-select">Chọn Chủng Loại:</label> <select
+							<label for="category-select">Chọn Chủng Loại:</label> 
+							<select ng-model="form_filter.maCl"
 								class="form-control" id="category-select">
 								<option value="">Tất cả</option>
-								<option value="laptop">Laptop</option>
-								<option value="pc">PC</option>
-								<option value="parts">Linh Kiện</option>
-								<option value="printer">Máy In</option>
+								<option ng-repeat="cl in list_cl" ng-value="cl.maChungLoai">{{cl.tenChungLoai}}</option>
 							</select>
 						</div>
 
@@ -74,15 +72,10 @@
 				<div class="bg-light p-4 mb-30">
 					<form>
 						<div class="form-group">
-							<label for="supplier-select">Chọn Nhà Cung Cấp:</label> <select
+							<label for="supplier-select">Chọn Nhà Cung Cấp:</label> <select ng-model="form_filter.maNcc"
 								class="form-control" id="supplier-select">
 								<option value="">Tất cả</option>
-								<option value="msi">MSI</option>
-								<option value="acer">ACER</option>
-								<option value="asus">ASUS</option>
-								<option value="hp">HP</option>
-								<option value="sony">Sony</option>
-								<option value="corsair">Corsair</option>
+								<option ng-repeat="ncc in list_ncc" ng-value="ncc.maNhaCungCap">{{ncc.tenNhaCungCap}}</option>
 							</select>
 						</div>
 
@@ -91,9 +84,9 @@
 				</div>
 				<div class="form-actions text-center">
 					<button type="button" class="btn btn-dark"
-						onclick="resetSupplierFilter()">Xóa Lọc</button>
+						ng-click="reset_filter()">Xóa Lọc</button>
 
-					<button type="submit" class="btn btn-primary">Lọc</button>
+					<button type="submit" class="btn btn-primary" ng-click="filter()">Lọc</button>
 				</div>
 				<!-- Supplier Filter End -->
 			</div>
@@ -161,7 +154,7 @@
 						</div>
 					</div>
 
-					<div class="col-12">
+					<div class="col-12" ng-if="items.length > 8">
 						<nav>
 							<ul class="pagination justify-content-center">
 								<li class="page-item"><a class="page-link"

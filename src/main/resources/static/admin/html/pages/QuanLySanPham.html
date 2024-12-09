@@ -73,75 +73,75 @@
                     <h1 class="modal-title fs-4 fw-bold" id="staticBackdropLabel" ng-show="update">Cập nhật sản phẩm</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-7">
-                            <div class="input-group mb-3">
-                                <span class="input-group-text text-bg-secondary" id="basic-addon1">Mã sản phẩm</span>
-                                <input type="text" class="form-control" aria-label="Username" ng-model="form.maSanPham" ng-readonly="update"
-                                    aria-describedby="basic-addon1">
-                            </div>
-                            <div class="input-group mb-3">
-                                <span class="input-group-text text-bg-secondary" id="basic-addon1">Tên sản phẩm</span>
-                                <input type="text" class="form-control" aria-label="Username" ng-model="form.tenSanPham"
-                                    aria-describedby="basic-addon1">
-                            </div>
-                            <div class="input-group mb-3">
-                                <label class="input-group-text text-bg-secondary" for="inputGroupSelect01">Chủng
-                                    loại</label>
-                                <select class="form-select" id="inputGroupSelect01" ng-model="form.maCl">         
-                                    <option ng-repeat="cl in list_cl" ng-value="cl.maChungLoai">{{cl.tenChungLoai}}</option>
-                                </select>
-                            </div>
-                            <div class="input-group mb-3">
-                                <label class="input-group-text text-bg-secondary" for="inputGroupSelect01">Nhà cung
-                                    cấp</label>
-                                <select class="form-select" id="inputGroupSelect01" ng-model="form.maNcc">
-                                    <option ng-repeat="ncc in list_ncc" ng-value="ncc.maNhaCungCap">{{ncc.tenNhaCungCap}}</option>
-                                </select>
-                            </div>
-                            <div class="input-group mb-3">
-                                <label class="input-group-text text-bg-secondary" for="inputGroupSelect01">Thuộc tính
-                                    đặc biệt</label>
-                                <select class="form-select" id="inputGroupSelect01" ng-model="form.maTtdb">
-                                    <option ng-repeat="ttdb in list_ttdb" ng-value="ttdb.maThuocTinhDacBiet">{{ttdb.tenThuocTinhDacBiet}}</option>
-                                </select>
-                            </div>
-                            <div class="input-group mb-3">
-                                <input type="number" placeholder="Nhập số lượng" aria-label="First name" ng-model="form.soLuong"
-                                    class="form-control">
-                                <span class="input-group-text text-bg-secondary">Sản phẩm</span>
-                                <input type="number" placeholder="Nhập giá tiền" aria-label="Last name" ng-model="form.giaTien"
-                                    class="form-control">
-                                <span class="input-group-text text-bg-secondary">VNĐ</span>
-                            </div>
-
-                        </div>
-                        <div class="col-md-5 px-3 py-2 d-block text-center">             
-                            <img ng-src="{{ temp_image_data || (form.hinhAnh?'/api/file/SanPham/' + form.hinhAnh:default_image_src)}}" class="img-fluid" 
-                            	style="height: 270px;cursor: pointer;" ng-click="image_click()">
-                            <input type="file" style="display: none" id="inputFile" accept="image/*">
-                            <br>
-                            <span class="fs-6 fw-light fst-italic">Mẹo: ấn vào hình để chỉnh sửa</span>
-                        </div>
-                    </div>
-
-                    <div class="form-floating">
-                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" ng-model="form.moTa"
-                            style="height: 100px"></textarea>
-                        <label for="floatingTextarea2">Mô tả</label>
-                    </div>
-
-                </div>
-                <div class="modal-footer">
-                    <!--<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
-                    <button type="button" class="btn p-0 m-0 me-3"><img src="/admin/image/resetBtn.png" class="img-fluid" ng-hide="update" ng-click="reset()"
-                            style="height: 40px;"></button>
-                    <button type="button" class="btn p-0 m-0"><img src="/admin/image/themBtn.png" class="img-fluid" ng-hide="update" ng-click="create()"
-                            style="height: 44px;"></button>
-                     <button type="button" class="btn p-0 m-0"><img src="/admin/image/capNhatBtn.png" class="img-fluid" ng-show="update" ng-click="update_san_pham(form.maSanPham,form.hinhAnh)"
-                            style="height: 48px;"></button>
-                </div>
+                <form ng-submit="update ? update_san_pham(form.maSanPham,form.hinhAnh) : create()">
+	                <div class="modal-body">
+		                    <div class="row">
+		                        <div class="col-md-7">
+		                            <div class="input-group mb-3">
+		                                <span class="input-group-text text-bg-secondary" id="basic-addon1">Mã sản phẩm</span>
+		                                <input type="text" class="form-control" aria-label="Username" ng-model="form.maSanPham" ng-readonly="update"
+		                                    aria-describedby="basic-addon1" required="required">
+		                            </div>
+		                            <div class="input-group mb-3">
+		                                <span class="input-group-text text-bg-secondary" id="basic-addon1">Tên sản phẩm</span>
+		                                <input type="text" class="form-control" aria-label="Username" ng-model="form.tenSanPham" required="required"
+		                                    aria-describedby="basic-addon1">
+		                            </div>
+		                            <div class="input-group mb-3">
+		                                <label class="input-group-text text-bg-secondary" for="inputGroupSelect01">Chủng
+		                                    loại</label>
+		                                <select class="form-select" id="inputGroupSelect01" ng-model="form.maCl">         
+		                                    <option ng-repeat="cl in list_cl" ng-value="cl.maChungLoai">{{cl.tenChungLoai}}</option>
+		                                </select>
+		                            </div>
+		                            <div class="input-group mb-3">
+		                                <label class="input-group-text text-bg-secondary" for="inputGroupSelect01">Nhà cung
+		                                    cấp</label>
+		                                <select class="form-select" id="inputGroupSelect01" ng-model="form.maNcc">
+		                                    <option ng-repeat="ncc in list_ncc" ng-value="ncc.maNhaCungCap">{{ncc.tenNhaCungCap}}</option>
+		                                </select>
+		                            </div>
+		                            <div class="input-group mb-3">
+		                                <label class="input-group-text text-bg-secondary" for="inputGroupSelect01">Thuộc tính
+		                                    đặc biệt</label>
+		                                <select class="form-select" id="inputGroupSelect01" ng-model="form.maTtdb">
+		                                    <option ng-repeat="ttdb in list_ttdb" ng-value="ttdb.maThuocTinhDacBiet">{{ttdb.tenThuocTinhDacBiet}}</option>
+		                                </select>
+		                            </div>
+		                            <div class="input-group mb-3">
+		                                <input type="number" placeholder="Nhập số lượng" aria-label="First name" ng-model="form.soLuong"
+		                                    class="form-control" required="required" min="0">
+		                                <span class="input-group-text text-bg-secondary">Sản phẩm</span>
+		                                <input type="number" placeholder="Nhập giá tiền" aria-label="Last name" ng-model="form.giaTien"
+		                                    class="form-control" min="1" required="required">
+		                                <span class="input-group-text text-bg-secondary">VNĐ</span>
+		                            </div>
+		
+		                        </div>
+		                        <div class="col-md-5 px-3 py-2 d-block text-center">             
+		                            <img ng-src="{{ temp_image_data || (form.hinhAnh?'/api/file/SanPham/' + form.hinhAnh:default_image_src)}}" class="img-fluid" 
+		                            	style="height: 270px;cursor: pointer;" ng-click="image_click()">
+		                            <input type="file" style="display: none" id="inputFile" accept="image/*">
+		                            <br>
+		                            <span class="fs-6 fw-light fst-italic">Mẹo: ấn vào hình để chỉnh sửa</span>
+		                        </div>
+		                    </div>
+		
+		                    <div class="form-floating">
+		                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" ng-model="form.moTa"
+		                            style="height: 100px"></textarea>
+		                        <label for="floatingTextarea2">Mô tả</label>
+		                    </div>
+	                </div>
+	                <div class="modal-footer">
+	                    <button type="button" class="btn p-0 m-0 me-3"><img src="/admin/image/resetBtn.png" class="img-fluid" ng-hide="update" ng-click="reset()"
+	                            style="height: 40px;"></button>
+	                    <button type="submit" class="btn p-0 m-0"><img src="/admin/image/themBtn.png" class="img-fluid" ng-hide="update"
+	                            style="height: 44px;"></button>
+	                     <button type="submit" class="btn p-0 m-0"><img src="/admin/image/capNhatBtn.png" class="img-fluid" ng-show="update"
+	                            style="height: 48px;"></button>
+	                </div>
+                </form>
             </div>
         </div>
     </div>
