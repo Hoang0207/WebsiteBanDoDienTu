@@ -82,6 +82,23 @@ app.controller("controller", function($scope, $http){
 		})
 	}
 	
+	//Chức năng tìm kiếm
+	$scope.search = function(){
+		//window.location.href = "/shop"
+		var url = `${host}/SanPham/filter`
+		$http.get(url,{params: $scope.form_search}).then(resp => {
+			$scope.items = resp.data
+			$scope.form_filter.maCl = ""
+			swal("Tìm kiếm sản phẩm thành công",{
+			    icon: "success",
+			})
+			console.log($scope.items)
+			console.log("Search SanPham Success",resp)
+		}).catch(error => {
+			console.log("Error search SanPham",error)
+		})
+	}
+	
 	//Chức năng thêm sản phẩm vào giỏ hàng
 	$scope.add_to_cart = function(maSp,soLuong){
 		swal("Chức năng thêm sản phẩm vào giỏ"+maSp+soLuong)
@@ -111,6 +128,15 @@ app.controller("controller", function($scope, $http){
 			this.page = this.count-1;
 		}
 	}
+	
+	//Tự động chạy khi mở web
+	$scope.load_all()
+	$scope.load_all_ttdb()
+	$scope.load_all_cl()
+	$scope.load_all_ncc()
+	
+	
+	
 	
 		
 	//No use, may delete in future
@@ -239,11 +265,5 @@ app.controller("controller", function($scope, $http){
 		}
 	}	
 	//
-	
-	//Tự động chạy khi mở web
-	$scope.load_all()
-	$scope.load_all_ttdb()
-	$scope.load_all_cl()
-	$scope.load_all_ncc()
 
 });
