@@ -84,16 +84,16 @@ app.controller("controller", function($scope, $http){
 	
 	//Chức năng tìm kiếm
 	$scope.search = function(){
-		//window.location.href = "/shop"
+		if(window.location.pathname != "/shop"){
+			window.location.href = "/shop"	
+		}
 		var url = `${host}/SanPham/filter`
 		$http.get(url,{params: $scope.form_search}).then(resp => {
 			$scope.items = resp.data
-			$scope.form_filter.maCl = ""
 			swal("Tìm kiếm sản phẩm thành công",{
 			    icon: "success",
 			})
-			console.log($scope.items)
-			console.log("Search SanPham Success",resp)
+			console.log("Search SanPham Success")
 		}).catch(error => {
 			console.log("Error search SanPham",error)
 		})
