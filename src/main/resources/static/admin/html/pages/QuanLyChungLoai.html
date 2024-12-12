@@ -26,9 +26,10 @@
 				<tr ng-repeat="cl in items | limitTo:limit:start">
 					<td class="pt-4">{{cl.maChungLoai}}</td>
 					<td class="pt-4">{{cl.tenChungLoai}}</td>
-					<td class="ps-3 pt-3"><img alt="" class="img-fluid me-2 imgAction" ng-click="load_by_id(cl.maChungLoai)" data-bs-toggle="modal" data-bs-target="#modalChungLoai"
+					<td class="ps-3 pt-3">
+						<img ng-hide="cl.maChungLoai=='CL000'" alt="" class="img-fluid me-2 imgAction" ng-click="load_by_id(cl.maChungLoai)" data-bs-toggle="modal" data-bs-target="#modalChungLoai"
 						src="/admin/image/editIcon.png">
-						<img alt="" class="img-fluid imgAction" src="/admin/image/deleteIcon.png" ng-click="delete(cl.maChungLoai)"></td>
+						<img ng-hide="cl.maChungLoai=='CL000'" alt="" class="img-fluid imgAction" src="/admin/image/deleteIcon.png" ng-click="delete(cl.maChungLoai)"></td>
 				</tr>
 			</tbody>
 		</table>

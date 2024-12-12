@@ -1,8 +1,10 @@
 package com.group4.controller.rest;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +20,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.group4.dao.ChungLoaiDAO;
 import com.group4.entity.ChungLoai;
+import com.group4.entity.SanPham;
 import com.group4.service.ChungLoaiService;
+import com.group4.service.SanPhamService;
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -27,6 +31,9 @@ public class ChungLoaiRestController {
 	
 	@Autowired
 	ChungLoaiService clService;
+	
+	@Autowired
+	SanPhamService spService;
 	
 	@GetMapping()
 	public ResponseEntity<Collection<ChungLoai>> restGetAllCl(){
@@ -69,6 +76,8 @@ public class ChungLoaiRestController {
 		if(!clService.existsById(id)) {
 			return ResponseEntity.notFound().build();
 		}
+		List<SanPham> listSp = spService.findAll();
+		listSp.stream().filter(sp -> sp.getMaCl().equalsIgnoreCase(id)).forEach(sp -> sp.setMaCl("CL000"));
 		clService.deleteById(id);
 		return ResponseEntity.ok().build();
 	}
