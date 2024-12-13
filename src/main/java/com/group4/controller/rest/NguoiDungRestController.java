@@ -79,12 +79,10 @@ public class NguoiDungRestController {
 	
 	@PutMapping("{id}")
 	public ResponseEntity<NguoiDung> restPutNguoiDung(@RequestBody NguoiDung nd, @PathVariable("id") String id){
-		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		Optional<NguoiDung> nguoiDung = ndService.findById(id);
 		if(nguoiDung.isEmpty()) {
 			return ResponseEntity.notFound().build();
 		}
-		nd.setMatKhau(encoder.encode(nd.getMatKhau()));
 		ndService.save(nd);
 		return ResponseEntity.ok(nd);
 	}

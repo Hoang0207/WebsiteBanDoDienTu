@@ -56,11 +56,15 @@
                 </a>
             </div>
             <div class="col-lg-4 col-6 text-left">
-                <form action="">
+                <form>
                     <div class="input-group">
+<<<<<<< HEAD
                         <input ng-model="searchText" type="text" class="form-control" placeholder="Tìm kiếm" data-translate="search_placeholder">
+=======
+                        <input ng-model="form_search.tenSanPham" type="text" class="form-control" placeholder="Tìm kiếm">
+>>>>>>> branch 'main' of https://github.com/Hoang0207/WebsiteBanDoDienTu.git
                         <div class="input-group-append">
-                            <span class="input-group-text bg-transparent text-primary">
+                            <span class="input-group-text bg-transparent text-primary" ng-click="search()">
                                 <i class="fa fa-search"></i>
                             </span>
                         </div>
