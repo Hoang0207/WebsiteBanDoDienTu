@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="vi">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -66,96 +66,98 @@
                     <h1 class="modal-title fs-4 fw-bold" id="staticBackdropLabel" ng-show="update">Cập nhật người dùng</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-7">
-                            <div class="input-group mb-3">
-                                <span class="input-group-text text-bg-secondary" id="basic-addon1">Mã người dùng</span>
-                                <input type="text" class="form-control" aria-label="Username" ng-model="form.maNguoiDung"
-                                    aria-describedby="basic-addon1" ng-readonly="update">
-                            </div>
-                            <div class="input-group mb-3" ng-hide="update">
-                                <span class="input-group-text text-bg-secondary" id="basic-addon1">Mật khẩu</span>
-                                <input type="password" class="form-control" aria-label="Username" ng-model="form.matKhau"
-                                    aria-describedby="basic-addon1">
-                            </div>
-                            <div class="input-group mb-3">
-                                <span class="input-group-text text-bg-secondary" id="basic-addon1">Tên người dùng</span>
-                                <input type="text" class="form-control" aria-label="Username" ng-model="form.hoTen"
-                                    aria-describedby="basic-addon1">
-                            </div>
-                            <div class="input-group mb-3">
-                                <span class="input-group-text text-bg-secondary" id="basic-addon1">Ngày sinh</span>
-                                <input type="date" class="form-control" aria-label="Username" ng-model="form.ngaySinh"
-                                    aria-describedby="basic-addon1">
-                            </div>
-                            <div class="input-group mb-3">
-                                <span class="input-group-text text-bg-secondary" id="basic-addon1">Ngày đăng ký</span>
-                                <input type="date" class="form-control" aria-label="Username" ng-model="form.ngayDangKy"
-                                    aria-describedby="basic-addon1" readonly="readonly">
-                            </div>
-                            <div class="input-group mb-3">
-                                <span class="input-group-text text-bg-secondary" id="basic-addon1">Số điện thoại</span>
-                                <input type="text" class="form-control" aria-label="Username" ng-model="form.soDienThoai"
-                                    aria-describedby="basic-addon1">
-                            </div>
-                            <div class="input-group mb-3">
-                                <span class="input-group-text text-bg-secondary" id="basic-addon1">Email</span>
-                                <input type="text" class="form-control" aria-label="Username" ng-model="form.email"
-                                    aria-describedby="basic-addon1">
-                            </div>
-            				
-							<div
-                                class="d-flex justify-content-between align-items-center mb-3 border border-secondary-subtle rounded pe-2" ng-show="update">
-                                <div class="text-bg-secondary p-2 rounded">Vai trò</div>
-                                <div class="form-check pe-2" ng-repeat="role in roles">
-                                    <input class="form-check-input" type="checkbox" name="vaiTro" ng-click="role_edit(form.maNguoiDung,role)" ng-disabled="!update"
-                                        ng-value="role.maVaiTro" id="flexRadioDefault1" ng-checked="authority_of(form.maNguoiDung,role)"> 
-                                        <label class="form-check-label" for="flexRadioDefault1">{{role.tenVaiTro}}</label>
-                                </div>
-                  				<!-- ng-checked="authority_of(form.maNguoiDung,role)" -->
-                            </div>
-                                        
-                        </div>
-                        <div class="col-md-5 px-3 py-2 d-block text-center">
-                            <img ng-src="{{temp_image_data || (form.hinhAnh ? '/api/file/NguoiDung/'+form.hinhAnh : '/api/file/NguoiDung/defaultUser.png')}}" class="img-fluid" ng-click="image_click()" style="height: 273px;cursor: pointer;">
-                            <input type="file" id="fileHinh" accept="image/*" style="display: none">
-                            <br>
-                            <span class="fs-6 fw-light fst-italic">Mẹo: ấn vào hình để chỉnh sửa</span>
-                            <div
-                                class="d-flex justify-content-between align-items-center my-3 border border-secondary-subtle rounded pe-2">
-                                <div class="text-bg-secondary p-2 rounded">Giới tính</div>
-                                <div class="form-check pe-4">
-                                    <input class="form-check-input" type="radio" checked="checked" ng-model="form.gioiTinh"
-                                        ng-value="true" id="flexRadioDefault1"> <label class="form-check-label"
-                                        for="flexRadioDefault1">Nam</label>
-                                </div>
-                                <div class="form-check pe-4">
-                                    <input class="form-check-input" type="radio" ng-value="false" ng-model="form.gioiTinh"
-                                        id="flexRadioDefault2"> <label class="form-check-label"
-                                        for="flexRadioDefault2">Nữ</label>
-                                </div>
-                            </div>
-                 
-                        </div>
-                    </div>
-
-                    <div class="form-floating">
-                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" ng-model="form.diaChi"
-                            style="height: 100px"></textarea>
-                        <label for="floatingTextarea2">Địa chỉ</label>
-                    </div>
-
-                </div>
-                <div class="modal-footer">
-                    <!--<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
-                    <button type="button" class="btn p-0 m-0 me-3"><img src="/admin/image/resetBtn.png" class="img-fluid" ng-hide="update" ng-click="reset()"
-                            style="height: 40px;"></button>
-                    <button type="button" class="btn p-0 m-0"><img src="/admin/image/themBtn.png" class="img-fluid" ng-hide="update" ng-click="create()"
-                            style="height: 44px;"></button>
-                     <button type="button" class="btn p-0 m-0"><img src="/admin/image/capNhatBtn.png" class="img-fluid" ng-show="update" ng-click="update_nd(form.maNguoiDung, form.hinhAnh)"
-                            style="height: 48px;"></button>
-                </div>
+                <form ng-submit="update?update_nd(form.maNguoiDung, form.hinhAnh):create()">
+	                <div class="modal-body">
+	                    <div class="row">
+	                        <div class="col-md-7">
+	                            <div class="input-group mb-3" ng-show="update">
+	                                <span class="input-group-text text-bg-secondary" id="basic-addon1">Mã người dùng</span>
+	                                <input type="text" class="form-control" aria-label="Username" ng-model="form.maNguoiDung"
+	                                    aria-describedby="basic-addon1" readonly="readonly">
+	                            </div>
+	                            <div class="input-group mb-3">
+	                                <span class="input-group-text text-bg-secondary" id="basic-addon1">Email</span>
+	                                <input type="email" class="form-control" aria-label="Username" ng-model="form.email"
+	                                    aria-describedby="basic-addon1" required="required" ng-readonly="update">
+	                            </div>
+	                            <div class="input-group mb-3" ng-hide="update">
+	                                <span class="input-group-text text-bg-secondary" id="basic-addon1">Mật khẩu</span>
+	                                <input type="password" class="form-control" aria-label="Username" ng-model="form.matKhau"
+	                                    aria-describedby="basic-addon1" required="required">
+	                            </div>
+	                            <div class="input-group mb-3">
+	                                <span class="input-group-text text-bg-secondary" id="basic-addon1">Tên người dùng</span>
+	                                <input type="text" class="form-control" aria-label="Username" ng-model="form.hoTen"
+	                                    aria-describedby="basic-addon1" required="required">
+	                            </div>
+	                            <div class="input-group mb-3">
+	                                <span class="input-group-text text-bg-secondary" id="basic-addon1">Ngày sinh</span>
+	                                <input type="date" class="form-control" aria-label="Username" ng-model="form.ngaySinh"
+	                                    aria-describedby="basic-addon1" required="required">
+	                            </div>
+	                            <div class="input-group mb-3">
+	                                <span class="input-group-text text-bg-secondary" id="basic-addon1">Ngày đăng ký</span>
+	                                <input type="date" class="form-control" aria-label="Username" ng-model="form.ngayDangKy"
+	                                    aria-describedby="basic-addon1" readonly="readonly">
+	                            </div>
+	                            <div class="input-group mb-3">
+	                                <span class="input-group-text text-bg-secondary" id="basic-addon1">Số điện thoại</span>
+	                                <input type="tel" pattern="[0-9]{10}" class="form-control" aria-label="Username" ng-model="form.soDienThoai"
+	                                    aria-describedby="basic-addon1" required="required">
+	                            </div>
+	            				
+								<div
+	                                class="d-flex justify-content-between align-items-center mb-3 border border-secondary-subtle rounded pe-2">
+	                                <div class="text-bg-secondary p-2 rounded">Vai trò</div>
+	                                <div class="form-check pe-2" ng-repeat="role in roles">
+	                                    <input class="form-check-input" type="checkbox" name="vaiTro" ng-click="role_edit(form.maNguoiDung,role)" ng-disabled="!update"
+	                                        ng-value="role.maVaiTro" ng-id="role.maVaiTro" ng-checked="authority_of(form.maNguoiDung,role)"> 
+	                                        <label class="form-check-label" for="flexRadioDefault1">{{role.tenVaiTro}}</label>
+	                                </div>
+	                  				<!-- ng-checked="authority_of(form.maNguoiDung,role)" -->
+	                            </div>
+	                                        
+	                        </div>
+	                        <div class="col-md-5 px-3 py-2 d-block text-center">
+	                            <img ng-src="{{temp_image_data || (form.hinhAnh ? '/api/file/NguoiDung/'+form.hinhAnh : '/api/file/NguoiDung/defaultUser.png')}}" class="img-fluid" ng-click="image_click()" style="height: 273px;cursor: pointer;">
+	                            <input type="file" id="fileHinh" accept="image/*" style="display: none">
+	                            <br>
+	                            <span class="fs-6 fw-light fst-italic">Mẹo: ấn vào hình để chỉnh sửa</span>
+	                            <div
+	                                class="d-flex justify-content-between align-items-center my-3 border border-secondary-subtle rounded pe-2">
+	                                <div class="text-bg-secondary p-2 rounded">Giới tính</div>
+	                                <div class="form-check pe-4">
+	                                    <input class="form-check-input" type="radio" checked="checked" ng-model="form.gioiTinh"
+	                                        ng-value="true" id="flexRadioDefault1"> <label class="form-check-label"
+	                                        for="flexRadioDefault1">Nam</label>
+	                                </div>
+	                                <div class="form-check pe-4">
+	                                    <input class="form-check-input" type="radio" ng-value="false" ng-model="form.gioiTinh"
+	                                        id="flexRadioDefault2"> <label class="form-check-label"
+	                                        for="flexRadioDefault2">Nữ</label>
+	                                </div>
+	                            </div>
+	                 
+	                        </div>
+	                    </div>
+	
+	                    <div class="form-floating">
+	                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" ng-model="form.diaChi"
+	                            style="height: 100px"></textarea>
+	                        <label for="floatingTextarea2">Địa chỉ</label>
+	                    </div>
+	
+	                </div>
+	                <div class="modal-footer">
+	                    <!--<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
+	                    <button type="button" class="btn p-0 m-0 me-3"><img src="/admin/image/resetBtn.png" class="img-fluid" ng-hide="update" ng-click="reset()"
+	                            style="height: 40px;"></button>
+	                    <button type="submit" class="btn p-0 m-0"><img src="/admin/image/themBtn.png" class="img-fluid" ng-hide="update"
+	                            style="height: 44px;"></button>
+	                     <button type="submit" class="btn p-0 m-0"><img src="/admin/image/capNhatBtn.png" class="img-fluid" ng-show="update"
+	                            style="height: 48px;"></button>
+	                </div>
+            	</form>
             </div>
         </div>
     </div>
