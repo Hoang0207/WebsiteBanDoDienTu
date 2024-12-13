@@ -27,8 +27,8 @@
 					<td class="pt-4" >{{ncc.maNhaCungCap}}</td>
 					<td class="pt-4" >{{ncc.tenNhaCungCap}}</td>
 					<td class="ps-3 pt-3">
-						<img alt="" class="img-fluid me-2 imgAction" data-bs-toggle="modal" data-bs-target="#modalNhaCungCap" src="/admin/image/editIcon.png" ng-click="load_by_id(ncc.maNhaCungCap)">
-						<img alt="" class="img-fluid imgAction" src="/admin/image/deleteIcon.png" ng-click="delete(ncc.maNhaCungCap)">
+						<img ng-hide="ncc.maNhaCungCap == 'NCC000'" alt="" class="img-fluid me-2 imgAction" data-bs-toggle="modal" data-bs-target="#modalNhaCungCap" src="/admin/image/editIcon.png" ng-click="load_by_id(ncc.maNhaCungCap)">
+						<img ng-hide="ncc.maNhaCungCap == 'NCC000'" alt="" class="img-fluid imgAction" src="/admin/image/deleteIcon.png" ng-click="delete(ncc.maNhaCungCap)">
 					</td>
 				</tr>
 			</tbody>

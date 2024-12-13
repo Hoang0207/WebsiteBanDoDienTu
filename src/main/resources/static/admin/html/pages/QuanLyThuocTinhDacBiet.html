@@ -27,8 +27,8 @@
 					<td class="pt-4" >{{ttdb.maThuocTinhDacBiet}}</td>
 					<td class="pt-4" >{{ttdb.tenThuocTinhDacBiet}}</td>
 					<td class="ps-3 pt-3">
-						<img alt="" class="img-fluid me-2 imgAction" src="/admin/image/editIcon.png" data-bs-toggle="modal" data-bs-target="#modalThuocTinhDacBiet" ng-click="load_by_id(ttdb.maThuocTinhDacBiet)">
-						<img alt="" class="img-fluid imgAction" src="/admin/image/deleteIcon.png" ng-click="delete(ttdb.maThuocTinhDacBiet)">
+						<img ng-hide="ttdb.maThuocTinhDacBiet=='TTDB000'" alt="" class="img-fluid me-2 imgAction" src="/admin/image/editIcon.png" data-bs-toggle="modal" data-bs-target="#modalThuocTinhDacBiet" ng-click="load_by_id(ttdb.maThuocTinhDacBiet)">
+						<img ng-hide="ttdb.maThuocTinhDacBiet=='TTDB000'" alt="" class="img-fluid imgAction" src="/admin/image/deleteIcon.png" ng-click="delete(ttdb.maThuocTinhDacBiet)">
 					</td>
 				</tr>
 			</tbody>

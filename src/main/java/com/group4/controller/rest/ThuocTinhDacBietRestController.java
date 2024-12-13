@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.group4.dao.ThuocTinhDacBietDAO;
+import com.group4.entity.SanPham;
 import com.group4.entity.ThuocTinhDacBiet;
+import com.group4.service.SanPhamService;
 import com.group4.service.ThuocTinhDacBietService;
 
 @CrossOrigin(origins = "*")
@@ -27,6 +29,9 @@ public class ThuocTinhDacBietRestController {
 
 	@Autowired
 	ThuocTinhDacBietService ttdbService;
+	
+	@Autowired
+	SanPhamService spService;
 	
 	@GetMapping()
 	public ResponseEntity<Collection<ThuocTinhDacBiet>> restGetAllTtdb(){
@@ -69,6 +74,8 @@ public class ThuocTinhDacBietRestController {
 		if(!ttdbService.existsById(id)) {
 			return ResponseEntity.notFound().build();
 		}
+		List<SanPham> listSp = spService.findAll();
+		listSp.stream().filter(sp -> sp.getMaTtdb().equalsIgnoreCase(id)).forEach(sp -> sp.setMaTtdb("TTDB000"));
 		ttdbService.deleteById(id);
 		return ResponseEntity.ok().build();
 	}
