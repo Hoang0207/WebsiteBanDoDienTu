@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="path/to/your/lang.js"></script> <!-- Thêm đường dẫn đến file JS ở đây -->
 </head>
 <body>
     <!-- topbar.html start -->
@@ -11,37 +12,37 @@
         <div class="row bg-secondary py-1 px-xl-5">
             <div class="col-lg-6 d-none d-lg-block">
                 <div class="d-inline-flex align-items-center h-100">
-                    <a class="text-body mr-3 translatable" href="">Về chúng tôi</a>
-                    <a class="text-body mr-3 translatable" href="">Liên hệ</a>
-                    <a class="text-body mr-3 translatable" href="">Trợ giúp</a>
-                    <a class="text-body mr-3 translatable" href="">FAQs</a>
+                    <a class="text-body mr-3 translatable" href="" data-translate="About">Về chúng tôi</a>
+                    <a class="text-body mr-3 translatable" href="" data-translate="contact">Liên hệ</a>
+                    <a class="text-body mr-3 translatable" href="" data-translate="Help">Trợ giúp</a>
+                    <a class="text-body mr-3 translatable" href="" data-translate="FAQs">FAQs</a>
                 </div>
             </div>
             <div class="col-lg-6 text-center text-lg-right">
                 <div class="d-inline-flex align-items-center">
-					<div class="btn-group">
-						<button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">
-							<i class="fa-solid fa-circle-user"></i>
-						</button>
-						<div class="dropdown-menu dropdown-menu-right">
-							<div th:if="${email != null}">
-								<span>Xin chào, <span th:text="${email}">User</span>!</span>
-								<a class="btn" th:href="@{/logout}">Đăng xuất</a>
-							</div>
-						
-							<div th:unless="${email != null}">
-								<a class="btn" th:href="@{/login}">Đăng Nhập</a>
-								<a class="btn" th:href="@{/dangky}">Đăng Ký</a>
-							</div>
-						</div>
-						
-						</div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">
+                            <i class="fa-solid fa-circle-user"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <div th:if="${email != null}">
+                                <span> <a data-translate="Hello," href="#">Xin chào,</a> <span th:text="${email}">User</span>!</span> <br>
+                                <a class="btn" data-translate="logout" th:href="@{/logout}">Đăng xuất</a>
+                            </div>
+
+                            <div th:unless="${email != null}">
+                                <a class="btn" data-translate="login" th:href="@{/login}">Đăng Nhập</a>
+                                <a class="btn" data-translate="register" th:href="@{/dangky}">Đăng Ký</a>
+                            </div>
+                        </div>
+                    </div>
 
                     <div class="btn-group">
-                        <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">VN</button>
+                        <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown" data-translate="language">VN</button>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <button class="dropdown-item" type="button" onclick="translatePage('vi')">Tiếng Việt</button>
-                            <button class="dropdown-item" type="button" onclick="translatePage('en')">English</button>
+                            <button style="border: none;background-color: white;" onclick="changeLanguage('vi')">Tiếng Việt</button>
+                            <button style="border: none;background-color: white;" onclick="changeLanguage('en')">English</button>
+
                         </div>
                     </div>
                 </div>
@@ -57,7 +58,7 @@
             <div class="col-lg-4 col-6 text-left">
                 <form action="">
                     <div class="input-group">
-                        <input ng-model="searchText" type="text" class="form-control" placeholder="Tìm kiếm">
+                        <input ng-model="searchText" type="text" class="form-control" placeholder="Tìm kiếm" data-translate="search_placeholder">
                         <div class="input-group-append">
                             <span class="input-group-text bg-transparent text-primary">
                                 <i class="fa fa-search"></i>
@@ -67,8 +68,8 @@
                 </form>
             </div>
             <div class="col-lg-4 col-6 text-right">
-                <p class="m-0 translatable">Chăm sóc khách hàng</p>
-                <h5 class="m-0 translatable">+012 345 6789</h5>
+                <p class="m-0 translatable" data-translate="customer_care">Chăm sóc khách hàng</p>
+                <h5 class="m-0 translatable" data-translate="customer_number">+012 345 6789</h5>
             </div>
         </div>
     </div>
@@ -79,16 +80,16 @@
         <div class="row px-xl-5">
             <div class="col-lg-3 d-none d-lg-block">
                 <a class="btn d-flex align-items-center justify-content-between bg-primary w-100" data-toggle="collapse" href="#navbar-vertical" style="height: 65px; padding: 0 30px;">
-                    <h6 class="text-dark m-0 translatable"><i class="fa fa-bars mr-2"></i>Danh sách</h6>
+                    <h6 class="text-dark m-0 translatable" data-translate="list"><i class="fa fa-bars mr-2"></i>Danh sách</h6>
                     <i class="fa fa-angle-down text-dark"></i>
                 </a>
                 <nav class="collapse position-absolute navbar navbar-vertical navbar-light align-items-start p-0 bg-light" id="navbar-vertical" style="width: calc(100% - 30px); z-index: 999;">
                     <div class="navbar-nav w-100">
                         <div class="nav-item dropdown dropright">
-                            <a href="#" class="nav-link dropdown-toggle translatable" data-toggle="dropdown">Laptop <i class="fa fa-angle-right float-right mt-1"></i></a>
-                            <a href="#" class="nav-link dropdown-toggle translatable" data-toggle="dropdown">PC <i class="fa fa-angle-right float-right mt-1"></i></a>
-                            <a href="#" class="nav-link dropdown-toggle translatable" data-toggle="dropdown">Linh Kiện <i class="fa fa-angle-right float-right mt-1"></i></a>
-                            <a href="#" class="nav-link dropdown-toggle translatable" data-toggle="dropdown">Máy In <i class="fa fa-angle-right float-right mt-1"></i></a>
+                            <a href="#" class="nav-link dropdown-toggle translatable" data-toggle="dropdown" data-translate="Laptop">Laptop <i class="fa fa-angle-right float-right mt-1"></i></a>
+                            <a href="#" class="nav-link dropdown-toggle translatable" data-toggle="dropdown" data-translate="PC">PC <i class="fa fa-angle-right float-right mt-1"></i></a>
+                            <a href="#" class="nav-link dropdown-toggle translatable" data-toggle="dropdown" data-translate="components">Linh Kiện <i class="fa fa-angle-right float-right mt-1"></i></a>
+                            <a href="#" class="nav-link dropdown-toggle translatable" data-toggle="dropdown" data-translate="printer">Máy In <i class="fa fa-angle-right float-right mt-1"></i></a>
                         </div>
                     </div>
                 </nav>
@@ -104,10 +105,10 @@
                     </button>
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0">
-                            <a th:href="@{/}" class="nav-item nav-link translatable">Trang Chủ</a>
-                            <a th:href="@{/shop}" class="nav-item nav-link translatable">Sản phẩm</a>
-                            <a th:href="@{/cart}" class="nav-item nav-link translatable">Giỏ Hàng</a>
-                            <a th:href="@{/contact}" class="nav-item nav-link translatable">Liên Hệ</a>
+                            <a th:href="@{/}" class="nav-item nav-link translatable" data-translate="home">Trang Chủ</a>
+                            <a th:href="@{/shop}" class="nav-item nav-link translatable" data-translate="product">Sản phẩm</a>
+                            <a th:href="@{/cart}" class="nav-item nav-link translatable" data-translate="cart">Giỏ Hàng</a>
+                            <a th:href="@{/contact}" class="nav-item nav-link translatable" data-translate="contact">Liên Hệ</a>
                         </div>
                         <div class="navbar-nav ml-auto py-0 d-none d-lg-block">
                             <a href="" class="btn px-0">
@@ -125,6 +126,16 @@
         </div>
     </div>
     <!-- _navbar.html stop -->
-
+    <script>
+        function changeLanguage(language) {
+            // Gửi yêu cầu để thay đổi ngôn ngữ
+            fetch('/set-language?lang=' + language)
+                .then(response => response.text())
+                .then(data => {
+                    console.log(data);  // In ra thông báo thay đổi ngôn ngữ
+                    location.reload();  // Tải lại trang để áp dụng ngôn ngữ mới
+                });
+        }
+    </script>
 </body>
 </html>

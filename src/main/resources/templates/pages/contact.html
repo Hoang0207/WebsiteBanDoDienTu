@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liên hệ</title>
+    <title data-translate="contact_title">Liên hệ</title>
     <style>
         /* Các kiểu chung cho form */
         .control-group {
@@ -59,8 +59,8 @@
         <div class="row px-xl-5">
             <div class="col-12">
                 <nav class="breadcrumb bg-light mb-30">
-                    <a class="breadcrumb-item text-dark" href="#">Trang Chủ</a>
-                    <span class="breadcrumb-item active">Liên hệ</span>
+                    <a class="breadcrumb-item text-dark" href="#" data-translate="home">Trang Chủ</a>
+                    <span class="breadcrumb-item active" data-translate="contact">Liên hệ</span>
                 </nav>
             </div>
         </div>
@@ -80,19 +80,19 @@
 
                     <form id="contactForm" action="/sendMail" method="POST" onsubmit="return sendMail(event)">
                         <div class="control-group">
-                            <input type="text" class="form-control" name="Hoten" placeholder="Họ và Tên" required>
+                            <input type="text" class="form-control" name="Hoten" placeholder="" data-translate="name_label" required>
                         </div>
                         <div class="control-group">
-                            <input type="email" class="form-control" name="recipientEmail" placeholder="Email" required>
+                            <input type="email" class="form-control" name="recipientEmail" placeholder="" data-translate="email_label" required>
                         </div>
                         <div class="control-group">
-                            <input type="text" class="form-control" name="Didong" placeholder="Di động" required>
+                            <input type="text" class="form-control" name="Didong" placeholder="" data-translate="phone_label" required>
                         </div>
                         <div class="control-group">
-                            <textarea class="form-control" rows="8" name="Ghichu" placeholder="Ghi chú" required></textarea>
+                            <textarea class="form-control" rows="8" name="Ghichu" placeholder="" data-translate="message_label" required></textarea>
                         </div>
                         <div>
-                            <button class="btn btn-primary py-2 px-4" type="submit">Gửi tin nhắn</button>
+                            <button class="btn btn-primary py-2 px-4" type="submit" data-translate="submit_button">Gửi tin nhắn</button>
                         </div>
                     </form>
                 </div>
@@ -103,13 +103,13 @@
                     <iframe style="width: 100%; height: 250px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.892748597403!2d106.62943881473616!3d10.776936792323118!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317529f5f1d16d89%3A0x7d032af17f0d472b!2sDistrict%201%2C%20Ho%20Chi%20Minh%20City%2C%20Vietnam!5e0!3m2!1sen!2sbd!4v1603794290143!5m2!1sen!2sbd" frameborder="0" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
                 </div>
                 <div class="bg-light p-30 mb-3">
-                    <p class="mb-2">
+                    <p class="mb-2" data-translate="address_label">
                         <i class="fa fa-map-marker-alt text-primary mr-3"></i>Hcm
                     </p>
-                    <p class="mb-2">
+                    <p class="mb-2" data-translate="email_label">
                         <i class="fa fa-envelope text-primary mr-3"></i>info@example.com
                     </p>
-                    <p class="mb-2">
+                    <p class="mb-2" data-translate="phone_label">
                         <i class="fa fa-phone-alt text-primary mr-3"></i>+012 345 67890
                     </p>
                 </div>
@@ -133,9 +133,12 @@
                     if (!response.ok) throw new Error("Lỗi trong quá trình gửi");
                     return response.json();
                 })
-                .catch(success => {
+                .then(() => {
                     showAlert("Đã gửi tin nhắn thành công!", "success");
                 })
+                .catch(() => {
+                    showAlert("Có lỗi xảy ra. Vui lòng thử lại.", "error");
+                });
         }
 
         // Hàm hiển thị thông báo
