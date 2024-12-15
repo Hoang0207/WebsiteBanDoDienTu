@@ -70,7 +70,7 @@ public class SecurityConfig {
 		                        //
                                 .requestMatchers("/dangky","/shop","/contact",
                                         "/home", "/oauth/**", "/login/**", "/login-google", "/", "/register", "/save", "re-send", "/shopz/**",
-                                        "/api/**", "/cart"
+                                        "/api/**", "/cart", "/save-new-password", "/send-otp-recover", "/confirm-otp-recover", "/forgot-password", "/savedangky"
                                 ).permitAll()
                                 .requestMatchers("/cart").hasAuthority("ROLE_CUST")
                                 .requestMatchers("/admin/**", "/admin", "/static/**", "/cart","/cart/**").hasAnyAuthority("ROLE_DIRE")
@@ -81,7 +81,7 @@ public class SecurityConfig {
                         .usernameParameter("email")
                         .passwordParameter("password")
                         .defaultSuccessUrl("/", true)
-                        .failureUrl("/login")
+                        .failureUrl("/loginError")
                 .and()
                 .logout().logoutSuccessUrl("/").permitAll()
                 .and()

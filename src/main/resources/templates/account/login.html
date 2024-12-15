@@ -10,7 +10,6 @@
             margin: 0;
             font-family: Arial, sans-serif;
             color: #333;
-           font-family: Arial, sans-serif;
             background-image: url(https://4kwallpapers.com/images/wallpapers/dark-background-abstract-background-network-3d-background-3840x2160-8324.png); /* Hình nền */
             background-size: 200%; /* Hình nền lớn hơn, phủ toàn bộ màn hình */
             background-repeat: no-repeat; /* Không lặp lại hình nền */
@@ -67,6 +66,24 @@
             outline: none;
         }
 
+        /* Ô nhớ mật khẩu */
+        .remember-me {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+
+        .remember-me input {
+            margin-right: 5px;
+            accent-color: blue; /* Màu xanh cho ô tích */
+        }
+
+        .remember-me label {
+            color: black; /* Màu đen cho chữ */
+        }
+
         /* Nút hành động chung */
         .form-actions {
             display: flex;
@@ -102,20 +119,17 @@
         }
 
         /* Nút Google */
-        /* Nút Google */
-.google-btn {
-    background-color: #dd4b39;
-    color: white;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-    width: 95%; /* Đặt chiều rộng đầy đủ */
-   
-}
+        .google-btn {
+            background-color: #dd4b39;
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            width: 95%; /* Đặt chiều rộng đầy đủ */
+        }
 
-.google-btn:hover {
-    background-color: #c23321;
-}
-
+        .google-btn:hover {
+            background-color: #c23321;
+        }
 
         /* Thông báo lỗi / thoát */
         .message {
@@ -134,26 +148,82 @@
     </style>
 </head>
 <body>
-    <div class="form-container">
-        <form class="form-box" th:action="@{/login}" method="post">
-            <h1>Đăng Nhập</h1>
-            <div class="form-group">
-                <label>Email:</label>
-                <input type="email" name="email" placeholder="Nhập email" required>
-            </div>
-            <div class="form-group">
-                <label>Mật khẩu:</label>
-                <input type="password" name="password" placeholder="Nhập mật khẩu" required>
-            </div>
-            <div class="form-actions">
-                <button type="submit">Đăng nhập</button>
-                <a th:href="@{/}" class="google-btn">
-               	Đăng nhập bằng google
-                </a>
-            </div>
-            <p th:if="${error}" th:text="${error}" class="message error"></p>
-            <p th:if="${logout}" th:text="${logout}" class="message success"></p>
-        </form>
-    </div>
+<div class="form-container">
+    <form class="form-box" th:action="@{/login}" method="post">
+        <h1>Đăng Nhập</h1>
+        <div th:if="${error}" class="alert alert-danger">
+            <p th:text="${error}"></p>
+        </div>
+        <div class="form-group">
+            <input type="email" id="email" name="email" placeholder="Nhập email" th:value="${email}" required>
+            <div style="color: red;" id="email-error" class="error-message">Vui lòng nhập email đúng định dạng @gmail.com</div>
+            <div style="color: red;" id="empty-email-error" class="error-message">Vui lòng nhập Email của bạn</div>
+
+        </div>
+
+        <div class="form-group">
+            <input type="password" id="password" name="password" placeholder="Nhập mật khẩu" th:value="${password}"
+                   required>
+            <div style="color: red;" id="password-empty-error" class="error-message">Vui lòng điền mật khẩu của bạn</div>
+
+        </div>
+
+        <!-- Ô nhớ mật khẩu -->
+        <div class="remember-me">
+            <input type="checkbox" id="remember" name="remember" th:checked="${rememberMe}">
+            <label for="remember">Nhớ mật khẩu</label>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit">Đăng nhập</button>
+        </div>
+
+        <div class="register-link">
+            <p>Chưa có tài khoản? <a style="text-decoration: none; color:  #007bff;" th:href="@{/dangky}">Đăng ký</a></p>
+        </div>
+
+        <div style="text-align: center;">
+            <br>
+            <a style="text-decoration: none; color:  #007bff" th:href="@{/forgot-password}">Quên mật khẩu?</a>
+        </div>
+
+        <p th:if="${error}" th:text="${error}" class="message error"></p>
+        <p th:if="${logout}" th:text="${logout}" class="message success"></p>
+    </form>
+</div>
+
+<script>
+    const emailInput = document.getElementById('email');
+    const emailError = document.getElementById('email-error');
+    const emptyEmailError = document.getElementById('empty-email-error');
+    const passwordEmptyError = document.getElementById('password-empty-error');
+    const matKhauInput = document.getElementById('password');
+    emailError.style.display = 'none';
+    emptyEmailError.style.display = 'none';
+    passwordEmptyError.style.display = 'none';
+    emailInput.addEventListener('input', function () {
+        const emailValue = emailInput.value;
+        if (emailValue && !emailValue.endsWith('@gmail.com')) {
+            emailError.style.display = 'block';
+        } else {
+            emailError.style.display = 'none';
+        }
+        if (emailValue === '') {
+            emptyEmailError.style.display = 'block';
+        } else {
+            emptyEmailError.style.display = 'none';
+        }
+    });
+
+    matKhauInput.addEventListener('input', function () {
+        const passwordValue = matKhauInput.value;
+
+        if (passwordValue === '') {
+            passwordEmptyError.style.display = 'block';
+        } else {
+            passwordEmptyError.style.display = 'none';
+        }
+    });
+</script>
 </body>
 </html>

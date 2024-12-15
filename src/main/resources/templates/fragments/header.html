@@ -10,12 +10,7 @@
     <div class="container-fluid">
         <div class="row bg-secondary py-1 px-xl-5">
             <div class="col-lg-6 d-none d-lg-block">
-                <div class="d-inline-flex align-items-center h-100">
-                    <a class="text-body mr-3 translatable" href="">Về chúng tôi</a>
-                    <a class="text-body mr-3 translatable" href="">Liên hệ</a>
-                    <a class="text-body mr-3 translatable" href="">Trợ giúp</a>
-                    <a class="text-body mr-3 translatable" href="">FAQs</a>
-                </div>
+              
             </div>
             <div class="col-lg-6 text-center text-lg-right">
                 <div class="d-inline-flex align-items-center">
@@ -24,17 +19,18 @@
 							<i class="fa-solid fa-circle-user"></i>
 						</button>
 						<div class="dropdown-menu dropdown-menu-right">
-							<div th:if="${email != null}">
-								<span>Xin chào, <span th:text="${email}">User</span>!</span>
+							<div th:if="${session.email != null}">
+								<span>Xin chào, <span th:text="${session.email}">User</span>!</span>
+								<a class="btn" th:href="@{/admin}">Admin</a>
 								<a class="btn" th:href="@{/logout}">Đăng xuất</a>
 							</div>
-						
-							<div th:unless="${email != null}">
+
+							<div th:unless="${session.email != null}">
 								<a class="btn" th:href="@{/login}">Đăng Nhập</a>
 								<a class="btn" th:href="@{/dangky}">Đăng Ký</a>
 							</div>
 						</div>
-						
+
 						</div>
 
                     <div class="btn-group">
@@ -108,12 +104,11 @@
                             <a th:href="@{/shop}" class="nav-item nav-link translatable">Sản phẩm</a>
                             <a th:href="@{/cart}" class="nav-item nav-link translatable">Giỏ Hàng</a>
                             <a th:href="@{/contact}" class="nav-item nav-link translatable">Liên Hệ</a>
+                            <a th:href="@{/userform}" class="nav-item nav-link translatable">Thông Tin Cá Nhân</a>
+                            
                         </div>
                         <div class="navbar-nav ml-auto py-0 d-none d-lg-block">
-                            <a href="" class="btn px-0">
-                                <i class="fas fa-heart text-primary"></i>
-                                <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
-                            </a>
+                           
                             <a th:href="@{/cart}" class="btn px-0 ml-3">
                                 <i class="fas fa-shopping-cart text-primary"></i>
                                 <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">{{cart.count}}</span>

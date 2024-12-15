@@ -144,9 +144,7 @@
 						<a class="text-decoration-none" href="#">
 							<div class="cat-item d-flex align-items-center mb-4">
 								<div class="overflow-hidden"
-									style="width: 100px; height: 100px;">
-									
-								</div>
+									style="width: 100px; height: 100px;"></div>
 								<div class="flex-fill pl-3">
 									<h6>Laptop</h6>
 									<small class="text-body">100 sản phẩm</small>
@@ -159,9 +157,7 @@
 						<a class="text-decoration-none" href="#">
 							<div class="cat-item d-flex align-items-center mb-4">
 								<div class="overflow-hidden"
-									style="width: 100px; height: 100px;">
-									
-								</div>
+									style="width: 100px; height: 100px;"></div>
 								<div class="flex-fill pl-3">
 									<h6>Máy in</h6>
 									<small class="text-body">100 sản phẩm</small>
@@ -173,9 +169,7 @@
 						<a class="text-decoration-none" href="#">
 							<div class="cat-item d-flex align-items-center mb-4">
 								<div class="overflow-hidden"
-									style="width: 100px; height: 100px;">
-									
-								</div>
+									style="width: 100px; height: 100px;"></div>
 								<div class="flex-fill pl-3">
 									<h6>Linh Kiện</h6>
 									<small class="text-body">100 sản phẩm</small>
@@ -187,9 +181,7 @@
 						<a class="text-decoration-none" href="#">
 							<div class="cat-item d-flex align-items-center mb-4">
 								<div class="overflow-hidden"
-									style="width: 100px; height: 100px;">
-									
-								</div>
+									style="width: 100px; height: 100px;"></div>
 								<div class="flex-fill pl-3">
 									<h6>PC</h6>
 									<small class="text-body">100 sản phẩm</small>
@@ -206,55 +198,59 @@
 
 
 			<!-- Products Start -->
-		<div class="container-fluid pt-5 pb-3">
-    <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4">
-        <span class="bg-secondary pr-3">Sản phẩm mới</span>
-    </h2>
-    <div class="row px-xl-5">
-        <div ng-repeat="pro in items | limitTo:8" class="col-lg-3 col-md-4 col-sm-6 pb-4">
-            <div class="product-item bg-light mb-4 d-flex flex-column">
-                <div class="product-img position-relative overflow-hidden">
-                    <img class="img-fluid w-100" ng-src="{{'/api/file/SanPham/'+pro.hinhAnh}}" alt=""
-                        style="object-fit: cover; height: 250px;">
-                    <div class="product-action">
-                        <a class="btn btn-outline-dark btn-square" ng-href="{{'/detail/'+pro.maSanPham}}">
-                            <button >
-                                <i class="fa fa-shopping-cart"></i>
-                            </button>
-                        </a>
-                    </div>
-                </div>
-                <div class="text-center py-4 flex-grow-1">
-                    <a class="h6 text-decoration-none text-truncate" href=""
-                        style="display: block; max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-                        {{pro.tenSanPham}}
-                    </a>
-                    <a class="h6 text-decoration-none text-truncate" href=""
+			<div class="container-fluid pt-5 pb-3">
+				<h2
+					class="section-title position-relative text-uppercase mx-xl-5 mb-4">
+					<span class="bg-secondary pr-3">Sản phẩm mới</span>
+				</h2>
+				<div class="row px-xl-5">
+					<div ng-repeat="pro in items | limitTo:8"
+						class="col-lg-3 col-md-4 col-sm-6 pb-4">
+						<div class="product-item bg-light mb-4 d-flex flex-column">
+							<div class="product-img position-relative overflow-hidden">
+								<img class="img-fluid w-100"
+									ng-src="{{'/api/file/SanPham/'+pro.hinhAnh}}" alt=""
+									style="object-fit: cover; height: 250px;">
+								<div class="product-action">
+									<a class="btn btn-outline-dark btn-square"
+										ng-href="{{'/detail/'+pro.maSanPham}}">
+										<button>
+											<i class="fa fa-shopping-cart"></i>
+										</button>
+									</a>
+								</div>
+							</div>
+							<div class="text-center py-4 flex-grow-1">
+								<a class="h6 text-decoration-none text-truncate" href=""
+									style="display: block; max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+									{{pro.tenSanPham}} </a> <a
+									class="h6 text-decoration-none text-truncate" href=""
 									style="max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
 									{{pro.chungLoai.tenChungLoai}} </a> <a
 									class="h6 text-decoration-none text-truncate" href=""
 									style="max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
 									{{pro.nhaCungCap.tenNhaCungCap}} </a>
 
-								
-                    <div class="d-flex align-items-center justify-content-center mt-2">
-                        <h5>{{pro.giaTien | number:0}} VND</h5>
-                    </div>
-                    <div class="d-flex align-items-center justify-content-center mb-1">
-                        <small class="fa fa-star text-primary mr-1"></small> 
-                        <small class="fa fa-star text-primary mr-1"></small> 
-                        <small class="fa fa-star text-primary mr-1"></small> 
-                        <small class="fa fa-star text-primary mr-1"></small> 
-                        <small class="fa fa-star text-primary mr-1"></small> 
-                        <small>(99)</small>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
-		<!--<div class="container-fluid pt-5 pb-3">
+								<div
+									class="d-flex align-items-center justify-content-center mt-2">
+									<h5>{{pro.giaTien | number:0}} VND</h5>
+								</div>
+								<div
+									class="d-flex align-items-center justify-content-center mb-1">
+									<small class="fa fa-star text-primary mr-1"></small> <small
+										class="fa fa-star text-primary mr-1"></small> <small
+										class="fa fa-star text-primary mr-1"></small> <small
+										class="fa fa-star text-primary mr-1"></small> <small
+										class="fa fa-star text-primary mr-1"></small> <small>(99)</small>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!--<div class="container-fluid pt-5 pb-3">
 				<h2
 					class="section-title position-relative text-uppercase mx-xl-5 mb-4">
 					<span class="bg-secondary pr-3">Sản phẩm nổi bật</span>

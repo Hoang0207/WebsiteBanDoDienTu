@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thông Tin Cá Nhân</title>
+    <style>
+        /* Các kiểu chung cho form */
+        .control-group {
+            margin-bottom: 15px;
+        }
+
+        .form-control {
+            width: 100%;
+        }
+
+        /* Kiểu dáng cho ô hình đại diện */
+        .avatar-container {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 20px auto;
+            border: 2px solid #ddd;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .avatar-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .upload-btn {
+            display: block;
+            width: 150px;
+            margin: 10px auto 0 auto;
+            padding: 10px;
+            text-align: center;
+            background-color: #ffc107;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .upload-btn:hover {
+            background-color: #e0a800;
+        }
+
+        /* Ẩn input file nhưng vẫn hoạt động khi bấm nút */
+        #avatar {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container-fluid">
+        <div class="row px-xl-5">
+            <div class="col-12">
+                <nav class="breadcrumb bg-light mb-30">
+                    <a class="breadcrumb-item text-dark" href="#">Trang Chủ</a>
+                    <span class="breadcrumb-item active">Thông Tin Cá Nhân</span>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4">
+            <span class="bg-secondary pr-3"></span>
+        </h2>
+        <div class="row px-xl-5">
+            <div class="col-lg-7 mb-5">
+                <div class="userform-form bg-light p-30">
+                    <form>
+                        <div class="control-group">
+                            <label for="avatar">Hình Đại Diện:</label>
+                            <div class="avatar-container">
+                                <img src="default-avatar.png" alt="">
+                            </div>
+                            <label for="avatar" class="upload-btn ">Chọn Hình</label>
+                            <input type="file" name="avatar" id="avatar" accept="image/*">
+                        </div>
+                        <div class="control-group">
+                            <input type="text" class="form-control" name="Hoten" placeholder="Họ và Tên" required>
+                        </div>
+                        <div class="control-group">
+                            <input type="text" class="form-control" name="NickName" placeholder="Biệt Danh" required>
+                        </div>
+                        <div class="control-group">
+                            <input type="email" class="form-control" name="Email" placeholder="Email" required>
+                        </div>
+                        <div class="control-group">
+                            <input type="tel" class="form-control" name="sdt" placeholder="Số Điện Thoại" required>
+                        </div>
+                        <div class="control-group">
+                            <textarea class="form-control" rows="8" name="Gioithieu" placeholder="Giới thiệu về bản thân" required></textarea>
+                        </div>
+                        <div class="control-group">
+                            <input type="date" class="form-control" name="NgaySinh" placeholder="Ngày Sinh" required>
+                        </div>
+                        <div class="control-group">
+                            <div class="radio-group">
+                                <label><input type="radio" name="GioiTinh" value="Nam" required> Nam</label>
+                                <label><input type="radio" name="GioiTinh" value="Nữ" required> Nữ</label>
+                                <label><input type="radio" name="GioiTinh" value="Khác" required> Khác</label>
+                            </div>
+                        </div>
+                        <div>
+                            <button style="margin-left: 255px;" class="btn btn-primary py-2 px-4" type="submit">Thay Đổi Thông Tin</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-5 mb-5">
+                <div class="bg-light p-30 mb-3">
+                    <h4 class="mb-2">Bảo Mật</h4>
+                    <p class="mb-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-key-fill" viewBox="0 0 16 16">
+                            <path d="M3.5 11.5a3.5 3.5 0 1 1 3.163-5H14L15.5 8 14 9.5l-1-1-1 1-1-1-1 1-1-1-1 1H6.663a3.5 3.5 0 0 1-3.163 2M2.5 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2"/>
+                        </svg>
+                        Cập Nhập Mật Khẩu
+                    </p>                  
+                    <button class="btn btn-danger w-100">Cập Nhật</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

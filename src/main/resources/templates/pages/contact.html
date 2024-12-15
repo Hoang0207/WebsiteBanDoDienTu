@@ -14,41 +14,29 @@
             width: 100%;
         }
 
+        /* Kiểu cho thông báo lỗi */
+        .error-message {
+            color: red;
+            font-size: 14px;
+            display: none;
+        }
+
         /* Kiểu cho thông báo */
-        .alert {
-            padding: 15px 20px;
-            border-radius: 8px;
-            font-size: 18px;
-            font-weight: bold;
+        #successMessage {
+            display: none;
             position: fixed;
             top: 50%;
             left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            color: #28a745;
+            font-size: 22px;
+            font-weight: bold;
+            padding: 40px 60px;
+            border-radius: 15px;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.7);
             z-index: 1000;
-            display: none;
-            opacity: 0;
-            transform: translate(-50%, -50%) scale(0.8);
-            transition: all 0.5s ease-in-out;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Màu sắc cho các trạng thái */
-        .alert-success {
-            background-color: #28a745;
-            color: #fff;
-            border: 1px solid #218838;
-        }
-
-        .alert-error {
-            background-color: #dc3545;
-            color: #fff;
-            border: 1px solid #c82333;
-        }
-
-        /* Hiển thị thông báo */
-        .alert.show {
-            display: block;
-            opacity: 1;
-            transform: translate(-50%, -50%) scale(1);
+            text-align: center;
         }
     </style>
 </head>
@@ -75,24 +63,27 @@
         <div class="row px-xl-5">
             <div class="col-lg-7 mb-5">
                 <div class="contact-form bg-light p-30">
-                    <!-- Thông báo sẽ được hiển thị ở đây -->
-                    <div id="alertMessage" class="alert"></div>
-
                     <form id="contactForm" action="/sendMail" method="POST" onsubmit="return sendMail(event)">
                         <div class="control-group">
-                            <input type="text" class="form-control" name="Hoten" placeholder="Họ và Tên" required>
+                            <input type="text" id="hoTenInput" class="form-control" name="Hoten" placeholder="Họ và Tên" required>
+                            <div id="hoTenEmptyError" class="error-message">Vui lòng nhập họ tên của bạn</div>
+                            <div id="hoTenFormatError" class="error-message">Họ tên chỉ được nhập chữ in hoa và thường, không được nhập số và ký tự đặc biệt</div>
                         </div>
                         <div class="control-group">
-                            <input type="email" class="form-control" name="recipientEmail" placeholder="Email" required>
+                            <input type="email" id="emailInput" class="form-control" name="recipientEmail" placeholder="Email" required>
+                            <div id="emptyEmailError" class="error-message">Vui lòng nhập email của bạn</div>
+                            <div id="emailFormatError" class="error-message">Email chỉ được nhập được đuôi @gmail.com</div>
                         </div>
                         <div class="control-group">
-                            <input type="text" class="form-control" name="Didong" placeholder="Di động" required>
+                            <input type="text" id="dienthoaiInput" class="form-control" name="Didong" placeholder="Di động" required>
+                            <div id="dienthoaiEmptyError" class="error-message">Vui lòng nhập số điện thoại của bạn</div>
+                            <div id="dienthoaiFormatError" class="error-message">Số điện thoại chỉ được nhập tối đa 10 số không được có ký hiệu đặc biệt và chữ</div>
                         </div>
                         <div class="control-group">
                             <textarea class="form-control" rows="8" name="Ghichu" placeholder="Ghi chú" required></textarea>
                         </div>
                         <div>
-                            <button class="btn btn-primary py-2 px-4" type="submit">Gửi tin nhắn</button>
+                            <button id="submitButton" class="btn btn-primary py-2 px-4" type="submit">Gửi tin nhắn</button>
                         </div>
                     </form>
                 </div>
@@ -118,40 +109,147 @@
     </div>
     <!-- Contact End -->
 
+    <div id="successMessage">Gửi mail thành công!</div>
+
     <script>
-        // Xử lý gửi email
+        // Lắng nghe sự kiện input trên trường "Họ và Tên"
+        const hoTenInput = document.getElementById('hoTenInput');
+        const hoTenEmptyError = document.getElementById('hoTenEmptyError');
+        const hoTenFormatError = document.getElementById('hoTenFormatError');
+
+        hoTenInput.addEventListener('input', function () {
+            const hoTenValue = hoTenInput.value.trim();
+
+            // Kiểm tra nếu ô trống
+            if (hoTenValue === '') {
+                hoTenEmptyError.style.display = 'block';
+                hoTenFormatError.style.display = 'none';
+            } else {
+                hoTenEmptyError.style.display = 'none';
+
+                // Kiểm tra định dạng họ tên (chỉ cho phép chữ cái và dấu cách)
+                const hoTenRegex = /^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàạáâãèéêễìíòóôõùúăđĩũơƯĂẮẰẲẴẶắằẳẵặÂẦẤẨẪẬâầấẩẫậÔỐỒỔỖỘôốồổỗộƠỚỜỞỠỢơớờởỡợÚÙỦŨỤưúùủũụỲÝỶỸỴỳýỷỹỵ\s]+$/;
+                if (!hoTenRegex.test(hoTenValue)) {
+                    hoTenFormatError.style.display = 'block';
+                } else {
+                    hoTenFormatError.style.display = 'none';
+                }
+            }
+        });
+
+        // Lắng nghe sự kiện input trên trường "Email"
+        const emailInput = document.getElementById('emailInput');
+        const emptyEmailError = document.getElementById('emptyEmailError');
+        const emailFormatError = document.getElementById('emailFormatError');
+
+        emailInput.addEventListener('input', function () {
+            const emailValue = emailInput.value.trim();
+
+            // Kiểm tra nếu ô trống
+            if (emailValue === '') {
+                emptyEmailError.style.display = 'block';
+                emailFormatError.style.display = 'none'; // Ẩn lỗi định dạng khi trống
+            } else {
+                emptyEmailError.style.display = 'none';
+
+                // Kiểm tra định dạng email (chỉ cho phép đuôi @gmail.com)
+                if (!emailValue.endsWith('@gmail.com')) {
+                    emailFormatError.style.display = 'block';
+                } else {
+                    emailFormatError.style.display = 'none';
+                }
+            }
+        });
+
+        // Lắng nghe sự kiện input trên trường "Số điện thoại"
+        const dienthoaiInput = document.getElementById('dienthoaiInput');
+        const dienthoaiEmptyError = document.getElementById('dienthoaiEmptyError');
+        const dienthoaiFormatError = document.getElementById('dienthoaiFormatError');
+
+        dienthoaiInput.addEventListener('input', function () {
+            const dienthoaiValue = dienthoaiInput.value.trim();
+
+            // Kiểm tra ô điện thoại trống
+            if (dienthoaiValue === '') {
+                dienthoaiEmptyError.style.display = 'block';
+                dienthoaiFormatError.style.display = 'none';
+            } else {
+                dienthoaiEmptyError.style.display = 'none';
+
+                // Kiểm tra định dạng số điện thoại
+                const dienthoaiRegex = /^[0-9]{10}$/;
+                if (!dienthoaiRegex.test(dienthoaiValue)) {
+                    dienthoaiFormatError.style.display = 'block';
+                } else {
+                    dienthoaiFormatError.style.display = 'none';
+                }
+            }
+        });
+
+     // Xử lý gửi email
+        let isSubmitting = false; // Đảm bảo chỉ gửi 1 email duy nhất
+
         function sendMail(event) {
             event.preventDefault(); // Ngăn form gửi đi để xử lý
-            const form = document.getElementById("contactForm");
-            const formData = new FormData(form);
 
-            fetch('/sendMail', {
-                method: 'POST',
-                body: formData
-            })
+            // Kiểm tra nếu đang gửi mail
+            if (isSubmitting) {
+                return; // Nếu đã gửi, không làm gì cả
+            }
+
+            // Kiểm tra các trường thông tin
+            const formFields = [
+                {input: hoTenInput, emptyError: hoTenEmptyError, formatError: hoTenFormatError},
+                {input: emailInput, emptyError: emptyEmailError, formatError: emailFormatError},
+                {input: dienthoaiInput, emptyError: dienthoaiEmptyError, formatError: dienthoaiFormatError}
+            ];
+
+            let isValid = true;
+
+            // Kiểm tra tất cả các trường thông tin
+            formFields.forEach(field => {
+                const value = field.input.value.trim();
+                if (value === '') {
+                    field.emptyError.style.display = 'block';
+                    field.formatError.style.display = 'none';
+                    isValid = false;
+                } else {
+                    field.emptyError.style.display = 'none';
+                    if (field.formatError.style.display !== 'none') {
+                        field.formatError.style.display = 'none';
+                    }
+                }
+            });
+
+            // Nếu thông tin hợp lệ, tiếp tục gửi mail
+            if (isValid) {
+                const form = document.getElementById("contactForm");
+                const formData = new FormData(form);
+                isSubmitting = true; // Đặt trạng thái đang gửi mail
+                const submitButton = document.getElementById("submitButton");
+                submitButton.disabled = true; // Vô hiệu hóa nút gửi để tránh nhấn nhiều lần
+
+                fetch('/sendMail', {
+                    method: 'POST',
+                    body: formData
+                })
                 .then(response => {
-                    if (!response.ok) throw new Error("Lỗi trong quá trình gửi");
-                    return response.json();
+                    if (response.ok) {
+                        document.getElementById("successMessage").style.display = "block";
+                        setTimeout(() => {
+                            document.getElementById("successMessage").style.display = "none";
+                        }, 3000);
+                    }
                 })
-                .catch(success => {
-                    showAlert("Đã gửi tin nhắn thành công!", "success");
-                })
+                .finally(() => {
+                    isSubmitting = false; // Đặt lại trạng thái gửi mail
+                    submitButton.disabled = false; // Kích hoạt lại nút gửi khi hoàn tất
+                });
+            }
+
+            return false;
         }
 
-        // Hàm hiển thị thông báo
-        function showAlert(message, type) {
-            const alertMessage = document.getElementById("alertMessage");
-            alertMessage.textContent = message;
-
-            // Xác định loại thông báo
-            alertMessage.className = `alert alert-${type}`;
-            alertMessage.classList.add("show");
-
-            // Ẩn thông báo sau 3 giây
-            setTimeout(() => {
-                alertMessage.classList.remove("show");
-            }, 3000);
-        }
     </script>
 </body>
 </html>
