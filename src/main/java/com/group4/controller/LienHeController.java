@@ -29,7 +29,7 @@ public class LienHeController {
    public String sendMail(@RequestParam("Hoten") String Hoten, @RequestParam("Didong") String Didong, @RequestParam("Ghichu") String Ghichu, @RequestParam("recipientEmail") String recipientEmail, Model model) {
       try {
          String body = "H\u1ecd t\u00ean: " + Hoten + "<br>Email: " + recipientEmail + "<br>Di \u0111\u1ed9ng: " + Didong + "<br><br>Ghi ch\u00fa:<br>" + Ghichu;
-         this.mailService.push(recipientEmail, "Y\u00eau c\u1ea7u h\u1ed7 tr\u1ee3 t\u1eeb ng\u01b0\u1eddi d\u00f9ng", body);
+         this.mailService.push("dinhthach11012004@gmail.com", "Y\u00eau c\u1ea7u h\u1ed7 tr\u1ee3 t\u1eeb ng\u01b0\u1eddi d\u00f9ng", body);
          model.addAttribute("successMessage", "G\u1eedi email th\u00e0nh c\u00f4ng!");
       } catch (Exception var7) {
          model.addAttribute("errorMessage", "\u0110\u00e3 x\u1ea3y ra l\u1ed7i khi g\u1eedi email: " + var7.getMessage());
