@@ -1,4 +1,5 @@
 package com.group4.controller;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -16,18 +17,17 @@ public class TrangChuController {
 	}
 	
 	@GetMapping("")
-	public String home(Model model) {
+	public String home(Model model, HttpSession session) {
 	
 	    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 	   
 	    String email = null;
 	    if (authentication != null && authentication.isAuthenticated() && !(authentication.getName().equals("anonymousUser"))) {
 	        email = authentication.getName();  // Get the authenticated username (email)
+			session.setAttribute("email", email);
 	    }
-
-	   
 	    model.addAttribute("email", email);
-	    
+
 	   
 	    model.addAttribute("content", "/pages/home");
 	    

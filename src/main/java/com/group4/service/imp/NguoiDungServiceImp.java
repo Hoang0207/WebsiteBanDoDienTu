@@ -47,6 +47,18 @@ public class NguoiDungServiceImp implements NguoiDungService {
     }
 
     @Override
+    public int recoverPassword(String password, String email) {
+        return nguoiDungDAO.updatePassword(password, email);
+    }
+    
+    @Override
+    public boolean emailExists(String email) {
+        return nguoiDungDAO.findByEmail(email).isPresent();
+    }
+
+
+
+    @Override
     public List<NguoiDung> findAll() {
         return ndDao.findAll();
     }

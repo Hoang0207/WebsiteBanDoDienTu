@@ -12,7 +12,12 @@ public interface NguoiDungService extends UserDetailsService  {
 	public List<NguoiDung> findAll();
 	
 	public List<NguoiDung> findAllByTrangThai(Boolean trangThai);
+	
 	boolean validateCredentials(String email, String password);
+	
+	boolean emailExists(String email);
+	
+	int recoverPassword(String password, String email);
 
 	public Optional<NguoiDung> findById(String id);
 	

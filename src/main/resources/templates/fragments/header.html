@@ -11,32 +11,27 @@
     <div class="container-fluid">
         <div class="row bg-secondary py-1 px-xl-5">
             <div class="col-lg-6 d-none d-lg-block">
-                <div class="d-inline-flex align-items-center h-100">
-                    <a class="text-body mr-3 translatable" href="" data-translate="About">Về chúng tôi</a>
-                    <a class="text-body mr-3 translatable" href="" data-translate="contact">Liên hệ</a>
-                    <a class="text-body mr-3 translatable" href="" data-translate="Help">Trợ giúp</a>
-                    <a class="text-body mr-3 translatable" href="" data-translate="FAQs">FAQs</a>
-                </div>
             </div>
             <div class="col-lg-6 text-center text-lg-right">
                 <div class="d-inline-flex align-items-center">
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">
-                            <i class="fa-solid fa-circle-user"></i>
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            <div th:if="${email != null}">
-                                <span> <a data-translate="Hello," href="#">Xin chào,</a> <span th:text="${email}">User</span>!</span> <br>
-                                <a class="btn" data-translate="logout" th:href="@{/logout}">Đăng xuất</a>
-                            </div>
+					<div class="btn-group">
+						<button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">
+							<i class="fa-solid fa-circle-user"></i>
+						</button>
+						<div class="dropdown-menu dropdown-menu-right">
+							<div th:if="${session.email != null}">
+								<span>Xin chào, <span th:text="${session.email}">User</span>!</span>
+								<a class="btn" th:href="@{/admin}">Admin</a>
+								<a class="btn" th:href="@{/logout}">Đăng xuất</a>
+							</div>
 
-                            <div th:unless="${email != null}">
-                                <a class="btn" data-translate="login" th:href="@{/login}">Đăng Nhập</a>
-                                <a class="btn" data-translate="register" th:href="@{/dangky}">Đăng Ký</a>
-                            </div>
-                        </div>
-                    </div>
+							<div th:unless="${session.email != null}">
+								<a class="btn" th:href="@{/login}">Đăng Nhập</a>
+								<a class="btn" th:href="@{/dangky}">Đăng Ký</a>
+							</div>
+						</div>
 
+						</div>
                     <div class="btn-group">
                         <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown" data-translate="language">VN</button>
                         <div class="dropdown-menu dropdown-menu-right">
@@ -105,16 +100,15 @@
                     </button>
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0">
-                            <a th:href="@{/}" class="nav-item nav-link translatable" data-translate="home">Trang Chủ</a>
-                            <a th:href="@{/shop}" class="nav-item nav-link translatable" data-translate="product">Sản phẩm</a>
-                            <a th:href="@{/cart}" class="nav-item nav-link translatable" data-translate="cart">Giỏ Hàng</a>
-                            <a th:href="@{/contact}" class="nav-item nav-link translatable" data-translate="contact">Liên Hệ</a>
+                            <a th:href="@{/}" class="nav-item nav-link translatable">Trang Chủ</a>
+                            <a th:href="@{/shop}" class="nav-item nav-link translatable">Sản phẩm</a>
+                            <a th:href="@{/cart}" class="nav-item nav-link translatable">Giỏ Hàng</a>
+                            <a th:href="@{/contact}" class="nav-item nav-link translatable">Liên Hệ</a>
+                            <a th:href="@{/userform}" class="nav-item nav-link translatable">Thông Tin Cá Nhân</a>
+                            
                         </div>
                         <div class="navbar-nav ml-auto py-0 d-none d-lg-block">
-                            <a href="" class="btn px-0">
-                                <i class="fas fa-heart text-primary"></i>
-                                <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
-                            </a>
+                           
                             <a th:href="@{/cart}" class="btn px-0 ml-3">
                                 <i class="fas fa-shopping-cart text-primary"></i>
                                 <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">{{cart.count}}</span>
