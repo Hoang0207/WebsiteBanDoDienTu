@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <meta charset="UTF-8">
 <head>
-    <title>Chi Tiết Đơn Hàng</title>
+    <title data-translate="order_detail_title">Chi Tiết Đơn Hàng</title>
     <link rel="stylesheet" href="styles.css">
     <script>
         // Hàm để định dạng tiền tệ
@@ -32,17 +32,17 @@
 <body>
     <div class="container">
         
-        <h2>Chi Tiết Đơn Hàng</h2>
+        <h2 data-translate="order_detail_title">Chi Tiết Đơn Hàng</h2>
         
         <div class="divider"></div>
         
         <table id="orderDetailsTable">
             <thead>
                 <tr>
-                    <th>Sản phẩm</th>
-                    <th>Tên sản phẩm</th>
-                    <th>Số lượng</th>
-                    <th>Giá tiền</th>
+                    <th data-translate="product">Sản phẩm</th>
+                    <th data-translate="product_name">Tên sản phẩm</th>
+                    <th data-translate="quantity">Số lượng</th>
+                    <th data-translate="price">Giá tiền</th>
                 </tr>
             </thead>
             <tbody>
@@ -56,7 +56,7 @@
         </table>
         
         <div class="total-price">
-            <strong>Tổng tiền: </strong><span id="totalAmount">0.00 VND</span> _
+            <strong data-translate="total_price">Tổng tiền: </strong><span id="totalAmount">0.00 VND</span> _
         </div>
     </div>
 

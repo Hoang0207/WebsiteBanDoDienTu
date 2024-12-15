@@ -1,184 +1,140 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>Sản Phẩm</title>
+    <meta charset="UTF-8">
+    <title data-translate="products.title">Sản Phẩm</title>
 </head>
 <body ng-controller="controller">
-	<!-- Breadcrumb Start -->
-	<div class="container-fluid">
-		<div class="row px-xl-5">
-			<div class="col-12">
-				<nav class="breadcrumb bg-light mb-30">
-					<a class="breadcrumb-item text-dark" href="#">Trang Chủ</a> <a
-						class="breadcrumb-item text-dark" href="#">Sản Phẩm</a> <span
-						class="breadcrumb-item active">Danh Sách Sản Phẩm</span>
-				</nav>
-			</div>
-		</div>
-	</div>
-	<!-- Breadcrumb End -->
+    <!-- Breadcrumb Start -->
+    <div class="container-fluid">
+        <div class="row px-xl-5">
+            <div class="col-12">
+                <nav class="breadcrumb bg-light mb-30">
+                    <a class="breadcrumb-item text-dark" href="#" data-translate="products.home">Trang Chủ</a> 
+                    <a class="breadcrumb-item text-dark" href="#" data-translate="products.products">Sản Phẩm</a> 
+                    <span class="breadcrumb-item active" data-translate="products.product-list">Danh Sách Sản Phẩm</span>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb End -->
 
+    <!-- Shop Start -->
+    <div class="container-fluid">
+        <div class="row px-xl-5">
+            <!-- Shop Sidebar Start -->
+            <div class="col-lg-3 col-md-4">
+                <!-- Price Filter Start -->
+                <h5 class="section-title position-relative text-uppercase mb-3">
+                    <span class="bg-secondary pr-3" data-translate="products.price-filter">Lọc Theo Giá</span>
+                </h5>
+                <div class="bg-light p-4 mb-30">
+                    <form>
+                        <div class="form-group">
+                            <label for="price-min" data-translate="products.min-price">Giá thấp nhất:</label>
+                            <input ng-model="form_filter.minPrice" type="number" class="form-control" id="price-min" placeholder="Nhập giá tối thiểu">
+                        </div>
+                        <div class="form-group">
+                            <label for="price-max" data-translate="products.max-price">Giá cao nhất:</label>
+                            <input type="number" ng-model="form_filter.maxPrice" class="form-control" id="price-max" placeholder="Nhập giá tối đa">
+                        </div>
+                    </form>
+                </div>
+                <!-- Price Filter End -->
 
-	<!-- Shop Start -->
-	<div class="container-fluid">
-		<div class="row px-xl-5">
-			<!-- Shop Sidebar Start -->
-			<div class="col-lg-3 col-md-4">
-				<!-- Price Filter Start -->
-				<h5 class="section-title position-relative text-uppercase mb-3">
-					<span class="bg-secondary pr-3">Lọc Theo Giá</span>
-				</h5>
-				<div class="bg-light p-4 mb-30">
-					<form>
-						<div class="form-group">
-							<label for="price-min">Giá thấp nhất:</label> <input ng-model="form_filter.minPrice"
-								type="number" class="form-control" id="price-min"
-								placeholder="Nhập giá tối thiểu">
-						</div>
-						<div class="form-group">
-							<label for="price-max">Giá cao nhất:</label> <input type="number" ng-model="form_filter.maxPrice"
-								class="form-control" id="price-max"
-								placeholder="Nhập giá tối đa">
-						</div>
+                <!-- Category Filter Start -->
+                <h5 class="section-title position-relative text-uppercase mb-3">
+                    <span class="bg-secondary pr-3" data-translate="products.category-filter">Lọc Theo Chủng Loại</span>
+                </h5>
+                <div class="bg-light p-4 mb-30">
+                    <form>
+                        <div class="form-group">
+                            <label for="category-select" data-translate="products.select-category">Chọn Chủng Loại:</label>
+                            <select ng-model="form_filter.maCl" class="form-control" id="category-select">
+                                <option value="" data-translate="products.all">Tất cả</option>
+                                <option ng-repeat="cl in list_cl" ng-value="cl.maChungLoai">{{cl.tenChungLoai}}</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <!-- Category Filter End -->
 
-					</form>
-				</div>
-				<!-- Price Filter End -->
+                <!-- Supplier Filter Start -->
+                <h5 class="section-title position-relative text-uppercase mb-3">
+                    <span class="bg-secondary pr-3" data-translate="products.supplier-filter">Lọc Theo Nhà Cung Cấp</span>
+                </h5>
+                <div class="bg-light p-4 mb-30">
+                    <form>
+                        <div class="form-group">
+                            <label for="supplier-select" data-translate="products.select-supplier">Chọn Nhà Cung Cấp:</label>
+                            <select ng-model="form_filter.maNcc" class="form-control" id="supplier-select">
+                                <option value="" data-translate="products.all">Tất cả</option>
+                                <option ng-repeat="ncc in list_ncc" ng-value="ncc.maNhaCungCap">{{ncc.tenNhaCungCap}}</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="form-actions text-center">
+                    <button type="button" class="btn btn-dark" ng-click="reset_filter()" data-translate="products.clear-filter">Xóa Lọc</button>
+                    <button type="submit" class="btn btn-primary" ng-click="filter()" data-translate="products.filter">Lọc</button>
+                </div>
+                <!-- Supplier Filter End -->
+            </div>
 
-				<!-- Category Filter Start -->
-				<h5 class="section-title position-relative text-uppercase mb-3">
-					<span class="bg-secondary pr-3">Lọc Theo Chủng Loại</span>
-				</h5>
-				<div class="bg-light p-4 mb-30">
-					<form>
-						<div class="form-group">
-							<label for="category-select">Chọn Chủng Loại:</label> 
-							<select ng-model="form_filter.maCl"
-								class="form-control" id="category-select">
-								<option value="">Tất cả</option>
-								<option ng-repeat="cl in list_cl" ng-value="cl.maChungLoai">{{cl.tenChungLoai}}</option>
-							</select>
-						</div>
+            <!-- Shop Sidebar End -->
 
-					</form>
-				</div>
-				<!-- Category Filter End -->
-
-				<!-- Supplier Filter Start -->
-				<h5 class="section-title position-relative text-uppercase mb-3">
-					<span class="bg-secondary pr-3">Lọc Theo Nhà Cung Cấp</span>
-				</h5>
-				<div class="bg-light p-4 mb-30">
-					<form>
-						<div class="form-group">
-							<label for="supplier-select">Chọn Nhà Cung Cấp:</label> <select ng-model="form_filter.maNcc"
-								class="form-control" id="supplier-select">
-								<option value="">Tất cả</option>
-								<option ng-repeat="ncc in list_ncc" ng-value="ncc.maNhaCungCap">{{ncc.tenNhaCungCap}}</option>
-							</select>
-						</div>
-
-					</form>
-
-				</div>
-				<div class="form-actions text-center">
-					<button type="button" class="btn btn-dark"
-						ng-click="reset_filter()">Xóa Lọc</button>
-
-					<button type="submit" class="btn btn-primary" ng-click="filter()">Lọc</button>
-				</div>
-				<!-- Supplier Filter End -->
-			</div>
-
-
-			<!-- Shop Sidebar End -->
-
-
-			<!-- Shop Product Start -->
-			<!-- Sản Phẩm Cửa Hàng Bắt Đầu -->
-			<div class="col-lg-9 col-md-8">
-				<div class="row pb-3">
-					<div class="col-12 pb-1">
-						<div
-							class="d-flex align-items-center justify-content-between mb-4">
-							<div>
-								<button class="btn btn-sm btn-light">
-									<i class="fa fa-th-large"></i>
-								</button>
-								<button class="btn btn-sm btn-light ml-2">
-									<i class="fa fa-bars"></i>
-								</button>
-							</div>
-
-						</div>
-					</div>
-					<div ng-repeat="pro in pager.items | filter: searchText"
-						class="col-lg-3 col-md-6 col-sm-6 pb-1">
-						<div class="product-item bg-light mb-4 d-flex flex-column">
-							<div class="product-img position-relative overflow-hidden">
-								<img class="img-fluid w-100"
-									ng-src="{{'/api/file/SanPham/'+pro.hinhAnh}}" alt=""
-									style="object-fit: cover; height: 200px;">
-								<div class="product-action">
-									<a class="btn btn-outline-dark btn-square"
-										ng-href="{{'/detail/'+pro.maSanPham}}"> <!--  <button ng-click="cart.add(pro.maSanPham)">-->
-										<button>
-											<i class="fa fa-shopping-cart"></i>
-										</button>
-									</a>
-								</div>
-							</div>
-							<div class="text-center py-4 flex-grow-1"
-								style="display: flex; flex-direction: column;">
-								<!-- Prevent text overflow and ensure it doesn't break out of container -->
-								<a class="h6 text-decoration-none text-truncate" href=""
-									style="max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block;">
-									{{pro.tenSanPham}} </a>
-								<hr>
-								<a class="h6 text-decoration-none text-truncate" href=""
-									style="max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-									{{pro.chungLoai.tenChungLoai}} </a> <a
-									class="h6 text-decoration-none text-truncate" href=""
-									style="max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-									{{pro.nhaCungCap.tenNhaCungCap}} </a> <a
-									class="h6 text-decoration-none text-truncate" href=""
-									style="max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-									Số Lượng {{pro.soLuong}} </a>
-
-								<div
-									class="d-flex align-items-center justify-content-center mt-2">
-									<h5>{{pro.giaTien | number:0}} VND</h5>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-12" ng-if="items.length > 8">
-						<nav>
-							<ul class="pagination justify-content-center">
-								<li class="page-item"><a class="page-link"
-									ng-click="pager.first()" tabindex="-1">Đầu Tiên</a></li>
-								<li class="page-item"><a class="page-link"
-									ng-disabled="page == 1" ng-click="pager.prev()">Trước</a></li>
-								<li class="page-item"><a class="page-link" href="#">{{pager.page
-										+ 1}} của {{pager.count}}</a></li>
-								<li class="page-item"><a class="page-link"
-									ng-click="pager.next()">Tiếp Theo</a></li>
-								<li class="page-item"><a class="page-link"
-									ng-click="pager.last()">Cuối Cùng</a></li>
-							</ul>
-						</nav>
-					</div>
-				</div>
-			</div>
-
-
-
-			<!-- Sản Phẩm Cửa Hàng Kết Thúc -->
-
-		</div>
-	</div>
-	<!-- Shop End -->
+            <!-- Shop Product Start -->
+            <div class="col-lg-9 col-md-8">
+                <div class="row pb-3">
+                    <div ng-repeat="pro in pager.items | filter: searchText" class="col-lg-3 col-md-6 col-sm-6 pb-1 mt-1">
+                        <div class="product-item bg-light mb-4 d-flex flex-column">
+                            <div class="product-img position-relative overflow-hidden">
+                                <img class="img-fluid w-100" ng-src="{{'/api/file/SanPham/'+pro.hinhAnh}}" alt="" style="object-fit: cover; height: 200px;">
+                                <div class="product-action">
+                                    <a class="btn btn-outline-dark btn-square" ng-href="{{'/detail/'+pro.maSanPham}}">
+                                        <button>
+                                            <i class="fa fa-shopping-cart"></i>
+                                        </button>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="text-center py-4 flex-grow-1" style="display: flex; flex-direction: column;">
+                                <a class="h6 text-decoration-none text-truncate" href="" style="max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block;">
+                                    {{pro.tenSanPham}} 
+                                </a>
+                                <hr>
+                                <a class="h6 text-decoration-none text-truncate" href="" style="max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                                    {{pro.chungLoai.tenChungLoai}} 
+                                </a> 
+                                <a class="h6 text-decoration-none text-truncate" href="" style="max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                                    {{pro.nhaCungCap.tenNhaCungCap}} 
+                                </a> 
+                                <a class="h6 text-decoration-none text-truncate" href="" style="max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                                    Số Lượng {{pro.soLuong}} 
+                                </a>
+                                <div class="d-flex align-items-center justify-content-center mt-2">
+                                    <h5>{{pro.giaTien | number:0}} VND</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12" ng-if="items.length > 8">
+                        <nav>
+                            <ul class="pagination justify-content-center">
+                                <li class="page-item"><a class="page-link" ng-click="pager.first()" tabindex="-1" data-translate="products.first">Đầu Tiên</a></li>
+                                <li class="page-item"><a class="page-link" ng-disabled="page == 1" ng-click="pager.prev()" data-translate="products.prev">Trước</a></li>
+                                <li class="page-item"><a class="page-link" href="#" data-translate="products.page">{{pager.page + 1}} của {{pager.count}}</a></li>
+                                <li class="page-item"><a class="page-link" ng-click="pager.next()" data-translate="products.next">Tiếp Theo</a></li>
+                                <li class="page-item"><a class="page-link" ng-click="pager.last()" data-translate="products.last">Cuối Cùng</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <!-- Shop Product End -->
+        </div>
+    </div>
+    <!-- Shop End -->
+				
 </body>
 </html>

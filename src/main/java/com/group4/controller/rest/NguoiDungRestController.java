@@ -69,9 +69,7 @@ public class NguoiDungRestController {
 	@PostMapping()
 	public ResponseEntity<NguoiDung> restPostNguoiDung(@RequestBody NguoiDung nd ){
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-		if(ndService.existsById(nd.getMaNguoiDung())) {
-			return ResponseEntity.badRequest().build();
-		}
+		nd.setMaNguoiDung(nd.getEmail().substring(0, nd.getEmail().indexOf("@")));
 		nd.setMatKhau(encoder.encode(nd.getMatKhau()));
 		ndService.save(nd);
 		return ResponseEntity.ok(nd);
@@ -79,12 +77,10 @@ public class NguoiDungRestController {
 	
 	@PutMapping("{id}")
 	public ResponseEntity<NguoiDung> restPutNguoiDung(@RequestBody NguoiDung nd, @PathVariable("id") String id){
-		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		Optional<NguoiDung> nguoiDung = ndService.findById(id);
 		if(nguoiDung.isEmpty()) {
 			return ResponseEntity.notFound().build();
 		}
-		nd.setMatKhau(encoder.encode(nd.getMatKhau()));
 		ndService.save(nd);
 		return ResponseEntity.ok(nd);
 	}

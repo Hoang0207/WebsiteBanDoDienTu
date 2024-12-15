@@ -27,8 +27,8 @@
 					<td class="pt-4" >{{ttdb.maThuocTinhDacBiet}}</td>
 					<td class="pt-4" >{{ttdb.tenThuocTinhDacBiet}}</td>
 					<td class="ps-3 pt-3">
-						<img alt="" class="img-fluid me-2 imgAction" src="/admin/image/editIcon.png" data-bs-toggle="modal" data-bs-target="#modalThuocTinhDacBiet" ng-click="load_by_id(ttdb.maThuocTinhDacBiet)">
-						<img alt="" class="img-fluid imgAction" src="/admin/image/deleteIcon.png" ng-click="delete(ttdb.maThuocTinhDacBiet)">
+						<img ng-hide="ttdb.maThuocTinhDacBiet=='TTDB000'" alt="" class="img-fluid me-2 imgAction" src="/admin/image/editIcon.png" data-bs-toggle="modal" data-bs-target="#modalThuocTinhDacBiet" ng-click="load_by_id(ttdb.maThuocTinhDacBiet)">
+						<img ng-hide="ttdb.maThuocTinhDacBiet=='TTDB000'" alt="" class="img-fluid imgAction" src="/admin/image/deleteIcon.png" ng-click="delete(ttdb.maThuocTinhDacBiet)">
 					</td>
 				</tr>
 			</tbody>
@@ -61,34 +61,36 @@
 					<button type="button" class="btn-close" data-bs-dismiss="modal"
 						aria-label="Close"></button>
 				</div>
-				<div class="modal-body">
-					<div class="input-group mb-3">
-						<span class="input-group-text text-bg-secondary" id="basic-addon1">Mã
-							thuộc tính đặc biệt</span> <input type="text" class="form-control" ng-model = "form.maThuocTinhDacBiet" ng-readonly="update"	
-							aria-label="Username" aria-describedby="basic-addon1">
+				<form ng-submit="update?update_TTDB(form.maThuocTinhDacBiet):create()">
+					<div class="modal-body">
+						<div class="input-group mb-3">
+							<span class="input-group-text text-bg-secondary" id="basic-addon1">Mã
+								thuộc tính đặc biệt</span> <input type="text" class="form-control" ng-model = "form.maThuocTinhDacBiet" ng-readonly="update"	
+								aria-label="Username" aria-describedby="basic-addon1" required="required">
+						</div>
+						<div class="input-group ">
+							<span class="input-group-text text-bg-secondary" id="basic-addon1">Tên
+								thuộc tính đặc biệt</span> <input type="text" class="form-control" ng-model = "form.tenThuocTinhDacBiet"
+								aria-label="Username" aria-describedby="basic-addon1" required="required">
+						</div>
+	
 					</div>
-					<div class="input-group ">
-						<span class="input-group-text text-bg-secondary" id="basic-addon1">Tên
-							thuộc tính đặc biệt</span> <input type="text" class="form-control" ng-model = "form.tenThuocTinhDacBiet"
-							aria-label="Username" aria-describedby="basic-addon1">
+					<div class="modal-footer">
+						<!--<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
+						<button type="button" class="btn p-0 m-0 me-3" ng-hide="update" ng-click="reset()">
+							<img src="/admin/image/resetBtn.png" class="img-fluid"
+								style="height: 40px;">
+						</button>
+						<button type="submit" class="btn p-0 m-0" ng-hide="update">
+							<img src="/admin/image/themBtn.png" class="img-fluid" 
+								style="height: 44px;">
+						</button>
+						<button type="submit" class="btn p-0 m-0 me-1" ng-show="update">
+							<img src="/admin/image/capNhatBtn.png" class="img-fluid" 
+								style="height: 46px;">
+						</button>
 					</div>
-
-				</div>
-				<div class="modal-footer">
-					<!--<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
-					<button type="button" class="btn p-0 m-0 me-3" ng-hide="update" ng-click="reset()">
-						<img src="/admin/image/resetBtn.png" class="img-fluid"
-							style="height: 40px;">
-					</button>
-					<button type="button" class="btn p-0 m-0" ng-hide="update" ng-click="create()">
-						<img src="/admin/image/themBtn.png" class="img-fluid" 
-							style="height: 44px;">
-					</button>
-					<button type="button" class="btn p-0 m-0 me-1" ng-show="update" ng-click="update_TTDB(form.maThuocTinhDacBiet)">
-						<img src="/admin/image/capNhatBtn.png" class="img-fluid" 
-							style="height: 46px;">
-					</button>
-				</div>
+				</form>
 			</div>
 		</div>
 	</div>

@@ -18,7 +18,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.group4.dao.NhaCungCapDAO;
 import com.group4.entity.NhaCungCap;
+import com.group4.entity.SanPham;
 import com.group4.service.NhaCungCapService;
+import com.group4.service.SanPhamService;
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -27,6 +29,9 @@ public class NhaCungCapRestController {
 	
 	@Autowired
 	NhaCungCapService nccService;
+	
+	@Autowired
+	SanPhamService spService;
 	
 	@GetMapping()
 	public ResponseEntity<Collection<NhaCungCap>> restGetAllNcc(){
@@ -69,6 +74,8 @@ public class NhaCungCapRestController {
 		if(!nccService.existsById(id)) {
 			return ResponseEntity.notFound().build();
 		}
+		List<SanPham> listSp = spService.findAll();
+		listSp.stream().filter(sp -> sp.getMaNcc().equalsIgnoreCase(id)).forEach(sp -> sp.setMaNcc("NCC000"));
 		nccService.deleteById(id);
 		return ResponseEntity.ok().build();
 	}

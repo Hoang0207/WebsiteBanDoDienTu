@@ -18,7 +18,7 @@ app.controller('QuanLyNguoiDungCtrl', function($http, $scope) {
 		$scope.file = null
 		$scope.update = false
 		$scope.authority = []
-		$scope.form = { ngayDangKy: new Date() }
+		$scope.form = { ngayDangKy: new Date(), gioiTinh: true }
 		$scope.load_all_role()
 	}
 
@@ -164,6 +164,8 @@ app.controller('QuanLyNguoiDungCtrl', function($http, $scope) {
 			var url = `${host}/NguoiDung`
 			$http.post(url, $scope.form).then(resp => {
 				$scope.load_all()
+				var email = $scope.form.email
+				$scope.form.maNguoiDung = email.substring(0,email.indexOf("@"))
 				$scope.update = true
 				swal("Thành công !", "Thêm người dùng thành công", "success")
 			}).catch(error => {

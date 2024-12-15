@@ -2,21 +2,21 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="UTF-8">
-    <title>Lịch Sử Đặt Hàng</title>
+    <title data-translate="order-history.title">Lịch Sử Đặt Hàng</title>
 </head>
 <body>
     <div class="table-container">
-        <h1>Lịch Sử Đặt Hàng</h1>
+        <h1 data-translate="order-history.title">Lịch Sử Đặt Hàng</h1>
         <div th:each="donHang : ${donHangs}" class="order-card">
             <div class="order-header">
-                <span>Ngày lập đơn: <strong th:text="${donHang.ngayLapDon}"></strong></span>
-                <span class="order-status" th:text="${donHang.trangThai}"></span>
+                <span ><a  data-translate="order-history.date" >Ngày lập đơn: </a><strong th:text="${donHang.ngayLapDon}"></strong></span>
+                <span data-translate="order-history.status" class="order-status" th:text="${donHang.trangThai}"></span>
             </div>
             <div class="order-details">
-                <span>Địa chỉ giao: <strong th:text="${donHang.diaChiGiao}"></strong></span>
+                <span  >Địa chỉ giao: <strong th:text="${donHang.diaChiGiao}"></strong></span>
             </div>
             <div>
-                <a class="action-link" th:href="@{/don_hang_chi_tiet(id=${donHang.maDonHang})}">Xem chi tiết</a>
+                <a  data-translate="order-history.view-details" class="action-link" th:href="@{/don_hang_chi_tiet(id=${donHang.maDonHang})}  ">Xem chi tiết</a>
             </div>
         </div>
 

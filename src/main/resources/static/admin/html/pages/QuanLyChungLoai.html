@@ -26,9 +26,10 @@
 				<tr ng-repeat="cl in items | limitTo:limit:start">
 					<td class="pt-4">{{cl.maChungLoai}}</td>
 					<td class="pt-4">{{cl.tenChungLoai}}</td>
-					<td class="ps-3 pt-3"><img alt="" class="img-fluid me-2 imgAction" ng-click="load_by_id(cl.maChungLoai)" data-bs-toggle="modal" data-bs-target="#modalChungLoai"
+					<td class="ps-3 pt-3">
+						<img ng-hide="cl.maChungLoai=='CL000'" alt="" class="img-fluid me-2 imgAction" ng-click="load_by_id(cl.maChungLoai)" data-bs-toggle="modal" data-bs-target="#modalChungLoai"
 						src="/admin/image/editIcon.png">
-						<img alt="" class="img-fluid imgAction" src="/admin/image/deleteIcon.png" ng-click="delete(cl.maChungLoai)"></td>
+						<img ng-hide="cl.maChungLoai=='CL000'" alt="" class="img-fluid imgAction" src="/admin/image/deleteIcon.png" ng-click="delete(cl.maChungLoai)"></td>
 				</tr>
 			</tbody>
 		</table>
@@ -60,34 +61,36 @@
 					<button type="button" class="btn-close" data-bs-dismiss="modal"
 						aria-label="Close"></button>
 				</div>
-				<div class="modal-body">
-					<div class="input-group mb-3">
-						<span class="input-group-text text-bg-secondary" id="basic-addon1">Mã
-							chủng loại</span> <input type="text" class="form-control" ng-model = "form.maChungLoai" ng-readonly="update"	
-							aria-label="Username" aria-describedby="basic-addon1">
+				<form ng-submit="update?update_cl(form.maChungLoai):create()">
+					<div class="modal-body">
+						<div class="input-group mb-3">
+							<span class="input-group-text text-bg-secondary" id="basic-addon1">Mã
+								chủng loại</span> <input type="text" class="form-control" ng-model = "form.maChungLoai" ng-readonly="update"	
+								aria-label="Username" aria-describedby="basic-addon1" required="required">
+						</div>
+						<div class="input-group ">
+							<span class="input-group-text text-bg-secondary" id="basic-addon1">Tên
+								chủng loại</span> <input type="text" class="form-control" ng-model = "form.tenChungLoai"
+								aria-label="Username" aria-describedby="basic-addon1" required="required">
+						</div>
+	
 					</div>
-					<div class="input-group ">
-						<span class="input-group-text text-bg-secondary" id="basic-addon1">Tên
-							chủng loại</span> <input type="text" class="form-control" ng-model = "form.tenChungLoai"
-							aria-label="Username" aria-describedby="basic-addon1">
+					<div class="modal-footer">
+						<!--<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
+						<button type="button" class="btn p-0 m-0 me-3" ng-hide="update" ng-click="reset()">
+							<img src="/admin/image/resetBtn.png" class="img-fluid"
+								style="height: 40px;">
+						</button>
+						<button type="submit" class="btn p-0 m-0" ng-hide="update">
+							<img src="/admin/image/themBtn.png" class="img-fluid" 
+								style="height: 44px;">
+						</button>
+						<button type="submit" class="btn p-0 m-0 me-1" ng-show="update">
+							<img src="/admin/image/capNhatBtn.png" class="img-fluid" 
+								style="height: 46px;">
+						</button>
 					</div>
-
-				</div>
-				<div class="modal-footer">
-					<!--<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
-					<button type="button" class="btn p-0 m-0 me-3" ng-hide="update" ng-click="reset()">
-						<img src="/admin/image/resetBtn.png" class="img-fluid"
-							style="height: 40px;">
-					</button>
-					<button type="button" class="btn p-0 m-0" ng-hide="update" ng-click="create()">
-						<img src="/admin/image/themBtn.png" class="img-fluid" 
-							style="height: 44px;">
-					</button>
-					<button type="button" class="btn p-0 m-0 me-1" ng-show="update" ng-click="update_cl(form.maChungLoai)">
-						<img src="/admin/image/capNhatBtn.png" class="img-fluid" 
-							style="height: 46px;">
-					</button>
-				</div>
+				</form>
 			</div>
 		</div>
 	</div>
