@@ -86,19 +86,7 @@
             <!-- Shop Product Start -->
             <div class="col-lg-9 col-md-8">
                 <div class="row pb-3">
-                    <div class="col-12 pb-1">
-                        <div class="d-flex align-items-center justify-content-between mb-4">
-                            <div>
-                                <button class="btn btn-sm btn-light" data-translate="products.grid-view">
-                                    <i class="fa fa-th-large"></i>
-                                </button>
-                                <button class="btn btn-sm btn-light ml-2" data-translate="products.list-view">
-                                    <i class="fa fa-bars"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div ng-repeat="pro in pager.items | filter: searchText" class="col-lg-3 col-md-6 col-sm-6 pb-1">
+                    <div ng-repeat="pro in pager.items | filter: searchText" class="col-lg-3 col-md-6 col-sm-6 pb-1 mt-1">
                         <div class="product-item bg-light mb-4 d-flex flex-column">
                             <div class="product-img position-relative overflow-hidden">
                                 <img class="img-fluid w-100" ng-src="{{'/api/file/SanPham/'+pro.hinhAnh}}" alt="" style="object-fit: cover; height: 200px;">
@@ -130,8 +118,6 @@
                             </div>
                         </div>
                     </div>
-
-<<<<<<< HEAD
                     <div class="col-12" ng-if="items.length > 8">
                         <nav>
                             <ul class="pagination justify-content-center">
@@ -149,122 +135,6 @@
         </div>
     </div>
     <!-- Shop End -->
-=======
-				<!-- Supplier Filter Start -->
-				<h5 class="section-title position-relative text-uppercase mb-3">
-					<span class="bg-secondary pr-3">Lọc Theo Nhà Cung Cấp</span>
-				</h5>
-				<div class="bg-light p-4 mb-30">
-					<form>
-						<div class="form-group">
-							<label for="supplier-select">Chọn Nhà Cung Cấp:</label> <select ng-model="form_filter.maNcc"
-								class="form-control" id="supplier-select">
-								<option value="">Tất cả</option>
-								<option ng-repeat="ncc in list_ncc" ng-value="ncc.maNhaCungCap">{{ncc.tenNhaCungCap}}</option>
-							</select>
-						</div>
-
-					</form>
-
-				</div>
-				<div class="form-actions text-center">
-					<button type="button" class="btn btn-dark"
-						ng-click="reset_filter()">Xóa Lọc</button>
-
-					<button type="submit" class="btn btn-primary" ng-click="filter()">Lọc</button>
-				</div>
-				<!-- Supplier Filter End -->
-			</div>
-
-
-			<!-- Shop Sidebar End -->
-
-
-			<!-- Shop Product Start -->
-			<!-- Sản Phẩm Cửa Hàng Bắt Đầu -->
-			<div class="col-lg-9 col-md-8">
-				<div class="row pb-3">
-					<div class="col-12 pb-1">
-						<div
-							class="d-flex align-items-center justify-content-between mb-4">
-							<div>
-								<button class="btn btn-sm btn-light">
-									<i class="fa fa-th-large"></i>
-								</button>
-								<button class="btn btn-sm btn-light ml-2">
-									<i class="fa fa-bars"></i>
-								</button>
-							</div>
-
-						</div>
-					</div>
-					<div ng-repeat="pro in pager.items"
-						class="col-lg-3 col-md-6 col-sm-6 pb-1">
-						<div class="product-item bg-light mb-4 d-flex flex-column">
-							<div class="product-img position-relative overflow-hidden">
-								<img class="img-fluid w-100"
-									ng-src="{{'/api/file/SanPham/'+pro.hinhAnh}}" alt=""
-									style="object-fit: cover; height: 200px;">
-								<div class="product-action">
-									<a class="btn btn-outline-dark btn-square"
-										ng-href="{{'/detail/'+pro.maSanPham}}"> <!--  <button ng-click="cart.add(pro.maSanPham)">-->
-										<button>
-											<i class="fa fa-shopping-cart"></i>
-										</button>
-									</a>
-								</div>
-							</div>
-							<div class="text-center py-4 flex-grow-1"
-								style="display: flex; flex-direction: column;">
-								<!-- Prevent text overflow and ensure it doesn't break out of container -->
-								<a class="h6 text-decoration-none text-truncate" href=""
-									style="max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block;">
-									{{pro.tenSanPham}} </a>
-								<hr>
-								<a class="h6 text-decoration-none text-truncate" href=""
-									style="max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-									{{pro.chungLoai.tenChungLoai}} </a> <a
-									class="h6 text-decoration-none text-truncate" href=""
-									style="max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-									{{pro.nhaCungCap.tenNhaCungCap}} </a> <a
-									class="h6 text-decoration-none text-truncate" href=""
-									style="max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-									Số Lượng {{pro.soLuong}} </a>
-
-								<div
-									class="d-flex align-items-center justify-content-center mt-2">
-									<h5>{{pro.giaTien | number:0}} VND</h5>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-12" ng-if="items.length > 8">
-						<nav>
-							<ul class="pagination justify-content-center">
-								<li class="page-item"><a class="page-link"
-									ng-click="pager.first()" tabindex="-1">Đầu Tiên</a></li>
-								<li class="page-item"><a class="page-link"
-									ng-disabled="page == 1" ng-click="pager.prev()">Trước</a></li>
-								<li class="page-item"><a class="page-link" href="#">{{pager.page
-										+ 1}} của {{pager.count}}</a></li>
-								<li class="page-item"><a class="page-link"
-									ng-click="pager.next()">Tiếp Theo</a></li>
-								<li class="page-item"><a class="page-link"
-									ng-click="pager.last()">Cuối Cùng</a></li>
-							</ul>
-						</nav>
-					</div>
-				</div>
-			</div>
-
-
-
-			<!-- Sản Phẩm Cửa Hàng Kết Thúc -->
-
-		</div>
-	</div>
-	<!-- Shop End -->
->>>>>>> branch 'main' of https://github.com/Hoang0207/WebsiteBanDoDienTu.git
+				
 </body>
 </html>
