@@ -112,144 +112,169 @@
     <div id="successMessage">Gửi mail thành công!</div>
 
     <script>
-        // Lắng nghe sự kiện input trên trường "Họ và Tên"
-        const hoTenInput = document.getElementById('hoTenInput');
-        const hoTenEmptyError = document.getElementById('hoTenEmptyError');
-        const hoTenFormatError = document.getElementById('hoTenFormatError');
+    // Lắng nghe sự kiện input trên trường "Họ và Tên"
+    const hoTenInput = document.getElementById('hoTenInput');
+    const hoTenEmptyError = document.getElementById('hoTenEmptyError');
+    const hoTenFormatError = document.getElementById('hoTenFormatError');
 
-        hoTenInput.addEventListener('input', function () {
-            const hoTenValue = hoTenInput.value.trim();
+    hoTenInput.addEventListener('input', function () {
+        const hoTenValue = hoTenInput.value.trim();
 
-            // Kiểm tra nếu ô trống
-            if (hoTenValue === '') {
-                hoTenEmptyError.style.display = 'block';
+        // Kiểm tra nếu ô trống
+        if (hoTenValue === '') {
+            hoTenEmptyError.style.display = 'block';
+            hoTenFormatError.style.display = 'none';
+        } else {
+            hoTenEmptyError.style.display = 'none';
+
+            // Kiểm tra định dạng họ tên (chỉ cho phép chữ cái và dấu cách)
+            const hoTenRegex = /^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàạáâãèéêễìíòóôõùúăđĩũơƯĂẮẰẲẴẶắằẳẵặÂẦẤẨẪẬâầấẩẫậÔỐỒỔỖỘôốồổỗộƠỚỜỞỠỢơớờởỡợÚÙỦŨỤưúùủũụỲÝỶỸỴỳýỷỹỵ\s]+$/;
+            if (!hoTenRegex.test(hoTenValue)) {
+                hoTenFormatError.style.display = 'block';
+            } else {
                 hoTenFormatError.style.display = 'none';
-            } else {
-                hoTenEmptyError.style.display = 'none';
-
-                // Kiểm tra định dạng họ tên (chỉ cho phép chữ cái và dấu cách)
-                const hoTenRegex = /^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàạáâãèéêễìíòóôõùúăđĩũơƯĂẮẰẲẴẶắằẳẵặÂẦẤẨẪẬâầấẩẫậÔỐỒỔỖỘôốồổỗộƠỚỜỞỠỢơớờởỡợÚÙỦŨỤưúùủũụỲÝỶỸỴỳýỷỹỵ\s]+$/;
-                if (!hoTenRegex.test(hoTenValue)) {
-                    hoTenFormatError.style.display = 'block';
-                } else {
-                    hoTenFormatError.style.display = 'none';
-                }
             }
-        });
-
-        // Lắng nghe sự kiện input trên trường "Email"
-        const emailInput = document.getElementById('emailInput');
-        const emptyEmailError = document.getElementById('emptyEmailError');
-        const emailFormatError = document.getElementById('emailFormatError');
-
-        emailInput.addEventListener('input', function () {
-            const emailValue = emailInput.value.trim();
-
-            // Kiểm tra nếu ô trống
-            if (emailValue === '') {
-                emptyEmailError.style.display = 'block';
-                emailFormatError.style.display = 'none'; // Ẩn lỗi định dạng khi trống
-            } else {
-                emptyEmailError.style.display = 'none';
-
-                // Kiểm tra định dạng email (chỉ cho phép đuôi @gmail.com)
-                if (!emailValue.endsWith('@gmail.com')) {
-                    emailFormatError.style.display = 'block';
-                } else {
-                    emailFormatError.style.display = 'none';
-                }
-            }
-        });
-
-        // Lắng nghe sự kiện input trên trường "Số điện thoại"
-        const dienthoaiInput = document.getElementById('dienthoaiInput');
-        const dienthoaiEmptyError = document.getElementById('dienthoaiEmptyError');
-        const dienthoaiFormatError = document.getElementById('dienthoaiFormatError');
-
-        dienthoaiInput.addEventListener('input', function () {
-            const dienthoaiValue = dienthoaiInput.value.trim();
-
-            // Kiểm tra ô điện thoại trống
-            if (dienthoaiValue === '') {
-                dienthoaiEmptyError.style.display = 'block';
-                dienthoaiFormatError.style.display = 'none';
-            } else {
-                dienthoaiEmptyError.style.display = 'none';
-
-                // Kiểm tra định dạng số điện thoại
-                const dienthoaiRegex = /^[0-9]{10}$/;
-                if (!dienthoaiRegex.test(dienthoaiValue)) {
-                    dienthoaiFormatError.style.display = 'block';
-                } else {
-                    dienthoaiFormatError.style.display = 'none';
-                }
-            }
-        });
-
-     // Xử lý gửi email
-        let isSubmitting = false; // Đảm bảo chỉ gửi 1 email duy nhất
-
-        function sendMail(event) {
-            event.preventDefault(); // Ngăn form gửi đi để xử lý
-
-            // Kiểm tra nếu đang gửi mail
-            if (isSubmitting) {
-                return; // Nếu đã gửi, không làm gì cả
-            }
-
-            // Kiểm tra các trường thông tin
-            const formFields = [
-                {input: hoTenInput, emptyError: hoTenEmptyError, formatError: hoTenFormatError},
-                {input: emailInput, emptyError: emptyEmailError, formatError: emailFormatError},
-                {input: dienthoaiInput, emptyError: dienthoaiEmptyError, formatError: dienthoaiFormatError}
-            ];
-
-            let isValid = true;
-
-            // Kiểm tra tất cả các trường thông tin
-            formFields.forEach(field => {
-                const value = field.input.value.trim();
-                if (value === '') {
-                    field.emptyError.style.display = 'block';
-                    field.formatError.style.display = 'none';
-                    isValid = false;
-                } else {
-                    field.emptyError.style.display = 'none';
-                    if (field.formatError.style.display !== 'none') {
-                        field.formatError.style.display = 'none';
-                    }
-                }
-            });
-
-            // Nếu thông tin hợp lệ, tiếp tục gửi mail
-            if (isValid) {
-                const form = document.getElementById("contactForm");
-                const formData = new FormData(form);
-                isSubmitting = true; // Đặt trạng thái đang gửi mail
-                const submitButton = document.getElementById("submitButton");
-                submitButton.disabled = true; // Vô hiệu hóa nút gửi để tránh nhấn nhiều lần
-
-                fetch('/sendMail', {
-                    method: 'POST',
-                    body: formData
-                })
-                .then(response => {
-                    if (response.ok) {
-                        document.getElementById("successMessage").style.display = "block";
-                        setTimeout(() => {
-                            document.getElementById("successMessage").style.display = "none";
-                        }, 3000);
-                    }
-                })
-                .finally(() => {
-                    isSubmitting = false; // Đặt lại trạng thái gửi mail
-                    submitButton.disabled = false; // Kích hoạt lại nút gửi khi hoàn tất
-                });
-            }
-
-            return false;
         }
 
-    </script>
+        checkSubmitButtonState();  // Kiểm tra lại trạng thái của nút gửi
+    });
+
+    // Lắng nghe sự kiện input trên trường "Email"
+    const emailInput = document.getElementById('emailInput');
+    const emptyEmailError = document.getElementById('emptyEmailError');
+    const emailFormatError = document.getElementById('emailFormatError');
+
+    emailInput.addEventListener('input', function () {
+        const emailValue = emailInput.value.trim();
+
+        // Kiểm tra nếu ô trống
+        if (emailValue === '') {
+            emptyEmailError.style.display = 'block';
+            emailFormatError.style.display = 'none'; // Ẩn lỗi định dạng khi trống
+        } else {
+            emptyEmailError.style.display = 'none';
+
+            // Kiểm tra định dạng email (chỉ cho phép đuôi @gmail.com)
+            if (!emailValue.endsWith('@gmail.com')) {
+                emailFormatError.style.display = 'block';
+            } else {
+                emailFormatError.style.display = 'none';
+            }
+        }
+
+        checkSubmitButtonState();  // Kiểm tra lại trạng thái của nút gửi
+    });
+
+    // Lắng nghe sự kiện input trên trường "Số điện thoại"
+    const dienthoaiInput = document.getElementById('dienthoaiInput');
+    const dienthoaiEmptyError = document.getElementById('dienthoaiEmptyError');
+    const dienthoaiFormatError = document.getElementById('dienthoaiFormatError');
+
+    dienthoaiInput.addEventListener('input', function () {
+        const dienthoaiValue = dienthoaiInput.value.trim();
+
+        // Kiểm tra ô điện thoại trống
+        if (dienthoaiValue === '') {
+            dienthoaiEmptyError.style.display = 'block';
+            dienthoaiFormatError.style.display = 'none';
+        } else {
+            dienthoaiEmptyError.style.display = 'none';
+
+            // Kiểm tra định dạng số điện thoại
+            const dienthoaiRegex = /^[0-9]{10}$/;
+            if (!dienthoaiRegex.test(dienthoaiValue)) {
+                dienthoaiFormatError.style.display = 'block';
+            } else {
+                dienthoaiFormatError.style.display = 'none';
+            }
+        }
+
+        checkSubmitButtonState();  // Kiểm tra lại trạng thái của nút gửi
+    });
+
+    // Kiểm tra trạng thái nút gửi
+    function checkSubmitButtonState() {
+        const submitButton = document.getElementById("submitButton");
+        // Nếu có lỗi hiển thị, vô hiệu hóa nút gửi
+        if (hoTenEmptyError.style.display === 'block' || hoTenFormatError.style.display === 'block' ||
+            emptyEmailError.style.display === 'block' || emailFormatError.style.display === 'block' ||
+            dienthoaiEmptyError.style.display === 'block' || dienthoaiFormatError.style.display === 'block') {
+            submitButton.disabled = true;
+        } else {
+            submitButton.disabled = false;
+        }
+    }
+
+    // Xử lý gửi email
+    let isSubmitting = false; // Đảm bảo chỉ gửi 1 email duy nhất
+
+    function sendMail(event) {
+        event.preventDefault(); // Ngăn form gửi đi để xử lý
+
+        // Kiểm tra nếu đang gửi mail
+        if (isSubmitting) {
+            return; // Nếu đã gửi, không làm gì cả
+        }
+
+        // Kiểm tra các trường thông tin
+        const formFields = [
+            {input: hoTenInput, emptyError: hoTenEmptyError, formatError: hoTenFormatError},
+            {input: emailInput, emptyError: emptyEmailError, formatError: emailFormatError},
+            {input: dienthoaiInput, emptyError: dienthoaiEmptyError, formatError: dienthoaiFormatError}
+        ];
+
+        let isValid = true;
+
+        // Kiểm tra tất cả các trường thông tin
+        formFields.forEach(field => {
+            const value = field.input.value.trim();
+            if (value === '') {
+                field.emptyError.style.display = 'block';
+                field.formatError.style.display = 'none';
+                isValid = false;
+            } else {
+                field.emptyError.style.display = 'none';
+                if (field.formatError.style.display !== 'none') {
+                    field.formatError.style.display = 'none';
+                }
+            }
+        });
+
+        // Nếu thông tin hợp lệ, tiếp tục gửi mail
+        if (isValid) {
+            const form = document.getElementById("contactForm");
+            const formData = new FormData(form);
+            isSubmitting = true; // Đặt trạng thái đang gửi mail
+            const submitButton = document.getElementById("submitButton");
+            submitButton.disabled = true; // Vô hiệu hóa nút gửi để tránh nhấn nhiều lần
+
+            // Vô hiệu hóa nút gửi khi thông báo thành công hiển thị
+            const successMessage = document.getElementById("successMessage");
+            successMessage.style.display = "block";
+
+            setTimeout(() => {
+                successMessage.style.display = "none";
+                submitButton.disabled = false; // Kích hoạt lại nút gửi sau khi thông báo biến mất
+            }, 3000); // Hiển thị thông báo trong 3 giây
+
+            fetch('/sendMail', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Không cần thêm gì trong đây nữa, do thông báo đã được xử lý trên phía client
+                }
+            })
+            .finally(() => {
+                isSubmitting = false; // Đặt lại trạng thái gửi mail
+                submitButton.disabled = false; // Kích hoạt lại nút gửi khi hoàn tất
+            });
+        }
+
+        return false;
+    }
+</script>
+
 </body>
 </html>

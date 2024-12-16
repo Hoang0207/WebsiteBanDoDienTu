@@ -1,307 +1,346 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Đăng Ký</title>
-   <style>
-       html, body {
-           height: 100%;
-           margin: 0;
-           padding: 0;
-       }
-       body {
-           font-family: Arial, sans-serif;
-           background-image: url(https://4kwallpapers.com/images/wallpapers/dark-background-abstract-background-network-3d-background-3840x2160-8324.png);
-           background-size: 200%;
-           background-repeat: no-repeat;
-           background-position: center;
-           background-attachment: fixed;
-           display: flex;
-           justify-content: center;
-           align-items: center;
-           height: 100vh;
-       }
-       .form-container {
-           background-color: #ffffff;
-           padding: 30px 10px;
-           border-radius: 12px;
-           box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-           width: 100%;
-           max-width: 500px;
-           transform: translateY(-15px);
-           transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-           position: relative;
-           text-align: center;
-       }
-       .form-container:hover {
-           transform: translateY(-20px);
-           box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-       }
-       .form-container h2 {
-           text-align: center;
-           margin-bottom: 20px;
-           color: #333;
-       }
-       .form-container input[type="text"],
-       .form-container input[type="password"],
-       .form-container input[type="date"],
-       .form-container input[type="email"],
-       .form-container input[type="tel"],
-       .form-container button {
-           width: 90%;
-           padding: 10px;
-           margin-bottom: 15px;
-           border: 1px solid #ccc;
-           border-radius: 4px;
-           font-size: 16px;
-       }
-       .form-container input[type="radio"] {
-           margin-right: 10px;
-       }
-       .form-container button {
-           background-color: #ffc107;
-           color: #000;
-           border: none;
-           cursor: pointer;
-           width: 50%;
-           display: block;
-           margin: 0 auto;
-       }
-       .form-container button:hover {
-           background-color: #e0a800;
-       }
-       .form-container .radio-group {
-           margin-bottom: 20px;
-           text-align: left;
-           margin-left: 13px;
-       }
-       .form-container .login-link {
-           margin-top: 10px;
-           font-size: 14px;
-           margin-top: 10px;
-           text-align: left; /* Căn trái dòng văn bản */
-           margin-left: 14px;
-       }
-       .form-container .login-link a {
-           color: #007bff;
-           text-decoration: none;
-       }
-       .form-container .login-link a:hover {
-           text-decoration: underline;
-       }
-       .error-message {
-           color: red;
-           font-size: 14px;
-           display: none;
-           margin-top: -10px;
-       }
-       .label {
-           font-size: 18px;
-           font-weight: bold;
-           margin-bottom: 5px;
-           color: #333;
-           text-align: left;
-       }
-       .error-message {
-           color: red;
-           font-size: 13px;
-           display: none;
-           margin-top: -10px;
-           text-align: left; /* Thêm thuộc tính này để căn trái */
-           margin-left: 14px;
-       }
-     .error-popup {
-       position: fixed;
-       top: 50%;
-       left: 50%;
-       transform: translate(-50%, -50%);
-       background: white; /* Nền trắng */
-       color: red; /* Chữ đỏ */
-       padding: 20px 30px;
-       font-size: 20px; /* Chữ to hơn */
-       font-weight: bold; /* Chữ in đậm */
-       font-size: 20px; /* Chữ to hơn */
-       border-radius: 10px;
-       box-shadow: 0 8px 20px rgba(0, 0, 0, 1); /* Bóng */
-       text-align: center;
-       display: none; /* Mặc định ẩn */
-       z-index: 1000;
-       width: 400px; /* Độ rộng của thông báo (có thể điều chỉnh theo ý muốn) */
-       max-width: 90%; /* Đảm bảo thông báo không quá rộng trên màn hình nhỏ */
-   }
-      
-   </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đăng Ký</title>
+  <style>
+      html, body {
+          height: 100%;
+          margin: 0;
+          padding: 0;
+      }
+      body {
+          font-family: Arial, sans-serif;
+          background-image: url(https://4kwallpapers.com/images/wallpapers/dark-background-abstract-background-network-3d-background-3840x2160-8324.png);
+          background-size: 200%;
+          background-repeat: no-repeat;
+          background-position: center;
+          background-attachment: fixed;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+      }
+      .form-container {
+          background-color: #ffffff;
+          padding: 30px 10px;
+          border-radius: 12px;
+          box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+          width: 100%;
+          max-width: 500px;
+          transform: translateY(-15px);
+          transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+          position: relative;
+          text-align: center;
+      }
+      .form-container:hover {
+          transform: translateY(-20px);
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      }
+      .form-container h2 {
+          text-align: center;
+          margin-bottom: 20px;
+          color: #333;
+      }
+      .form-container input[type="text"],
+      .form-container input[type="password"],
+      .form-container input[type="date"],
+      .form-container input[type="email"],
+      .form-container input[type="tel"],
+      .form-container button {
+          width: 90%;
+          padding: 10px;
+          margin-bottom: 25px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          font-size: 16px;
+         
+      }
+      .form-container input[type="radio"] {
+          margin-right: 10px;
+      }
+      .form-container button {
+          background-color: #ffc107;
+          color: #000;
+          border: none;
+          cursor: pointer;
+          width: 50%;
+          display: block;
+          margin: 0 auto;
+         
+      }
+      .form-container button:hover {
+          background-color: #e0a800;
+      }
+      .form-container .radio-group {
+          margin-bottom: 20px;
+          text-align: left;
+          margin-left: 13px;
+      }
+      .form-container .login-link {
+          margin-top: 10px;
+          font-size: 14px;
+          margin-top: 10px;
+          text-align: left; /* Căn trái dòng văn bản */
+          margin-left: 14px;
+      }
+      .form-container .login-link a {
+          color: #007bff;
+          text-decoration: none;
+      }
+      .form-container .login-link a:hover {
+          text-decoration: underline;
+      }
+      .error-message {
+          color: red;
+          font-size: 14px;
+          display: none;
+          margin-top: -10px;
+          
+      }
+      .label {
+          font-size: 18px;
+          font-weight: bold;
+          margin-bottom: 5px;
+          color: #333;
+          text-align: left;
+      }
+     .error-message {
+   color: red;
+   font-size: 13px;
+   display: none;
+   margin-top: -23px;
+   text-align: left; /* Thêm thuộc tính này để căn trái */
+   margin-left: 14px;
+   position: absolute; /* Đảm bảo thông báo không che phủ các phần tử khác */
+   z-index: 1; /* Đảm bảo thông báo lỗi không phủ lên nút đăng ký */
+}
+    .error-popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white; /* Nền trắng */
+      color: red; /* Chữ đỏ */
+      padding: 20px 30px;
+      font-size: 20px; /* Chữ to hơn */
+      font-weight: bold; /* Chữ in đậm */
+      font-size: 20px; /* Chữ to hơn */
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 1); /* Bóng */
+      text-align: center;
+      display: none; /* Mặc định ẩn */
+      z-index: 1000;
+      width: 400px; /* Độ rộng của thông báo (có thể điều chỉnh theo ý muốn) */
+      max-width: 90%; /* Đảm bảo thông báo không quá rộng trên màn hình nhỏ */
+   
+  }
+    
+  </style>
 </head>
 <body>
-   <div class="form-container">
-       <h2>Đăng Ký</h2>
-        <form action="/savedangky" method="post" id="registerForm">
-           <div>
-               <input type="email" name="email" id="email" placeholder="Email" required>
-               <div id="email-error" class="error-message">Vui lòng nhập email đúng định dạng @gmail.com</div>
-               <div id="empty-email-error" class="error-message">Vui lòng nhập Email của bạn</div>
-               <span th:if="${emailError}" th:text="${emailError}" class="error-popup"></span>
-           </div>
-           <input type="password" name="matKhau" id="matKhau" placeholder="Mật khẩu" required>
-           <div id="password-empty-error" class="error-message">Vui lòng điền mật khẩu của bạn</div>
-           <div id="password-format-error" class="error-message">Mật khẩu phải có chữ in hoa, chữ thường và số</div>
-           <input type="password" name="matKhauNhapLai" id="matKhauNhapLai" placeholder="Nhập lại mật khẩu" required>
-           <div id="error-message" class="error-message">Mật khẩu và Nhập lại mật khẩu không khớp!</div>
-           <input type="text" name="hoTen" id="hoTen" placeholder="Họ tên" required>
-           <div id="hoTen-empty-error" class="error-message">Vui lòng nhập họ tên của bạn</div>
-           <div id="hoTen-format-error" class="error-message">Họ tên không được nhập ký tự đặc biệt hoặc số</div>
-           <input type="tel" name="dienthoai" id="dienthoai" placeholder="Số điện thoại" required>
-           <div id="dienthoai-empty-error" class="error-message">Vui lòng nhập số điện thoại của bạn</div>
-           <div id="dienthoai-format-error" class="error-message">Số điện thoại chỉ tối đa 10 số và không có chữ</div>
-           <div class="label" style="  margin-left: 14px;">Giới tính</div>
-           <div class="radio-group">
-               <label><input type="radio" name="gioiTinh" value="true" required> Nam</label>
-               <label><input type="radio" name="gioiTinh" value="false" required> Nữ</label>
-           </div>
-           <div id="gioiTinh-error" class="error-message">Vui lòng nhập giới tính của bạn</div>
-   
-           <input type="date" name="ngaySinh" id="ngaySinh" required>
-           <div id="ngaySinh-error" class="error-message">Vui lòng nhập ngày sinh của bạn</div>
-           <div id="ngaySinh-invalid-error" class="error-message">Ngày sinh tạm thời không tồn tại</div>
-           <div class="login-link" >
-               <p>Đã có tài khoản? <a href="/login" style="text-decoration: none;" >Đăng nhập</a></p>
-           </div>
-           <button type="submit">Đăng ký</button>
-       </form>
-   </div>
-   <script>
-       const registerForm = document.getElementById('registerForm');
-       const matKhauInput = document.getElementById('matKhau');
-       const matKhauNhapLaiInput = document.getElementById('matKhauNhapLai');
-       const errorMessage = document.getElementById('error-message');
-       const emailInput = document.getElementById('email');
-       const emailError = document.getElementById('email-error');
-       const emptyEmailError = document.getElementById('empty-email-error');
-       const passwordEmptyError = document.getElementById('password-empty-error');
-       const passwordFormatError = document.getElementById('password-format-error');
-       const hoTenInput = document.getElementById('hoTen');
-       const hoTenEmptyError = document.getElementById('hoTen-empty-error');
-       const hoTenFormatError = document.getElementById('hoTen-format-error');
-       const dienthoaiInput = document.getElementById('dienthoai');
-       const dienthoaiEmptyError = document.getElementById('dienthoai-empty-error');
-       const dienthoaiFormatError = document.getElementById('dienthoai-format-error');
-       const gioiTinhError = document.getElementById('gioiTinh-error');
-       const gioiTinhRadios = document.getElementsByName('gioiTinh');
-       const ngaySinhInput = document.getElementById('ngaySinh');
-       const ngaySinhError = document.getElementById('ngaySinh-error');
-       const ngaySinhInvalidError = document.getElementById('ngaySinh-invalid-error');
-       matKhauNhapLaiInput.addEventListener('input', function () {
-           if (matKhauInput.value !== matKhauNhapLaiInput.value) {
-               errorMessage.style.display = 'block';
-           } else {
-               errorMessage.style.display = 'none';
-           }
-       });
-       emailInput.addEventListener('input', function () {
-           const emailValue = emailInput.value;
-           if (emailValue && !emailValue.endsWith('@gmail.com')) {
-               emailError.style.display = 'block';
-           } else {
-               emailError.style.display = 'none';
-           }
-           if (emailValue === '') {
-               emptyEmailError.style.display = 'block';
-           } else {
-               emptyEmailError.style.display = 'none';
-           }
-       });
-       document.addEventListener("DOMContentLoaded", function () {
-           const errorPopup = document.querySelector(".error-popup");
-           if (errorPopup) {
-               errorPopup.style.display = "block"; // Hiện thông báo
-               setTimeout(() => {
-                   errorPopup.style.display = "none"; // Ẩn sau 5 giây
-               }, 4000); // 5000 ms = 5 giây
-           }
-       });
-       matKhauInput.addEventListener('input', function () {
-           const passwordValue = matKhauInput.value;
-           if (passwordValue === '') {
-               passwordEmptyError.style.display = 'block';
-               passwordFormatError.style.display = 'none';
-           } else {
-               passwordEmptyError.style.display = 'none';
-               const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,}$/;
-               if (!passwordRegex.test(passwordValue)) {
-                   passwordFormatError.style.display = 'block';
-               } else {
-                   passwordFormatError.style.display = 'none';
-               }
-           }
-       });
-       hoTenInput.addEventListener('input', function () {
-           const hoTenValue = hoTenInput.value.trim();
-           if (hoTenValue === '') {
-               hoTenEmptyError.style.display = 'block';
-               hoTenFormatError.style.display = 'none';
-           } else {
-               hoTenEmptyError.style.display = 'none';
-               const hoTenRegex = /^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàạáâãèéêễìíòóôõùúăđĩũơƯĂẮẰẲẴẶắằẳẵặÂẦẤẨẪẬâầấẩẫậÔỐỒỔỖỘôốồổỗộƠỚỜỞỠỢơớờởỡợÚÙỦŨỤưúùủũụỲÝỶỸỴỳýỷỹỵ\s]+$/;
-               if (!hoTenRegex.test(hoTenValue)) {
-                   hoTenFormatError.style.display = 'block';
-               } else {
-                   hoTenFormatError.style.display = 'none';
-               }
-           }
-       });
-       dienthoaiInput.addEventListener('input', function () {
-           const dienthoaiValue = dienthoaiInput.value.trim();
-           // Kiểm tra ô điện thoại trống
-           if (dienthoaiValue === '') {
-               dienthoaiEmptyError.style.display = 'block';
-               dienthoaiFormatError.style.display = 'none';
-           } else {
-               dienthoaiEmptyError.style.display = 'none';
-               // Kiểm tra định dạng số điện thoại
-               const dienthoaiRegex = /^[0-9]{10}$/;
-               if (!dienthoaiRegex.test(dienthoaiValue)) {
-                   dienthoaiFormatError.style.display = 'block';
-               } else {
-                   dienthoaiFormatError.style.display = 'none';
-               }
-           }
-       });
-       ngaySinhInput.addEventListener('input', function () {
-           const ngaySinhValue = ngaySinhInput.value;
-           // Kiểm tra nếu ô ngày sinh để trống
-           if (!ngaySinhValue) {
-               ngaySinhError.style.display = 'block';
-               ngaySinhInvalidError.style.display = 'none';
-           } else {
-               ngaySinhError.style.display = 'none';
-               // Kiểm tra nếu ngày sinh lớn hơn ngày hiện tại
-               const today = new Date();
-               const birthDate = new Date(ngaySinhValue);
-               if (birthDate > today) {
-                   ngaySinhInvalidError.style.display = 'block';
-               } else {
-                   ngaySinhInvalidError.style.display = 'none';
-               }
-           }
-       });
-       registerForm.addEventListener('submit', function (event) {
-           let genderSelected = false;
-           for (let i = 0; i < gioiTinhRadios.length; i++) {
-               if (gioiTinhRadios[i].checked) {
-                   genderSelected = true;
-                   break;
-               }
-           }
-          
-           if (!genderSelected) {
-               event.preventDefault();
-               gioiTinhError.style.display = 'block';
-           } else {
-               gioiTinhError.style.display = 'none';
-           }
-       });
-      
-   </script>
+  <div class="form-container">
+      <h2>Đăng Ký</h2>
+       <form action="/savedangky" method="post" id="registerForm">
+          <div>
+              <input type="email" name="email" id="email" placeholder="Email" required>
+              <div id="email-error" class="error-message">Vui lòng nhập email đúng định dạng @gmail.com</div>
+              <div id="empty-email-error" class="error-message">Vui lòng nhập Email của bạn</div>
+              <span th:if="${emailError}" th:text="${emailError}" class="error-popup"></span>
+          </div>
+          <input type="password" name="matKhau" id="matKhau" placeholder="Mật khẩu" required>
+          <div id="password-empty-error" class="error-message">Vui lòng điền mật khẩu của bạn</div>
+          <div id="password-format-error" class="error-message">Mật khẩu phải có chữ in hoa, chữ thường và số</div>
+          <input type="password" name="matKhauNhapLai" id="matKhauNhapLai" placeholder="Nhập lại mật khẩu" required>
+          <div id="error-message" class="error-message">Mật khẩu và Nhập lại mật khẩu không khớp!</div>
+          <input type="text" name="hoTen" id="hoTen" placeholder="Họ tên" required>
+          <div id="hoTen-empty-error" class="error-message">Vui lòng nhập họ tên của bạn</div>
+          <div id="hoTen-format-error" class="error-message">Họ tên không được nhập ký tự đặc biệt hoặc số</div>
+          <input type="tel" name="dienthoai" id="dienthoai" placeholder="Số điện thoại" required>
+          <div id="dienthoai-empty-error" class="error-message">Vui lòng nhập số điện thoại của bạn</div>
+          <div id="dienthoai-format-error" class="error-message">Số điện thoại chỉ tối đa 10 số và không có chữ</div>
+          <div class="label" style="  margin-left: 14px;">Giới tính</div>
+          <div class="radio-group">
+              <label><input type="radio" name="gioiTinh" value="true" required> Nam</label>
+              <label><input type="radio" name="gioiTinh" value="false" required> Nữ</label>
+          </div>
+          <div id="gioiTinh-error" class="error-message">Vui lòng nhập giới tính của bạn</div>
+ 
+          <input type="date" name="ngaySinh" id="ngaySinh" required>
+          <div id="ngaySinh-error" class="error-message">Vui lòng nhập ngày sinh của bạn</div>
+          <div id="ngaySinh-invalid-error" class="error-message">Ngày sinh tạm thời không tồn tại</div>
+          <div class="login-link" >
+              <p>Đã có tài khoản? <a href="/login" style="text-decoration: none;" >Đăng nhập</a></p>
+          </div>
+          <button type="submit">Đăng ký</button>
+      </form>
+  </div>
+  <script>
+  const registerForm = document.getElementById('registerForm');
+  const matKhauInput = document.getElementById('matKhau');
+  const matKhauNhapLaiInput = document.getElementById('matKhauNhapLai');
+  const errorMessage = document.getElementById('error-message');
+  const emailInput = document.getElementById('email');
+  const emailError = document.getElementById('email-error');
+  const emptyEmailError = document.getElementById('empty-email-error');
+  const passwordEmptyError = document.getElementById('password-empty-error');
+  const passwordFormatError = document.getElementById('password-format-error');
+  const hoTenInput = document.getElementById('hoTen');
+  const hoTenEmptyError = document.getElementById('hoTen-empty-error');
+  const hoTenFormatError = document.getElementById('hoTen-format-error');
+  const dienthoaiInput = document.getElementById('dienthoai');
+  const dienthoaiEmptyError = document.getElementById('dienthoai-empty-error');
+  const dienthoaiFormatError = document.getElementById('dienthoai-format-error');
+  const gioiTinhError = document.getElementById('gioiTinh-error');
+  const gioiTinhRadios = document.getElementsByName('gioiTinh');
+  const ngaySinhInput = document.getElementById('ngaySinh');
+  const ngaySinhError = document.getElementById('ngaySinh-error');
+  const ngaySinhInvalidError = document.getElementById('ngaySinh-invalid-error');
+  // Kiểm tra khi người dùng nhập lại mật khẩu
+  matKhauNhapLaiInput.addEventListener('input', function () {
+      if (matKhauInput.value !== matKhauNhapLaiInput.value) {
+          errorMessage.style.display = 'block';
+      } else {
+          errorMessage.style.display = 'none';
+      }
+  });
+  // Kiểm tra email khi người dùng nhập
+  emailInput.addEventListener('input', function () {
+      const emailValue = emailInput.value;
+      if (emailValue && !emailValue.endsWith('@gmail.com')) {
+          emailError.style.display = 'block';
+      } else {
+          emailError.style.display = 'none';
+      }
+      if (emailValue === '') {
+          emptyEmailError.style.display = 'block';
+      } else {
+          emptyEmailError.style.display = 'none';
+      }
+  });
+  // Hiển thị thông báo lỗi khi trang được tải
+  document.addEventListener("DOMContentLoaded", function () {
+      const errorPopup = document.querySelector(".error-popup");
+      if (errorPopup) {
+          errorPopup.style.display = "block"; // Hiện thông báo
+          setTimeout(() => {
+              errorPopup.style.display = "none"; // Ẩn sau 4 giây
+          }, 4000); // 4000 ms = 4 giây
+      }
+  });
+  // Kiểm tra mật khẩu khi người dùng nhập
+  matKhauInput.addEventListener('input', function () {
+      const passwordValue = matKhauInput.value;
+      if (passwordValue === '') {
+          passwordEmptyError.style.display = 'block';
+          passwordFormatError.style.display = 'none';
+      } else {
+          passwordEmptyError.style.display = 'none';
+          const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,}$/;
+          if (!passwordRegex.test(passwordValue)) {
+              passwordFormatError.style.display = 'block';
+          } else {
+              passwordFormatError.style.display = 'none';
+          }
+      }
+  });
+  // Kiểm tra tên khi người dùng nhập
+  hoTenInput.addEventListener('input', function () {
+      const hoTenValue = hoTenInput.value.trim();
+      if (hoTenValue === '') {
+          hoTenEmptyError.style.display = 'block';
+          hoTenFormatError.style.display = 'none';
+      } else {
+          hoTenEmptyError.style.display = 'none';
+          const hoTenRegex = /^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàạáâãèéêễìíòóôõùúăđĩũơƯĂẮẰẲẴẶắằẳẵặÂẦẤẨẪẬâầấẩẫậÔỐỒỔỖỘôốồổỗộƠỚỜỞỠỢơớờởỡợÚÙỦŨỤưúùủũụỲÝỶỸỴỳýỷỹỵ\s]+$/;
+          if (!hoTenRegex.test(hoTenValue)) {
+              hoTenFormatError.style.display = 'block';
+          } else {
+              hoTenFormatError.style.display = 'none';
+          }
+      }
+  });
+  // Kiểm tra số điện thoại khi người dùng nhập
+  dienthoaiInput.addEventListener('input', function () {
+      const dienthoaiValue = dienthoaiInput.value.trim();
+      if (dienthoaiValue === '') {
+          dienthoaiEmptyError.style.display = 'block';
+          dienthoaiFormatError.style.display = 'none';
+      } else {
+          dienthoaiEmptyError.style.display = 'none';
+          const dienthoaiRegex = /^[0-9]{10}$/;
+          if (!dienthoaiRegex.test(dienthoaiValue)) {
+              dienthoaiFormatError.style.display = 'block';
+          } else {
+              dienthoaiFormatError.style.display = 'none';
+          }
+      }
+  });
+  // Kiểm tra ngày sinh khi người dùng nhập
+  ngaySinhInput.addEventListener('input', function () {
+      const ngaySinhValue = ngaySinhInput.value;
+      if (!ngaySinhValue) {
+          ngaySinhError.style.display = 'block';
+          ngaySinhInvalidError.style.display = 'none';
+      } else {
+          ngaySinhError.style.display = 'none';
+          const today = new Date();
+          const birthDate = new Date(ngaySinhValue);
+          if (birthDate > today) {
+              ngaySinhInvalidError.style.display = 'block';
+          } else {
+              ngaySinhInvalidError.style.display = 'none';
+          }
+      }
+  });
+  // Kiểm tra khi người dùng gửi form
+  registerForm.addEventListener('submit', function (event) {
+      let genderSelected = false;
+      let formHasError = false;
+      // Kiểm tra xem người dùng đã chọn giới tính chưa
+      for (let i = 0; i < gioiTinhRadios.length; i++) {
+          if (gioiTinhRadios[i].checked) {
+              genderSelected = true;
+              break;
+          }
+      }
+      // Kiểm tra lỗi mật khẩu
+      if (matKhauInput.value !== matKhauNhapLaiInput.value) {
+          formHasError = true;
+      }
+      // Kiểm tra email
+      const emailValue = emailInput.value;
+      if (emailValue === '' || !emailValue.endsWith('@gmail.com')) {
+          formHasError = true;
+      }
+      // Kiểm tra tên
+      const hoTenValue = hoTenInput.value.trim();
+      if (hoTenValue === '' || !/^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàạáâãèéêễìíòóôõùúăđĩũơƯĂẮẰẲẴẶắằẳẵặÂẦẤẨẪẬâầấẩẫậÔỐỒỔỖỘôốồổỗộƠỚỜỞỠỢơớờởỡợÚÙỦŨỤưúùủũụỲÝỶỸỴỳýỷỹỵ\s]+$/.test(hoTenValue)) {
+          formHasError = true;
+      }
+      // Kiểm tra số điện thoại
+      const dienthoaiValue = dienthoaiInput.value.trim();
+      if (dienthoaiValue === '' || !/^[0-9]{10}$/.test(dienthoaiValue)) {
+          formHasError = true;
+      }
+      // Kiểm tra ngày sinh
+      const ngaySinhValue = ngaySinhInput.value;
+      const today = new Date();
+      const birthDate = new Date(ngaySinhValue);
+      if (!ngaySinhValue || birthDate > today) {
+          formHasError = true;
+      }
+      // Kiểm tra nếu không chọn giới tính
+      if (!genderSelected) {
+          formHasError = true;
+      }
+      // Nếu có lỗi, ngừng gửi form
+      if (formHasError) {
+          event.preventDefault();
+      }
+  });
+    
+  </script>
 </body>
 </html>
