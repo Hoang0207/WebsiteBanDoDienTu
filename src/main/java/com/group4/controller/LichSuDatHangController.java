@@ -13,19 +13,25 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.group4.dao.DonHangChiTietDAO;
 import com.group4.entity.DonHang;
 import com.group4.entity.DonHangChiTiet;
+import com.group4.entity.NguoiDung;
 import com.group4.service.DonHangChiTietService;
 import com.group4.service.DonHangService;
+import com.group4.service.NguoiDungService;
 
 @Controller
 public class LichSuDatHangController {
 
     @Autowired
     private DonHangService donHangService;
+    
+    @Autowired
+    NguoiDungService ndService;
 
-    @GetMapping("/lichsu/{maNd}")
-    public String getLichSuDatHang(@PathVariable("maNd") String maNd, Model model) {
+    @GetMapping("/lichsu")
+    public String getLichSuDatHang(Model model) {
+    	NguoiDung nd = ndService.getInSession();
         // Lấy danh sách đơn hàng theo mã người dùng
-        List<DonHang> donHangs = donHangService.findByMaNd(maNd); // Hoặc phương thức khác nếu cần
+        List<DonHang> donHangs = donHangService.findByMaNd(nd.getMaNguoiDung()); // Hoặc phương thức khác nếu cần
         model.addAttribute("donHangs", donHangs);
         model.addAttribute("content","/pages/lichsudathang");
         return "indexLayout"; // Trả về trang HTML
