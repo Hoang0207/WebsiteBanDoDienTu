@@ -39,7 +39,7 @@
         <table id="orderDetailsTable">
             <thead>
                 <tr>
-                    <th data-translate="product">Sản phẩm</th>
+                    <th data-translate="product">Hình ảnh</th>
                     <th data-translate="product_name">Tên sản phẩm</th>
                     <th data-translate="quantity">Số lượng</th>
                     <th data-translate="price">Giá tiền</th>
@@ -47,7 +47,7 @@
             </thead>
             <tbody>
                 <tr th:each="chiTiet : ${chiTietDonHang}">
-                    <td th:text="${chiTiet.maSp}"></td> 
+                    <td th:text="${chiTiet.maSanPham}"></td> 
                     <td th:text="${chiTiet.sanPham.tenSanPham}"></td> 
                     <td class="quantity" th:text="${chiTiet.soLuong}"></td>
                     <td class="price" th:text="${chiTiet.giaTien}" th:attr="data-price=${chiTiet.giaTien}"></td>
