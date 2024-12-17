@@ -3,7 +3,7 @@ let host = "http://localhost:8080/api"
 //Angular Js code
 var app = angular.module('myApp', ['ngRoute']);
 app.controller('myCtrl', function($http, $scope) {
-
+	
 })
 app.config(function($routeProvider) {
 	$routeProvider
