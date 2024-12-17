@@ -25,10 +25,12 @@ public class TrangChuController {
 	    if (authentication != null && authentication.isAuthenticated() && !(authentication.getName().equals("anonymousUser"))) {
 	        email = authentication.getName();  // Get the authenticated username (email)
 			session.setAttribute("email", email);
+			model.addAttribute("success", "Đăng nhập thành công!");
+
 	    }
 	    model.addAttribute("email", email);
 
-	   
+
 	    model.addAttribute("content", "/pages/home");
 	    
 	    return "indexLayout";  // Return the layout template

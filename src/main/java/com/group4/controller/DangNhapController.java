@@ -3,11 +3,17 @@ package com.group4.controller;
 import com.group4.service.NguoiDungService;
 import com.group4.util.CookieUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 public class DangNhapController {
@@ -56,5 +62,11 @@ public class DangNhapController {
             model.addAttribute("error", "Sai email hoặc mật khẩu!");
             return "account/login";  // Trả lại trang login với thông báo lỗi
         }
+    }
+
+    @GetMapping("/loginError")
+    public String loginError(Model model) {
+        model.addAttribute("error", "Email hoặc mật khẩu sai!");
+        return "account/loginError";
     }
 }

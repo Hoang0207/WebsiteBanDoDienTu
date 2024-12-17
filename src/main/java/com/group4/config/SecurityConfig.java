@@ -69,7 +69,7 @@ public class SecurityConfig {
 		                        .requestMatchers("/static/shopz/**","/static/vendor/**").permitAll()
 		                        //
                                 .requestMatchers("/dangky","/shop","/contact",
-                                        "/home", "/oauth/**", "/login/**", "/login-google", "/", "/register", "/save", "re-send", "/shopz/**", "/sendMail",
+                                        "/home", "/oauth/**", "/login/**", "/login-google", "/", "/register", "/save", "re-send", "/shopz/**", "/sendMail", "/loginError",
                                         "/api/**","/cart", "/save-new-password", "/send-otp-recover", "/confirm-otp-recover", "/forgot-password", "/savedangky"
                                 ).permitAll()
                                 .requestMatchers("/cart").hasAuthority("ROLE_CUST")
