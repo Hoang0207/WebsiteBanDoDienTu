@@ -70,7 +70,7 @@ public class SecurityConfig {
 		                        //
 		                        .requestMatchers("/dangky","/shop","/contact",
                                     "/home", "/oauth/**", "/login/**", "/login-google", "/", "/register", "/save", "re-send", "/shopz/**", "/sendMail", "/loginError",
-                                    "/api/**", "/save-new-password", "/send-otp-recover", "/confirm-otp-recover", "/forgot-password", "/savedangky"
+                                    "/api/**", "/save-new-password", "/send-otp-recover", "/confirm-otp-recover", "/forgot-password", "/savedangky","/detail/**"
                                 ).permitAll()
 		                        .requestMatchers("/cart").hasAnyAuthority("ROLE_CUST","ROLE_DIRE","ROLE_STAF")
                                 .requestMatchers("/admin/**", "/admin", "/static/**").hasAnyAuthority("ROLE_DIRE","ROLE_STAF")

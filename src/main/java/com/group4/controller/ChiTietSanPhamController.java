@@ -41,12 +41,14 @@ public class ChiTietSanPhamController {
         // Lấy danh sách đơn hàng theo mã người dùng
         SanPham sp = sanPhamService.findById(maSp).get();
         NguoiDung nd = ndService.getInSession();
-    	List<GioHang> listGh = ghService.getGioHangByMaNguoiDung(nd.getMaNguoiDung());
     	Boolean existed = false;
-    	for(GioHang gh:listGh) {
-    		if(gh.getMaSp().equalsIgnoreCase(maSp)) {
-    			existed = true;
-    		}
+    	if(nd!=null) {
+    		List<GioHang> listGh = ghService.getGioHangByMaNguoiDung(nd.getMaNguoiDung());
+        	for(GioHang gh:listGh) {
+        		if(gh.getMaSp().equalsIgnoreCase(maSp)) {
+        			existed = true;
+        		}
+        	}
     	}
     	if(sp.getSoLuong()==0) {
     		existed = true;
@@ -59,22 +61,26 @@ public class ChiTietSanPhamController {
     
     @PostMapping("/detail/{maSp}/addToCart")
     public String addToCart(Model model, @PathVariable("maSp") String maSp) {
-    	NguoiDung nd = ndService.getInSession();
-    	List<GioHang> listGh = ghService.getGioHangByMaNguoiDung(nd.getMaNguoiDung());
     	Boolean existed = false;
-    	for(GioHang gh:listGh) {
-    		if(gh.getMaSp().equalsIgnoreCase(maSp)) {
-    			existed = true;
-    		}
+    	NguoiDung nd = ndService.getInSession();
+    	if(nd!=null) {
+    		List<GioHang> listGh = ghService.getGioHangByMaNguoiDung(nd.getMaNguoiDung());
+        	for(GioHang gh:listGh) {
+        		if(gh.getMaSp().equalsIgnoreCase(maSp)) {
+        			existed = true;
+        		}
+        	}
+        	if(existed==false) {
+        		GioHang gh = new GioHang();
+            	gh.setMaNd(nd.getMaNguoiDung());
+            	gh.setMaSp(maSp);
+            	gh.setSoLuong(1);
+            	ghService.saveGioHang(gh);
+        	}
+        	model.addAttribute("existed",existed);
+            return "redirect:/cart";
+    	}else {
+    		return "redirect:/login";
     	}
-    	if(existed==false) {
-    		GioHang gh = new GioHang();
-        	gh.setMaNd(nd.getMaNguoiDung());
-        	gh.setMaSp(maSp);
-        	gh.setSoLuong(1);
-        	ghService.saveGioHang(gh);
-    	}
-    	model.addAttribute("existed",existed);
-        return "redirect:/cart";
     }
 }
