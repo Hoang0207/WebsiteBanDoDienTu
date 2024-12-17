@@ -10,7 +10,7 @@
         <div th:each="donHang : ${donHangs}" class="order-card">
             <div class="order-header">
                 <span ><a  data-translate="order-history.date" >Ngày lập đơn: </a><strong th:text="${donHang.ngayLapDon}"></strong></span>
-                <span data-translate="order-history.status" class="order-status" th:text="${donHang.trangThai}"></span>
+                <span class="order-status" th:text="${donHang.trangThai}"></span>
             </div>
             <div class="order-details">
                 <span  >Địa chỉ giao: <strong th:text="${donHang.diaChiGiao}"></strong></span>

@@ -47,7 +47,7 @@
             </thead>
             <tbody>
                 <tr th:each="chiTiet : ${chiTietDonHang}">
-                    <td th:text="${chiTiet.maSanPham}"></td> 
+					<td><img style="height: 200px; width: 220px;" th:src="@{/api/file/SanPham/{fileName}(fileName=${chiTiet.SanPham.hinhAnh})}" alt="Hình ảnh"></td>					                               
                     <td th:text="${chiTiet.sanPham.tenSanPham}"></td> 
                     <td class="quantity" th:text="${chiTiet.soLuong}"></td>
                     <td class="price" th:text="${chiTiet.giaTien}" th:attr="data-price=${chiTiet.giaTien}"></td>
@@ -56,7 +56,7 @@
         </table>
         
         <div class="total-price">
-            <strong data-translate="total_price">Tổng tiền: </strong><span id="totalAmount">0.00 VND</span> _
+            <strong data-translate="total_price">Tổng tiền </strong> : <span id="totalAmount">0.00 VND</span> 
         </div>
     </div>
 
