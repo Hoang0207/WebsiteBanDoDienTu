@@ -104,7 +104,7 @@ app.controller("cartCtrl", function($http, $scope) {
 			swal("Thành công !", "Bạn đã đặt hàng thành công", "success").then(() => {
 				//Chỉ thực hiện sau khi nd đóng cửa sổ thông báo
 				$scope.delete_byNd()
-	        	window.location.href = `/lichsu/${maNd}`; // Điều hướng tới trang lịch sử sau khi xóa thành công
+	        	window.location.href = `/lichsu`; // Điều hướng tới trang lịch sử sau khi xóa thành công
 			})
 		}).catch(error => {
 			console.log("Error order",error)
