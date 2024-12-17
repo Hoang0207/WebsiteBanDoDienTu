@@ -32,25 +32,6 @@ public class ChiTietSanPhamController {
 	
 	@Autowired
 	GioHangService ghService;
-	
-    /*@Autowired
-    private SanPhamService productService;
-    
-    @GetMapping("/detail")
-	public String detail(Model model) {
-		model.addAttribute("content","/pages/detail");
-		return "indexLayout";
-	}*/
-    
-    /*@Autowired
-    private SanPhamDAO sanPhamDAO;
-    @GetMapping("/detail")
-    public String getSanPham(@RequestParam("id") String id, Model model) {
-        List<SanPham> detail = sanPhamDAO.findById_maSanPham(id); // Sử dụng repository phù hợp
-        model.addAttribute("SanPham", detail);
-        model.addAttribute("content","/pages/detail");
-        return "indexLayout";
-    }*/
     
     @Autowired
     private SanPhamService sanPhamService;
@@ -59,19 +40,41 @@ public class ChiTietSanPhamController {
     public String getSanPham(@PathVariable("maSp") String maSp, Model model) {
         // Lấy danh sách đơn hàng theo mã người dùng
         SanPham sp = sanPhamService.findById(maSp).get();
-        model.addAttribute("detail", sp);
+        NguoiDung nd = ndService.getInSession();
+    	List<GioHang> listGh = ghService.getGioHangByMaNguoiDung(nd.getMaNguoiDung());
+    	Boolean existed = false;
+    	for(GioHang gh:listGh) {
+    		if(gh.getMaSp().equalsIgnoreCase(maSp)) {
+    			existed = true;
+    		}
+    	}
+    	if(sp.getSoLuong()==0) {
+    		existed = true;
+    	}
+    	model.addAttribute("existed",existed);
+    	model.addAttribute("detail", sp);
         model.addAttribute("content","/pages/detail");
         return "indexLayout"; // Trả về trang HTML
     }
     
     @PostMapping("/detail/{maSp}/addToCart")
-    public String addToCart(Model model, @PathVariable("maSp") String maSp, @RequestParam("soLuong") int soLuong) {
+    public String addToCart(Model model, @PathVariable("maSp") String maSp) {
     	NguoiDung nd = ndService.getInSession();
-    	GioHang gh = new GioHang();
-    	gh.setMaNd(nd.getMaNguoiDung());
-    	gh.setMaSp(maSp);
-    	gh.setSoLuong(soLuong);
-    	ghService.saveGioHang(gh);
+    	List<GioHang> listGh = ghService.getGioHangByMaNguoiDung(nd.getMaNguoiDung());
+    	Boolean existed = false;
+    	for(GioHang gh:listGh) {
+    		if(gh.getMaSp().equalsIgnoreCase(maSp)) {
+    			existed = true;
+    		}
+    	}
+    	if(existed==false) {
+    		GioHang gh = new GioHang();
+        	gh.setMaNd(nd.getMaNguoiDung());
+        	gh.setMaSp(maSp);
+        	gh.setSoLuong(1);
+        	ghService.saveGioHang(gh);
+    	}
+    	model.addAttribute("existed",existed);
         return "redirect:/cart";
     }
 }

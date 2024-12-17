@@ -4,6 +4,18 @@ let host = "http://localhost:8080/api"
 var app = angular.module('myApp', ['ngRoute']);
 app.controller('myCtrl', function($http, $scope) {
 	
+	$scope.nd = null
+	
+	$scope.init = function(){
+		var url = `${host}/NguoiDung/Session`
+		$http.get(url).then(resp => {
+			$scope.nd = resp.data
+			console.log(resp.data)
+		})
+	}
+	
+	$scope.init()
+	
 })
 app.config(function($routeProvider) {
 	$routeProvider

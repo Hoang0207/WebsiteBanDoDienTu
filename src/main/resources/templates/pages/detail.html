@@ -73,27 +73,13 @@
                         <h4 class="chi-tiet mb-4" id="price" th:text="'Giá tiền: ' + ${detail.giaTien} + ' VNĐ'" ></h4>
                         <h4 class="chi-tiet mb-4" th:text="'Loại sản phẩm: ' + ${detail.chungLoai.tenChungLoai}" ></h4>
                         <h4 class="chi-tiet mb-4" th:text="'Thương hiệu: ' + ${detail.nhaCungCap.tenNhaCungCap}" ></h4>
-                        <h3 class="mota mb-4" data-translate="description_title">Mô tả:</h3>
+                        <h3 class="mb-1">Mô tả:</h3>
                         <p class="mb-4" th:text="${detail.moTa}" data-translate="product_description"></p>
                     </div>
 
                     <form th:action="@{'/detail/' + ${detail.maSanPham} + '/addToCart'}" method="post">
                         <div class="d-flex align-items-center mb-4 pt-2">
-                            <div class="input-group quantity mr-3" style="width: 130px;">
-                                <div class="input-group-btn">
-                                    <button class="btn btn-primary btn-minus" >
-                                        <i class="fa fa-minus"></i>
-                                    </button>
-                                </div>
-                                <input type="number" min="1" readonly="readonly" name="soLuong"
-                                    class="form-control bg-secondary border-0 text-center" value="1">
-                                <div class="input-group-btn">
-                                    <button class="btn btn-primary btn-plus" >
-                                        <i class="fa fa-plus"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <button type="submit" class="btn btn-primary px-3" data-translate="add_to_cart">
+                            <button type="submit" class="btn btn-primary px-4 py-2" th:disabled="${existed}">
                                 <i class="fa fa-shopping-cart mr-1"></i> Thêm Vào Giỏ Hàng
                             </button>
                         </div>
