@@ -61,8 +61,8 @@
         <div class="row px-xl-5">
             <div class="col-12">
                 <nav class="breadcrumb bg-light mb-30">
-                    <a class="breadcrumb-item text-dark" href="#">Trang Chủ</a>
-                    <span class="breadcrumb-item active">Thông Tin Cá Nhân</span>
+                    <a class="breadcrumb-item text-dark" href="#" data-translate="home">Trang Chủ</a>
+                    <span class="breadcrumb-item active" data-translate="personal_information">Thông Tin Cá Nhân</span>
                 </nav>
             </div>
         </div>
@@ -77,14 +77,14 @@
                 <div class="userform-form bg-light p-30">
                     <form th:object="${nd}" th:action="@{/userform/ChangeInfomation}" method="post">
                         <div class="control-group">
-                            <label for="avatar">Hình Đại Diện:</label>
+                            <label for="avatar" data-translate="avatar">Hình Đại Diện:</label>
                             <div class="avatar-container" th:if="*{hinhAnh != null}">
                                 <img th:src="@{/api/file/NguoiDung/{filename}(filename=*{hinhAnh})}">
                             </div>
                             <div class="avatar-container" th:if="*{hinhAnh == null}">
                             	<img th:src="@{/api/file/NguoiDung/defaultUser.png}">
                             </div>                     
-                            <label for="avatar" class="upload-btn ">Chọn Hình</label>
+                            <label for="avatar" class="upload-btn " data-translate="img">Chọn Hình</label>
                             <input type="file" name="avatar" id="avatar" accept="image/*">
                         </div>
                         <div class="input-group mb-3">
@@ -93,66 +93,66 @@
 	                                aria-describedby="basic-addon1" required="required">
 	                    </div>
                         <div class="input-group mb-3">
-	                         <span class="input-group-text" id="basic-addon1">Họ tên</span>
+	                         <span class="input-group-text" id="basic-addon1" data-translate="name">Họ tên</span>
 	                         <input type="text" class="form-control" aria-label="Username" th:field="*{hoTen}"
 	                                aria-describedby="basic-addon1" required="required">
 	                    </div>
 	                    <div class="input-group mb-3">
-	                         <span class="input-group-text" id="basic-addon1">Số điện thoại</span>
+	                         <span class="input-group-text" id="basic-addon1" data-translate="phone"> Số điện thoại</span>
 	                         <input type="text" class="form-control" aria-label="Username" th:field="*{soDienThoai}"
 	                                aria-describedby="basic-addon1" required="required">
 	                    </div>
 	                    <div class="input-group mb-3">
-	                         <span class="input-group-text" id="basic-addon1">Ngày sinh</span>
+	                         <span class="input-group-text" id="basic-addon1" data-translate="birthday" >Ngày sinh</span>
 	                         <input type="date" class="form-control" aria-label="Username" th:field="*{ngaySinh}"
 	                                aria-describedby="basic-addon1" required="required">
 	                    </div>
 	                    <div class="form-floating">
-	                    	<label for="floatingTextarea2" style="margin-left: 7px;margin-bottom: 3px">Địa chỉ:</label>
+	                    	<label for="floatingTextarea2" style="margin-left: 7px;margin-bottom: 3px" data-translate="local">Địa chỉ:</label>
 	                        <textarea class="form-control" id="floatingTextarea2" style="height: 100px" th:field="*{diaChi}"></textarea>
 	                    </div>
 	                    <div
 	                         class="d-flex align-items-center my-3 rounded pe-2">
-	                        <div class="text-bg-secondary p-2 rounded">Giới tính: </div>
+	                        <div class="text-bg-secondary p-2 rounded" data-translate="gender">Giới tính: </div>
 	                        <div class="form-check" style="margin-right: 10px">
 	                              <input class="form-check-input" type="radio" th:field="*{gioiTinh}" value="true" id="flexRadioDefault1"> 
-	                              <label class="form-check-label" for="flexRadioDefault1">Nam</label>
+	                              <label class="form-check-label" for="flexRadioDefault1" data-translate="male">Nam</label>
 	                         </div>
 	                         <div class="form-check pe-4">
 	                               <input class="form-check-input" type="radio" th:field="*{gioiTinh}" value="false" id="flexRadioDefault2"> 
-	                               <label class="form-check-label" for="flexRadioDefault2">Nữ</label>
+	                               <label class="form-check-label" for="flexRadioDefault2" data-translate="female">Nữ</label>
 	                         </div>
 	                     </div>
 	                    
                         <div>
-                            <button style="margin-left: 255px;" class="btn btn-primary py-2 px-4" type="submit">Thay Đổi Thông Tin</button>
+                            <button style="margin-left: 255px;" class="btn btn-primary py-2 px-4" type="submit" data-translate="chance">Thay Đổi Thông Tin</button>
                         </div>
                     </form>
                 </div>
             </div>
             <div class="col-lg-5 mb-5">
                 <div class="bg-light p-30 mb-3">
-                    <h4 class="mb-2">Bảo Mật</h4>
+                    <h4 class="mb-2" data-translate="security">Bảo Mật</h4>
                     <p class="mb-2">
                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-key-fill" viewBox="0 0 16 16">
                             <path d="M3.5 11.5a3.5 3.5 0 1 1 3.163-5H14L15.5 8 14 9.5l-1-1-1 1-1-1-1 1-1-1-1 1H6.663a3.5 3.5 0 0 1-3.163 2M2.5 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2"/>
                         </svg>
-                        Cập Nhập Mật Khẩu
+                        <a data-translate="update pass">Cập Nhập Mật Khẩu</a>
                     </p>
                     <form>
                     	<div class="input-group mb-3">
-	                         <span class="input-group-text" id="basic-addon1">Mật khẩu mới</span>
+	                         <span class="input-group-text" id="basic-addon1" data-translate="newpass">Mật khẩu mới</span>
 	                         <input type="text" class="form-control" aria-label="Username"
 	                                aria-describedby="basic-addon1" required="required">
 	                    </div>
 	                    <div class="input-group mb-3">
-	                         <span class="input-group-text" id="basic-addon1">Nhập lại mật khẩu mới</span>
+	                         <span class="input-group-text" id="basic-addon1" data-translate="re-enter">Nhập lại mật khẩu mới</span>
 	                         <input type="text" class="form-control" aria-label="Username"
 	                                aria-describedby="basic-addon1" required="required">
 	                    </div>
                     </form>                  
                     <div class="text-center">
-                    	<button type="submit" class="btn btn-danger w-50">Cập Nhật</button>
+                    	<button type="submit" class="btn btn-danger w-50" data-translate="update">Cập Nhật</button>
                     </div>
                 </div>
             </div>

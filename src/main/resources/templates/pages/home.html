@@ -32,12 +32,12 @@
                                 class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                             <div class="p-3" style="max-width: 700px;">
                                 <h1
-                                        class="display-4 text-white mb-3 animate__animated animate__fadeInDown">LAPTOP
+                                        class="display-4 text-white mb-3 animate__animated animate__fadeInDown" data-translate="carousel.laptop">LAPTOP
                                     GIÁ RẺ</h1>
                                 <p class="mx-md-5 px-5 animate__animated animate__bounceIn"></p>
                                 <a
                                         class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp"
-                                        th:href="@{/shop}">Xem Ngay</a>
+                                        th:href="@{/shop}" data-translate="carousel.view-now">Xem Ngay</a>
                             </div>
                         </div>
                     </div>
@@ -51,11 +51,10 @@
                                 <h1
                                         class="display-4 text-white mb-3 animate__animated animate__fadeInDown">XPS
                                     9230</h1>
-                                <p class="mx-md-5 px-5 animate__animated animate__bounceIn">Mới
-                                    ra mắt</p>
+                                <p class="mx-md-5 px-5 animate__animated animate__bounceIn" data-translate="New Release">Mới ra mắt</p>
                                 <a
                                         class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp"
-                                        href="#">Xem Ngay</a>
+                                        href="#" data-translate="carousel.view-now">Xem Ngay</a>
                             </div>
                         </div>
                     </div>
@@ -69,11 +68,11 @@
                                 <h1
                                         class="display-4 text-white mb-3 animate__animated animate__fadeInDown">
                                     Predator</h1>
-                                <p class="mx-md-5 px-5 animate__animated animate__bounceIn">Giảm
+                                <p class="mx-md-5 px-5 animate__animated animate__bounceIn" > <a data-translate="sale">Giảm</a>
                                     10%</p>
                                 <a
                                         class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp"
-                                        href="#">Xem Ngay</a>
+                                        href="#" data-translate="carousel.view-now">Xem Ngay</a>
                             </div>
                         </div>
                     </div>
@@ -84,16 +83,16 @@
             <div class="product-offer mb-30" style="height: 200px;">
                 <img class="img-fluid" th:src="@{shopz/img/legion.png}" alt="">
                 <div class="offer-text">
-                    <h6 class="text-white text-uppercase">Giảm giá 20%</h6>
-                    <h3 class="text-white mb-3">Ưu đãi đặc biệt</h3>
+                    <h6 class="text-white text-uppercase"> <a data-translate="sale">Giảm giá</a> 20%</h6>
+                    <h3 class="text-white mb-3" data-translate="special_offer" >Ưu đãi đặc biệt</h3>
                 </div>
             </div>
             <div class="product-offer mb-30" style="height: 200px;">
                 <img class="img-fluid" th:src="@{shopz/img/macbookslide.jpg}"
                      alt="">
                 <div class="offer-text">
-                    <h6 class="text-white text-uppercase">Giảm giá 20%</h6>
-                    <h3 class="text-white mb-3">Ưu đãi đặc biệt</h3>
+                    <h6 class="text-white text-uppercase"> <a data-translate="sale">Giảm giá</a> 20%</h6>
+                    <h3 class="text-white mb-3" data-translate="special_offer">Ưu đãi đặc biệt</h3>
                 </div>
             </div>
         </div>
@@ -108,28 +107,28 @@
                     <div class="d-flex align-items-center bg-light mb-4"
                          style="padding: 30px;">
                         <h1 class="fa fa-check text-primary m-0 mr-3"></h1>
-                        <h5 class="font-weight-semi-bold m-0">Sản phẩm chất lượng</h5>
+                        <h5 class="font-weight-semi-bold m-0" data-translate="feature.quality">Sản phẩm chất lượng</h5>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
                     <div class="d-flex align-items-center bg-light mb-4"
                          style="padding: 30px;">
                         <h1 class="fa fa-shipping-fast text-primary m-0 mr-2"></h1>
-                        <h5 class="font-weight-semi-bold m-0">Miễn phí vận chuyển</h5>
+                        <h5 class="font-weight-semi-bold m-0" data-translate="feature.free-shipping">Miễn phí vận chuyển</h5>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
                     <div class="d-flex align-items-center bg-light mb-4"
                          style="padding: 30px;">
                         <h1 class="fas fa-exchange-alt text-primary m-0 mr-3"></h1>
-                        <h5 class="font-weight-semi-bold m-0">Đổi trả trong 14 ngày</h5>
+                        <h5 class="font-weight-semi-bold m-0"  data-translate="feature.return-policy">Đổi trả trong 14 ngày</h5>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
                     <div class="d-flex align-items-center bg-light mb-4"
                          style="padding: 30px;">
                         <h1 class="fa fa-phone-volume text-primary m-0 mr-3"></h1>
-                        <h5 class="font-weight-semi-bold m-0">Hỗ trợ 24/7</h5>
+                        <h5 class="font-weight-semi-bold m-0" data-translate="feature.support">Hỗ trợ 24/7</h5>
                     </div>
                 </div>
             </div>
@@ -142,7 +141,7 @@
         <div class="container-fluid pt-5">
             <h2
                     class="section-title position-relative text-uppercase mx-xl-5 mb-4">
-                <span class="bg-secondary pr-3">Danh mục sản phẩm</span>
+                <span class="bg-secondary pr-3"   data-translate="categories.title"    >Danh mục sản phẩm</span>
             </h2>
             <div class="row px-xl-5 pb-3">
                 <div class="col-12 col-sm-6 col-md-4 col-lg-3 pb-1">
@@ -151,8 +150,8 @@
                             <div class="overflow-hidden"
                                  style="width: 100px; height: 100px;"></div>
                             <div class="flex-fill pl-3">
-                                <h6>Laptop</h6>
-                                <small class="text-body">100 sản phẩm</small>
+                                 <h3 class="font-weight-semi-bold m-0">Laptop</h5>
+                               
                             </div>
                         </div>
                     </a>
@@ -164,8 +163,8 @@
                             <div class="overflow-hidden"
                                  style="width: 100px; height: 100px;"></div>
                             <div class="flex-fill pl-3">
-                                <h6>Máy in</h6>
-                                <small class="text-body">100 sản phẩm</small>
+                                <h3  class="font-weight-semi-bold m-0" data-translate="printer">Máy in</h6>
+                               
                             </div>
                         </div>
                     </a>
@@ -176,8 +175,8 @@
                             <div class="overflow-hidden"
                                  style="width: 100px; height: 100px;"></div>
                             <div class="flex-fill pl-3">
-                                <h6>Linh Kiện</h6>
-                                <small class="text-body">100 sản phẩm</small>
+                                <h3  class="font-weight-semi-bold m-0" data-translate="components">Linh Kiện</h6>
+                               
                             </div>
                         </div>
                     </a>
@@ -188,8 +187,7 @@
                             <div class="overflow-hidden"
                                  style="width: 100px; height: 100px;"></div>
                             <div class="flex-fill pl-3">
-                                <h6>PC</h6>
-                                <small class="text-body">100 sản phẩm</small>
+                                <h3  class="font-weight-semi-bold m-0">PC</h6>
                             </div>
                         </div>
                     </a>
@@ -206,7 +204,7 @@
         <div class="container-fluid pt-5 pb-3">
             <h2
                     class="section-title position-relative text-uppercase mx-xl-5 mb-4">
-                <span class="bg-secondary pr-3">Sản phẩm mới</span>
+                <span class="bg-secondary pr-3" data-translate="New product">Sản phẩm mới</span>
             </h2>
             <div class="row px-xl-5">
                 <div ng-repeat="pro in items | limitTo:8"
@@ -311,8 +309,8 @@
                     <div class="product-offer mb-30" style="height: 300px;">
                         <img class="img-fluid" th:src="@{/shopz/img/offer.jpg}" alt="">
                         <div class="offer-text">
-                            <h6 class="text-white text-uppercase">Giảm 20%</h6>
-                            <h3 class="text-white mb-3">Mọi mặt hàng</h3>
+                            <h6 class="text-white text-uppercase"><a data-translate="Sale">Giảm</a> 20%</h6>
+                            <h3 class="text-white mb-3">ALL</h3>
 
                         </div>
                     </div>
@@ -321,8 +319,8 @@
                     <div class="product-offer mb-30" style="height: 300px;">
                         <img class="img-fluid" th:src="@{/shopz/img/mac.webp}" alt="">
                         <div class="offer-text">
-                            <h6 class="text-white text-uppercase">Ưu đãi đặc biệt</h6>
-                            <h3 class="text-white mb-3">Miễn phí ship</h3>
+                            <h6 class="text-white text-uppercase" data-translate="special_offer">Ưu đãi đặc biệt</h6>
+                            <h3 class="text-white mb-3 " data-translate="feature.free-shipping">Miễn phí ship</h3>
 
                         </div>
                     </div>
