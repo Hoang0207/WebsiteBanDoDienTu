@@ -123,6 +123,8 @@ public class DonHangServiceImp implements DonHangService{
 			dhct.setSanPham(gh.getSanPham());
 			dhct.setSoLuong(gh.getSoLuong());
 			dhctDao.save(dhct);
+			gh.getSanPham().setSoLuong(gh.getSanPham().getSoLuong()-gh.getSoLuong());
+			ghService.saveGioHang(gh);
 		}
 		
 		return dh;

@@ -38,7 +38,13 @@ public class GioHangRestController {
 			return ResponseEntity.notFound().build();
 		}
 		List<GioHang> listGh = ghService.getGioHangByMaNguoiDung(maNd);
-		return ResponseEntity.ok(listGh);
+		for (GioHang gh : listGh) {
+			if(gh.getSanPham().getTrangThai()==false) {
+				ghService.deleteGioHangById(gh.getMaGioHang());
+			}
+		}
+		List<GioHang> listGhFinal = ghService.getGioHangByMaNguoiDung(maNd);
+		return ResponseEntity.ok(listGhFinal);
 	}
 	
 	@PutMapping()
