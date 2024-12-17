@@ -18,7 +18,7 @@ public interface DonHangService {
 	
 	public DonHang save(DonHang dh);
 	
-	public DonHang order();
+	public DonHang order(String diaChi);
 	
 	public void deleteById(int id);
 	

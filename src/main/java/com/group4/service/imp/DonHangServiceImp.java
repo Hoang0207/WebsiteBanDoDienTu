@@ -94,12 +94,14 @@ public class DonHangServiceImp implements DonHangService{
 	}
 
 	@Override
-	public DonHang order() {
+	public DonHang order(String diaChi) {
 		Date date = new Date();
 		NguoiDung nd = ndService.getInSession();
 		if(nd==null) {
 			return null;
 		}
+		nd.setDiaChi(diaChi);
+		ndService.save(nd);
 		
 		//Thiết lập đơn hàng
 		DonHang dh = new DonHang();

@@ -8,12 +8,15 @@ app.controller("cartCtrl", function($http, $scope) {
 	$scope.items = []
 	
 	$scope.sum_money = 0
+	
+	$scope.diaChi = null
 
 	//Lấy thông tin người dùng định nghĩa cho $scope.user
 	$scope.get_user = function() {
 		var url = "http://localhost:8080/api/NguoiDung/Session"
 		$http.get(url).then(resp => {
 			$scope.user = resp.data
+			$scope.diaChi = resp.data.diaChi
 			console.log("Success get user in session")
 			$scope.load_all_by_maNd()
 		}).catch(error => {
@@ -97,7 +100,7 @@ app.controller("cartCtrl", function($http, $scope) {
 	$scope.order = function(){
 		var maNd = $scope.user.maNguoiDung
 		var url = "http://localhost:8080/api/DonHang/Order"
-		$http.get(url).then(resp => {
+		$http.get(url,{ params: $scope }).then(resp => {
 			swal("Thành công !", "Bạn đã đặt hàng thành công", "success").then(() => {
 				//Chỉ thực hiện sau khi nd đóng cửa sổ thông báo
 				$scope.delete_byNd()

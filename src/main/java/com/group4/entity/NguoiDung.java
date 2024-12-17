@@ -6,6 +6,8 @@ import jakarta.persistence.*;
 import java.util.Date;
 import java.util.Set;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Data
@@ -29,6 +31,7 @@ public class NguoiDung {
     private Boolean gioiTinh;
 
     @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "ngay_sinh")
     private Date ngaySinh;
 

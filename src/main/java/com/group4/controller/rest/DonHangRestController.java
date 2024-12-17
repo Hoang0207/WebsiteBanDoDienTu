@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.group4.dao.DonHangDAO;
@@ -76,8 +77,8 @@ public class DonHangRestController {
 	}
 	
 	@GetMapping("/Order")
-	public ResponseEntity<DonHang> restOrder(){
-		DonHang dh = dhService.order();
+	public ResponseEntity<DonHang> restOrder(@RequestParam String diaChi){
+		DonHang dh = dhService.order(diaChi);
 		if(dh == null) {
 			return ResponseEntity.noContent().build();
 		}

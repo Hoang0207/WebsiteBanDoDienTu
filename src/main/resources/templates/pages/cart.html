@@ -40,7 +40,7 @@
 							<td class="align-middle">
 								<div class="input-group quantity mx-auto" style="width: 100px;">
 									<div class="input-group-btn">
-										<button class="btn btn-sm btn-primary btn-minus" ng-click="update_gh(item.maGioHang,item.maNd,item.maSp,item.soLuong-1,item.nguoiDung,item.sanPham)">
+										<button class="btn btn-sm btn-primary btn-minus" ng-disabled="item.soLuong==1"  ng-click="update_gh(item.maGioHang,item.maNd,item.maSp,item.soLuong-1,item.nguoiDung,item.sanPham)">
 											<i class="fa fa-minus"></i>
 										</button>
 									</div>
@@ -63,18 +63,10 @@
 				</table>
 			</div>
 			<div class="col-lg-4">
-				<form class="mb-30" action="">
-					<div class="input-group">
-						<input type="text" class="form-control border-0 p-4" placeholder="Mã Giảm Giá" data-translate="discount_code">
-						<div class="input-group-append">
-							<button class="btn btn-primary" data-translate="apply_discount">Áp Dụng Mã Giảm Giá</button>
-						</div>
-					</div>
-				</form>
-				<h5 class="section-title position-relative text-uppercase mb-3">
+				<h5 class="section-title position-relative text-uppercase mb-2 mt-3">
 					<span class="bg-secondary pr-3" data-translate="cart_summary">Tóm Tắt Giỏ Hàng</span>
 				</h5>
-				<div class="bg-light p-30 mb-5">
+				<div class="bg-light p-30 mb-4">
 					<div class="border-bottom pb-2">
 						<div class="d-flex justify-content-between mb-3">
 							<h6 data-translate="subtotal">Tạm Tính</h6>
@@ -92,15 +84,18 @@
 						</div>
 					</div>
 				</div>
-				<h5 class="section-title position-relative text-uppercase mb-3">
+				<h5 class="section-title position-relative text-uppercase mb-2">
 					<span class="bg-secondary pr-3" data-translate="order_info">Thông Tin Đặt Hàng</span>
 				</h5>
-				<div class="bg-light p-30 mb-5">
-					<div class="form-group">
-						<label for="address" data-translate="address_label">Địa chỉ:</label>
-						<input type="text" class="form-control" id="address" placeholder="Nhập địa chỉ của bạn" required>
-					</div>
-					<a ng-click="order()" class="btn btn-block btn-primary font-weight-bold my-3 py-3" data-translate="place_order">Tiến Hành Đặt Hàng</a>
+				<div class="bg-light p-30 mb-4">
+					<form ng-submit="order()">
+						<div class="form-group">
+							<label for="address" data-translate="address_label">Địa chỉ:</label>
+							<textarea type="text" class="form-control" id="address" rows="4" required ng-model="diaChi"></textarea>
+						</div>
+						<button class="btn btn-block btn-primary font-weight-bold my-2 py-2" type="submit" data-translate="place_order" 
+							ng-disabled="items.length==0">Tiến Hành Đặt Hàng</button>
+					</form>
 				</div>
 			</div>
 		</div>
