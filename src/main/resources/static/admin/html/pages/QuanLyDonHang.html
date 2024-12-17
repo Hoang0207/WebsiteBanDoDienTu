@@ -31,7 +31,7 @@
 				<tr ng-repeat = "dh in items | limitTo:limit:start">
 					<td class="pt-3" >{{dh.maDonHang}}</td>
 					<td class="pt-3" >{{dh.nguoiDung.maNguoiDung}}</td>
-					<td class="pt-3" >{{dh.ngayLapDon}}</td>
+					<td class="pt-3" >{{dh.ngayLapDon | date:'dd-MM-yyyy'}}</td>
 					<td class="pt-3" >{{dh.trangThai}}</td>
 					<td class="ps-3">
 						<img alt="" class="img-fluid imgAction me-2" src="/admin/image/editIcon.png" ng-click="load_by_id(dh.maDonHang)" data-bs-toggle="modal" data-bs-target="#modalDonHang">

@@ -1,7 +1,9 @@
 
 package com.group4.controller;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,7 +33,9 @@ public class LichSuDatHangController {
     public String getLichSuDatHang(Model model) {
     	NguoiDung nd = ndService.getInSession();
         // Lấy danh sách đơn hàng theo mã người dùng
-        List<DonHang> donHangs = donHangService.findByMaNd(nd.getMaNguoiDung()); // Hoặc phương thức khác nếu cần
+        List<DonHang> ListDh = donHangService.findByMaNd(nd.getMaNguoiDung()); // Hoặc phương thức khác nếu cần
+        List<DonHang> donHangs = ListDh.stream().filter(dh -> dh.getIsActive()==true)
+        		.sorted((dh1,dh2) -> dh2.getNgayLapDon().compareTo(dh1.getNgayLapDon())).collect(Collectors.toList());
         model.addAttribute("donHangs", donHangs);
         model.addAttribute("content","/pages/lichsudathang");
         return "indexLayout"; // Trả về trang HTML

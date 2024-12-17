@@ -1,6 +1,7 @@
 package com.group4.controller.rest;
 
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -47,7 +48,8 @@ public class DonHangRestController {
 	@GetMapping("/IsActive/{status}")
 	public ResponseEntity<Collection<DonHang>> restGetAllDonHangByIsActive(@PathVariable("status") Boolean status){
 		List<DonHang> listDh = dhService.findAllByIsActive(status);
-		return ResponseEntity.ok(listDh);
+		List<DonHang> listDhFinal = listDh.stream().sorted((dh1,dh2) -> dh2.getNgayLapDon().compareTo(dh1.getNgayLapDon())).toList(); 
+		return ResponseEntity.ok(listDhFinal);
 	}
 	
 	@GetMapping("SoLuong")
@@ -72,7 +74,7 @@ public class DonHangRestController {
 			return ResponseEntity.noContent().build();
 		}
 		//Lọc ra những đơn hàng không bị xóa
-		List<DonHang> activeListDh = listDh.stream().filter(dh -> dh.getIsActive()==true).collect(Collectors.toList());
+		List<DonHang> activeListDh = listDh.stream().filter(dh -> dh.getIsActive()==true).sorted( (dh1,dh2) -> dh2.getNgayLapDon().compareTo(dh1.getNgayLapDon())).collect(Collectors.toList());
 		return ResponseEntity.ok(activeListDh);
 	}
 	

@@ -8,6 +8,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import com.group4.dao.SanPhamDAO;
+import com.group4.entity.NguoiDung;
 import com.group4.entity.SanPham;
 import com.group4.service.SanPhamService;
 import com.group4.specification.SanPhamSpecification;
@@ -60,7 +61,8 @@ public class SanPhamServiceImp implements SanPhamService{
 
 	@Override
 	public int count() {
-		return (int)spDao.count();
+		List<SanPham> listSp = this.findAllByTrangThai(true);
+		return listSp.size();
 	}
 
 	@Override

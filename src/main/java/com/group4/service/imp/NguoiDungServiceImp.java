@@ -56,8 +56,6 @@ public class NguoiDungServiceImp implements NguoiDungService {
         return nguoiDungDAO.findByEmail(email).isPresent();
     }
 
-
-
     @Override
     public List<NguoiDung> findAll() {
         return ndDao.findAll();
@@ -94,7 +92,8 @@ public class NguoiDungServiceImp implements NguoiDungService {
     // Thống kê số lượng khách hàng
     @Override
     public int getSoLuongNguoiDung() {
-        return ndDao.findAll().size();
+    	List<NguoiDung> listNd = this.findAllByTrangThai(true);
+        return listNd.size();
     }
 
     // Lấy người dùng từ trong session
@@ -115,6 +114,10 @@ public class NguoiDungServiceImp implements NguoiDungService {
     @Transactional
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         Optional<NguoiDung> userByUsername = nguoiDungDAO.findByEmail(email);
+        if(userByUsername.get().getTrangThai()==false) {
+        	System.out.println("Người dùng này đã bị vô hiệu");
+            throw new UsernameNotFoundException("Invalid credentials!");
+        }
         if (userByUsername.isEmpty()) {
             System.out.println("Không thể tìm thấy người dùng với email: {}");
             throw new UsernameNotFoundException("Invalid credentials!");

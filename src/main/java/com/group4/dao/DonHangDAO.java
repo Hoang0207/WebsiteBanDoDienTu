@@ -19,7 +19,7 @@ public interface DonHangDAO extends JpaRepository<DonHang, Integer>{
 	//Thống kê doanh thu theo tháng
 	@Query("SELECT new com.group4.dto.DoanhThuTheoThangDTO(MONTH(dh.ngayLapDon), YEAR(dh.ngayLapDon), SUM(dhct.soLuong*dhct.giaTien)) "
 			+ "FROM DonHang dh JOIN DonHangChiTiet dhct ON dh.maDonHang = dhct.maDh "
-			+ "WHERE dh.trangThai LIKE '%giao%' "
+			+ "WHERE dh.trangThai LIKE '%giao%' AND dh.isActive = true "
 			+ "GROUP BY YEAR(dh.ngayLapDon), MONTH(dh.ngayLapDon) "
 			+ "ORDER BY YEAR(dh.ngayLapDon), MONTH(dh.ngayLapDon) ")
 	List<DoanhThuTheoThangDTO> getDoanhThuTheoThang();
@@ -27,14 +27,14 @@ public interface DonHangDAO extends JpaRepository<DonHang, Integer>{
 	//Thống kê doanh thu theo chủng loại
 	@Query("SELECT new com.group4.dto.DoanhThuTheoChungLoaiDTO(sp.chungLoai.tenChungLoai, SUM(dhct.soLuong*dhct.giaTien)) "
 			+ " FROM DonHangChiTiet dhct JOIN dhct.sanPham sp JOIN dhct.donHang dh"
-			+ " WHERE dh.trangThai LIKE '%giao%'"
+			+ " WHERE dh.trangThai LIKE '%giao%' AND dh.isActive = true"
 			+ " GROUP BY sp.chungLoai.tenChungLoai ")
 	List<DoanhThuTheoChungLoaiDTO> getDoanhThuTheoChungLoai();
 	
 	//Thống kê doanh thu theo nhà cung cấp
 	@Query("SELECT new com.group4.dto.DoanhThuTheoNhaCungCap(sp.nhaCungCap.tenNhaCungCap, sum(dhct.giaTien*dhct.soLuong))"
 			+ " FROM DonHangChiTiet dhct JOIN dhct.sanPham sp JOIN dhct.donHang dh"
-			+ " WHERE dh.trangThai LIKE '%giao%'"
+			+ " WHERE dh.trangThai LIKE '%giao%' AND dh.isActive = true"
 			+ " GROUP BY sp.nhaCungCap.tenNhaCungCap")
 	List<DoanhThuTheoNhaCungCap> getDoanhThuTheoNhaCungCap();
 	

@@ -70,7 +70,8 @@ public class DonHangServiceImp implements DonHangService{
 
 	@Override
 	public int count() {
-		return (int)dhDao.count();
+		List<DonHang> listDh = this.findAllByIsActive(true);
+		return listDh.size();
 	}
 	
 	@Override
