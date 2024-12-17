@@ -20,14 +20,14 @@
 						</button>
 						<div class="dropdown-menu dropdown-menu-right">
 							<div th:if="${session.email != null}">
-								<span>Xin chào, <span th:text="${session.email}">User</span>!</span>
-								<a class="btn" th:href="@{/admin}">Admin</a>
-								<a class="btn" th:href="@{/logout}">Đăng xuất</a>
+								<span><a data-translate="Hello"></a>>Xin chào,</a> <span th:text="${session.email}">User</span>!</span>
+								<a class="btn" th:href="@{/admin}" >Admin</a>
+								<a class="btn" th:href="@{/logout}" data-translate="logout">Đăng xuất</a>
 							</div>
 
 							<div th:unless="${session.email != null}">
-								<a class="btn" th:href="@{/login}">Đăng Nhập</a>
-								<a class="btn" th:href="@{/dangky}">Đăng Ký</a>
+								<a class="btn" th:href="@{/login}" data-translate="login">Đăng Nhập</a>
+								<a class="btn" th:href="@{/dangky}" data-translate="register">Đăng Ký</a>
 							</div>
 						</div>
 
@@ -100,12 +100,13 @@
                     </button>
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0">
-                            <a th:href="@{/}" class="nav-item nav-link translatable">Trang Chủ</a>
-                            <a th:href="@{/shop}" class="nav-item nav-link translatable">Sản phẩm</a>
-                            <a th:href="@{/contact}" class="nav-item nav-link translatable">Liên Hệ</a>
-                            <a th:href="@{/cart}" th:if="${session.email != null}" class="nav-item nav-link translatable">Giỏ Hàng</a>
-                            <a th:href="@{/userform}" th:if="${session.email != null}" class="nav-item nav-link translatable">Thông Tin Cá Nhân</a>
-                            <a th:href="@{/lichsu}" th:if="${session.email != null}" class="nav-item nav-link translatable">Lịch sử đặt hàng</a>
+                            <a th:href="@{/}" class="nav-item nav-link translatable" data-translate="home">Trang Chủ</a>
+                            <a th:href="@{/shop}" class="nav-item nav-link translatable" data-translate="product">Sản phẩm</a>
+                            <a th:href="@{/cart}" class="nav-item nav-link translatable" data-translate="cart">Giỏ Hàng</a>
+                            <a th:href="@{/contact}" class="nav-item nav-link translatable" data-translate="contact">Liên Hệ</a>
+                            <a th:href="@{/userform}" class="nav-item nav-link translatable" data-translate="personal_information">Thông Tin Cá Nhân</a>
+							<a th:href="@{/lichsu}" th:if="${session.email != null}" class="nav-item nav-link translatable" data-translate="history">Lịch sử đặt hàng</a>
+                            
                         </div>
                     </div>
                 </nav>
