@@ -102,17 +102,10 @@
                         <div class="navbar-nav mr-auto py-0">
                             <a th:href="@{/}" class="nav-item nav-link translatable">Trang Chủ</a>
                             <a th:href="@{/shop}" class="nav-item nav-link translatable">Sản phẩm</a>
-                            <a th:href="@{/cart}" class="nav-item nav-link translatable">Giỏ Hàng</a>
                             <a th:href="@{/contact}" class="nav-item nav-link translatable">Liên Hệ</a>
-                            <a th:href="@{/userform}" class="nav-item nav-link translatable">Thông Tin Cá Nhân</a>
-                            
-                        </div>
-                        <div class="navbar-nav ml-auto py-0 d-none d-lg-block">
-                           
-                            <a th:href="@{/cart}" class="btn px-0 ml-3">
-                                <i class="fas fa-shopping-cart text-primary"></i>
-                                <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">{{cart.count}}</span>
-                            </a>
+                            <a th:href="@{/cart}" th:if="${session.email != null}" class="nav-item nav-link translatable">Giỏ Hàng</a>
+                            <a th:href="@{/userform}" th:if="${session.email != null}" class="nav-item nav-link translatable">Thông Tin Cá Nhân</a>
+                            <a th:href="@{/lichsu}" th:if="${session.email != null}" class="nav-item nav-link translatable">Lịch sử đặt hàng</a>
                         </div>
                     </div>
                 </nav>
