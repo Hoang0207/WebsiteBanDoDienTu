@@ -3,8 +3,8 @@
 // Định nghĩa từ điển ngôn ngữ
 var translations = {
     "vi": {
-		"history":"lịch sử đặt hàng",
-        "personal_information":"thông tin cá nhân",
+		"history":"Lịch sử đặt hàng",
+        "personal_information":"Thông tin cá nhân",
         "About": "Về chúng tôi",
         "contact": "Liên hệ",
         "Help": "Trợ giúp",
@@ -148,7 +148,7 @@ var translations = {
         "img":"select photo",
         "local":"Location",
         //info//
-        "personal_information":"personal information",
+        "personal_information":"Personal information",
         "product":"product",
         "About": "About",
         "contact": "Contact",

@@ -102,9 +102,9 @@
                         <div class="navbar-nav mr-auto py-0">
                             <a th:href="@{/}" class="nav-item nav-link translatable" data-translate="home">Trang Chủ</a>
                             <a th:href="@{/shop}" class="nav-item nav-link translatable" data-translate="product">Sản phẩm</a>
-                            <a th:href="@{/cart}" class="nav-item nav-link translatable" data-translate="cart">Giỏ Hàng</a>
                             <a th:href="@{/contact}" class="nav-item nav-link translatable" data-translate="contact">Liên Hệ</a>
-                            <a th:href="@{/userform}" class="nav-item nav-link translatable" data-translate="personal_information">Thông Tin Cá Nhân</a>
+                            <a th:href="@{/cart}" th:if="${session.email != null}" class="nav-item nav-link translatable" data-translate="cart">Giỏ Hàng</a>
+                            <a th:href="@{/userform}"  th:if="${session.email != null}" class="nav-item nav-link translatable" data-translate="personal_information">Thông Tin Cá Nhân</a>
 							<a th:href="@{/lichsu}" th:if="${session.email != null}" class="nav-item nav-link translatable" data-translate="history">Lịch sử đặt hàng</a>
                             
                         </div>
