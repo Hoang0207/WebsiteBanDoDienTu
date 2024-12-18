@@ -41,6 +41,9 @@ app.controller('QuanLyNhaCungCapCtrl',function($http, $scope){
 			$scope.update = true
 			swal("Thành công !","Thêm nhà cung cấp mới thành công", "success")
 		}).catch(error => {
+			if(error.status == 400){
+					swal ("Thất bại !","Nhà cung cấp không được thêm thành công do mã nhà cung cấp đã tồn tại","error")
+				}
 			console.log("Error create NhaCungCap", error)
 		})
 	}

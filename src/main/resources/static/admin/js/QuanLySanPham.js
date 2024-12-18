@@ -157,6 +157,9 @@ app.controller('QuanLySanPhamCtrl', function($http, $scope) {
 				}
 				swal("Thành công !", "Bạn đã thêm sản phẩm thành công", "success")
 			}).catch(error => {
+				if(error.status == 400){
+					swal ("Thất bại !","Sản phẩm không được thêm thành công do mã sản phẩm đã tồn tại","error")
+				}
 				console.log("Error create SanPham", error)
 			})
 		}).catch(error => {

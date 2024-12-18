@@ -155,6 +155,7 @@ INSERT INTO phan_quyen VALUES
     ('user018', 'STAF')
 	
 INSERT INTO chung_loai VALUES
+	('CL000', N'Đang cập nhật'),
 	('CL001', N'Máy tính xách tay'),
 	('CL002', N'Bo mạch chủ'),
 	('CL003', N'Card màn hình'),
@@ -167,6 +168,7 @@ INSERT INTO chung_loai VALUES
 	('CL010', N'Tai nghe')
 
 INSERT INTO nha_cung_cap VALUES
+	('NCC000', N'Đang cập nhật'),
 	('NCC001', N'Asus'),
 	('NCC002', N'Msi'),
 	('NCC003', N'Lenovo'),
@@ -178,8 +180,8 @@ INSERT INTO nha_cung_cap VALUES
 	('NCC009', N'Sony'),
 	('NCC010', N'Toshiba')
 
-
 INSERT INTO thuoc_tinh_dac_biet VALUES
+	('TTDB000', N'Đang cập nhật'),
 	('TTDB001',N'Hàng nổi bật'),
 	('TTDB002',N'Hàng mới')
 
@@ -246,7 +248,28 @@ INSERT INTO don_hang VALUES
 	('2024-9-3', N'85 Phan Kế Bính, Đa Kao, Quận 1, Hồ Chí Minh', N'Đang vận chuyển', 'hoa232',1),
 	('2024-9-3', N'293 Nam Kỳ Khởi Nghĩa, TP.HCM', N'Chờ xác nhận', 'hoang0207',1),
 	('2024-10-5', N'345 Tô Ký, Trung Mỹ Tây, Quận 12, Hồ Chí Minh', N'Đã giao', 'long888',1),
-	('2024-10-3', N'85 Phan Kế Bính, Đa Kao, Quận 1, Hồ Chí Minh', N'Đang vận chuyển', 'hoa232',1)
+	('2024-10-3', N'85 Phan Kế Bính, Đa Kao, Quận 1, Hồ Chí Minh', N'Đang vận chuyển', 'hoa232',1),
+	('2024-11-10', N'10 Lý Thái Tổ, Quận 10, TP.HCM', N'Đang xử lý', 'hoang0207', 1),
+	('2024-11-11', N'5 Cách Mạng Tháng 8, Quận 3, TP.HCM', N'Đang vận chuyển', 'hoa232', 1),
+	('2024-11-12', N'15 Trường Chinh, Tân Bình, TP.HCM', N'Đang xử lý', 'thanh222', 1),
+	('2024-11-13', N'20 Nguyễn Trãi, Quận 5, TP.HCM', N'Đang vận chuyển', 'long888', 1),
+	('2024-11-14', N'27 Nguyễn Thị Minh Khai, Quận 3, TP.HCM', N'Đã giao', 'linh775', 1),
+	('2024-11-15', N'18 Phan Văn Trị, Gò Vấp, TP.HCM', N'Đã giao', 'Thang443', 1),
+	('2024-11-16', N'7 Lê Quang Định, Bình Thạnh, TP.HCM', N'Đang vận chuyển', 'user001', 1),
+	('2024-11-17', N'12 Phan Đình Phùng, Quận 1, TP.HCM', N'Đã giao', 'user002', 1),
+	('2024-11-18', N'23 Võ Thị Sáu, Bình Thạnh, TP.HCM', N'Đang vận chuyển', 'user003', 1),
+	('2024-11-19', N'15 Trường Chinh, Tân Bình, TP.HCM', N'Đang xử lý', 'user004', 1),
+	('2024-11-20', N'9 Tân Sơn Nhì, Tân Phú, TP.HCM', N'Đã giao', 'user005', 1),
+	('2024-11-21', N'5 Cách Mạng Tháng 8, Quận 3, TP.HCM', N'Đang xử lý', 'user006', 1),
+	('2024-11-22', N'18 Phan Văn Trị, Gò Vấp, TP.HCM', N'Đang vận chuyển', 'user007', 1),
+	('2024-11-23', N'10 Lý Thái Tổ, Quận 10, TP.HCM', N'Đang xử lý', 'user008', 1),
+	('2024-11-24', N'12 Phan Đình Phùng, Quận 1, TP.HCM', N'Đang vận chuyển', 'user009', 1),
+	('2024-11-25', N'15 Trường Chinh, Tân Bình, TP.HCM', N'Đang xử lý', 'user010', 1),
+	('2024-11-26', N'23 Võ Thị Sáu, Bình Thạnh, TP.HCM', N'Đang vận chuyển', 'user011', 1),
+	('2024-11-27', N'7 Lê Quang Định, Bình Thạnh, TP.HCM', N'Đang xử lý', 'user012', 1),
+	('2024-11-28', N'5 Cách Mạng Tháng 8, Quận 3, TP.HCM', N'Đang vận chuyển', 'user013', 1),
+	('2024-11-29', N'20 Nguyễn Trãi, Quận 5, TP.HCM', N'Đang xử lý', 'user014', 1),
+	('2024-11-30', N'10 Lý Thái Tổ, Quận 10, TP.HCM', N'Đang vận chuyển', 'user015', 1)
 
 INSERT INTO don_hang_chi_tiet VALUES
 	(1, 23490000, 'SP001', 1),
@@ -264,7 +287,27 @@ INSERT INTO don_hang_chi_tiet VALUES
 	(1, 5499000, 'SP008', 12),
 	(1, 69490000, 'SP002', 13),
 	(3, 16497000, 'SP008', 14),
-	(1, 12999000, 'SP009', 15)
+	(1, 12999000, 'SP009', 15),
+	(2, 23490000, 'SP001', 1),
+	(1, 69490000, 'SP002', 2),
+	(3, 9990000, 'SP003', 3),
+	(1, 9990000, 'SP004', 4),
+	(5, 4990000, 'SP005', 5),
+	(2, 5199000, 'SP006', 6),
+	(1, 21999000, 'SP007', 7),
+	(3, 5499000, 'SP008', 8),
+	(1, 12999000, 'SP009', 9),
+	(4, 23490000, 'SP001', 10),
+	(2, 69490000, 'SP002', 11),
+	(3, 9990000, 'SP003', 12),
+	(1, 9990000, 'SP004', 13),
+	(2, 4990000, 'SP005', 14),
+	(5, 5199000, 'SP006', 15),
+	(3, 21999000, 'SP007', 16),
+	(4, 5499000, 'SP008', 17),
+	(1, 12999000, 'SP009', 18),
+	(2, 23490000, 'SP001', 19),
+	(1, 69490000, 'SP002', 20);
 
 
 SELECT 	

@@ -48,6 +48,9 @@ app.controller('QuanLyChungloaiCtrl', function($http, $scope) {
 			});
 			console.log("Success create ChungLoai", resp)
 		}).catch(error => {
+			if(error.status == 400){
+				swal ("Thất bại !","Chủng loại không được thêm thành công do mã chủng loại đã tồn tại","error")
+			}
 			console.log("Error create ChugnLoai", error)
 		})
 	}

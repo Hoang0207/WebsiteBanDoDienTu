@@ -41,6 +41,9 @@ app.controller('QuanLyThuocTinhDacBietCtrl',function($http, $scope){
 			$scope.load_all()
 			swal("Thành công !","Bạn đã thêm thành công thuộc tính đặc biệt", "success")
 		}).catch(error => {
+			if(error.status == 400){
+				swal ("Thất bại !","Thuộc tính đặc biệt không được thêm thành công do mã thuộc tính đặc biệt đã tồn tại","error")
+			}
 			console.log("Error create TTDB", error)
 		})
 	}
