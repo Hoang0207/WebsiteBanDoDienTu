@@ -109,7 +109,7 @@
 	                    </div>
 	                    <div class="form-floating">
 	                    	<label for="floatingTextarea2" style="margin-left: 7px;margin-bottom: 3px" data-translate="local">Địa chỉ:</label>
-	                        <textarea class="form-control" id="floatingTextarea2" style="height: 100px" th:field="*{diaChi}"></textarea>
+	                        <textarea class="form-control" id="floatingTextarea2" style="height: 100px" th:field="*{diaChi}" required="required"></textarea>
 	                    </div>
 	                    <div
 	                         class="d-flex align-items-center my-3 rounded pe-2">
@@ -139,25 +139,62 @@
                         </svg>
                         <a data-translate="update pass">Cập Nhập Mật Khẩu</a>
                     </p>
-                    <form>
+                    <form th:action="@{/userform/ChangePassword}" method="post">
                     	<div class="input-group mb-3">
 	                         <span class="input-group-text" id="basic-addon1" data-translate="newpass">Mật khẩu mới</span>
-	                         <input type="text" class="form-control" aria-label="Username"
+	                         <input type="password" class="form-control" aria-label="Username" name="NewPass"
 	                                aria-describedby="basic-addon1" required="required">
 	                    </div>
 	                    <div class="input-group mb-3">
 	                         <span class="input-group-text" id="basic-addon1" data-translate="re-enter">Nhập lại mật khẩu mới</span>
-	                         <input type="text" class="form-control" aria-label="Username"
+	                         <input type="password" class="form-control" aria-label="Username" name="Retype"
 	                                aria-describedby="basic-addon1" required="required">
 	                    </div>
+	                    <div class="text-center">
+	                    	<button type="submit" class="btn btn-danger w-50" data-translate="update">Cập Nhật</button>
+	                    </div>
                     </form>                  
-                    <div class="text-center">
-                    	<button type="submit" class="btn btn-danger w-50" data-translate="update">Cập Nhật</button>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
+    
+    <!-- Hiện thi tin nhắn SweetAlert -->
+   	<script type="text/javascript" th:if="${SuccessUpdateInfomationMessage}">
+	 // Kiểm tra để đảm bảo DOM đã sẵn sàng 
+	    document.addEventListener('DOMContentLoaded', function() {
+	        Swal.fire({
+	            title: 'Thành công!',
+	            text: '[[${SuccessUpdateInfomationMessage}]]',
+	            icon: 'success',
+	            confirmButtonText: 'Đóng'
+	        });
+	    });
+   	</script>
+   	
+   	<script type="text/javascript" th:if="${FailedUpdatePasswordMessage}">
+	 // Kiểm tra để đảm bảo DOM đã sẵn sàng 
+	    document.addEventListener('DOMContentLoaded', function() {
+	        Swal.fire({
+	            title: 'Thất bại !',
+	            text: '[[${FailedUpdatePasswordMessage}]]',
+	            icon: 'error',
+	            confirmButtonText: 'Đóng'
+	        });
+	    });
+   	</script>
+   	
+   	<script type="text/javascript" th:if="${SuccessUpdatePasswordMessage}">
+	 // Kiểm tra để đảm bảo DOM đã sẵn sàng 
+	    document.addEventListener('DOMContentLoaded', function() {
+	        Swal.fire({
+	            title: 'Thành công !',
+	            text: '[[${SuccessUpdatePasswordMessage}]]',
+	            icon: 'success',
+	            confirmButtonText: 'Đóng'
+	        });
+	    });
+   	</script>
 
 </body>
 </html>
