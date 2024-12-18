@@ -74,7 +74,7 @@ public class NguoiDung {
     @JsonIgnore
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
-    @OneToMany(mappedBy = "nguoiDung", cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "nguoiDung", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private Set<PhanQuyen> phanQuyens;
   
     /* Old main

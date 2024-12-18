@@ -132,8 +132,8 @@ public class NguoiDungServiceImp implements NguoiDungService {
             grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_" + role.getVaiTro().getMaVaiTro()));
         }
         //Gan session cho nguoi dung
-        //session.remove("user");
-        //session.set("user", userByUsername.get());
+        session.remove("user");
+        session.set("user", userByUsername.get());
         //
         System.out.println(grantedAuthorities);
         return new SecurityUser(user.getEmail(), user.getMatKhau(), true, true, true, true, grantedAuthorities,

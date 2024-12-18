@@ -54,7 +54,7 @@ public class TrangChuController {
 	    if (authentication != null && authentication.isAuthenticated() && !(authentication.getName().equals("anonymousUser"))) {
 	        email = authentication.getName();  // Get the authenticated username (email)
 			session.setAttribute("email", email);
-	        sessionUtil.set("user", ndService.findByEmail(email).get());
+	        //sessionUtil.set("user", ndService.findByEmail(email).get());
 			model.addAttribute("success", "Đăng nhập thành công!");
 	    }
 	    model.addAttribute("email", email);
