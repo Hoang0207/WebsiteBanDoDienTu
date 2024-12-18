@@ -76,7 +76,7 @@
             <div class="col-lg-7 mb-5">
                 <div class="userform-form bg-light p-30">
                     <form th:object="${nd}" th:action="@{/userform/ChangeInfomation}" method="post">
-                        <div class="control-group">
+                        <!--  <div class="control-group">
                             <label for="avatar" data-translate="avatar">Hình Đại Diện:</label>
                             <div class="avatar-container" th:if="*{hinhAnh != null}">
                                 <img th:src="@{/api/file/NguoiDung/{filename}(filename=*{hinhAnh})}">
@@ -86,7 +86,8 @@
                             </div>                     
                             <label for="avatar" class="upload-btn " data-translate="img">Chọn Hình</label>
                             <input type="file" name="avatar" id="avatar" accept="image/*">
-                        </div>
+                        </div>-->
+                        <h4 class="mb-4">Thông tin cá nhân</h4>
                         <div class="input-group mb-3">
 	                         <span class="input-group-text" id="basic-addon1">Email</span>
 	                         <input type="text" class="form-control" aria-label="Username" th:field="*{email}" readonly="readonly"
