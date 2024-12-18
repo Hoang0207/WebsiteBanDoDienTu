@@ -40,12 +40,14 @@ app.controller('QuanLyNguoiDungCtrl', function($http, $scope) {
 			var url = `${host}/PhanQuyen/${author.maPhanQuyen}`
 			$http.delete(url).then(() => {
 				swal("Xóa quyền thành công", { icon: "success", })
+				$scope.get_authority_by_maNd(maNd)
 			}).catch(error => {
 				console.log("Error delete author", error)
 			})
 		} else { //Chưa có quyền => cấp quyền
 			$http.post(`${host}/PhanQuyen`, { maNd: maNd, maVt: role.maVaiTro }).then(resp => {
 				swal("Cấp quyền thành công", { icon: "success", })
+				$scope.get_authority_by_maNd(maNd)
 			}).catch(error => {
 				console.log("Error create authority", error)
 			})
@@ -169,6 +171,9 @@ app.controller('QuanLyNguoiDungCtrl', function($http, $scope) {
 				$scope.update = true
 				swal("Thành công !", "Thêm người dùng thành công", "success")
 			}).catch(error => {
+				if(error.status == 400){
+					swal ("Thất bại !","Người dùng không được thêm thành công do email đã tồn tại","error")
+				}
 				console.log("Error create NguoiDung", error)
 			})
 		})

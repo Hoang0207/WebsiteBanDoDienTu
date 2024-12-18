@@ -68,6 +68,13 @@ public class NguoiDungRestController {
 	
 	@PostMapping()
 	public ResponseEntity<NguoiDung> restPostNguoiDung(@RequestBody NguoiDung nd ){
+		List<NguoiDung> listNd = ndService.findAll();
+		for(NguoiDung nguoiDung:listNd) {
+			if(nguoiDung.getEmail().equalsIgnoreCase(nd.getEmail())) {
+				return ResponseEntity.badRequest().build();
+			}
+		}
+		
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		nd.setMaNguoiDung(nd.getEmail().substring(0, nd.getEmail().indexOf("@")));
 		nd.setMatKhau(encoder.encode(nd.getMatKhau()));
