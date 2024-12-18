@@ -21,6 +21,8 @@ public interface NguoiDungService extends UserDetailsService  {
 
 	public Optional<NguoiDung> findById(String id);
 	
+	public Optional<NguoiDung> findByEmail(String email);
+	
 	public NguoiDung getInSession();
 	
 	public boolean existsById(String id);

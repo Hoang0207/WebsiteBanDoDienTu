@@ -23,7 +23,7 @@ import com.group4.util.SessionUtil;
 public class TrangChuController {
 
 	@Autowired
-	SessionUtil session;
+	SessionUtil sessionUtil;
 	
 	@Autowired
 	NguoiDungService ndService;
@@ -54,14 +54,12 @@ public class TrangChuController {
 	    if (authentication != null && authentication.isAuthenticated() && !(authentication.getName().equals("anonymousUser"))) {
 	        email = authentication.getName();  // Get the authenticated username (email)
 			session.setAttribute("email", email);
+	        sessionUtil.set("user", ndService.findByEmail(email).get());
 			model.addAttribute("success", "Đăng nhập thành công!");
-
 	    }
 	    model.addAttribute("email", email);
-
-
-	    model.addAttribute("content", "/pages/home");
 	    
+	    model.addAttribute("content", "/pages/home");
 	    return "indexLayout";  // Return the layout template
 	}
 	
@@ -73,7 +71,7 @@ public class TrangChuController {
 
 	@GetMapping("/logout")
 	public String logoutPage() {
-		session.remove("user");
+		sessionUtil.remove("user");
 		SecurityContextHolder.getContext().setAuthentication(null);
 		return "redirect:/?logout";
 	}
